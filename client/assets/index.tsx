@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 
-import { Dashboard, ProjectList, ProjectForm } from '@/common/components';
-import { FolderType, ProjectType } from '@/common/types';
-import { defaultFolder } from '@/common/defaults';
-import { useFolders, useProjects } from '@/common/hooks';
+// import { Dashboard, ProjectList, ProjectForm } from '@/common/components';
+// import { FolderType, ProjectType } from '@/common/types';
+// import { defaultFolder } from '@/common/defaults';
+// import { useFolders, useProjects } from '@/common/hooks';
 
 export default function Home({}) {
   const { folderData, foldersError, foldersLoading, mutateFolders } = useFolders();

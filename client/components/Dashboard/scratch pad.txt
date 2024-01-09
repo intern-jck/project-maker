@@ -1,0 +1,28 @@
+scratch pad
+
+      <form className={'create-folder-form'} onSubmit={createFolderHandler}>
+        <TextInput inputName={'new-folder'} value={newFolder} changeHandler={updateNewFolder} />
+        <button type={'submit'}>{/* <CgAddR /> */}</button>
+      </form>
+      <form className={} onSubmit={deleteFolderHandler}>
+        <FolderSelect
+          inputName={'folders'}
+          value={currentFolder._id}
+          options={folders}
+          changeHandler={selectFolderHandler}
+        />
+        <button type={'submit'}>
+          <CgTrash />
+        </button>
+      </form>
+      <form className={} onSubmit={createProjectHandler}>
+        <h1>
+          FOLDER: <span>{currentFolder.name}</span>
+        </h1>
+        <button type={'submit'}>
+          <GoFileMedia />
+        </button>
+        <button name="download-projects" onClick={downloadProjects}>
+          <GoDesktopDownload />
+        </button>
+      </form>
