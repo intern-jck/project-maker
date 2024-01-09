@@ -1,6 +1,6 @@
 @import '../../globals/variables';
 
-.ProjectForm {
+.Project {
   border: $border-test-blue;
   background-color: $color-secondary;
   padding: $padding-stock;
@@ -12,41 +12,33 @@
 
   overflow-y: scroll;
 
-  .formMenu {
-    border: $border-thin;
-    padding: $padding-thin;
+  .ProjectControls {
+    border: $border-stock;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 1rem;
 
-    .formName {
-      margin: 0;
-      margin-right: $margin-stock;
-      margin-left: $margin-stock;
+    .control-header {
+      // border: $border-stock;
       font-size: $font-size-large;
-      font-weight: bold;
+      width: 75%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
 
-      span {
-        font-weight: 100;
+      h4 {
+        margin: 0;
       }
     }
 
-    .formCollection {
-      margin: 0;
-      margin-right: auto;
-      margin-left: $margin-stock;
-      font-size: $font-size-large;
-      font-weight: bold;
+    .control-buttons {
+      // border: $border-stock;
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
 
-      span {
-        font-weight: 100;
+      button {
+        font-size: 3rem;
       }
-    }
-
-    button {
-      margin-left: $margin-thin;
-      margin-right: $margin-thin;
-      font-size: $font-size-xxlarge;
     }
   }
 
@@ -57,26 +49,26 @@
     gap: $gap-stock;
   }
 
-  .nameInput,
-  .folderInput,
-  .clientInput,
-  .clientUrlInput,
-  .urlInput {
+  .name-input,
+  .folder-input,
+  .client-input,
+  .client-url-input,
+  .url-input {
     border: $border-thin;
     padding: $padding-thin;
     font-size: $font-size-large;
     font-weight: bold;
-    min-width: 35%;
+    width: 10rem;
     display: flex;
     flex-direction: column;
   }
 
-  .dateInput {
+  .date-input {
     border: $border-thin;
     padding: $padding-thin;
     font-size: $font-size-large;
     font-weight: bold;
-    max-width: 35%;
+    // max-width: 35%;
     display: flex;
     flex-direction: column;
 
@@ -94,7 +86,7 @@
     }
   }
 
-  .shortInput {
+  .short-input {
     border: $border-thin;
     padding: $padding-thin;
     font-size: $font-size-large;
@@ -107,7 +99,7 @@
     }
   }
 
-  .infoInput {
+  .info-input {
     border: $border-thin;
     padding: $padding-thin;
     font-size: $font-size-large;
@@ -121,7 +113,7 @@
     }
   }
 
-  .photoInput {
+  .photo-input {
     border: $border-thin;
     padding: $padding-thin;
     display: flex;
@@ -192,7 +184,7 @@
     }
   }
 
-  .techInput {
+  .tech-input {
     border: $border-thin;
     padding: $padding-thin;
     display: flex;
@@ -259,7 +251,7 @@
     }
   }
 
-  .repoInput {
+  .repo-input {
     border: $border-thin;
     padding: $padding-thin;
     display: flex;

@@ -1,10 +1,134 @@
-import React from 'react';
-import './ProjectForm.scss';
+import React, { useState } from 'react';
 
-const ProjectForm = () => {
+import TextInput from '../common/Inputs/TextInput.jsx';
+import TextArea from '../common/Inputs/TextArea.jsx';
+import DateInput from '../common/Inputs/DateInput.jsx';
+// import FolderSelect from '../common/Inputs/FolderSelect.jsx';
+// import PhotoInput from '../common/Inputs/PhotoInput.jsx';
+// import TechInput from '../common/Inputs/TechInput.jsx';
+// import RepoInput from '../common/Inputs/RepoInput.jsx';
+
+const defaultProject = {
+  name: 'Cyber Truck',
+  url: '',
+  date: {
+    start_month: 'AUG',
+    start_year: '2020',
+    end_month: '',
+    end_year: '',
+  },
+  short: 'Trying to give my truck a brain',
+  info: 'I stumbled across an open source package called Crankshaft which can link an Android and Raspberry Pi together to allow you setup your own navigation system.  I 3D printer a housing and replaced the radio console (which was dead at this point) in hopes of making my own.  Wiring was a pain and I messed up a few details like screen orientation, but learned a lot!  While it was cool while I had it, I ended up taking out due to not being able to createa safe shutdown for the Pi and the fact a slight bump in the road would disconnet the power harness, resetting the whole thing.  Oh well.  Still learnt a lot!',
+  tech: [
+    ['Raspberry Pi', 'https://www.raspberrypi.org/'],
+    ['Crankshaft', '#'],
+    ['Fusion 360', '#'],
+  ],
+  photos: [
+    'https://iili.io/DPMBJS.jpg',
+    'https://iili.io/DPMfg2.jpg',
+    'https://iili.io/DPMFf4.jpg',
+    'https://iili.io/DPM2sf.jpg',
+    'https://iili.io/DPGmJI.jpg',
+    'https://iili.io/DPGtlp.jpg',
+    'https://iili.io/DPGZfR.jpg',
+    'https://iili.io/DPGLiv.jpg',
+    'https://iili.io/DPGOVj.jpg',
+    'https://iili.io/DPGjDu.jpg',
+    'https://iili.io/DPGhNe.jpg',
+    'https://iili.io/DPGXR9.jpg',
+    'https://iili.io/DPGMSS.jpg',
+  ],
+  resources: [],
+};
+
+const ProjectForm = ({ project }) => {
+  console.log(project);
+
+  const [formData, setFormData] = useState(project ? project : defaultProject);
+  // const [newPhoto, setNewPhoto] = useState('');
+  // const [newTech, setNewTech] = useState('');
+  // const [newRepo, setNewRepo] = useState('');
+
+  function test() {
+    console.log('submit test');
+  }
+
+  function updateTextInput(event) {
+    event.preventDefault();
+
+    const { name, value } = event.currentTarget;
+    console.log(name, value);
+
+    let updatedInput = {};
+
+    if (name === 'name') {
+      updatedInput = {
+        [name]: value,
+        slug: value.toLowerCase().split(' ').join('-'),
+      };
+    } else {
+      updatedInput = { [name]: value };
+    }
+
+    setFormData((formData) => ({
+      ...formData,
+      ...updatedInput,
+    }));
+  }
+
+  function updateDate() {
+    console.log('function test');
+  }
+  function updatePhoto() {
+    console.log('function test');
+  }
+  function addPhoto() {
+    console.log('function test');
+  }
+  function deletePhoto() {
+    console.log('function test');
+  }
+  function updateTech() {
+    console.log('function test');
+  }
+  function addTech() {
+    console.log('function test');
+  }
+  function deleteTech() {
+    console.log('function test');
+  }
+  function updateRepo() {
+    console.log('function test');
+  }
+  function addRepo() {
+    console.log('function test');
+  }
+  function deleteRepo() {
+    console.log('function test');
+  }
+
   return (
-    <div className="ProjectForm">
-      <h2>ProjectForm</h2>
+    <div>
+      <form>
+        <TextInput className="name-input" inputName={'name'} value={formData.name} changeHandler={updateTextInput} />
+        <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} />
+        <TextInput
+          className="client-input"
+          inputName={'client'}
+          value={formData.client}
+          changeHandler={updateTextInput}
+        />
+        <TextInput
+          className="client-url-input"
+          inputName={'client_url'}
+          value={formData.client_url}
+          changeHandler={updateTextInput}
+        />
+        <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} />
+        <TextInput className="short-input" inputName={'short'} value={formData.short} changeHandler={updateTextInput} />
+        <TextArea className="info-input" inputName={'info'} value={formData.info} changeHandler={updateTextInput} />
+      </form>
     </div>
   );
 };
@@ -75,30 +199,6 @@ export default ProjectForm;
 //   // Input Methods
 
 //   // Text Input
-//   function updateTextInput(event: React.ChangeEvent<HTMLInputElement>) {
-//     event.preventDefault();
-
-//     const { name, value } = event.currentTarget;
-//     console.log(name, value)
-
-//     let updatedInput = {};
-
-//     if (name === 'name') {
-//       updatedInput = {
-//         [name]: value,
-//         slug: value.toLowerCase().split(' ').join('-')
-//       };
-//     } else {
-//       updatedInput = { [name]: value };
-//     }
-
-//     setFormData((formData) => ({
-//       ...formData,
-//       ...updatedInput
-//     }) as ProjectType);
-
-//   };
-
 //   // Select Folder Input
 //   function updateFolder(event: React.ChangeEvent<HTMLSelectElement>) {
 //     event.preventDefault();
@@ -332,110 +432,5 @@ export default ProjectForm;
 //     };
 //   };
 
-//   return (
-//     <>
-//       {
-//         formData ?
-//           <form className={styles.projectForm} onSubmit={saveProjectHandler}>
-
-//             <div className={styles.formMenu}>
-//               <h2 className={styles.formName}>NAME: <span>{formData.name}</span></h2>
-//               <h2 className={styles.formCollection}>FOLDER: <span>{formData.folder_name}</span></h2>
-
-//               <button type='submit'>
-//                 <MdSave />
-//               </button>
-//               <button onClick={deleteProjectHandler}>
-//                 <MdDelete />
-//               </button>
-//               <button onClick={closeProjectHandler}>
-//                 <MdClose />
-//               </button>
-//             </div>
-
-//             <div className={styles.formInputs}>
-//               <TextInput
-//                 className={styles.nameInput}
-//                 inputName={'name'}
-//                 value={formData.name}
-//                 changeHandler={updateTextInput}
-//               />
-//               <FolderSelect
-//                 className={styles.folderInput}
-//                 inputName={'folder'}
-//                 value={formData.folder_id}
-//                 options={folders}
-//                 changeHandler={updateFolder}
-//               />
-//               <TextInput
-//                 className={styles.clientInput}
-//                 inputName={'client'}
-//                 value={formData.client}
-//                 changeHandler={updateTextInput}
-//               />
-//               <TextInput
-//                 className={styles.clientUrlInput}
-//                 inputName={'client_url'}
-//                 value={formData.client_url}
-//                 changeHandler={updateTextInput}
-//               />
-//               <TextInput
-//                 className={styles.urlInput}
-//                 inputName={'url'}
-//                 value={formData.url}
-//                 changeHandler={updateTextInput}
-//               />
-//               <DateInput
-//                 className={styles.dateInput}
-//                 inputName={'date'}
-//                 date={formData.date}
-//                 changeHandler={updateDate}
-//               />
-//               <TextInput
-//                 className={styles.shortInput}
-//                 inputName={'short'}
-//                 value={formData.short}
-//                 changeHandler={updateTextInput}
-//               />
-//               <TextArea
-//                 className={styles.infoInput}
-//                 inputName={'info'}
-//                 value={formData.info}
-//                 changeHandler={updateTextInput}
-//               />
-//               <PhotoInput
-//                 className={styles.photoInput}
-//                 inputName={'photos'}
-//                 value={newPhoto ? newPhoto.url : ''}
-//                 photos={formData.photos}
-//                 changeHandler={updatePhoto}
-//                 addHandler={addPhoto}
-//                 deleteHandler={deletePhoto}
-//               />
-//               <TechInput
-//                 className={styles.techInput}
-//                 tech={newTech}
-//                 techList={formData.tech}
-//                 changeHandler={updateTech}
-//                 addHandler={addTech}
-//                 deleteHandler={deleteTech}
-//               />
-//               <RepoInput
-//                 // inputName={'repos'}
-//                 // repoName={newRepo.name}
-//                 // url={newRepo.url}
-//                 className={styles.repoInput}
-//                 repo={newRepo}
-//                 repos={formData.repos}
-//                 changeHandler={updateRepo}
-//                 addHandler={addRepo}
-//                 deleteHandler={deleteRepo}
-//               />
-//             </div>
-
-//           </form>
-//           : null
-//       }
-//     </>
-//   )
+//
 // };

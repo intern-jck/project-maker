@@ -1,0 +1,62 @@
+ormData ? (
+        <form className="project-form" onSubmit={test}>
+          {/* <TextInput className="name-input" inputName={'name'} value={formData.name} changeHandler={updateTextInput} /> */}
+          {/* <FolderSelect
+            className="folder-input"
+            inputName={'folder'}
+            value={formData.folder_id}
+            options={folders}
+            changeHandler={updateFolder}
+          /> */}
+          {/* <TextInput
+            className="client-input"
+            inputName={'client'}
+            value={formData.client}
+            changeHandler={updateTextInput}
+          /> */}
+          {/* <TextInput
+            className="client-url-input"
+            inputName={'client_url'}
+            value={formData.client_url}
+            changeHandler={updateTextInput}
+          /> */}
+          {/* <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} /> */}
+          {/* <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} /> */}
+          {/* <TextInput
+            className="short-input"
+            inputName={'short'}
+            value={formData.short}
+            changeHandler={updateTextInput}
+          /> */}
+          {/* <TextArea className="info-input" inputName={'info'} value={formData.info} changeHandler={updateTextInput} /> */}
+          {/* <PhotoInput
+            className="photo-input"
+            inputName={'photos'}
+            value={newPhoto ? newPhoto.url : ''}
+            photos={formData.photos}
+            changeHandler={updatePhoto}
+            addHandler={addPhoto}
+            deleteHandler={deletePhoto}
+          /> */}
+          {/* <TechInput
+            className="tech-input"
+            tech={newTech}
+            techList={formData.tech}
+            changeHandler={updateTech}
+            addHandler={addTech}
+            deleteHandler={deleteTech}
+          /> */}
+          {/* <RepoInput
+            inputName={'repos'}
+            repoName={newRepo.name}
+            url={newRepo.url}
+            className="repo-input"
+            repo={newRepo}
+            repos={formData.repos}
+            changeHandler={updateRepo}
+            addHandler={addRepo}
+            deleteHandler={deleteRepo}
+          /> */}
+        </form>
+      ) : null}
+    </>

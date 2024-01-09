@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Dashboard from './components/Dashboard/Dashboard.jsx';
-import ProjectForm from './components/ProjectForm/ProjectForm.jsx';
+import Project from './components/Project/Project.jsx';
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       </div>
       <div className="app-content">
         <Dashboard />
-        <ProjectForm />
+        <Project />
       </div>
     </div>
   );

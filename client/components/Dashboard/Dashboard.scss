@@ -9,6 +9,41 @@
   flex-direction: column;
   gap: $gap-stock;
 
+  h2 {
+    margin: 0;
+  }
+
+  .DashboardControl {
+    border: $border-stock;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .FolderList {
+    border: $border-stock;
+    height: 100%;
+    padding: $padding-stock;
+    overflow-y: scroll;
+
+    .folder-button {
+      border: $border-stock;
+      width: 6rem;
+      height: 6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        font-size: 3rem;
+      }
+    }
+  }
+
   h1 {
     margin: 0;
   }

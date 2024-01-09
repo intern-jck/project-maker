@@ -1,0 +1,234 @@
+[
+  {
+    "name": "Cyber Truck",
+    "url": "",
+    "date": {
+      "start_month": "AUG",
+      "start_year": "2020",
+      "end_month": "",
+      "end_year": ""
+    },
+    "short": "Trying to give my truck a brain",
+    "info": "I stumbled across an open source package called Crankshaft which can link an Android and Raspberry Pi together to allow you setup your own navigation system.  I 3D printer a housing and replaced the radio console (which was dead at this point) in hopes of making my own.  Wiring was a pain and I messed up a few details like screen orientation, but learned a lot!  While it was cool while I had it, I ended up taking out due to not being able to createa safe shutdown for the Pi and the fact a slight bump in the road would disconnet the power harness, resetting the whole thing.  Oh well.  Still learnt a lot!",
+    "tech": [
+      [
+        "Raspberry Pi",
+        "https://www.raspberrypi.org/"
+      ],
+      [
+        "Crankshaft",
+        "#"
+      ],
+      [
+        "Fusion 360",
+        "#"
+      ]
+    ],
+    "photos": [
+      "https://iili.io/DPMBJS.jpg",
+      "https://iili.io/DPMfg2.jpg",
+      "https://iili.io/DPMFf4.jpg",
+      "https://iili.io/DPM2sf.jpg",
+      "https://iili.io/DPGmJI.jpg",
+      "https://iili.io/DPGtlp.jpg",
+      "https://iili.io/DPGZfR.jpg",
+      "https://iili.io/DPGLiv.jpg",
+      "https://iili.io/DPGOVj.jpg",
+      "https://iili.io/DPGjDu.jpg",
+      "https://iili.io/DPGhNe.jpg",
+      "https://iili.io/DPGXR9.jpg",
+      "https://iili.io/DPGMSS.jpg"
+    ],
+    "resources": []
+  },
+  {
+    "name": "RPi Arcade Cab",
+    "url": "",
+    "date": {
+      "start_month": "SEP",
+      "start_year": "2021",
+      "end_month": "OCT",
+      "end_year": "2021"
+    },
+    "short": "Retro Pi Arcade Cabinet",
+    "info": "We this arcade cab collecting dust and taking up space at Splatspace, the local makerspace club I'm apart of.  The orginal emulator software was outdated and depreciated so I decided to give the cabinet some upgrades.  I replaced the original controls with 2 players to give more room to breath and setup Retro Pi to run on a Linux PC running Ubunutu.  Still have to install better speakers and fix some issues with booting into Retro Pie.",
+    "tech": [
+      [
+        "Linux",
+        "#"
+      ],
+      [
+        "Retro Pi",
+        "#"
+      ]
+    ],
+    "photos": [
+      "https: //iili.io/DPEO3N.jpg",
+      "https: //iili.io/DPEw4p.jpg",
+      "https: //iili.io/DPEhCv.jpg",
+      "https: //iili.io/DPEWZJ.jpg",
+      "https: //iili.io/DPEMTg.jpg",
+      "https: //iili.io/DPEEyF.jpg",
+      "https: //iili.io/DPE1v1.jpg",
+      "https: //iili.io/DPE0YP.jpg",
+      "https: //iili.io/DPEl3B.jpg",
+      "https: //iili.io/DPE7Cx.jpg",
+      "https: //iili.io/DPERQj.jpg",
+      "https: //iili.io/DPEAhb.jpg",
+      "https: //iili.io/DPEuTu.jpg"
+    ],
+    "resources": []
+  },
+  {
+    "name": "Red Bear Head",
+    "url": "",
+    "date": {
+      "start_month": "JUL",
+      "start_year": "2018",
+      "end_month": "SEP",
+      "end_year": "2018"
+    },
+    "short": "Salvaging a broken amp",
+    "info": "Red Bear was a small amp company who sold heads, cabs and studio amps in the late 80s.  I have a hard time finding anyone who has heard of them but I had a 30 watt tube studio amp and loved it.  The tone was great with a nice healthy gain.  However, my cat completely tore up the fabric coating the amp and then the speaker cracked.  I made a new head cabinet for the tube amp and laser cut a panel with some artist liberties.  Finally, some wood staind and glue to put the whole thing together.  Now I can keep that sound I loved alive!",
+    "tech": [
+      [
+        "Red Bear",
+        "#"
+      ],
+      [
+        "Laser Cutting",
+        "#"
+      ]
+    ],
+    "photos": [
+      "https://iili.io/DP1IWv.jpg",
+      "https://iili.io/DP1BJ1.jpg",
+      "https://iili.io/DP1K0B.jpg",
+      "https://iili.io/DP1dWx.jpg",
+      "https://iili.io/DP1Jxj.jpg",
+      "https://iili.io/DP19Db.jpg"
+    ],
+    "resources": []
+  },
+  {
+    "name": "Celestion Cab",
+    "url": "",
+    "date": {
+      "start_month": "OCT",
+      "start_year": "2020",
+      "end_month": "NOV",
+      "end_year": "2020"
+    },
+    "short": "A custom cabinet for two awesome speakers",
+    "info": "My brother gifted two Celestion guitar speakers to me from a broken guitar cab of his.  The speakers were great and similar to what is used in Orange cabinets, which happen to be a favorite of mine.  I wanted to do the amps justice and build a proper cab.  Using layers of 3/4 inch thick mdf, wood glue and inspiration from Orange cab dimensions, I built one heavy duty cabinet.  The speakers sound amazing, especially through my Red Bear head.  Who cares if it's too heavy to move?",
+    "tech": [
+      [
+        "Celestion",
+        "#"
+      ],
+      [
+        "Orange",
+        "#"
+      ]
+    ],
+    "photos": [
+      "https://iili.io/DPaSSe.jpg",
+      "https://iili.io/DPa8l9.jpg",
+      "https://iili.io/DPavK7.jpg",
+      "https://iili.io/DPaOV2.jpg",
+      "https://iili.io/DPaNol.jpg",
+      "https://iili.io/DPajt4.jpg",
+      "https://iili.io/DPahNf.jpg",
+      "https://iili.io/DPaXAG.jpg",
+      "https://iili.io/DPaW9s.jpg",
+      "https://iili.io/DPaMSn.jpg",
+      "https://iili.io/DPaEFt.jpg",
+      "https://iili.io/DPalMN.jpg",
+      "https://iili.io/DPacnp.jpg",
+      "https://iili.io/DPaYtR.jpg",
+      "https://iili.io/DPa7wv.jpg",
+      "https://iili.io/DPaR9a.jpg"
+    ],
+    "resources": []
+  },
+  {
+    "name": "RPi CRTV Monitor",
+    "url": "",
+    "date": {
+      "start_month": "JUL",
+      "start_year": "2019",
+      "end_month": "SEP",
+      "end_year": "2019"
+    },
+    "short": "A portable CRTV Raspbery Pi monitor",
+    "info": "I picked up this portable TV from a garage sale and wanted to see if I could use it for a Raspberry Pi.  After finding the series of adapters and converters I needed, I was able to stream YouTube videos from the Pi to the TV.  I'll eventually package the whole together to make a cyber deck or just a fun Halloween prop to loop scary scenes controlled by different sensors.",
+    "tech": [],
+    "photos": [
+      "https://iili.io/DPRbjV.jpg",
+      "https://iili.io/DPRZyx.jpg",
+      "https://iili.io/DPRQvj.jpg",
+      "https://iili.io/DPRLYb.jpg",
+      "https://iili.io/DPRs3u.jpg",
+      "https://iili.io/DPRP4e.jpg",
+      "https://iili.io/DPR6G9.jpg",
+      "https://iili.io/DPR4C7.jpg"
+    ],
+    "resources": []
+  },
+  {
+    "name": "Guitars",
+    "url": "",
+    "date": {
+      "start_month": "AUG",
+      "start_year": "2018",
+      "end_month": "APR",
+      "end_year": "2020"
+    },
+    "short": "A set of refirburshed guitars",
+    "info": "A friend gifted me two low end guitars to experiement with after I mentioned I wanted to try and build one myself.  After taking them apart and stripping them down to just the wood (stripping finishes is a terrible, miserable process lol), I repleced nearly all of the hardware, upgraded the pickups and added some stains to make some great sounding guitars.  I laser cut the pickguards and wired everything myself.  The bodies are still a little rough and the necks aren't the best but I think they sound great!",
+    "tech": [
+      [
+        "Guitar",
+        "#"
+      ],
+      [
+        "Humbuckers",
+        "#"
+      ]
+    ],
+    "photos": [
+      "https://iili.io/DPYl2e.jpg",
+      "https://iili.io/DPYa49.jpg",
+      "https://iili.io/DPY7BS.jpg",
+      "https://iili.io/DPYuI4.jpg",
+      "https://iili.io/DPYIpf.jpg",
+      "https://iili.io/DPYzkG.jpg",
+      "https://iili.io/DPYx7s.jpg",
+      "https://iili.io/DPYCrX.jpg",
+      "https://iili.io/DPYB1t.jpg",
+      "https://iili.io/DPYqBI.jpg",
+      "https://iili.io/DPYKLN.jpg",
+      "https://iili.io/DPYFXp.jpg",
+      "https://iili.io/DPYJkJ.jpg",
+      "https://iili.io/DPYH7a.jpg",
+      "https://iili.io/DPY9dg.jpg",
+      "https://iili.io/DP7prF.jpg",
+      "https://iili.io/DP7m11.jpg",
+      "https://iili.io/DP7bqP.jpg",
+      "https://iili.io/DP7tLB.jpg",
+      "https://iili.io/DP7smx.jpg",
+      "https://iili.io/DP7iej.jpg",
+      "https://iili.io/DP7g19.jpg",
+      "https://iili.io/DP78sS.jpg",
+      "https://iili.io/DP7vX2.jpg",
+      "https://iili.io/DP7Ob4.jpg",
+      "https://iili.io/DP7Nef.jpg",
+      "https://iili.io/DP7Xgn.jpg",
+      "https://iili.io/DP71xp.jpg",
+      "https://iili.io/DP7lbR.jpg",
+      "https://iili.io/DP7cOv.jpg",
+      "https://iili.io/DP7a5J.jpg"
+    ],
+    "resources": []
+  }
+]
