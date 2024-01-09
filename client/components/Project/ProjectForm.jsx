@@ -42,7 +42,7 @@ const defaultProject = {
   resources: [],
 };
 
-const ProjectForm = ({ project }) => {
+const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
   console.log(project);
 
   const [formData, setFormData] = useState(project ? project : defaultProject);
@@ -52,6 +52,22 @@ const ProjectForm = ({ project }) => {
 
   function test() {
     console.log('submit test');
+  }
+
+  function saveProjectHandler(event) {
+    event.preventDefault();
+    saveProject(formData);
+    console.log(formData);
+  }
+
+  function deleteProjectHandler(event) {
+    event.preventDefault();
+    deleteProject(formData ? formData._id : '');
+  }
+
+  function closeProjectHandler(event) {
+    event.preventDefault();
+    closeProject();
   }
 
   function updateTextInput(event) {
@@ -135,66 +151,7 @@ const ProjectForm = ({ project }) => {
 
 export default ProjectForm;
 
-// OLD
-
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { TextInput, TextArea, FolderSelect, DateInput, PhotoInput, TechInput, RepoInput } from '@/common/components/Inputs';
-// import { MdSave, MdDelete, MdClose } from 'react-icons/md';
-
-// import type { ProjectType, FolderType, DateType, PhotoType, TechType, RepoType } from '@/common/types';
-// import { defaultProject, defaultTech, defaultPhoto, defaultRepo } from '@/common/defaults' ;
-
-// import styles from './ProjectForm.module.scss';
-
-// const GITHUB_TECH_TAGS_JSON_URL = process.env.GITHUB_TECH_TAGS_JSON_URL;
-
-// type Props = {
-//   folders: FolderType[],
-//   project: ProjectType,
-//   saveProject: Function,
-//   deleteProject: Function,
-//   closeProject: Function,
-// };
-
-// export default function ProjectForm({
-//   folders,
-//   project,
-//   saveProject,
-//   deleteProject,
-//   closeProject
-// }: Props) {
-
-//   console.log("project form", project);
-
-//   const [formData, setFormData] = useState<ProjectType>(project ? project : defaultProject);
-//   const [newPhoto, setNewPhoto] = useState<PhotoType>(defaultPhoto);
-//   const [newTech, setNewTech] = useState<TechType>(defaultTech);
-//   const [newRepo, setNewRepo] = useState<RepoType>(defaultRepo);
-
-//   // useEffect(() => {
-//   //   if (project) {
-//   //     setFormData(project);
-//   //   }
-//   // }, [project]);
-
 //   // Project Methods
-
-//   function saveProjectHandler(event: React.FormEvent<HTMLFormElement>) {
-//     event.preventDefault();
-//     saveProject(formData);
-//     console.log(formData)
-//   };
-
-//   function deleteProjectHandler(event: React.MouseEvent<HTMLButtonElement>) {
-//     event.preventDefault();
-//     deleteProject(formData ? formData._id : '');
-//   };
-
-//   function closeProjectHandler(event: React.MouseEvent<HTMLButtonElement>) {
-//     event.preventDefault();
-//     closeProject();
-//   };
 
 //   // Input Methods
 
