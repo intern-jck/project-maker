@@ -1,13 +1,15 @@
 import React from 'react';
 import './Dashboard.scss';
 
-function Dashboard() {
+const Dashboard = () => {
   return (
     <div className="Dashboard">
       <h2>DASHBOARD</h2>
     </div>
   );
-}
+};
+
+export default Dashboard;
 
 // import axios from 'axios';
 

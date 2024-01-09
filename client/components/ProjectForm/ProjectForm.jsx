@@ -1,13 +1,15 @@
 import React from 'react';
 import './ProjectForm.scss';
 
-function ProjectForm() {
+const ProjectForm = () => {
   return (
     <div className="ProjectForm">
       <h2>ProjectForm</h2>
     </div>
   );
-}
+};
+
+export default ProjectForm;
 
 // OLD
 

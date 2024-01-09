@@ -1,13 +1,18 @@
 import React from 'react';
-import './App.css';
 
-import Home from './pages/Home.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
+import ProjectForm from './components/ProjectForm/ProjectForm.jsx';
 
 const App = () => {
   return (
     <div className="App">
-      <h1>React App with NPM</h1>
-      <Home />
+      <div className="app-header">
+        <h1>React App with NPM</h1>
+      </div>
+      <div className="app-content">
+        <Dashboard />
+        <ProjectForm />
+      </div>
     </div>
   );
 };

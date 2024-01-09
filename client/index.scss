@@ -1,0 +1,83 @@
+@import './globals/variables';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: $page-font;
+  font-size: 100%;
+  // height: 100%;
+}
+
+#root {
+  border: $border-stock;
+  margin: 0;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.App {
+  border: $border-stock;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: $padding-stock;
+
+  .app-header {
+    width: 100%;
+    border: $border-stock;
+    padding-left: $padding-stock;
+  }
+
+  .app-content {
+    height: 100%;
+    padding: $padding-stock;
+    display: flex;
+    justify-content: space-between;
+    gap: $gap-thick;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+
+  svg {
+    pointer-events: none;
+  }
+}
+
+button:hover,
+select:hover {
+  cursor: pointer;
+  color: $color-active;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border: $border-input-hover;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: $border-input-focus;
+  outline: none;
+}
+
+@media screen and (max-width: $screen-break-l) {
+}
+
+@media screen and (orientation: portrait) {
+}

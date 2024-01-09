@@ -1,6 +1,10 @@
-.projectForm {
-  border: $border-thin;
+@import '../../globals/variables';
+
+.ProjectForm {
+  border: $border-test-blue;
+  background-color: $color-secondary;
   padding: $padding-stock;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -44,7 +48,6 @@
       margin-right: $margin-thin;
       font-size: $font-size-xxlarge;
     }
-
   }
 
   .formInputs {
@@ -91,7 +94,6 @@
     }
   }
 
-
   .shortInput {
     border: $border-thin;
     padding: $padding-thin;
@@ -126,14 +128,13 @@
     flex-direction: column;
     min-width: 50%;
 
-
-    [class~="photoURL"] {
+    [class~='photoURL'] {
       padding: $padding-stock;
       display: flex;
       align-items: center;
       gap: $gap-stock;
 
-      [class~="photoURLInput"] {
+      [class~='photoURLInput'] {
         font-size: $font-size-large;
         font-weight: bold;
         width: 100%;
@@ -147,7 +148,7 @@
       }
     }
 
-    [class~="photoList"] {
+    [class~='photoList'] {
       border: $border-thin;
       padding: $padding-stock;
       max-height: 16rem;
@@ -158,7 +159,7 @@
       align-content: flex-start;
       gap: $gap-stock;
 
-      [class~="photoThumb"] {
+      [class~='photoThumb'] {
         border: $border-thin;
         border-radius: $border-radius-stock;
         position: relative;
@@ -187,7 +188,6 @@
         button:hover {
           scale: 150%;
         }
-
       }
     }
   }
@@ -199,13 +199,13 @@
     flex-direction: column;
     min-width: 50%;
 
-    [class~="techName"] {
+    [class~='techName'] {
       padding: $padding-stock;
       display: flex;
       align-items: center;
       gap: $gap-stock;
 
-      [class~="techNameInput"] {
+      [class~='techNameInput'] {
         font-size: $font-size-large;
         font-weight: bold;
         width: 100%;
@@ -219,7 +219,7 @@
       }
     }
 
-    [class="techList"] {
+    [class='techList'] {
       border: $border-thin;
       padding: $padding-stock;
       max-height: 16rem;
@@ -230,7 +230,7 @@
       align-content: flex-start;
       gap: $gap-stock;
 
-      [class~="tech"] {
+      [class~='tech'] {
         border: $border-thin;
         border-radius: $border-radius-stock;
         position: relative;
@@ -251,14 +251,14 @@
             stroke-width: 0.02rem;
           }
         }
-       
+
         button:hover {
           scale: 150%;
         }
       }
     }
   }
-  
+
   .repoInput {
     border: $border-thin;
     padding: $padding-thin;
@@ -266,19 +266,19 @@
     flex-direction: column;
     min-width: 50%;
 
-    [class~="repoHeader"] {
+    [class~='repoHeader'] {
       font-size: $font-size-large;
       font-weight: bold;
     }
 
-    [class~="repoName"] {
+    [class~='repoName'] {
       padding: $padding-stock;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: $gap-stock;
 
-      [class~="repoNameInput"] {
+      [class~='repoNameInput'] {
         font-size: $font-size-large;
         font-weight: bold;
         width: 100%;
@@ -286,7 +286,7 @@
         flex-direction: column;
       }
 
-      [class~="repoURLInput"] {
+      [class~='repoURLInput'] {
         font-size: $font-size-large;
         font-weight: bold;
         width: 100%;
@@ -300,7 +300,7 @@
       }
     }
 
-    [class="repoList"] {
+    [class='repoList'] {
       border: $border-thin;
       padding: $padding-stock;
       max-height: 16rem;
@@ -311,7 +311,7 @@
       align-content: flex-start;
       gap: $gap-stock;
 
-      [class~="repo"] {
+      [class~='repo'] {
         border: $border-thin;
         border-radius: $border-radius-stock;
         position: relative;
@@ -332,17 +332,17 @@
             stroke-width: 0.02rem;
           }
         }
-       
+
         button:hover {
           scale: 150%;
         }
       }
     }
   }
-
-
 }
 
-@media screen and (orientation:landscape) and (max-width: 1024px) {}
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+}
 
-@media screen and (orientation:portrait) {}
+@media screen and (orientation: portrait) {
+}

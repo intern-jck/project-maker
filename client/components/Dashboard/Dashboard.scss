@@ -1,5 +1,9 @@
-.dashboard {
-  background-color: #cccccc;
+@import '../../globals/variables';
+
+.Dashboard {
+  border: $border-test-blue;
+  background-color: $color-secondary;
+  width: 30rem;
   padding: $padding-stock;
   display: flex;
   flex-direction: column;
@@ -35,23 +39,9 @@
 
     input,
     select {
-      border: $border-input;  
-      // border-radius: $border-radius-stock;
+      border: $border-input;
       width: 100%;
       font-size: $font-size-large;
     }
-
-    // input:hover,
-    // select:hover {
-    //   border: $border-input-hover;
-    // }
-
-    // input:focus,
-    // select:focus {
-    //   border: $border-input-focus;
-    //   outline: none;
-    // }
-
   }
-
 }
