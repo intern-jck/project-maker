@@ -14,9 +14,10 @@ const ProjectList = ({ projects }) => {
     <div className="ProjectList">
       {projects.length ? (
         projects.map((project, i) => {
+          console.log(project);
           return (
-            <button className="project-button" value="project button" onClick={selectProjectHandler}>
-              Project
+            <button key={i} className="project-button" value={project.id} onClick={selectProjectHandler}>
+              {project.name}
               <i className="fa-solid fa-file"></i>
             </button>
           );
