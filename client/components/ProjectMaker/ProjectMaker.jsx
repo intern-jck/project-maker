@@ -23,7 +23,29 @@ const ProjectMaker = () => {
 
   return (
     <div className="ProjectMaker">
-      <ProjectControls />
+      {/* <ProjectControls /> */}
+      {/* PROJECT CONTROLS */}
+      <div className="controls">
+        <div className="control-header">
+          <h4>
+            <span>NAME:</span> NAME
+          </h4>
+          <h4>
+            <span>ID:</span> ID_NUMBER
+          </h4>
+        </div>
+
+        <div className="control-buttons">
+          <button>
+            <i className="fa-regular fa-floppy-disk"></i>
+          </button>
+
+          <button>
+            <i className="fa-solid fa-square-xmark"></i>
+          </button>
+        </div>
+      </div>
+
       <ProjectForm
         formData={test_data}
         saveProject={saveProject}

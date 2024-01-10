@@ -125,25 +125,34 @@ const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
   }
 
   return (
-    <div>
+    <div className="ProjectForm">
       <form>
-        <TextInput className="name-input" inputName={'name'} value={formData.name} changeHandler={updateTextInput} />
-        <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} />
-        <TextInput
-          className="client-input"
-          inputName={'client'}
-          value={formData.client}
-          changeHandler={updateTextInput}
-        />
-        <TextInput
-          className="client-url-input"
-          inputName={'client_url'}
-          value={formData.client_url}
-          changeHandler={updateTextInput}
-        />
-        <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} />
-        <TextInput className="short-input" inputName={'short'} value={formData.short} changeHandler={updateTextInput} />
-        <TextArea className="info-input" inputName={'info'} value={formData.info} changeHandler={updateTextInput} />
+        <div className="form-first-row">
+          <TextInput className="name-input" inputName={'name'} value={formData.name} changeHandler={updateTextInput} />
+          <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} />
+          <TextInput
+            className="client-input"
+            inputName={'client'}
+            value={formData.client}
+            changeHandler={updateTextInput}
+          />
+          <TextInput
+            className="client-url-input"
+            inputName={'client_url'}
+            value={formData.client_url}
+            changeHandler={updateTextInput}
+          />
+          <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} />
+        </div>
+        <div className="form-second-row">
+          <TextInput
+            className="short-input"
+            inputName={'short'}
+            value={formData.short}
+            changeHandler={updateTextInput}
+          />
+          <TextArea className="info-input" inputName={'info'} value={formData.info} changeHandler={updateTextInput} />
+        </div>
       </form>
     </div>
   );
