@@ -1,9 +1,10 @@
 @import '../../globals/variables';
 
 .Dashboard {
-  border: $border-test-blue;
-  background-color: $color-secondary;
+  border: $border-stock;
+  background-color: $color-panel-background;
   width: 30rem;
+  height: $max-app-height;
   padding: $padding-stock;
   display: flex;
   flex-direction: column;
@@ -14,33 +15,66 @@
   }
 
   .DashboardControl {
-    border: $border-stock;
-    height: 4rem;
+    border: $border-thin;
+    // height: 4rem;
     font-size: 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    // gap: 2rem;
     justify-content: center;
+
+    .control-buttons {
+      display: flex;
+      gap: 2rem;
+      button {
+        border: none;
+        background: none;
+        padding: 0;
+        display: flex;
+
+        i {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .folder-control {
+      display: flex;
+      label {
+        display: none;
+      }
+      select {
+        border: $border-stock;
+        width: 16rem;
+      }
+    }
   }
 
-  .FolderList {
-    border: $border-stock;
+  .ProjectList {
+    border: $border-thin;
     height: 100%;
     padding: $padding-stock;
     overflow-y: scroll;
 
-    .folder-button {
-      border: $border-stock;
+    .project-button {
+      border: $border-xthin;
       width: 6rem;
       height: 6rem;
+      font-size: 1rem;
+      padding: $padding-thin;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
       i {
         font-size: 3rem;
       }
+    }
+
+    .folder-button:hover {
+      border-color: $color-active;
     }
   }
 

@@ -3,8 +3,6 @@ import React from 'react';
 const ProjectControls = () => {
   return (
     <div className="ProjectControls">
-      {/* <h2>ProjectControls</h2> */}
-
       <div className="control-header">
         <h4>Project Name: NAME</h4>
         <h4>Collection Name: COLLECTION</h4>

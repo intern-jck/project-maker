@@ -1,12 +1,12 @@
 import React from 'react';
-import './Project.scss';
+import './ProjectMaker.scss';
 
 import test_data from '../../assets/work.json';
 
 import ProjectControls from './ProjectControls.jsx';
 import ProjectForm from './ProjectForm.jsx';
 
-const Project = () => {
+const ProjectMaker = () => {
   // console.log(test_data);
 
   function saveProject() {
@@ -22,7 +22,7 @@ const Project = () => {
   }
 
   return (
-    <div className="Project">
+    <div className="ProjectMaker">
       <ProjectControls />
       <ProjectForm
         formData={test_data}
@@ -34,4 +34,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default ProjectMaker;

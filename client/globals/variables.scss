@@ -3,8 +3,8 @@ $page-font: 'Courier New', Courier, monospace;
 $primary: blue;
 $secondary: grey;
 
-$color-background: #dddddd;
-$color-panel-background: #ffffff;
+$color-background: #ffffff;
+$color-panel-background: #dddddd;
 
 $color-input-background: #ffffff;
 $color-button-background: #444422;
@@ -22,15 +22,18 @@ $font-size-large: 1.2rem;
 $font-size-xlarge: 1.4rem;
 $font-size-xxlarge: 1.8rem;
 
+$border-color: black;
+$border-color-active: $color-active;
+
+$border-xthin: 3px solid black;
+$border-thin: 3px solid black;
+$border-stock: 4px solid black;
+$border-thick: 5px solid black;
+$border-xthick: 6px solid black;
+
 $border-input: 2px solid black;
 $border-input-hover: 2px solid $color-active;
 $border-input-focus: 2px solid $color-active;
-
-$border-color: black;
-
-$border-thin: 2px solid black;
-$border-stock: 4px solid black;
-$border-thick: 6px solid black;
 
 $border-test-orange: 2px solid orange;
 $border-test-blue: 2px solid blue;
@@ -60,3 +63,7 @@ $screen-break-m: 1200px;
 $screen-break-l: 1400px;
 $screen-break-xl: 1600px;
 $screen-break-xxl: 1900px;
+
+// App Globals
+
+$max-app-height: 90vh;
