@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const PORT = 3000;
 
 const db = require('./db/db.js');
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   db.select_all((error, results) => {
@@ -15,9 +18,8 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/add_project', (req, res) => {
+app.post('/create_project', (req, res) => {
   const timestamp = Date.now();
-  console.log(`INSERT @ ${timestamp}`);
 
   // Can change this to POST body
   const project_sql = `
@@ -35,18 +37,19 @@ app.post('/add_project', (req, res) => {
     ) 
   VALUES (
     ${timestamp}, 
-    'test_slug',  
-    'test_name',
-    'test_url',
-    'test_client',
-    'test_client_url',
-    'test_start',
-    'test_end',
-    'test_short',
-    'test_description'
+    'default_slug',  
+    'default_name',
+    'default_url',
+    'default_client',
+    'default_client_url',
+    'default_start',
+    'default_end',
+    'default_short',
+    'default_description'
     );`;
 
   console.log(project_sql);
+
   db.insert(project_sql, (error, results) => {
     if (error) {
       console.error(error);

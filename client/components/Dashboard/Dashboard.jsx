@@ -5,13 +5,13 @@ import ProjectList from './ProjectList.jsx';
 
 import './Dashboard.scss';
 
-const test_projects = [{ id: '123', name: 'test' }];
+// const test_projects = [{ id: '123', name: 'test' }];
 
-const Dashboard = () => {
+const Dashboard = ({ projects }) => {
   return (
     <div className="Dashboard">
       <DashboardControl />
-      <ProjectList projects={test_projects} />
+      <ProjectList projects={projects} />
     </div>
   );
 };

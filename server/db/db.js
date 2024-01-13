@@ -28,6 +28,15 @@ function createTables(database, table_model) {
 }
 
 // CRUD
+function insert(sql, callback) {
+  return db.exec(sql, (error, cols) => {
+    if (error) {
+      console.log(`insert error: ${error}`);
+    }
+    callback(error, cols);
+  });
+}
+
 function select_all(callback) {
   return db.all(`SELECT * FROM projects`, (error, rows) => {
     if (error) {
@@ -37,12 +46,30 @@ function select_all(callback) {
   });
 }
 
-function insert(sql, callback) {
-  return db.exec(sql, (error, cols) => {
+function select_project(project_id, callback) {
+  return db.all(`SELECT * FROM projects WHERE project_id='${project_id}'`, (error, rows) => {
     if (error) {
-      console.log(`insert error: ${error}`);
+      console.log(`select_project error: ${error}`);
     }
-    callback(error, cols);
+    callback(error, rows);
+  });
+}
+
+// function update_project(project_id, callback) {
+//   return db.all(`UPDATE projects FROM projects WHERE project_id='${project_id}'`, (error, rows) => {
+//     if (error) {
+//       console.log(`update_project error: ${error}`);
+//     }
+//     callback(error, rows);
+//   });
+// }
+
+function delete_project(project_id, callback) {
+  return db.all(`DELETE FROM projects WHERE project_id='${project_id}'`, (error, rows) => {
+    if (error) {
+      console.log(`delete_project error: ${error}`);
+    }
+    callback(error, rows);
   });
 }
 

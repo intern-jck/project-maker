@@ -18,15 +18,11 @@ body {
 }
 
 #root {
-  // border: $border-stock;
   margin: 0;
-  // height: 100vh;
-  // padding: 1rem;
 }
 
 .App {
   border: $border-stock;
-  // height: 100%;
   display: flex;
   flex-direction: column;
   padding: $padding-thin;
@@ -42,7 +38,6 @@ body {
   }
 
   .app-content {
-    // height: 100%;
     padding: $padding-stock;
     display: flex;
     justify-content: space-between;
@@ -52,6 +47,9 @@ body {
 
 button {
   svg {
+    pointer-events: none;
+  }
+  i {
     pointer-events: none;
   }
 }

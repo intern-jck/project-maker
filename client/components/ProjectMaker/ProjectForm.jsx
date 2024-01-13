@@ -43,7 +43,7 @@ const defaultProject = {
 };
 
 const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
-  console.log(project);
+  // console.log(project);
 
   const [formData, setFormData] = useState(project ? project : defaultProject);
   // const [newPhoto, setNewPhoto] = useState('');
