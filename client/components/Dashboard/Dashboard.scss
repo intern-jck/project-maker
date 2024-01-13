@@ -16,19 +16,20 @@
 
   .DashboardControl {
     border: $border-thin;
-    // height: 4rem;
+    padding: $padding-stock;
     font-size: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // gap: 2rem;
     justify-content: center;
+    gap: 1rem;
 
     .control-buttons {
       display: flex;
       gap: 2rem;
+
       button {
-        border: none;
+        // border: none;
         background: none;
         padding: 0;
         display: flex;
@@ -40,12 +41,18 @@
     }
 
     .folder-control {
+      border: $border-thin;
       display: flex;
+
       label {
+        font-size: 1rem;
+        margin: 0;
+        border: $border-thin;
         display: none;
       }
+
       select {
-        border: $border-stock;
+        border: $border-thin;
         width: 16rem;
       }
     }
