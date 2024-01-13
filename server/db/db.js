@@ -1,42 +1,7 @@
 const sqlite3 = require('sqlite3');
+const { ProjectsModel, ProjectTechTagsModel, TechTagsModel, PhotosModel } = require('./models.js');
 
-function createDatabase() {
-  const newdb = new sqlite3.Database('./server/db/test.db', (err) => {
-    if (err) {
-      console.log('Getting error ' + err);
-      exit(1);
-    }
-    createTables(newdb);
-  });
-}
-
-function createTables(newdb) {
-  newdb.exec(`
-    CREATE TABLE test_table (
-      name TEXT
-    );
-  `);
-}
-
-function testDB() {
-  db.run(`INSERT INTO test_table (name) VALUES ('tester2')`, (error) => {
-    if (error) {
-      console.log(error);
-    }
-    console.log(`Inserted @ ${this.lastID}`);
-  });
-}
-
-function select_all(callback) {
-  return db.all(`SELECT * FROM test_table`, (error, rows) => {
-    if (error) {
-      console.log(`select_all error: ${error}`);
-    }
-    callback(error, rows);
-  });
-}
-
-const db = new sqlite3.Database('./server/db/test.db', sqlite3.OPEN_READWRITE, (err) => {
+const db = new sqlite3.Database('./server/db/projects.db', sqlite3.OPEN_READWRITE, (err) => {
   console.log('INITIALIZING DATABASE');
   if (err && err.code == 'SQLITE_CANTOPEN') {
     createDatabase();
@@ -47,7 +12,41 @@ const db = new sqlite3.Database('./server/db/test.db', sqlite3.OPEN_READWRITE, (
   }
 });
 
+function createDatabase() {
+  const pMakerDB = new sqlite3.Database('./server/db/projects.db', (err) => {
+    if (err) {
+      console.log('Getting error ' + err);
+      exit(1);
+    }
+    console.log(ProjectsModel);
+    createTables(pMakerDB, ProjectsModel);
+  });
+}
+
+function createTables(database, table_model) {
+  database.exec(table_model);
+}
+
+// CRUD
+function select_all(callback) {
+  return db.all(`SELECT * FROM projects`, (error, rows) => {
+    if (error) {
+      console.log(`select_all error: ${error}`);
+    }
+    callback(error, rows);
+  });
+}
+
+function insert(sql, callback) {
+  return db.exec(sql, (error, cols) => {
+    if (error) {
+      console.log(`insert error: ${error}`);
+    }
+    callback(error, cols);
+  });
+}
+
 module.exports = {
-  testDB,
   select_all,
+  insert,
 };
