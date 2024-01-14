@@ -1,13 +1,13 @@
 import React from 'react';
 import './ProjectMaker.scss';
 
-import test_data from '../../assets/work.json';
+// import test_data from '../../assets/work.json';
 
-import ProjectControls from './ProjectControls.jsx';
+// import ProjectControls from './ProjectControls.jsx';
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = () => {
-  // console.log(test_data);
+const ProjectMaker = ({ data }) => {
+  console.log(data);
 
   function saveProject() {
     console.log('Save Project');
@@ -45,13 +45,16 @@ const ProjectMaker = () => {
           </button>
         </div>
       </div>
-
-      <ProjectForm
-        formData={test_data}
-        saveProject={saveProject}
-        deleteProject={deleteProject}
-        closeProject={closeProject}
-      />
+      {data ? (
+        <ProjectForm
+          project={data}
+          saveProject={saveProject}
+          deleteProject={deleteProject}
+          closeProject={closeProject}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

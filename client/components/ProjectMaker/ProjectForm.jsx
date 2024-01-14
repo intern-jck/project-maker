@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import TextInput from '../common/Inputs/TextInput.jsx';
 import TextArea from '../common/Inputs/TextArea.jsx';
@@ -43,32 +43,36 @@ const defaultProject = {
 };
 
 const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
-  // console.log(project);
+  console.log(project.project_id, project.name);
 
-  const [formData, setFormData] = useState(project ? project : defaultProject);
+  const [formData, setFormData] = useState();
   // const [newPhoto, setNewPhoto] = useState('');
   // const [newTech, setNewTech] = useState('');
   // const [newRepo, setNewRepo] = useState('');
 
-  function test() {
-    console.log('submit test');
-  }
+  // useEffect(() => {
+  //   setFormData(project);
+  // }, [project]);
 
-  function saveProjectHandler(event) {
-    event.preventDefault();
-    saveProject(formData);
-    console.log(formData);
-  }
+  // function test() {
+  //   console.log('submit test');
+  // }
 
-  function deleteProjectHandler(event) {
-    event.preventDefault();
-    deleteProject(formData ? formData._id : '');
-  }
+  // function saveProjectHandler(event) {
+  //   event.preventDefault();
+  //   saveProject(formData);
+  //   console.log(formData);
+  // }
 
-  function closeProjectHandler(event) {
-    event.preventDefault();
-    closeProject();
-  }
+  // function deleteProjectHandler(event) {
+  //   event.preventDefault();
+  //   deleteProject(formData ? formData._id : '');
+  // }
+
+  // function closeProjectHandler(event) {
+  //   event.preventDefault();
+  //   closeProject();
+  // }
 
   function updateTextInput(event) {
     event.preventDefault();
@@ -93,58 +97,58 @@ const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
     }));
   }
 
-  function updateDate() {
-    console.log('function test');
-  }
-  function updatePhoto() {
-    console.log('function test');
-  }
-  function addPhoto() {
-    console.log('function test');
-  }
-  function deletePhoto() {
-    console.log('function test');
-  }
-  function updateTech() {
-    console.log('function test');
-  }
-  function addTech() {
-    console.log('function test');
-  }
-  function deleteTech() {
-    console.log('function test');
-  }
-  function updateRepo() {
-    console.log('function test');
-  }
-  function addRepo() {
-    console.log('function test');
-  }
-  function deleteRepo() {
-    console.log('function test');
-  }
+  // function updateDate() {
+  //   console.log('function test');
+  // }
+  // function updatePhoto() {
+  //   console.log('function test');
+  // }
+  // function addPhoto() {
+  //   console.log('function test');
+  // }
+  // function deletePhoto() {
+  //   console.log('function test');
+  // }
+  // function updateTech() {
+  //   console.log('function test');
+  // }
+  // function addTech() {
+  //   console.log('function test');
+  // }
+  // function deleteTech() {
+  //   console.log('function test');
+  // }
+  // function updateRepo() {
+  //   console.log('function test');
+  // }
+  // function addRepo() {
+  //   console.log('function test');
+  // }
+  // function deleteRepo() {
+  //   console.log('function test');
+  // }
 
   return (
     <div className="ProjectForm">
       <form>
         <div className="form-first-row">
-          <TextInput className="name-input" inputName={'name'} value={formData.name} changeHandler={updateTextInput} />
-          <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} />
-          <TextInput
+          <TextInput className="name-input" inputName={'name'} value={project.name} changeHandler={updateTextInput} />
+          {/* <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} /> */}
+          {/* <TextInput
             className="client-input"
             inputName={'client'}
             value={formData.client}
             changeHandler={updateTextInput}
-          />
-          <TextInput
+          /> */}
+          {/* <TextInput
             className="client-url-input"
             inputName={'client_url'}
             value={formData.client_url}
             changeHandler={updateTextInput}
-          />
-          <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} />
+          /> */}
+          {/* <DateInput className="date-input" inputName={'date'} date={formData.date} changeHandler={updateDate} /> */}
         </div>
-        <div className="form-second-row">
+        {/* <div className="form-second-row">
           <TextInput
             className="short-input"
             inputName={'short'}
@@ -152,7 +156,7 @@ const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
             changeHandler={updateTextInput}
           />
           <TextArea className="info-input" inputName={'info'} value={formData.info} changeHandler={updateTextInput} />
-        </div>
+        </div> */}
       </form>
     </div>
   );

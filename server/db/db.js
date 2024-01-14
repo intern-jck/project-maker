@@ -51,6 +51,8 @@ function select_project(project_id, callback) {
     if (error) {
       console.log(`select_project error: ${error}`);
     }
+    console.log(rows);
+
     callback(error, rows);
   });
 }
@@ -74,6 +76,7 @@ function delete_project(project_id, callback) {
 }
 
 module.exports = {
-  select_all,
   insert,
+  select_all,
+  select_project,
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ data, clickHandler }) => {
   function selectProjectHandler(event) {
     event.preventDefault();
     const { value } = event.target;
     console.log(value);
+    clickHandler(value);
   }
 
   return (
     <div className="ProjectList">
-      {projects.length ? (
-        projects.map((project, i) => {
-          console.log(project);
+      {data.length ? (
+        data.map((project, i) => {
           return (
             <button
               className="project-button"

@@ -3,11 +3,12 @@ import DashboardControl from './DashboardControl.jsx';
 import ProjectList from './ProjectList.jsx';
 import './Dashboard.scss';
 
-const Dashboard = ({ projects }) => {
+const Dashboard = ({ data, clickHandler }) => {
+  // console.log(data);
   return (
     <div className="Dashboard">
       <DashboardControl />
-      <ProjectList projects={projects} />
+      <ProjectList data={data} clickHandler={clickHandler} />
     </div>
   );
 };

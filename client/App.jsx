@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import ProjectMaker from './components/ProjectMaker/ProjectMaker.jsx';
 
-const SERVER_URL = 'http://127.0.0.1:3000/';
+const SERVER_URL = 'http://127.0.0.1:3000';
 const project_data = [
   {
     project_id: 1705179601047,
@@ -68,7 +68,7 @@ const project_data = [
 
 const App = () => {
   const [projectData, setProjectData] = useState([]);
-  const [currentProject, setCurrentProject] = useState({});
+  const [currentProject, setCurrentProject] = useState();
   const [currentFolder, setCurrentFolder] = useState({});
 
   useEffect(() => {
@@ -83,15 +83,26 @@ const App = () => {
       .catch();
   }, []);
 
-  // function selectProject(projectId) {
-  //   fetch(`${SERVER_URL}/project`).then().then().catch();
-  // }
+  function getProject(projectId) {
+    console.log(projectId);
+    fetch(`${SERVER_URL}/project?project_id=${projectId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setCurrentProject(data.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="App">
       <div className="app-content">
-        <Dashboard projects={projectData} />
-        <ProjectMaker />
+        <Dashboard data={projectData} clickHandler={getProject} />
+        {currentProject ? <ProjectMaker data={currentProject} /> : <></>}
       </div>
     </div>
   );

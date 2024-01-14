@@ -18,6 +18,20 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/project', (req, res) => {
+  console.log(req.query);
+  // res.json({ msg: 'ok' });
+
+  db.select_project(req.query.project_id, (error, results) => {
+    if (error) {
+      console.error(error);
+    }
+    res.json({
+      data: results,
+    });
+  });
+});
+
 app.post('/create_project', (req, res) => {
   const timestamp = Date.now();
 
