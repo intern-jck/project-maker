@@ -43,10 +43,12 @@ const defaultProject = {
   resources: [],
 };
 
-const ProjectForm = ({ formData }) => {
-  console.log(formData.project_id, formData.name);
-
+const ProjectForm = ({ formData, onSaveClick }) => {
   const [currentFormData, setCurrentFormData] = useState(formData);
+
+  useEffect(() => {
+    setCurrentFormData(formData);
+  }, [formData]);
 
   // const [formData, setFormData] = useState();
   // const [newPhoto, setNewPhoto] = useState('');
@@ -61,11 +63,11 @@ const ProjectForm = ({ formData }) => {
   //   console.log('submit test');
   // }
 
-  // function saveProjectHandler(event) {
-  //   event.preventDefault();
-  //   saveProject(formData);
-  //   console.log(formData);
-  // }
+  function onSaveClickHandler(event) {
+    event.preventDefault();
+    console.log(currentFormData);
+    onSaveClick(currentFormData);
+  }
 
   // function deleteProjectHandler(event) {
   //   event.preventDefault();
@@ -135,7 +137,16 @@ const ProjectForm = ({ formData }) => {
 
   return (
     <div className='ProjectForm'>
-      <form>
+      <form onSubmit={onSaveClickHandler}>
+        <div>
+          FORM CONTROLS
+          <button type='submit'>
+            <i className='fa-regular fa-floppy-disk'></i>
+          </button>
+          <button>
+            <i className='fa-regular fa-trash-can'></i>
+          </button>
+        </div>
         <div className='form-first-row'>
           <TextInput
             className='name-input'

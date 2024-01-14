@@ -3,14 +3,13 @@ import './ProjectMaker.scss';
 
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = ({ projectData, onCloseProject }) => {
-  console.log('ProjectMaker', projectData);
-
-  function saveProject() {
+const ProjectMaker = ({ projectData, onCloseProject, onSaveProject }) => {
+  function saveProjectHandler(data) {
     console.log('Save Project');
+    onSaveProject(data);
   }
 
-  function deleteProject() {
+  function deleteProjectHandler() {
     console.log('Delete Project');
   }
 
@@ -32,17 +31,13 @@ const ProjectMaker = ({ projectData, onCloseProject }) => {
         </div>
 
         <div className='control-buttons'>
-          <button>
-            <i className='fa-regular fa-floppy-disk'></i>
-          </button>
-
           <button onClick={closeProjectHandler}>
             <i className='fa-solid fa-square-xmark'></i>
           </button>
         </div>
       </div>
 
-      {projectData ? <ProjectForm formData={projectData} /> : <></>}
+      <ProjectForm formData={projectData} onSaveClick={saveProjectHandler} />
     </div>
   );
 };

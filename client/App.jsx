@@ -97,7 +97,6 @@ const App = () => {
           }
           return item;
         });
-        console.log('non null');
         setCurrentProject(nonNullData[0]);
       })
       .catch((error) => {
@@ -108,6 +107,29 @@ const App = () => {
   function closeProject() {
     console.log('Close Project');
     setCurrentProject({});
+  }
+
+  function saveProject(data) {
+    console.log('Saving', data);
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    console.log(options);
+
+    fetch(`${SERVER_URL}/save_project`, options)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -122,6 +144,7 @@ const App = () => {
           <ProjectMaker
             projectData={currentProject}
             onCloseProject={closeProject}
+            onSaveProject={saveProject}
           />
         ) : (
           <>no project selected</>

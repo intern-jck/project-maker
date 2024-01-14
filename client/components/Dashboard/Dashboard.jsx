@@ -9,8 +9,6 @@ const Dashboard = ({ dashboardData, onGetProject }) => {
     return { project_id, name };
   });
 
-  console.log(dashboardDataMapped);
-
   return (
     <div className='Dashboard'>
       <DashboardControl />
