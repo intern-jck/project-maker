@@ -1,6 +1,7 @@
 const ProjectsModel = `
   CREATE TABLE projects (
     project_id INTEGER PRIMARY KEY,
+    folder_id INTEGER
     slug TEXT,
     name TEXT,
     url TEXT,
@@ -9,7 +10,15 @@ const ProjectsModel = `
     start_date TEXT,
     end_date TEXT,
     short TEXT,
-    description TEXT
+    description TEXT,
+    FOREIGN KEY (folder_id) REFERENCES folders(folder_id)
+  );
+`;
+
+const FoldersModel = `
+  CREATE TABLE folders (
+    folder_id INTEGER PRIMARY KEY,
+    name TEXT
   );
 `;
 
@@ -42,6 +51,7 @@ const PhotosModel = `
 
 module.exports = {
   ProjectsModel,
+  FoldersModel,
   ProjectTechTagsModel,
   TechTagsModel,
   PhotosModel,

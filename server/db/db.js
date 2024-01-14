@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3');
 const {
   ProjectsModel,
+  FoldersModel,
   ProjectTechTagsModel,
   TechTagsModel,
   PhotosModel,
@@ -11,7 +12,9 @@ const db = new sqlite3.Database(
   sqlite3.OPEN_READWRITE,
   (err) => {
     console.log('INITIALIZING DATABASE');
+
     if (err && err.code == 'SQLITE_CANTOPEN') {
+      console.log('DATABASE NOT FOUND');
       createDatabase();
       return;
     } else if (err) {
@@ -27,12 +30,12 @@ function createDatabase() {
       console.log('Getting error ' + err);
       exit(1);
     }
-    console.log(ProjectsModel);
-    createTables(pMakerDB, ProjectsModel);
+    createTable(pMakerDB, ProjectsModel);
+    createTable(pMakerDB, FoldersModel);
   });
 }
 
-function createTables(database, table_model) {
+function createTable(database, table_model) {
   database.exec(table_model);
 }
 
