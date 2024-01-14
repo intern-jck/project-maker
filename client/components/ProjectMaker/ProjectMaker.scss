@@ -4,7 +4,7 @@
   border: $border-stock;
   background-color: $color-panel-background;
   padding: $padding-stock;
-  width: 70rem;
+  width: 60%;
   height: $max-app-height;
 
   display: flex;
@@ -62,294 +62,287 @@
       display: flex;
       flex-direction: column;
     }
-  }
 
-  // .formInputs {
-  //   display: flex;
-  //   // flex-direction: column;
-  //   flex-wrap: wrap;
-  //   gap: $gap-stock;
-  // }
-
-  .name-input,
-  .folder-input,
-  .client-input,
-  .client-url-input,
-  .url-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    font-size: $font-size-large;
-    font-weight: bold;
-    width: 20rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .date-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    font-size: $font-size-large;
-    font-weight: bold;
-    // max-width: 35%;
-    display: flex;
-    flex-direction: column;
-
-    div {
-      display: flex;
-      gap: $gap-stock;
-
-      label {
-        display: none;
-      }
-
-      select {
-        width: 8rem;
-      }
-    }
-  }
-
-  .short-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    font-size: $font-size-large;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    min-width: 55%;
-
-    input {
-      width: 30rem;
-    }
-  }
-
-  .info-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    font-size: $font-size-large;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    min-width: 55%;
-    textarea {
-      width: 30rem;
-      height: 15rem;
-    }
-  }
-
-  .photo-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    display: flex;
-    flex-direction: column;
-    min-width: 50%;
-
-    [class~='photoURL'] {
-      padding: $padding-stock;
-      display: flex;
-      align-items: center;
-      gap: $gap-stock;
-
-      [class~='photoURLInput'] {
-        font-size: $font-size-large;
-        font-weight: bold;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      button {
-        border: none;
-        font-size: $font-size-xxlarge;
-      }
-    }
-
-    [class~='photoList'] {
+    .name-input,
+    .folder-input,
+    .client-input,
+    .client-url-input,
+    .url-input {
       border: $border-thin;
-      padding: $padding-stock;
-      max-height: 16rem;
-      overflow-y: scroll;
+      padding: $padding-thin;
+      font-size: $font-size-large;
+      font-weight: bold;
+      width: 20rem;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      gap: $gap-stock;
+      flex-direction: column;
+    }
 
-      [class~='photoThumb'] {
-        border: $border-thin;
-        border-radius: $border-radius-stock;
-        position: relative;
+    .date-input {
+      border: $border-thin;
+      padding: $padding-thin;
+      font-size: $font-size-large;
+      font-weight: bold;
+      // max-width: 35%;
+      display: flex;
+      flex-direction: column;
 
-        width: 8rem;
-        height: 8rem;
+      div {
+        display: flex;
+        gap: $gap-stock;
 
-        img {
-          object-fit: contain;
+        label {
+          display: none;
+        }
+
+        select {
+          width: 8rem;
+        }
+      }
+    }
+
+    .short-input {
+      border: $border-thin;
+      padding: $padding-thin;
+      font-size: $font-size-large;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      min-width: 55%;
+
+      input {
+        width: 30rem;
+      }
+    }
+
+    .info-input {
+      border: $border-thin;
+      padding: $padding-thin;
+      font-size: $font-size-large;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      min-width: 55%;
+      textarea {
+        width: 30rem;
+        height: 15rem;
+      }
+    }
+
+    .photo-input {
+      border: $border-thin;
+      padding: $padding-thin;
+      display: flex;
+      flex-direction: column;
+      min-width: 50%;
+
+      [class~='photoURL'] {
+        padding: $padding-stock;
+        display: flex;
+        align-items: center;
+        gap: $gap-stock;
+
+        [class~='photoURLInput'] {
+          font-size: $font-size-large;
+          font-weight: bold;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
         }
 
         button {
           border: none;
-          color: red;
-          padding: 0;
-          background: none;
-          position: absolute;
-          right: 2px;
-          top: 2px;
-
-          svg {
-            stroke-width: 0.02rem;
-          }
-        }
-
-        button:hover {
-          scale: 150%;
+          font-size: $font-size-xxlarge;
         }
       }
-    }
-  }
 
-  .tech-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    display: flex;
-    flex-direction: column;
-    min-width: 50%;
-
-    [class~='techName'] {
-      padding: $padding-stock;
-      display: flex;
-      align-items: center;
-      gap: $gap-stock;
-
-      [class~='techNameInput'] {
-        font-size: $font-size-large;
-        font-weight: bold;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      button {
-        border: none;
-        font-size: $font-size-xxlarge;
-      }
-    }
-
-    [class='techList'] {
-      border: $border-thin;
-      padding: $padding-stock;
-      max-height: 16rem;
-      overflow-y: scroll;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      gap: $gap-stock;
-
-      [class~='tech'] {
+      [class~='photoList'] {
         border: $border-thin;
-        border-radius: $border-radius-stock;
-        position: relative;
+        padding: $padding-stock;
+        max-height: 16rem;
+        overflow-y: scroll;
         display: flex;
-        padding-left: $padding-thick;
-        padding-right: $padding-thick;
-        font-size: $font-size-large;
-        font-weight: bold;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: $gap-stock;
 
-        button {
-          color: red;
-          padding: 0;
-          position: absolute;
-          right: 2px;
-          top: 2px;
+        [class~='photoThumb'] {
+          border: $border-thin;
+          border-radius: $border-radius-stock;
+          position: relative;
 
-          svg {
-            stroke-width: 0.02rem;
+          width: 8rem;
+          height: 8rem;
+
+          img {
+            object-fit: contain;
           }
-        }
 
-        button:hover {
-          scale: 150%;
+          button {
+            border: none;
+            color: red;
+            padding: 0;
+            background: none;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+
+            svg {
+              stroke-width: 0.02rem;
+            }
+          }
+
+          button:hover {
+            scale: 150%;
+          }
         }
       }
     }
-  }
 
-  .repo-input {
-    border: $border-thin;
-    padding: $padding-thin;
-    display: flex;
-    flex-direction: column;
-    min-width: 50%;
-
-    [class~='repoHeader'] {
-      font-size: $font-size-large;
-      font-weight: bold;
-    }
-
-    [class~='repoName'] {
-      padding: $padding-stock;
+    .tech-input {
+      border: $border-thin;
+      padding: $padding-thin;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: $gap-stock;
+      min-width: 50%;
 
-      [class~='repoNameInput'] {
-        font-size: $font-size-large;
-        font-weight: bold;
-        width: 100%;
+      [class~='techName'] {
+        padding: $padding-stock;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: $gap-stock;
+
+        [class~='techNameInput'] {
+          font-size: $font-size-large;
+          font-weight: bold;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        button {
+          border: none;
+          font-size: $font-size-xxlarge;
+        }
       }
 
-      [class~='repoURLInput'] {
-        font-size: $font-size-large;
-        font-weight: bold;
-        width: 100%;
+      [class='techList'] {
+        border: $border-thin;
+        padding: $padding-stock;
+        max-height: 16rem;
+        overflow-y: scroll;
         display: flex;
-        flex-direction: column;
-      }
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: $gap-stock;
 
-      button {
-        border: none;
-        font-size: $font-size-xxlarge;
+        [class~='tech'] {
+          border: $border-thin;
+          border-radius: $border-radius-stock;
+          position: relative;
+          display: flex;
+          padding-left: $padding-thick;
+          padding-right: $padding-thick;
+          font-size: $font-size-large;
+          font-weight: bold;
+
+          button {
+            color: red;
+            padding: 0;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+
+            svg {
+              stroke-width: 0.02rem;
+            }
+          }
+
+          button:hover {
+            scale: 150%;
+          }
+        }
       }
     }
 
-    [class='repoList'] {
+    .repo-input {
       border: $border-thin;
-      padding: $padding-stock;
-      max-height: 16rem;
-      overflow-y: scroll;
+      padding: $padding-thin;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      gap: $gap-stock;
+      flex-direction: column;
+      min-width: 50%;
 
-      [class~='repo'] {
-        border: $border-thin;
-        border-radius: $border-radius-stock;
-        position: relative;
-        display: flex;
-        padding-left: $padding-thick;
-        padding-right: $padding-thick;
+      [class~='repoHeader'] {
         font-size: $font-size-large;
         font-weight: bold;
+      }
 
-        button {
-          color: red;
-          padding: 0;
-          position: absolute;
-          right: 2px;
-          top: 2px;
+      [class~='repoName'] {
+        padding: $padding-stock;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $gap-stock;
 
-          svg {
-            stroke-width: 0.02rem;
-          }
+        [class~='repoNameInput'] {
+          font-size: $font-size-large;
+          font-weight: bold;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
         }
 
-        button:hover {
-          scale: 150%;
+        [class~='repoURLInput'] {
+          font-size: $font-size-large;
+          font-weight: bold;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        button {
+          border: none;
+          font-size: $font-size-xxlarge;
+        }
+      }
+
+      [class='repoList'] {
+        border: $border-thin;
+        padding: $padding-stock;
+        max-height: 16rem;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: $gap-stock;
+
+        [class~='repo'] {
+          border: $border-thin;
+          border-radius: $border-radius-stock;
+          position: relative;
+          display: flex;
+          padding-left: $padding-thick;
+          padding-right: $padding-thick;
+          font-size: $font-size-large;
+          font-weight: bold;
+
+          button {
+            color: red;
+            padding: 0;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+
+            svg {
+              stroke-width: 0.02rem;
+            }
+          }
+
+          button:hover {
+            scale: 150%;
+          }
         }
       }
     }

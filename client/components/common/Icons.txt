@@ -5,20 +5,25 @@
 <i class="fa-solid fa-user"></i>
 <i class="fa-solid fa-tag"></i>
 <i class="fa-solid fa-house"></i>
+
 <i class="fa-regular fa-folder"></i>
 <i class="fa-solid fa-folder-open"></i>
 <i class="fa-solid fa-folder"></i>
 <i class="fa-regular fa-folder-open"></i>
 <i class="fa-solid fa-folder-plus"></i>
+
 <i class="fa-regular fa-file"></i>
+<i class="fa-solid fa-file"></i>
 <i class="fa-solid fa-plus"></i>
 <i class="fa-solid fa-square-plus"></i>
+
 <i class="fa-solid fa-xmark"></i>
 <i class="fa-solid fa-circle-xmark"></i>
 <i class="fa-solid fa-square-xmark"></i>
 <i class="fa-regular fa-circle-xmark"></i>
+
 <i class="fa-solid fa-floppy-disk"></i>
 <i class="fa-regular fa-floppy-disk"></i>
 <i class="fa-solid fa-file-export"></i>
 
-
+<i class="fa-solid fa-square-plus"></i>

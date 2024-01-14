@@ -139,7 +139,7 @@ const ProjectForm = ({ formData, onSaveClick }) => {
     <div className='ProjectForm'>
       <form onSubmit={onSaveClickHandler}>
         <div>
-          FORM CONTROLS
+          Project Form
           <button type='submit'>
             <i className='fa-regular fa-floppy-disk'></i>
           </button>
@@ -154,7 +154,12 @@ const ProjectForm = ({ formData, onSaveClick }) => {
             value={currentFormData.name}
             changeHandler={updateTextInput}
           />
-          {/* <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} /> */}
+          <TextInput
+            className='url-input'
+            inputName={'url'}
+            value={formData.url}
+            changeHandler={updateTextInput}
+          />
           {/* <TextInput
             className="client-input"
             inputName={'client'}

@@ -7,23 +7,23 @@ const DashboardControl = () => {
   }
 
   return (
-    <div className="DashboardControl">
-      <div className="control-buttons">
+    <div className='DashboardControl'>
+      <div className='control-buttons'>
         <button>
-          <i className="fa-solid fa-folder-plus"></i>
+          <i className='fa-solid fa-folder-plus'></i>
         </button>
         <button>
-          <i className="fa-solid fa-file-export"></i>
+          <i className='fa-solid fa-file-export'></i>
         </button>
         <button>
-          <i className="fa-solid fa-folder-minus"></i>
+          <i className='fa-solid fa-folder-minus'></i>
         </button>
       </div>
 
-      <div className="folder-control">
+      <div className='folder-control'>
         <SelectInput
-          className="select-input"
-          inputName="folder-select"
+          className='select-input'
+          inputName='folder-select'
           value={'ALL'}
           options={['ALL', 'TEST']}
           changeHandler={onChangeTest}

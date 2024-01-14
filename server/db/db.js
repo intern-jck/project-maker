@@ -46,7 +46,7 @@ function insert(sql, callback) {
       console.log(`insert error: ${error}`);
     }
     console.log(`INSERT: ${cols}`);
-    callback(error, 'success');
+    callback(error);
   });
 }
 
@@ -74,7 +74,7 @@ function select_project(project_id, callback) {
 }
 
 function update_project(project_data, callback) {
-  return db.all(
+  return db.exec(
     `UPDATE projects 
     SET
       name = '${project_data.name}',
@@ -88,23 +88,23 @@ function update_project(project_data, callback) {
       description = '${project_data.description}'
     WHERE project_id = ${project_data.project_id};
     `,
-    (error, rows) => {
+    (error) => {
       if (error) {
         console.log(`update_project error: ${error}`);
       }
-      callback(error, rows);
+      callback(error);
     }
   );
 }
 
 function delete_project(project_id, callback) {
-  return db.all(
+  return db.exec(
     `DELETE FROM projects WHERE project_id='${project_id}'`,
-    (error, rows) => {
+    (error) => {
       if (error) {
         console.log(`delete_project error: ${error}`);
       }
-      callback(error, rows);
+      callback(error);
     }
   );
 }

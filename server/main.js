@@ -6,13 +6,23 @@ var bodyParser = require('body-parser');
 const PORT = 3000;
 
 const db = require('./db/db.js');
+const sql = require('./db/sql.js');
 
 app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 
+// Index route
 app.get('/', (req, res) => {
-  db.select_all((error, results) => {
+  res.json({
+    msg: 'hello',
+  });
+});
+
+// GET /projects
+// Gets all projects
+app.get('/projects', (req, res) => {
+  db.select_all_projects((error, results) => {
     if (error) {
       console.error(error);
     }
@@ -22,10 +32,22 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/project', (req, res) => {
-  console.log(req.query);
-  // res.json({ msg: 'ok' });
+// GET /folders
+// Gets all folders
+app.get('/folders', (req, res) => {
+  db.select_all_folders((error, results) => {
+    if (error) {
+      console.error(error);
+    }
+    res.json({
+      data: results,
+    });
+  });
+});
 
+// GET /project?project_id=<PROJECT_ID>
+// Get a project based on it's project id
+app.get('/project', (req, res) => {
   db.select_project(req.query.project_id, (error, results) => {
     if (error) {
       console.error(error);
@@ -37,63 +59,42 @@ app.get('/project', (req, res) => {
   });
 });
 
-app.post('/create_project', (req, res) => {
-  const timestamp = Date.now();
-
-  // Can change this to POST body
-  // const project_sql = `
-  // INSERT INTO projects (
-  //   project_id,
-  //   slug,
-  //   name,
-  //   url,
-  //   client,
-  //   client_rul,
-  //   start_date,
-  //   end_date,
-  //   short,
-  //   description
-  //   )
-  // VALUES (
-  //   ${timestamp},
-  //   'default_slug',
-  //   'default_name',
-  //   'default_url',
-  //   'default_client',
-  //   'default_client_url',
-  //   'default_start',
-  //   'default_end',
-  //   'default_short',
-  //   'default_description'
-  //   );`;
-
-  console.log(req.body);
-  res.json({ msg: 'ok!' });
-
-  // db.insert(project_sql, (error, results) => {
-  //   if (error) {
-  //     console.error(error);
-  //     res.json({
-  //       msg: `insert error ${error}`,
-  //     });
-  //   }
-  //   res.json({
-  //     msg: 'insert success',
-  //   });
-  // });
-});
-
-app.put('/save_project', (req, res) => {
-  console.log(req.body);
-  db.update_project(req.body, (error, results) => {
+// GET /create_project
+// Create a new project with default info
+app.get('/create_project', (req, res) => {
+  db.insert(sql.createInsertProjectSql(), (error, results) => {
     if (error) {
       console.error(error);
+      res.json({
+        msg: `create_project error ${error}`,
+      });
     }
     res.json({
       data: results,
     });
   });
 });
+
+// PUT /save_project
+// body: { CURRENT_PROJECT_FORM_DATA }
+// Updates the current project's entry in the database
+app.put('/save_project', (req, res) => {
+  db.update_project(req.body, (error, results) => {
+    if (error) {
+      console.error(error);
+      res.json({
+        msg: `save_project error ${error}`,
+      });
+    }
+    res.json({
+      data: results,
+    });
+  });
+});
+
+// DELETE /project
+// Deletes project from database
+app.delete('/project');
 
 app.listen(PORT, () => {
   console.log(`P Maker App Listening @ IP: 127.0.0.1 PORT: ${PORT}`);

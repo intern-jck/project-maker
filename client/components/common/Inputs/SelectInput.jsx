@@ -1,11 +1,19 @@
 import React from 'react';
 
-export default function Select({ className, inputName, value, options, changeHandler }) {
+export default function Select({
+  className,
+  inputName,
+  value,
+  options,
+  changeHandler,
+}) {
   return (
     <div className={className}>
-      <label htmlFor={inputName}>{inputName ? inputName.toUpperCase() : ''}</label>
+      <label htmlFor={inputName}>
+        {inputName ? inputName.toUpperCase() : ''}
+      </label>
       <select name={inputName} onChange={changeHandler} value={value}>
-        <option key={0} value="">
+        <option key={0} value=''>
           {inputName}
         </option>
         {options.map((option, i) => (
