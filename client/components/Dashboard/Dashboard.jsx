@@ -3,11 +3,21 @@ import DashboardControl from './DashboardControl.jsx';
 import ProjectList from './ProjectList.jsx';
 import './Dashboard.scss';
 
-const Dashboard = ({ data, clickHandler }) => {
+const Dashboard = ({ dashboardData, onGetProject }) => {
+  const dashboardDataMapped = dashboardData.map((item) => {
+    const { project_id, name } = item;
+    return { project_id, name };
+  });
+
+  console.log(dashboardDataMapped);
+
   return (
-    <div className="Dashboard">
+    <div className='Dashboard'>
       <DashboardControl />
-      <ProjectList data={data} clickHandler={clickHandler} />
+      <ProjectList
+        listData={dashboardDataMapped}
+        getProjectHandler={onGetProject}
+      />
     </div>
   );
 };

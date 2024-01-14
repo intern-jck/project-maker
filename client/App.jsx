@@ -68,7 +68,7 @@ const project_data = [
 
 const App = () => {
   const [projectData, setProjectData] = useState([]);
-  const [currentProject, setCurrentProject] = useState();
+  const [currentProject, setCurrentProject] = useState({});
   const [currentFolder, setCurrentFolder] = useState({});
 
   useEffect(() => {
@@ -97,11 +97,28 @@ const App = () => {
       });
   }
 
+  function closeProject() {
+    console.log('Close Project');
+    setCurrentProject({});
+    console.log();
+  }
+
   return (
-    <div className="App">
-      <div className="app-content">
-        <Dashboard data={projectData} clickHandler={getProject} />
-        {currentProject ? <ProjectMaker project={currentProject} /> : <></>}
+    <div className='App'>
+      <div className='app-content'>
+        {projectData ? (
+          <Dashboard dashboardData={projectData} onGetProject={getProject} />
+        ) : (
+          <></>
+        )}
+        {Object.keys(currentProject).length ? (
+          <ProjectMaker
+            project={currentProject}
+            onCloseProject={closeProject}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

@@ -1,12 +1,9 @@
 import React from 'react';
 import './ProjectMaker.scss';
 
-// import test_data from '../../assets/work.json';
-// import ProjectControls from './ProjectControls.jsx';
-
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = ({ project }) => {
+const ProjectMaker = ({ project, onCloseProject }) => {
   console.log('ProjectMaker', project);
 
   function saveProject() {
@@ -19,15 +16,13 @@ const ProjectMaker = ({ project }) => {
 
   function closeProject() {
     console.log('Close Project');
+    onCloseProject();
   }
 
   return (
-    <div className="ProjectMaker">
-      {/* <ProjectControls /> */}
-      {/* PROJECT CONTROLS */}
-
-      <div className="controls">
-        <div className="control-header">
+    <div className='ProjectMaker'>
+      <div className='controls'>
+        <div className='control-header'>
           <h4>
             <span>NAME:</span> {project.name}
           </h4>
@@ -36,13 +31,13 @@ const ProjectMaker = ({ project }) => {
           </h4>
         </div>
 
-        <div className="control-buttons">
+        <div className='control-buttons'>
           <button>
-            <i className="fa-regular fa-floppy-disk"></i>
+            <i className='fa-regular fa-floppy-disk'></i>
           </button>
 
           <button onClick={closeProject}>
-            <i className="fa-solid fa-square-xmark"></i>
+            <i className='fa-solid fa-square-xmark'></i>
           </button>
         </div>
       </div>
