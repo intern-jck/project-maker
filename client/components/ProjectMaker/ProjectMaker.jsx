@@ -3,8 +3,8 @@ import './ProjectMaker.scss';
 
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = ({ project, onCloseProject }) => {
-  console.log('ProjectMaker', project);
+const ProjectMaker = ({ projectData, onCloseProject }) => {
+  console.log('ProjectMaker', projectData);
 
   function saveProject() {
     console.log('Save Project');
@@ -14,7 +14,7 @@ const ProjectMaker = ({ project, onCloseProject }) => {
     console.log('Delete Project');
   }
 
-  function closeProject() {
+  function closeProjectHandler() {
     console.log('Close Project');
     onCloseProject();
   }
@@ -24,10 +24,10 @@ const ProjectMaker = ({ project, onCloseProject }) => {
       <div className='controls'>
         <div className='control-header'>
           <h4>
-            <span>NAME:</span> {project.name}
+            <span>NAME:</span> {projectData.name}
           </h4>
           <h4>
-            <span>ID:</span> {project.project_id}
+            <span>ID:</span> {projectData.project_id}
           </h4>
         </div>
 
@@ -36,22 +36,13 @@ const ProjectMaker = ({ project, onCloseProject }) => {
             <i className='fa-regular fa-floppy-disk'></i>
           </button>
 
-          <button onClick={closeProject}>
+          <button onClick={closeProjectHandler}>
             <i className='fa-solid fa-square-xmark'></i>
           </button>
         </div>
       </div>
 
-      {/* {data ? (
-        <ProjectForm
-          project={data}
-          saveProject={saveProject}
-          deleteProject={deleteProject}
-          closeProject={closeProject}
-        />
-      ) : (
-        <></>
-      )} */}
+      {projectData ? <ProjectForm formData={projectData} /> : <></>}
     </div>
   );
 };

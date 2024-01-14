@@ -43,10 +43,14 @@ const defaultProject = {
   resources: [],
 };
 
-const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
-  console.log(project.project_id, project.name);
+const ProjectForm = ({ formData }) => {
+  console.log(formData.project_id, formData.name);
 
-  const [formData, setFormData] = useState();
+  function cleanNullValues(value) {
+    return value === null ? 'DEFAULT' : value;
+  }
+
+  // const [formData, setFormData] = useState();
   // const [newPhoto, setNewPhoto] = useState('');
   // const [newTech, setNewTech] = useState('');
   // const [newRepo, setNewRepo] = useState('');
@@ -81,21 +85,21 @@ const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
     const { name, value } = event.currentTarget;
     console.log(name, value);
 
-    let updatedInput = {};
+    // let updatedInput = {};
 
-    if (name === 'name') {
-      updatedInput = {
-        [name]: value,
-        slug: value.toLowerCase().split(' ').join('-'),
-      };
-    } else {
-      updatedInput = { [name]: value };
-    }
+    // if (name === 'name') {
+    //   updatedInput = {
+    //     [name]: value,
+    //     slug: value.toLowerCase().split(' ').join('-'),
+    //   };
+    // } else {
+    //   updatedInput = { [name]: value };
+    // }
 
-    setFormData((formData) => ({
-      ...formData,
-      ...updatedInput,
-    }));
+    // setFormData((formData) => ({
+    //   ...formData,
+    //   ...updatedInput,
+    // }));
   }
 
   // function updateDate() {
@@ -130,10 +134,15 @@ const ProjectForm = ({ project, saveProject, deleteProject, closeProject }) => {
   // }
 
   return (
-    <div className="ProjectForm">
+    <div className='ProjectForm'>
       <form>
-        <div className="form-first-row">
-          <TextInput className="name-input" inputName={'name'} value={project.name} changeHandler={updateTextInput} />
+        <div className='form-first-row'>
+          <TextInput
+            className='name-input'
+            inputName={'name'}
+            value={cleanNullValues(formData.name)}
+            changeHandler={updateTextInput}
+          />
           {/* <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} /> */}
           {/* <TextInput
             className="client-input"
