@@ -46,9 +46,7 @@ const defaultProject = {
 const ProjectForm = ({ formData }) => {
   console.log(formData.project_id, formData.name);
 
-  function cleanNullValues(value) {
-    return value === null ? 'DEFAULT' : value;
-  }
+  const [currentFormData, setCurrentFormData] = useState(formData);
 
   // const [formData, setFormData] = useState();
   // const [newPhoto, setNewPhoto] = useState('');
@@ -85,21 +83,23 @@ const ProjectForm = ({ formData }) => {
     const { name, value } = event.currentTarget;
     console.log(name, value);
 
-    // let updatedInput = {};
+    let updatedInput = {};
 
-    // if (name === 'name') {
-    //   updatedInput = {
-    //     [name]: value,
-    //     slug: value.toLowerCase().split(' ').join('-'),
-    //   };
-    // } else {
-    //   updatedInput = { [name]: value };
-    // }
+    // If changing the name, maker sure to update the slug for correct routing
+    if (name === 'name') {
+      updatedInput = {
+        [name]: value,
+        slug: value.toLowerCase().split(' ').join('-'),
+      };
+    } else {
+      updatedInput = { [name]: value };
+    }
 
-    // setFormData((formData) => ({
-    //   ...formData,
-    //   ...updatedInput,
-    // }));
+    // Update the current form data
+    setCurrentFormData((currentFormData) => ({
+      ...currentFormData,
+      ...updatedInput,
+    }));
   }
 
   // function updateDate() {
@@ -140,7 +140,7 @@ const ProjectForm = ({ formData }) => {
           <TextInput
             className='name-input'
             inputName={'name'}
-            value={cleanNullValues(formData.name)}
+            value={currentFormData.name}
             changeHandler={updateTextInput}
           />
           {/* <TextInput className="url-input" inputName={'url'} value={formData.url} changeHandler={updateTextInput} /> */}
