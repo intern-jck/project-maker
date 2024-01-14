@@ -4,7 +4,6 @@ import ProjectList from './ProjectList.jsx';
 import './Dashboard.scss';
 
 const Dashboard = ({ data, clickHandler }) => {
-  // console.log(data);
   return (
     <div className="Dashboard">
       <DashboardControl />

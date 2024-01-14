@@ -2,12 +2,12 @@ import React from 'react';
 import './ProjectMaker.scss';
 
 // import test_data from '../../assets/work.json';
-
 // import ProjectControls from './ProjectControls.jsx';
+
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = ({ data }) => {
-  console.log(data);
+const ProjectMaker = ({ project }) => {
+  console.log('ProjectMaker', project);
 
   function saveProject() {
     console.log('Save Project');
@@ -25,13 +25,14 @@ const ProjectMaker = ({ data }) => {
     <div className="ProjectMaker">
       {/* <ProjectControls /> */}
       {/* PROJECT CONTROLS */}
+
       <div className="controls">
         <div className="control-header">
           <h4>
-            <span>NAME:</span> NAME
+            <span>NAME:</span> {project.name}
           </h4>
           <h4>
-            <span>ID:</span> ID_NUMBER
+            <span>ID:</span> {project.project_id}
           </h4>
         </div>
 
@@ -40,12 +41,13 @@ const ProjectMaker = ({ data }) => {
             <i className="fa-regular fa-floppy-disk"></i>
           </button>
 
-          <button>
+          <button onClick={closeProject}>
             <i className="fa-solid fa-square-xmark"></i>
           </button>
         </div>
       </div>
-      {data ? (
+
+      {/* {data ? (
         <ProjectForm
           project={data}
           saveProject={saveProject}
@@ -54,7 +56,7 @@ const ProjectMaker = ({ data }) => {
         />
       ) : (
         <></>
-      )}
+      )} */}
     </div>
   );
 };

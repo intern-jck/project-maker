@@ -63,6 +63,10 @@
     height: 100%;
     padding: $padding-stock;
     overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    gap: 1rem;
 
     .project-button {
       border: $border-xthin;

@@ -77,14 +77,13 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('fetch', data);
+        console.log('get all data', data);
         setProjectData(data.data);
       })
       .catch();
   }, []);
 
   function getProject(projectId) {
-    console.log(projectId);
     fetch(`${SERVER_URL}/project?project_id=${projectId}`)
       .then((response) => {
         return response.json();
@@ -102,7 +101,7 @@ const App = () => {
     <div className="App">
       <div className="app-content">
         <Dashboard data={projectData} clickHandler={getProject} />
-        {currentProject ? <ProjectMaker data={currentProject} /> : <></>}
+        {currentProject ? <ProjectMaker project={currentProject} /> : <></>}
       </div>
     </div>
   );
