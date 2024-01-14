@@ -45,11 +45,12 @@ function insert(sql, callback) {
     if (error) {
       console.log(`insert error: ${error}`);
     }
-    callback(error, cols);
+    console.log(`INSERT: ${cols}`);
+    callback(error, 'success');
   });
 }
 
-function select_all(callback) {
+function select_all_projects(callback) {
   return db.all(`SELECT * FROM projects`, (error, rows) => {
     if (error) {
       console.log(`select_all error: ${error}`);
@@ -110,7 +111,7 @@ function delete_project(project_id, callback) {
 
 module.exports = {
   insert,
-  select_all,
+  select_all_projects,
   select_project,
   update_project,
 };

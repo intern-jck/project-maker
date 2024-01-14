@@ -1,7 +1,7 @@
 const ProjectsModel = `
   CREATE TABLE projects (
     project_id INTEGER PRIMARY KEY,
-    folder_id INTEGER
+    folder_id INTEGER,
     slug TEXT,
     name TEXT,
     url TEXT,
