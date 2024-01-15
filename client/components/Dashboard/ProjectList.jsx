@@ -9,19 +9,23 @@ const ProjectList = ({ listData, getProjectHandler }) => {
 
   return (
     <div className='ProjectList'>
-      {listData.map((project, i) => {
-        return (
-          <button
-            className='project-button'
-            key={project.project_id}
-            value={project.project_id}
-            onClick={selectProject}
-          >
-            {project.name}
-            <i className='fa-solid fa-file'></i>
-          </button>
-        );
-      })}
+      {listData.length ? (
+        listData.map((project, i) => {
+          return (
+            <button
+              className='project-button'
+              key={project.project_id}
+              value={project.project_id}
+              onClick={selectProject}
+            >
+              {project.name}
+              <i className='fa-solid fa-file'></i>
+            </button>
+          );
+        })
+      ) : (
+        <>no projects</>
+      )}
     </div>
   );
 };

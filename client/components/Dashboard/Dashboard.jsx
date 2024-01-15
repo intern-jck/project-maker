@@ -1,5 +1,4 @@
 import React from 'react';
-// import DashboardControl from './DashboardControl.jsx';
 import ProjectList from './ProjectList.jsx';
 import SelectInput from '../common/Inputs/SelectInput.jsx';
 import TextInput from '../common/Inputs/TextInput.jsx';
@@ -18,7 +17,7 @@ const Dashboard = ({ dashboardData, onGetProject }) => {
   return (
     <div className='Dashboard'>
       <div className='dash-controls'>
-        <div className='folder-control'>
+        <div className='control-row'>
           <TextInput
             className='folder-input'
             inputName={'folder_name'}
@@ -31,6 +30,8 @@ const Dashboard = ({ dashboardData, onGetProject }) => {
           <button>
             <i class='fa-solid fa-file'></i>
           </button>
+        </div>
+        <div className='control-row'>
           <SelectInput
             className='select-input'
             inputName='folder-select'

@@ -11,6 +11,19 @@
   gap: $gap-thin;
 
   .dash-controls {
+    border: $border-thin;
+    padding: $padding-stock;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: start;
+    gap: 0.4rem;
+
+    .control-row {
+      display: flex;
+      gap: 1rem;
+    }
+
     button {
       border: none;
       background: none;
@@ -22,28 +35,18 @@
       }
     }
 
-    .folder-control {
-      border: $border-thin;
-      padding: $padding-stock;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      align-content: start;
-      gap: 0.4rem;
+    label {
+      display: none;
+    }
 
-      label {
-        display: none;
-      }
+    input {
+      width: 8rem;
+      height: 1.4rem;
+    }
 
-      input {
-        width: 8rem;
-        height: 1.4rem;
-      }
-
-      select {
-        width: 8rem;
-        height: 1.4rem;
-      }
+    select {
+      width: 8rem;
+      height: 1.4rem;
     }
   }
 

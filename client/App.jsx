@@ -111,11 +111,13 @@ const App = () => {
   return (
     <div className='App'>
       <div className='app-content'>
-        {projects.length ? (
+        <Dashboard dashboardData={projects} onGetProject={getProject} />
+
+        {/* {projects.length ? (
           <Dashboard dashboardData={projects} onGetProject={getProject} />
         ) : (
           <>no projects found</>
-        )}
+        )} */}
 
         {Object.keys(currentProject).length ? (
           <ProjectMaker
