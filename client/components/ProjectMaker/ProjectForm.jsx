@@ -43,7 +43,7 @@ const defaultProject = {
   resources: [],
 };
 
-const ProjectForm = ({ formData, onSaveClick }) => {
+const ProjectForm = ({ formData, onSaveClick, onDeleteClick }) => {
   const [currentFormData, setCurrentFormData] = useState(formData);
 
   useEffect(() => {
@@ -67,6 +67,12 @@ const ProjectForm = ({ formData, onSaveClick }) => {
     event.preventDefault();
     console.log(currentFormData);
     onSaveClick(currentFormData);
+  }
+
+  function onDeleteClickHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    onDeleteClick(value);
   }
 
   // function deleteProjectHandler(event) {
@@ -143,7 +149,10 @@ const ProjectForm = ({ formData, onSaveClick }) => {
           <button type='submit'>
             <i className='fa-regular fa-floppy-disk'></i>
           </button>
-          <button>
+          <button
+            value={currentFormData.project_id}
+            onClick={onDeleteClickHandler}
+          >
             <i className='fa-regular fa-trash-can'></i>
           </button>
         </div>

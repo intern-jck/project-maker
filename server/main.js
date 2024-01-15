@@ -79,7 +79,7 @@ app.get('/create_project', (req, res) => {
 // body: { CURRENT_PROJECT_FORM_DATA }
 // Updates the current project's entry in the database
 app.put('/save_project', (req, res) => {
-  db.update_project(req.body, (error, results) => {
+  db.update_project(req.body, (error) => {
     if (error) {
       console.error(error);
       res.json({
@@ -87,14 +87,26 @@ app.put('/save_project', (req, res) => {
       });
     }
     res.json({
-      data: results,
+      data: 'success',
     });
   });
 });
 
 // DELETE /project
 // Deletes project from database
-app.delete('/project');
+app.delete('/project', (req, res) => {
+  db.delete_project(req.body, (error) => {
+    if (error) {
+      console.error(error);
+      res.json({
+        msg: `delete_project error ${error}`,
+      });
+    }
+    res.json({
+      data: 'success',
+    });
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`P Maker App Listening @ IP: 127.0.0.1 PORT: ${PORT}`);

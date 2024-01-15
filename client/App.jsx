@@ -80,6 +80,7 @@ const App = () => {
 
   function deleteProject(projectId) {
     console.log('Deleting', projectId);
+
     const options = {
       method: 'DELETE',
       headers: {
@@ -93,6 +94,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         getAllProjects();
       })
       .catch((error) => {

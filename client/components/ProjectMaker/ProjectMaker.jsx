@@ -3,7 +3,12 @@ import './ProjectMaker.scss';
 
 import ProjectForm from './ProjectForm.jsx';
 
-const ProjectMaker = ({ projectData, onCloseProject, onSaveProject }) => {
+const ProjectMaker = ({
+  projectData,
+  onCloseProject,
+  onSaveProject,
+  onDeleteProject,
+}) => {
   function saveProjectHandler(data) {
     console.log('Save Project');
     onSaveProject(data);
@@ -18,16 +23,17 @@ const ProjectMaker = ({ projectData, onCloseProject, onSaveProject }) => {
     onCloseProject();
   }
 
+  function deleteProjectHandler(value) {
+    console.log('Delete Project');
+    onDeleteProject(value);
+  }
+
   return (
     <div className='ProjectMaker'>
       <div className='controls'>
         <div className='control-header'>
-          <h4>
-            <span>NAME:</span> {projectData.name}
-          </h4>
-          <h4>
-            <span>ID:</span> {projectData.project_id}
-          </h4>
+          <span>NAME:</span> {projectData.name}
+          <span>ID:</span> {projectData.project_id}
         </div>
 
         <div className='control-buttons'>
@@ -37,7 +43,11 @@ const ProjectMaker = ({ projectData, onCloseProject, onSaveProject }) => {
         </div>
       </div>
 
-      <ProjectForm formData={projectData} onSaveClick={saveProjectHandler} />
+      <ProjectForm
+        formData={projectData}
+        onSaveClick={saveProjectHandler}
+        onDeleteClick={deleteProjectHandler}
+      />
     </div>
   );
 };

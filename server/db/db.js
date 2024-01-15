@@ -99,7 +99,8 @@ function update_project(project_data, callback) {
 
 function delete_project(project_id, callback) {
   return db.exec(
-    `DELETE FROM projects WHERE project_id='${project_id}'`,
+    `DELETE FROM projects 
+    WHERE project_id='${project_id}'`,
     (error) => {
       if (error) {
         console.log(`delete_project error: ${error}`);
@@ -114,4 +115,5 @@ module.exports = {
   select_all_projects,
   select_project,
   update_project,
+  delete_project,
 };
