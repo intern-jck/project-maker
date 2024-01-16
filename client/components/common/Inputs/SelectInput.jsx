@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Select({
+  inputId,
   className,
   inputName,
   value,
@@ -12,7 +13,12 @@ export default function Select({
       <label htmlFor={inputName}>
         {inputName ? inputName.toUpperCase() : ''}
       </label>
-      <select name={inputName} onChange={changeHandler} value={value}>
+      <select
+        id={inputId}
+        name={inputName}
+        onChange={changeHandler}
+        value={value}
+      >
         <option key={0} value=''>
           {inputName}
         </option>

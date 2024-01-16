@@ -45,6 +45,24 @@ app.get('/create_folder', (req, res) => {
   });
 });
 
+// DELETE /folder
+// Deletes folder from database
+app.delete('/folder/:id', (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  db.delete_folder(id, (error) => {
+    if (error) {
+      console.error(error);
+      res.json({
+        msg: `delete folder error ${error}`,
+      });
+    }
+    res.json({
+      data: 'success',
+    });
+  });
+});
+
 // GET /projects
 // Gets all projects
 app.get('/projects', (req, res) => {

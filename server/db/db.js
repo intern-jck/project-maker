@@ -102,6 +102,20 @@ function select_all_folders(callback) {
   });
 }
 
+function delete_folder(folder_id, callback) {
+  return db.exec(
+    `DELETE FROM folders 
+    WHERE folder_id=${folder_id}`,
+    (error) => {
+      if (error) {
+        console.log(`delete_project error: ${error}`);
+      }
+      callback(error);
+    }
+  );
+}
+
+// PROJECTS
 function select_all_projects(callback) {
   return db.all(`SELECT * FROM projects`, (error, rows) => {
     if (error) {
@@ -152,7 +166,7 @@ function update_project(project_data, callback) {
 function delete_project(project_id, callback) {
   return db.exec(
     `DELETE FROM projects 
-    WHERE project_id='${project_id}'`,
+    WHERE project_id=${project_id}`,
     (error) => {
       if (error) {
         console.log(`delete_project error: ${error}`);
@@ -163,8 +177,9 @@ function delete_project(project_id, callback) {
 }
 
 module.exports = {
-  select_all_folders,
   create_folder,
+  select_all_folders,
+  delete_folder,
   select_all_projects,
   select_project,
   update_project,

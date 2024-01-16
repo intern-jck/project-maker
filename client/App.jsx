@@ -48,6 +48,24 @@ const App = () => {
       .catch();
   }
 
+  function deleteFolder(value) {
+    console.log('delete folder:', value);
+    const options = {
+      method: 'DELETE',
+    };
+
+    fetch(`${SERVER_URL}/folder/${value}`, options)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        getAllFolders();
+        getAllProjects();
+      })
+      .catch();
+  }
+
   // Project Functions
   function getAllProjects() {
     fetch(`${SERVER_URL}/projects`)
@@ -107,22 +125,17 @@ const App = () => {
   }
 
   function deleteProject(projectId) {
-    console.log('Deleting', projectId);
-
     const options = {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ project_id: projectId }),
     };
 
-    fetch(`${SERVER_URL}/project`, options)
+    fetch(`${SERVER_URL}/project/${projectId}`, options)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         console.log(data);
+        getAllFolders();
         getAllProjects();
       })
       .catch((error) => {
@@ -143,6 +156,7 @@ const App = () => {
           folderData={folders}
           dashboardData={projects}
           onCreateFolder={createFolder}
+          onDeleteFolder={deleteFolder}
           onGetProject={getProject}
         />
 
