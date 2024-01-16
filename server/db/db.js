@@ -116,6 +116,45 @@ function delete_folder(folder_id, callback) {
 }
 
 // PROJECTS
+function create_project(callback) {
+  const timestamp = Date.now();
+
+  const sql = `
+    INSERT INTO projects (
+      project_id,
+      folder_id,
+      slug,
+      name,
+      url,
+      client,
+      client_url,
+      start_date,
+      end_date,
+      short,
+      description
+      )
+    VALUES (
+      ${timestamp}, 
+      0,
+      'default_slug',
+      'default_name',
+      'default_url',
+      'default_client',
+      'default_client_url',
+      'default_start',
+      'default_end',
+      'default_short',
+      'default_description'
+      );`;
+
+  return db.exec(sql, (error) => {
+    if (error) {
+      console.log(`create_folder error: ${error}`);
+    }
+    callback(error);
+  });
+}
+
 function select_all_projects(callback) {
   return db.all(`SELECT * FROM projects`, (error, rows) => {
     if (error) {
@@ -180,6 +219,7 @@ module.exports = {
   create_folder,
   select_all_folders,
   delete_folder,
+  create_project,
   select_all_projects,
   select_project,
   update_project,

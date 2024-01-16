@@ -14,6 +14,7 @@ const Dashboard = ({
   dashboardData,
   onCreateFolder,
   onDeleteFolder,
+  onCreateProject,
   onGetProject,
 }) => {
   const dashboardDataMapped = dashboardData.map((item) => {
@@ -47,6 +48,11 @@ const Dashboard = ({
     }
   }
 
+  function onCreateProjectHandler(event) {
+    event.preventDefault();
+    onCreateProject();
+  }
+
   return (
     <div className='Dashboard'>
       <div className='dash-controls'>
@@ -60,7 +66,7 @@ const Dashboard = ({
           <button onClick={onCreateFolderHandler}>
             <i className='fa-solid fa-folder-plus'></i>
           </button>
-          <button>
+          <button onClick={onCreateProjectHandler}>
             <i className='fa-solid fa-file'></i>
           </button>
         </div>

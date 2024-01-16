@@ -67,6 +67,21 @@ const App = () => {
   }
 
   // Project Functions
+  function createProject() {
+    fetch(`${SERVER_URL}/create_project`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        getAllFolders();
+        getAllProjects();
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   function getAllProjects() {
     fetch(`${SERVER_URL}/projects`)
       .then((response) => {
@@ -157,6 +172,7 @@ const App = () => {
           dashboardData={projects}
           onCreateFolder={createFolder}
           onDeleteFolder={deleteFolder}
+          onCreateProject={createProject}
           onGetProject={getProject}
         />
 

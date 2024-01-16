@@ -6,7 +6,7 @@ const ProjectsModel = `
     name TEXT,
     url TEXT,
     client TEXT,
-    client_rul TEXT,
+    client_url TEXT,
     start_date TEXT,
     end_date TEXT,
     short TEXT,

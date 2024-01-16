@@ -93,7 +93,8 @@ app.get('/project', (req, res) => {
 // GET /create_project
 // Create a new project with default info
 app.get('/create_project', (req, res) => {
-  db.insert(sql.createInsertProjectSql(), (error, results) => {
+  console.log('create project route');
+  db.create_project((error, results) => {
     if (error) {
       console.error(error);
       res.json({
@@ -101,7 +102,7 @@ app.get('/create_project', (req, res) => {
       });
     }
     res.json({
-      data: results,
+      data: 'success',
     });
   });
 });
@@ -125,8 +126,9 @@ app.put('/save_project', (req, res) => {
 
 // DELETE /project
 // Deletes project from database
-app.delete('/project', (req, res) => {
-  db.delete_project(req.body, (error) => {
+app.delete('/project/:id', (req, res) => {
+  const { id } = req.params;
+  db.delete_project(id, (error) => {
     if (error) {
       console.error(error);
       res.json({
