@@ -19,10 +19,10 @@ app.get('/', (req, res) => {
   });
 });
 
-// GET /projects
-// Gets all projects
-app.get('/projects', (req, res) => {
-  db.select_all_projects((error, results) => {
+// GET /folders
+// Gets all folders
+app.get('/folders', (req, res) => {
+  db.select_all_folders((error, results) => {
     if (error) {
       console.error(error);
     }
@@ -32,10 +32,23 @@ app.get('/projects', (req, res) => {
   });
 });
 
-// GET /folders
-// Gets all folders
-app.get('/folders', (req, res) => {
-  db.select_all_folders((error, results) => {
+// GET /create_folder
+// Creates a folder in table
+app.get('/create_folder', (req, res) => {
+  db.create_folder(req.query.folder_name, (error, results) => {
+    if (error) {
+      console.error(error);
+    }
+    res.json({
+      data: 'success',
+    });
+  });
+});
+
+// GET /projects
+// Gets all projects
+app.get('/projects', (req, res) => {
+  db.select_all_projects((error, results) => {
     if (error) {
       console.error(error);
     }

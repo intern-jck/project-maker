@@ -70,7 +70,7 @@ function create_folder(folder_name, callback) {
   if (!folder_name) {
     folder_name = '';
   }
-  const timestamp = new Date.now();
+  const timestamp = Date.now();
 
   const sql = `
     INSERT INTO folders
@@ -85,7 +85,7 @@ function create_folder(folder_name, callback) {
         );
   `;
 
-  return db.exec(sql, (error, cols) => {
+  return db.exec(sql, (error) => {
     if (error) {
       console.log(`create_folder error: ${error}`);
     }
@@ -164,6 +164,7 @@ function delete_project(project_id, callback) {
 
 module.exports = {
   select_all_folders,
+  create_folder,
   select_all_projects,
   select_project,
   update_project,

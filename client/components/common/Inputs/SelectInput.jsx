@@ -17,7 +17,6 @@ export default function Select({
           {inputName}
         </option>
         {options.map((option, i) => {
-          console.log(option[0], option[1]);
           return (
             <option key={i + 1} value={option[0]}>
               {option[1]}

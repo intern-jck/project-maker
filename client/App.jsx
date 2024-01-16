@@ -22,7 +22,33 @@ const App = () => {
       .catch();
   }, []);
 
-  // Functions to handle HTTP Requests
+  // Folder Functions
+  function getAllFolders() {
+    fetch(`${SERVER_URL}/folders`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log('folders', data.data);
+        setFolders(data.data);
+      })
+      .catch();
+  }
+
+  function createFolder(value) {
+    fetch(`${SERVER_URL}/create_folder?folder_name=${value}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        getAllFolders();
+        getAllProjects();
+      })
+      .catch();
+  }
+
+  // Project Functions
   function getAllProjects() {
     fetch(`${SERVER_URL}/projects`)
       .then((response) => {
@@ -34,18 +60,6 @@ const App = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  function getAllFolders() {
-    fetch(`${SERVER_URL}/folders`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.data);
-        setFolders(data.data);
-      })
-      .catch();
   }
 
   function getProject(projectId) {
@@ -128,6 +142,7 @@ const App = () => {
         <Dashboard
           folderData={folders}
           dashboardData={projects}
+          onCreateFolder={createFolder}
           onGetProject={getProject}
         />
 
