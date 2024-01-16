@@ -93,6 +93,7 @@ app.get('/project', (req, res) => {
 // GET /create_project
 // Create a new project with default info
 app.get('/create_project', (req, res) => {
+  console.log('create_project');
   db.create_project((error, results) => {
     if (error) {
       console.error(error);

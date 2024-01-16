@@ -56,6 +56,12 @@ const ProjectMaker = ({
 
   function updateDate(event) {
     console.log(event.target.value);
+    const { name, value } = event.target;
+
+    setCurrentFormData((currentFormData) => ({
+      ...currentFormData,
+      [name]: value,
+    }));
   }
 
   return (
