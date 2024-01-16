@@ -7,6 +7,7 @@ const SERVER_URL = 'http://127.0.0.1:3000';
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
+  const [folders, setFolders] = useState([]);
   const [currentFolder, setCurrentFolder] = useState({});
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
+        getAllFolders();
         getAllProjects();
       })
       .catch();
@@ -32,6 +34,18 @@ const App = () => {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function getAllFolders() {
+    fetch(`${SERVER_URL}/folders`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        setFolders(data.data);
+      })
+      .catch();
   }
 
   function getProject(projectId) {
@@ -111,13 +125,11 @@ const App = () => {
   return (
     <div className='App'>
       <div className='app-content'>
-        <Dashboard dashboardData={projects} onGetProject={getProject} />
-
-        {/* {projects.length ? (
-          <Dashboard dashboardData={projects} onGetProject={getProject} />
-        ) : (
-          <>no projects found</>
-        )} */}
+        <Dashboard
+          folderData={folders}
+          dashboardData={projects}
+          onGetProject={getProject}
+        />
 
         {Object.keys(currentProject).length ? (
           <ProjectMaker

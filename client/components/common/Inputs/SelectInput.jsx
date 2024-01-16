@@ -16,11 +16,14 @@ export default function Select({
         <option key={0} value=''>
           {inputName}
         </option>
-        {options.map((option, i) => (
-          <option key={i + 1} value={option}>
-            {option}
-          </option>
-        ))}
+        {options.map((option, i) => {
+          console.log(option[0], option[1]);
+          return (
+            <option key={i + 1} value={option[0]}>
+              {option[1]}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

@@ -4,14 +4,20 @@ import SelectInput from '../common/Inputs/SelectInput.jsx';
 import TextInput from '../common/Inputs/TextInput.jsx';
 import './Dashboard.scss';
 
-const Dashboard = ({ dashboardData, onGetProject }) => {
+const test_folder_data = [
+  { folder_id: 123, name: 'TEST' },
+  { folder_id: 456, name: 'TEST_2' },
+];
+
+const Dashboard = ({ folderData, dashboardData, onGetProject }) => {
   const dashboardDataMapped = dashboardData.map((item) => {
     const { project_id, name } = item;
     return { project_id, name };
   });
 
-  function onChangeTest() {
-    console.log('on change test');
+  function onChangeTest(event) {
+    const { value } = event.target;
+    console.log(value);
   }
 
   return (
@@ -28,15 +34,18 @@ const Dashboard = ({ dashboardData, onGetProject }) => {
             <i className='fa-solid fa-folder-plus'></i>
           </button>
           <button>
-            <i class='fa-solid fa-file'></i>
+            <i className='fa-solid fa-file'></i>
           </button>
         </div>
         <div className='control-row'>
           <SelectInput
             className='select-input'
             inputName='folder-select'
-            value={'ALL'}
-            options={['ALL', 'TEST']}
+            // value={''}
+            options={test_folder_data.map((item) => {
+              // console.log(item.folder_id, item.name);
+              return [item.folder_id, item.name];
+            })}
             changeHandler={onChangeTest}
           />
           <button>

@@ -7,6 +7,7 @@ const {
   PhotosModel,
 } = require('./models.js');
 
+// Initialize database
 const db = new sqlite3.Database(
   './server/db/projects.db',
   sqlite3.OPEN_READWRITE,
@@ -24,6 +25,7 @@ const db = new sqlite3.Database(
   }
 );
 
+// Creates projects and folders databases
 function createDatabase() {
   const pMakerDB = new sqlite3.Database('./server/db/projects.db', (err) => {
     if (err) {
@@ -35,25 +37,75 @@ function createDatabase() {
   });
 }
 
+// Create a table with a give model.
+// See models.js for SQL to create tables
 function createTable(database, table_model) {
   database.exec(table_model);
 }
 
 // CRUD
-function insert(sql, callback) {
+const insert_project_sql = ``;
+const insert_folder_sql = ``;
+
+// function insert(sql, callback) {}
+
+// function create_project(callback) {
+//   const sql = `
+//     INSERT INTO projects
+//       (
+
+//       )
+//     VALUES
+//   `;
+
+//   return db.exec(sql, (error, cols) => {
+//     if (error) {
+//       console.log(`create_project error: ${error}`);
+//     }
+//     callback(error);
+//   });
+// }
+
+function create_folder(folder_name, callback) {
+  if (!folder_name) {
+    folder_name = '';
+  }
+  const timestamp = new Date.now();
+
+  const sql = `
+    INSERT INTO folders
+      (
+        folder_id,
+        name
+      )
+    VALUES
+        (
+          ${timestamp},
+          '${folder_name}'
+        );
+  `;
+
   return db.exec(sql, (error, cols) => {
     if (error) {
-      console.log(`insert error: ${error}`);
+      console.log(`create_folder error: ${error}`);
     }
-    console.log(`INSERT: ${cols}`);
     callback(error);
+  });
+}
+
+function select_all_folders(callback) {
+  return db.all(`SELECT * FROM folders`, (error, rows) => {
+    if (error) {
+      console.log(`select_all_folders error: ${error}`);
+    }
+    callback(error, rows);
   });
 }
 
 function select_all_projects(callback) {
   return db.all(`SELECT * FROM projects`, (error, rows) => {
     if (error) {
-      console.log(`select_all error: ${error}`);
+      console.log(`select_all_projects error: ${error}`);
     }
     callback(error, rows);
   });
@@ -111,7 +163,7 @@ function delete_project(project_id, callback) {
 }
 
 module.exports = {
-  insert,
+  select_all_folders,
   select_all_projects,
   select_project,
   update_project,
