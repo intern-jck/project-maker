@@ -49,7 +49,6 @@ const App = () => {
   }
 
   function deleteFolder(value) {
-    console.log('delete folder:', value);
     const options = {
       method: 'DELETE',
     };
@@ -90,7 +89,7 @@ const App = () => {
       .then((data) => {
         setProjects(data.data);
         // Use for testing
-        setCurrentProject(data.data[0]);
+        setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -104,15 +103,16 @@ const App = () => {
       })
       .then((data) => {
         // clean out null values
-        const nonNullData = data.data.map((item) => {
-          for (let key in item) {
-            if (item[key] === null) {
-              item[key] = 'DEFAULT';
-            }
-          }
-          return item;
-        });
-        setCurrentProject(nonNullData[0]);
+        // const nonNullData = data.data.map((item) => {
+        //   for (let key in item) {
+        //     if (item[key] === null) {
+        //       item[key] = 'DEFAULT';
+        //     }
+        //   }
+        //   return item;
+        // });
+        // setCurrentProject(nonNullData[0]);
+        setCurrentProject(data.data[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -120,7 +120,6 @@ const App = () => {
   }
 
   function saveProject(data) {
-    console.log('Saving', data);
     const options = {
       method: 'PUT',
       headers: {
@@ -134,6 +133,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         getAllProjects();
       })
       .catch((error) => {

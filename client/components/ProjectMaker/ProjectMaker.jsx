@@ -15,34 +15,20 @@ const ProjectMaker = ({
 }) => {
   const [currentFormData, setCurrentFormData] = useState(projectData);
 
-  function saveProjectHandler(data) {
-    console.log('Save Project');
-    onSaveProject(data);
+  function saveProjectHandler(event) {
+    event.preventDefault();
+    onSaveProject(currentFormData);
   }
 
-  function onSaveClickHandler(event) {
-    event.preventDefault();
-    console.log(currentFormData);
-    onSaveClick(currentFormData);
-  }
-  function onDeleteClickHandler(event) {
+  function deleteProjectHandler(event) {
     event.preventDefault();
     const { value } = event.target;
-    onDeleteClick(value);
-  }
-
-  function deleteProjectHandler() {
-    console.log('Delete Project');
+    onDeleteProject(value);
   }
 
   function closeProjectHandler() {
     console.log('Close Project');
     onCloseProject();
-  }
-
-  function deleteProjectHandler(value) {
-    console.log('Delete Project');
-    onDeleteProject(value);
   }
 
   function updateTextInput(event) {
@@ -71,90 +57,78 @@ const ProjectMaker = ({
   }
   return (
     <div className='ProjectMaker'>
-      {/* <div className='controls'>
-        <div className='control-header'>
-          <h4>
-            <span>NAME:</span> {projectData.name}
-          </h4>
-          <h4>
-            <span>ID:</span> {projectData.project_id}
-          </h4>
-        </div>
-        <div className='control-buttons'>
+      <div className='form-header'>
+        <p>
+          <span>ID:</span> {projectData.project_id}
+        </p>
+        <div className='form-controls'>
+          <button type='submit' form='project-form'>
+            <i className='fa-regular fa-floppy-disk'></i>
+          </button>
+          <button
+            value={currentFormData.project_id}
+            onClick={deleteProjectHandler}
+          >
+            <i className='fa-regular fa-trash-can'></i>
+          </button>
           <button onClick={closeProjectHandler}>
             <i className='fa-solid fa-square-xmark'></i>
           </button>
         </div>
-      </div> */}
+      </div>
 
-      {/* <ProjectForm
-        projectData={projectData}
-        onSaveClick={saveProjectHandler}
-        onDeleteClick={deleteProjectHandler}
-      /> */}
-
-      <div className='ProjectForm'>
-        <form onSubmit={onSaveClickHandler}>
-          <div className='form-header'>
-            <p>
-              <span>ID:</span> {projectData.project_id}
-            </p>
-            <div className='form-controls'>
-              <button type='submit'>
-                <i className='fa-regular fa-floppy-disk'></i>
-              </button>
-              <button
-                value={currentFormData.project_id}
-                onClick={onDeleteClickHandler}
-              >
-                <i className='fa-regular fa-trash-can'></i>
-              </button>
-              <button onClick={closeProjectHandler}>
-                <i className='fa-solid fa-square-xmark'></i>
-              </button>
-            </div>
-          </div>
-
-          <div className='form-first-row'>
-            <TextInput
-              inputId='name-input'
-              className='name-input'
-              inputName={'name'}
-              value={currentFormData.name}
-              changeHandler={updateTextInput}
-            />
-            <TextInput
-              inputId='url-input'
-              className='url-input'
-              inputName={'url'}
-              value={projectData.url}
-              changeHandler={updateTextInput}
-            />
-            {/* <TextInput
-            className="client-input"
+      <form
+        id='project-form'
+        className='project-form'
+        onSubmit={saveProjectHandler}
+      >
+        <div className='form-first-row'>
+          <TextInput
+            inputId='name-input'
+            className='name-input'
+            inputName={'name'}
+            value={currentFormData.name}
+            changeHandler={updateTextInput}
+          />
+          <TextInput
+            inputId='url-input'
+            className='url-input'
+            inputName={'url'}
+            value={projectData.url}
+            changeHandler={updateTextInput}
+          />
+          <TextInput
+            inputId='client-input'
+            className='client-input'
             inputName={'client'}
             value={projectData.client}
             changeHandler={updateTextInput}
-          /> */}
-            {/* <TextInput
-            className="client-url-input"
+          />
+          <TextInput
+            inputId='client-url-input'
+            className='client-url-input'
             inputName={'client_url'}
             value={projectData.client_url}
             changeHandler={updateTextInput}
-          /> */}
-            {/* <DateInput className="date-input" inputName={'date'} date={projectData.date} changeHandler={updateDate} /> */}
-          </div>
-          {/* <div className="form-second-row">
+          />
+          {/* <DateInput className="date-input" inputName={'date'} date={projectData.date} changeHandler={updateDate} /> */}
+        </div>
+        <div className='form-second-row'>
           <TextInput
-            className="short-input"
+            inputId='short-input'
+            className='short-input'
             inputName={'short'}
             value={projectData.short}
             changeHandler={updateTextInput}
           />
-          <TextArea className="info-input" inputName={'info'} value={projectData.info} changeHandler={updateTextInput} />
-        </div> */}
-        </form>
-      </div>
+          <TextArea
+            className='info-input'
+            inputName={'info'}
+            value={projectData.info}
+            changeHandler={updateTextInput}
+          />
+        </div>
+      </form>
     </div>
   );
 };
