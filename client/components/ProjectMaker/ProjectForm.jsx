@@ -145,7 +145,6 @@ const ProjectForm = ({ formData, onSaveClick, onDeleteClick }) => {
     <div className='ProjectForm'>
       <form onSubmit={onSaveClickHandler}>
         <div>
-          Project Form
           <button type='submit'>
             <i className='fa-regular fa-floppy-disk'></i>
           </button>

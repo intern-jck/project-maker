@@ -171,8 +171,6 @@ function select_project(project_id, callback) {
       if (error) {
         console.log(`select_project error: ${error}`);
       }
-      console.log(rows);
-
       callback(error, rows);
     }
   );

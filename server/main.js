@@ -49,7 +49,7 @@ app.get('/create_folder', (req, res) => {
 // Deletes folder from database
 app.delete('/folder/:id', (req, res) => {
   const { id } = req.params;
-  console.log(id);
+
   db.delete_folder(id, (error) => {
     if (error) {
       console.error(error);
@@ -93,7 +93,6 @@ app.get('/project', (req, res) => {
 // GET /create_project
 // Create a new project with default info
 app.get('/create_project', (req, res) => {
-  console.log('create project route');
   db.create_project((error, results) => {
     if (error) {
       console.error(error);

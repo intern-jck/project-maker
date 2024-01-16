@@ -4,7 +4,7 @@
   border: $border-stock;
   background-color: $color-panel-background;
   padding: $padding-stock;
-  width: 60%;
+  width: 70%;
   height: $max-app-height;
 
   display: flex;
@@ -16,16 +16,16 @@
   .controls {
     border: $border-thin;
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
 
     .control-header {
-      border: $border-stock;
+      margin-left: 1rem;
       font-size: $font-size-large;
       width: 75%;
       display: flex;
+      flex-direction: column;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
+      justify-content: center;
 
       h4 {
         margin: 0;
@@ -38,13 +38,18 @@
     }
 
     .control-buttons {
-      border: $border-stock;
-      width: 25%;
+      // border: $border-stock;
+      margin-right: 1rem;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
+      align-items: center;
+      justify-content: end;
+      // gap: 2rem;
 
       button {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
         font-size: 3rem;
       }
     }

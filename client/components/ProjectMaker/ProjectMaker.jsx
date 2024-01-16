@@ -32,8 +32,12 @@ const ProjectMaker = ({
     <div className='ProjectMaker'>
       <div className='controls'>
         <div className='control-header'>
-          <span>NAME:</span> {projectData.name}
-          <span>ID:</span> {projectData.project_id}
+          <h4>
+            <span>NAME:</span> {projectData.name}
+          </h4>
+          <h4>
+            <span>ID:</span> {projectData.project_id}
+          </h4>
         </div>
 
         <div className='control-buttons'>
