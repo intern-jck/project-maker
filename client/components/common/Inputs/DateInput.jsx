@@ -1,9 +1,12 @@
 import React from 'react';
 
-const DateInput = ({ inputId, className, inputName, value, changeHandler }) => {
-  const defaultDate = new Date().toISOString().split('T')[0];
-  console.log('DEFAULT DATE:', value);
-
+const DateInput = ({
+  inputId,
+  className,
+  inputName,
+  dateValue,
+  changeHandler,
+}) => {
   return (
     <div id={inputId} className={className}>
       <label htmlFor={inputName}>
@@ -13,7 +16,7 @@ const DateInput = ({ inputId, className, inputName, value, changeHandler }) => {
         id={inputId}
         type='date'
         name={inputName}
-        value={value ? value : defaultDate}
+        defaultValue={dateValue}
         onChange={changeHandler}
       />
     </div>

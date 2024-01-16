@@ -25,7 +25,6 @@ const ProjectMaker = ({
   }
 
   function closeProjectHandler() {
-    console.log('Close Project');
     onCloseProject();
   }
 
@@ -33,7 +32,6 @@ const ProjectMaker = ({
     event.preventDefault();
 
     const { name, value } = event.currentTarget;
-    console.log(name, value);
 
     let updatedInput = {};
 
@@ -55,7 +53,6 @@ const ProjectMaker = ({
   }
 
   function updateDate(event) {
-    console.log(event.target.value);
     const { name, value } = event.target;
 
     setCurrentFormData((currentFormData) => ({
@@ -124,7 +121,14 @@ const ProjectMaker = ({
             inputId='date-input'
             className='date-input'
             inputName={'start_date'}
-            value={projectData.start_date}
+            dateValue={projectData.start_date}
+            changeHandler={updateDate}
+          />
+          <DateInput
+            inputId='date-input'
+            className='date-input'
+            inputName={'end_date'}
+            dateValue={projectData.end_date}
             changeHandler={updateDate}
           />
         </div>
