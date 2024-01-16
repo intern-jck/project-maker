@@ -186,7 +186,7 @@ function update_project(project_data, callback) {
       slug = '${project_data.slug}',
       url = '${project_data.url}',
       client = '${project_data.client}',
-      client_rul = '${project_data.client_url}',
+      client_url = '${project_data.client_url}',
       start_date = '${project_data.start_date}',
       end_date = '${project_data.end_date}',
       short = '${project_data.short}',

@@ -152,6 +152,7 @@ const App = () => {
         console.log(data);
         getAllFolders();
         getAllProjects();
+        setCurrentProject({});
       })
       .catch((error) => {
         console.log(error);
