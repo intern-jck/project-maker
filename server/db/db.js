@@ -118,6 +118,7 @@ function delete_folder(folder_id, callback) {
 // PROJECTS
 function create_project(callback) {
   const timestamp = Date.now();
+  const defaultDate = new Date().toISOString().split('T')[0];
 
   const sql = `
     INSERT INTO projects (
@@ -141,8 +142,8 @@ function create_project(callback) {
       'default_url',
       'default_client',
       'default_client_url',
-      'default_start',
-      'default_end',
+      '${defaultDate}',
+      '${defaultDate}',
       'default_short',
       'default_description'
       );`;

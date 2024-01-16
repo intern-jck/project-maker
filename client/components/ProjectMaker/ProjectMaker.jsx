@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ProjectMaker.scss';
 
-// import ProjectForm from './ProjectForm.jsx';
-
 import TextInput from '../common/Inputs/TextInput.jsx';
 import TextArea from '../common/Inputs/TextArea.jsx';
 import DateInput from '../common/Inputs/DateInput.jsx';
@@ -55,6 +53,11 @@ const ProjectMaker = ({
       ...updatedInput,
     }));
   }
+
+  function updateDate(event) {
+    console.log(event.target.value);
+  }
+
   return (
     <div className='ProjectMaker'>
       <div className='form-header'>
@@ -111,7 +114,13 @@ const ProjectMaker = ({
             value={projectData.client_url}
             changeHandler={updateTextInput}
           />
-          {/* <DateInput className="date-input" inputName={'date'} date={projectData.date} changeHandler={updateDate} /> */}
+          <DateInput
+            inputId='date-input'
+            className='date-input'
+            inputName={'start_date'}
+            value={projectData.start_date}
+            changeHandler={updateDate}
+          />
         </div>
         <div className='form-second-row'>
           <TextInput
