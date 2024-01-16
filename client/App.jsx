@@ -89,6 +89,8 @@ const App = () => {
       })
       .then((data) => {
         setProjects(data.data);
+        // Use for testing
+        setCurrentProject(data.data[0]);
       })
       .catch((error) => {
         console.log(error);
