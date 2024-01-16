@@ -18,8 +18,8 @@ const ProjectList = ({ listData, getProjectHandler }) => {
               value={project.project_id}
               onClick={selectProject}
             >
-              {project.name}
               <i className='fa-solid fa-file'></i>
+              <p>{project.name}</p>
             </button>
           );
         })
