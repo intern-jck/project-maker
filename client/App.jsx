@@ -1,29 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import Dashboard from './components/Dashboard/Dashboard.jsx';
-import ProjectMaker from './components/ProjectMaker/ProjectMaker.jsx';
+import Dashboard from './components/Dashboard.jsx';
+import ProjectMaker from './components/ProjectMaker.jsx';
+
+// import useFetch from './hooks/useFetch.js';
+
+// import {
+//   getFolders,
+//   getCreateFolder,
+//   deleteFolder,
+//   getCreateProject,
+//   getProjects,
+//   getProject,
+//   putProject,
+//   deleteProject,
+// } from './services/http.js';
 
 const SERVER_URL = 'http://127.0.0.1:3000';
 
 const App = () => {
-  const [projects, setProjects] = useState([]);
-  const [currentProject, setCurrentProject] = useState({});
   const [folders, setFolders] = useState([]);
   const [currentFolder, setCurrentFolder] = useState({});
+  const [projects, setProjects] = useState([]);
+  const [currentProject, setCurrentProject] = useState({});
 
+  // const [projects] = useFetch(`${SERVER_URL}/projects`);
+
+  // console.log(projects);
   useEffect(() => {
+    // getFolders()
+    //   .then((data) => setFolders(data))
+    //   .catch((error) => console.log(error));
+
     fetch(SERVER_URL)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        getAllFolders();
-        getAllProjects();
+        getFolders();
+        getProjects(setProjects);
       })
       .catch();
   }, []);
 
+  // Function names reflect the type of request they send and the endpoint.
+  // I.E. getFolders ==> GET /folders
+  // I.E. getCreateProject ==> GET /create_project
+
   // Folder Functions
-  function getAllFolders() {
+  function getFolders() {
     fetch(`${SERVER_URL}/folders`)
       .then((response) => {
         return response.json();
@@ -35,15 +59,15 @@ const App = () => {
       .catch();
   }
 
-  function createFolder(value) {
+  function getCreateFolder(value) {
     fetch(`${SERVER_URL}/create_folder?folder_name=${value}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         console.log(data.data);
-        getAllFolders();
-        getAllProjects();
+        getFolders();
+        getProjects();
       })
       .catch();
   }
@@ -59,21 +83,21 @@ const App = () => {
       })
       .then((data) => {
         console.log(data);
-        getAllFolders();
-        getAllProjects();
+        getFolders();
+        getProjects();
       })
       .catch();
   }
 
   // Project Functions
-  function createProject() {
+  function getCreateProject() {
     fetch(`${SERVER_URL}/create_project`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        getAllFolders();
-        getAllProjects();
+        getFolders();
+        getProjects();
         console.log(data);
       })
       .catch((error) => {
@@ -81,7 +105,7 @@ const App = () => {
       });
   }
 
-  function getAllProjects() {
+  function getProjects() {
     fetch(`${SERVER_URL}/projects`)
       .then((response) => {
         return response.json();
@@ -109,7 +133,7 @@ const App = () => {
       });
   }
 
-  function saveProject(data) {
+  function putProject(data) {
     const options = {
       method: 'PUT',
       headers: {
@@ -124,7 +148,7 @@ const App = () => {
       })
       .then((data) => {
         console.log(data);
-        getAllProjects();
+        getProjects();
       })
       .catch((error) => {
         console.log(error);
@@ -142,8 +166,8 @@ const App = () => {
       })
       .then((data) => {
         console.log(data);
-        getAllFolders();
-        getAllProjects();
+        getFolders();
+        getProjects();
         setCurrentProject({});
       })
       .catch((error) => {
@@ -163,17 +187,18 @@ const App = () => {
         <Dashboard
           folderData={folders}
           dashboardData={projects}
-          onCreateFolder={createFolder}
+          onCreateFolder={getCreateFolder}
           onDeleteFolder={deleteFolder}
-          onCreateProject={createProject}
+          onCreateProject={getCreateProject}
           onGetProject={getProject}
         />
 
         {Object.keys(currentProject).length ? (
           <ProjectMaker
+            folderData={folders}
             projectData={currentProject}
             onCloseProject={closeProject}
-            onSaveProject={saveProject}
+            onSaveProject={putProject}
             onDeleteProject={deleteProject}
           />
         ) : (

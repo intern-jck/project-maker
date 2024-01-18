@@ -7,6 +7,9 @@ const {
   PhotosModel,
 } = require('./models.js');
 
+const sqlSelectAllFolders = `SELECT * FROM folders`;
+const sqlSelectAllProjects = `SELECT * FROM projects`;
+
 // Initialize database
 const db = new sqlite3.Database(
   './server/db/projects.db',
@@ -43,53 +46,30 @@ function createTable(database, table_model) {
   database.exec(table_model);
 }
 
-// CRUD
-const insert_project_sql = ``;
-const insert_folder_sql = ``;
-
-// function insert(sql, callback) {}
-
-// function create_project(callback) {
-//   const sql = `
-//     INSERT INTO projects
-//       (
-
-//       )
-//     VALUES
-//   `;
-
-//   return db.exec(sql, (error, cols) => {
-//     if (error) {
-//       console.log(`create_project error: ${error}`);
-//     }
-//     callback(error);
-//   });
-// }
-
 function create_folder(folder_name, callback) {
   if (!folder_name) {
     folder_name = '';
   }
   const timestamp = Date.now();
 
-  const sql = `
-    INSERT INTO folders
-      (
-        folder_id,
-        name
-      )
-    VALUES
-        (
-          ${timestamp},
-          '${folder_name}'
-        );
-  `;
+  const sqlCreateFolder = `
+    INSERT INTO folders(folder_id,name)
+    VALUES(${timestamp}, '${folder_name}');`;
 
-  return db.exec(sql, (error) => {
-    if (error) {
-      console.log(`create_folder error: ${error}`);
-    }
-    callback(error);
+  // return db.exec(sql, (error) => {
+  //   if (error) {
+  //     console.log(`create_folder error: ${error}`);
+  //   }
+  //   callback(error);
+  // });
+
+  return db.serialize(() => {
+    db.run(sqlCreateFolder).all(sqlSelectAllFolders, (error, rows) => {
+      if (error) {
+        console.log(`create_folder error: ${error}`);
+      }
+      callback(error, rows);
+    });
   });
 }
 

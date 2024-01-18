@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 // GET /folders
 // Gets all folders
 app.get('/folders', (req, res) => {
+  console.log('getting folders');
   db.select_all_folders((error, results) => {
     if (error) {
       console.error(error);
@@ -35,12 +36,13 @@ app.get('/folders', (req, res) => {
 // GET /create_folder
 // Creates a folder in table
 app.get('/create_folder', (req, res) => {
+  console.log(req.query);
   db.create_folder(req.query.folder_name, (error, results) => {
     if (error) {
       console.error(error);
     }
     res.json({
-      data: 'success',
+      data: results,
     });
   });
 });
@@ -67,6 +69,7 @@ app.delete('/folder/:id', (req, res) => {
 // Gets all projects
 app.get('/projects', (req, res) => {
   db.select_all_projects((error, results) => {
+    console.log('getting projects');
     if (error) {
       console.error(error);
     }
@@ -110,7 +113,7 @@ app.get('/create_project', (req, res) => {
 // PUT /save_project
 // body: { CURRENT_PROJECT_FORM_DATA }
 // Updates the current project's entry in the database
-app.put('/save_project', (req, res) => {
+app.put('/project', (req, res) => {
   db.update_project(req.body, (error) => {
     if (error) {
       console.error(error);

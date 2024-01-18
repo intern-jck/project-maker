@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import './ProjectMaker.scss';
+import '../styles/ProjectMaker.scss';
 
-import TextInput from '../common/Inputs/TextInput.jsx';
-import TextArea from '../common/Inputs/TextArea.jsx';
-import DateInput from '../common/Inputs/DateInput.jsx';
+import TextInput from './Inputs/TextInput.jsx';
+import SelectInput from './Inputs/SelectInput.jsx';
+import TextArea from './Inputs/TextArea.jsx';
+import DateInput from './Inputs/DateInput.jsx';
 
 const ProjectMaker = ({
+  folderData,
   projectData,
   onCloseProject,
   onSaveProject,
@@ -61,6 +63,11 @@ const ProjectMaker = ({
     }));
   }
 
+  function onChangeTest(event) {
+    const { value } = event.target;
+    console.log(value);
+  }
+
   return (
     <div className='ProjectMaker'>
       <div className='form-header'>
@@ -68,6 +75,15 @@ const ProjectMaker = ({
           <span>ID:</span> {projectData.project_id}
         </p>
         <div className='form-controls'>
+          <SelectInput
+            inputId='form-folder-select'
+            className='form-folder-select'
+            inputName='Project Folder'
+            options={folderData.map((item) => {
+              return [item.folder_id, item.name];
+            })}
+            changeHandler={onChangeTest}
+          />
           <button type='submit' form='project-form'>
             <i className='fa-regular fa-floppy-disk'></i>
           </button>

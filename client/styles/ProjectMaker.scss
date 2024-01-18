@@ -1,4 +1,4 @@
-@import '../../globals/variables';
+@import './variables';
 
 .ProjectMaker {
   border: $border-stock;
@@ -33,6 +33,17 @@
       display: flex;
       gap: 2rem;
       margin-right: $margin-thick;
+
+      .form-folder-select {
+        label {
+          display: none;
+        }
+
+        select {
+          border: $border-thin;
+          font-size: $font-size-large;
+        }
+      }
 
       button {
         margin: 0;

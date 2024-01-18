@@ -1,8 +1,8 @@
 import React from 'react';
 import ProjectList from './ProjectList.jsx';
-import SelectInput from '../common/Inputs/SelectInput.jsx';
-import TextInput from '../common/Inputs/TextInput.jsx';
-import './Dashboard.scss';
+import SelectInput from './Inputs/SelectInput.jsx';
+import TextInput from './Inputs/TextInput.jsx';
+import '../styles/Dashboard.scss';
 
 const test_folder_data = [
   { folder_id: 123, name: 'TEST' },
@@ -74,7 +74,7 @@ const Dashboard = ({
           <SelectInput
             inputId='folder-select'
             className='folder-select'
-            inputName='folder-select'
+            inputName='Folders'
             options={folderData.map((item) => {
               return [item.folder_id, item.name];
             })}
