@@ -157,6 +157,18 @@ function select_project(project_id, callback) {
   );
 }
 
+function select_project_by_folder(folder_id, callback) {
+  return db.all(
+    `SELECT * FROM projects WHERE folder_id='${folder_id}'`,
+    (error, rows) => {
+      if (error) {
+        console.log(`select_project_by_folder error: ${error}`);
+      }
+      callback(error, rows);
+    }
+  );
+}
+
 function update_project(project_data, callback) {
   return db.exec(
     `UPDATE projects 
