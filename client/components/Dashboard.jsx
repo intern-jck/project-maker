@@ -16,6 +16,7 @@ const Dashboard = ({
   onDeleteFolder,
   onCreateProject,
   onGetProject,
+  onSelectFolder,
 }) => {
   const dashboardDataMapped = dashboardData.map((item) => {
     const { project_id, name } = item;
@@ -53,6 +54,12 @@ const Dashboard = ({
     onCreateProject();
   }
 
+  function onSelectFolderHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    onSelectFolder(value);
+  }
+
   return (
     <div className='Dashboard'>
       <div className='dash-controls'>
@@ -78,7 +85,7 @@ const Dashboard = ({
             options={folderData.map((item) => {
               return [item.folder_id, item.name];
             })}
-            changeHandler={onChangeTest}
+            changeHandler={onSelectFolderHandler}
           />
           <button onClick={onDeleteFolderHandler}>
             <i className='fa-solid fa-folder-minus'></i>

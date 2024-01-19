@@ -45,6 +45,7 @@ const App = () => {
   // Function names reflect the type of request they send and the endpoint.
   // I.E. getFolders ==> GET /folders
   // I.E. getCreateProject ==> GET /create_project
+  // I.E. deleteProject(value) ==> DELETE /project?project_id=[value]
 
   // Folder Functions
   function getFolders() {
@@ -91,6 +92,7 @@ const App = () => {
 
   // Project Functions
   function getCreateProject() {
+    console.log(currentFolder);
     fetch(`${SERVER_URL}/create_project`)
       .then((response) => {
         return response.json();
@@ -127,6 +129,23 @@ const App = () => {
       })
       .then((data) => {
         setCurrentProject(data.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function getFolderProjects(value) {
+    console.log('getting projects in', value);
+    fetch(`${SERVER_URL}/folder_projects?folder_id=${value}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        // setProjects(data.data);
+        // Use for testing
+        // setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -181,6 +200,11 @@ const App = () => {
     setCurrentProject({});
   }
 
+  // function selectFolder(event) {
+  //   const { name, value } = event.target;
+  //   console.log(value);
+  // }
+
   return (
     <div className='App'>
       <div className='app-content'>
@@ -191,6 +215,7 @@ const App = () => {
           onDeleteFolder={deleteFolder}
           onCreateProject={getCreateProject}
           onGetProject={getProject}
+          onSelectFolder={getFolderProjects}
         />
 
         {Object.keys(currentProject).length ? (

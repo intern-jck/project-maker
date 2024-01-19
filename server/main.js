@@ -65,6 +65,11 @@ app.delete('/folder/:id', (req, res) => {
   });
 });
 
+app.get('/folder_projects', (req, res) => {
+  console.log(req.query);
+  res.json({ data: 'succes' });
+});
+
 // GET /projects
 // Gets all projects
 app.get('/projects', (req, res) => {
