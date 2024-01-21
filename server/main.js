@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
 // GET /folders
 // Gets all folders
 app.get('/folders', (req, res) => {
-  console.log('getting folders');
   db.select_all_folders((error, results) => {
     if (error) {
       console.error(error);
@@ -36,7 +35,6 @@ app.get('/folders', (req, res) => {
 // GET /create_folder
 // Creates a folder in table
 app.get('/create_folder', (req, res) => {
-  console.log(req.query);
   db.create_folder(req.query.folder_name, (error, results) => {
     if (error) {
       console.error(error);
@@ -50,9 +48,7 @@ app.get('/create_folder', (req, res) => {
 // DELETE /folder
 // Deletes folder from database
 app.delete('/folder/:id', (req, res) => {
-  const { id } = req.params;
-
-  db.delete_folder(id, (error) => {
+  db.delete_folder(req.params.id, (error) => {
     if (error) {
       console.error(error);
       res.json({
@@ -66,9 +62,7 @@ app.delete('/folder/:id', (req, res) => {
 });
 
 app.get('/folder_projects', (req, res) => {
-  // console.log(req.query);
   db.select_project_by_folder(req.query, (error, results) => {
-    console.log('getting projects by folder');
     if (error) {
       console.error(error);
     }
@@ -82,7 +76,6 @@ app.get('/folder_projects', (req, res) => {
 // Gets all projects
 app.get('/projects', (req, res) => {
   db.select_all_projects((error, results) => {
-    console.log('getting projects');
     if (error) {
       console.error(error);
     }
@@ -109,7 +102,6 @@ app.get('/project', (req, res) => {
 // GET /create_project
 // Create a new project with default info
 app.get('/create_project', (req, res) => {
-  console.log('create_project');
   db.create_project((error, results) => {
     if (error) {
       console.error(error);
@@ -143,8 +135,7 @@ app.put('/project', (req, res) => {
 // DELETE /project
 // Deletes project from database
 app.delete('/project/:id', (req, res) => {
-  const { id } = req.params;
-  db.delete_project(id, (error) => {
+  db.delete_project(req.params.id, (error) => {
     if (error) {
       console.error(error);
       res.json({

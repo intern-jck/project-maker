@@ -4,12 +4,17 @@
   border: $border-stock;
   background-color: $color-panel-background;
   padding: $padding-stock;
-  width: 70%;
+  // width: 70%;
   height: $max-app-height;
   display: flex;
   flex-direction: column;
   gap: $gap-thick;
   overflow-y: scroll;
+
+  form {
+    border: $border-stock;
+    padding: $padding-stock;
+  }
 
   .form-header {
     border: $border-thin;
@@ -22,17 +27,15 @@
       font-size: $font-size-xlarge;
       margin: 0;
       margin-left: $margin-thick;
-
-      span {
-        font-weight: bold;
-      }
+      font-weight: bold;
     }
 
     .form-controls {
-      font-size: 1.4rem;
-      display: flex;
-      gap: 2rem;
+      font-size: $font-size-large;
       margin-right: $margin-thick;
+      display: flex;
+      align-items: center;
+      gap: $gap-xthick;
 
       .form-folder-select {
         label {
@@ -42,6 +45,7 @@
         select {
           border: $border-thin;
           font-size: $font-size-large;
+          width: 12rem;
         }
       }
 
@@ -50,22 +54,18 @@
         padding: 0;
         background: none;
         border: none;
-        font-size: 2rem;
+        font-size: $font-size-xxlarge;
       }
     }
   }
 
   .project-form {
-    .form-first-row {
-      // border: $border-thin;
+    .form-row {
+      border: $border-thin;
+      padding: $padding-stock;
       display: flex;
       flex-wrap: wrap;
-    }
-
-    .form-second-row {
-      // border: $border-thin;
-      display: flex;
-      flex-direction: column;
+      gap: $gap-stock;
     }
 
     .name-input,
@@ -75,7 +75,6 @@
     .url-input {
       border: $border-thin;
       padding: $padding-thin;
-      margin: $margin-thin;
       font-size: $font-size-large;
       font-weight: bold;
       width: 16rem;
@@ -136,224 +135,224 @@
       }
     }
 
-    .photo-input {
-      // border: $border-thin;
-      padding: $padding-thin;
-      display: flex;
-      flex-direction: column;
-      min-width: 50%;
+    // .photo-input {
+    //   // border: $border-thin;
+    //   padding: $padding-thin;
+    //   display: flex;
+    //   flex-direction: column;
+    //   min-width: 50%;
 
-      [class~='photoURL'] {
-        padding: $padding-stock;
-        display: flex;
-        align-items: center;
-        gap: $gap-stock;
+    //   [class~='photoURL'] {
+    //     padding: $padding-stock;
+    //     display: flex;
+    //     align-items: center;
+    //     gap: $gap-stock;
 
-        [class~='photoURLInput'] {
-          font-size: $font-size-large;
-          font-weight: bold;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
+    //     [class~='photoURLInput'] {
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
+    //       width: 100%;
+    //       display: flex;
+    //       flex-direction: column;
+    //     }
 
-        button {
-          border: none;
-          font-size: $font-size-xxlarge;
-        }
-      }
+    //     button {
+    //       border: none;
+    //       font-size: $font-size-xxlarge;
+    //     }
+    //   }
 
-      [class~='photoList'] {
-        border: $border-thin;
-        padding: $padding-stock;
-        max-height: 16rem;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        gap: $gap-stock;
+    //   [class~='photoList'] {
+    //     border: $border-thin;
+    //     padding: $padding-stock;
+    //     max-height: 16rem;
+    //     overflow-y: scroll;
+    //     display: flex;
+    //     flex-direction: row;
+    //     flex-wrap: wrap;
+    //     align-content: flex-start;
+    //     gap: $gap-stock;
 
-        [class~='photoThumb'] {
-          border: $border-thin;
-          border-radius: $border-radius-stock;
-          position: relative;
+    //     [class~='photoThumb'] {
+    //       border: $border-thin;
+    //       border-radius: $border-radius-stock;
+    //       position: relative;
 
-          width: 8rem;
-          height: 8rem;
+    //       width: 8rem;
+    //       height: 8rem;
 
-          img {
-            object-fit: contain;
-          }
+    //       img {
+    //         object-fit: contain;
+    //       }
 
-          button {
-            border: none;
-            color: red;
-            padding: 0;
-            background: none;
-            position: absolute;
-            right: 2px;
-            top: 2px;
+    //       button {
+    //         border: none;
+    //         color: red;
+    //         padding: 0;
+    //         background: none;
+    //         position: absolute;
+    //         right: 2px;
+    //         top: 2px;
 
-            svg {
-              stroke-width: 0.02rem;
-            }
-          }
+    //         svg {
+    //           stroke-width: 0.02rem;
+    //         }
+    //       }
 
-          button:hover {
-            scale: 150%;
-          }
-        }
-      }
-    }
+    //       button:hover {
+    //         scale: 150%;
+    //       }
+    //     }
+    //   }
+    // }
 
-    .tech-input {
-      border: $border-thin;
-      padding: $padding-thin;
-      display: flex;
-      flex-direction: column;
-      min-width: 50%;
+    // .tech-input {
+    //   border: $border-thin;
+    //   padding: $padding-thin;
+    //   display: flex;
+    //   flex-direction: column;
+    //   min-width: 50%;
 
-      [class~='techName'] {
-        padding: $padding-stock;
-        display: flex;
-        align-items: center;
-        gap: $gap-stock;
+    //   [class~='techName'] {
+    //     padding: $padding-stock;
+    //     display: flex;
+    //     align-items: center;
+    //     gap: $gap-stock;
 
-        [class~='techNameInput'] {
-          font-size: $font-size-large;
-          font-weight: bold;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
+    //     [class~='techNameInput'] {
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
+    //       width: 100%;
+    //       display: flex;
+    //       flex-direction: column;
+    //     }
 
-        button {
-          border: none;
-          font-size: $font-size-xxlarge;
-        }
-      }
+    //     button {
+    //       border: none;
+    //       font-size: $font-size-xxlarge;
+    //     }
+    //   }
 
-      [class='techList'] {
-        border: $border-thin;
-        padding: $padding-stock;
-        max-height: 16rem;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        gap: $gap-stock;
+    //   [class='techList'] {
+    //     border: $border-thin;
+    //     padding: $padding-stock;
+    //     max-height: 16rem;
+    //     overflow-y: scroll;
+    //     display: flex;
+    //     flex-direction: row;
+    //     flex-wrap: wrap;
+    //     align-content: flex-start;
+    //     gap: $gap-stock;
 
-        [class~='tech'] {
-          border: $border-thin;
-          border-radius: $border-radius-stock;
-          position: relative;
-          display: flex;
-          padding-left: $padding-thick;
-          padding-right: $padding-thick;
-          font-size: $font-size-large;
-          font-weight: bold;
+    //     [class~='tech'] {
+    //       border: $border-thin;
+    //       border-radius: $border-radius-stock;
+    //       position: relative;
+    //       display: flex;
+    //       padding-left: $padding-thick;
+    //       padding-right: $padding-thick;
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
 
-          button {
-            color: red;
-            padding: 0;
-            position: absolute;
-            right: 2px;
-            top: 2px;
+    //       button {
+    //         color: red;
+    //         padding: 0;
+    //         position: absolute;
+    //         right: 2px;
+    //         top: 2px;
 
-            svg {
-              stroke-width: 0.02rem;
-            }
-          }
+    //         svg {
+    //           stroke-width: 0.02rem;
+    //         }
+    //       }
 
-          button:hover {
-            scale: 150%;
-          }
-        }
-      }
-    }
+    //       button:hover {
+    //         scale: 150%;
+    //       }
+    //     }
+    //   }
+    // }
 
-    .repo-input {
-      border: $border-thin;
-      padding: $padding-thin;
-      display: flex;
-      flex-direction: column;
-      min-width: 50%;
+    // .repo-input {
+    //   border: $border-thin;
+    //   padding: $padding-thin;
+    //   display: flex;
+    //   flex-direction: column;
+    //   min-width: 50%;
 
-      [class~='repoHeader'] {
-        font-size: $font-size-large;
-        font-weight: bold;
-      }
+    //   [class~='repoHeader'] {
+    //     font-size: $font-size-large;
+    //     font-weight: bold;
+    //   }
 
-      [class~='repoName'] {
-        padding: $padding-stock;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: $gap-stock;
+    //   [class~='repoName'] {
+    //     padding: $padding-stock;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: $gap-stock;
 
-        [class~='repoNameInput'] {
-          font-size: $font-size-large;
-          font-weight: bold;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
+    //     [class~='repoNameInput'] {
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
+    //       width: 100%;
+    //       display: flex;
+    //       flex-direction: column;
+    //     }
 
-        [class~='repoURLInput'] {
-          font-size: $font-size-large;
-          font-weight: bold;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
+    //     [class~='repoURLInput'] {
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
+    //       width: 100%;
+    //       display: flex;
+    //       flex-direction: column;
+    //     }
 
-        button {
-          border: none;
-          font-size: $font-size-xxlarge;
-        }
-      }
+    //     button {
+    //       border: none;
+    //       font-size: $font-size-xxlarge;
+    //     }
+    //   }
 
-      [class='repoList'] {
-        border: $border-thin;
-        padding: $padding-stock;
-        max-height: 16rem;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        gap: $gap-stock;
+    //   [class='repoList'] {
+    //     border: $border-thin;
+    //     padding: $padding-stock;
+    //     max-height: 16rem;
+    //     overflow-y: scroll;
+    //     display: flex;
+    //     flex-direction: row;
+    //     flex-wrap: wrap;
+    //     align-content: flex-start;
+    //     gap: $gap-stock;
 
-        [class~='repo'] {
-          border: $border-thin;
-          border-radius: $border-radius-stock;
-          position: relative;
-          display: flex;
-          padding-left: $padding-thick;
-          padding-right: $padding-thick;
-          font-size: $font-size-large;
-          font-weight: bold;
+    //     [class~='repo'] {
+    //       border: $border-thin;
+    //       border-radius: $border-radius-stock;
+    //       position: relative;
+    //       display: flex;
+    //       padding-left: $padding-thick;
+    //       padding-right: $padding-thick;
+    //       font-size: $font-size-large;
+    //       font-weight: bold;
 
-          button {
-            color: red;
-            padding: 0;
-            position: absolute;
-            right: 2px;
-            top: 2px;
+    //       button {
+    //         color: red;
+    //         padding: 0;
+    //         position: absolute;
+    //         right: 2px;
+    //         top: 2px;
 
-            svg {
-              stroke-width: 0.02rem;
-            }
-          }
+    //         svg {
+    //           stroke-width: 0.02rem;
+    //         }
+    //       }
 
-          button:hover {
-            scale: 150%;
-          }
-        }
-      }
-    }
+    //       button:hover {
+    //         scale: 150%;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
 

@@ -54,7 +54,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('folders', data.data);
         setFolders(data.data);
       })
       .catch();
@@ -66,7 +65,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.data);
         getFolders();
         getProjects();
       })
@@ -83,7 +81,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         getFolders();
         getProjects();
       })
@@ -100,7 +97,6 @@ const App = () => {
       .then((data) => {
         getFolders();
         getProjects();
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -115,7 +111,7 @@ const App = () => {
       .then((data) => {
         setProjects(data.data);
         // Use for testing
-        // setCurrentProject(data.data.length ? data.data[0] : {});
+        setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -161,7 +157,9 @@ const App = () => {
       body: JSON.stringify(data),
     };
 
-    fetch(`${SERVER_URL}/save_project`, options)
+    console.log('saving', data);
+
+    fetch(`${SERVER_URL}/project`, options)
       .then((response) => {
         return response.json();
       })

@@ -174,6 +174,7 @@ function update_project(project_data, callback) {
     `UPDATE projects 
     SET
       name = '${project_data.name}',
+      folder_id = '${parseInt(project_data.folder_id)}',
       slug = '${project_data.slug}',
       url = '${project_data.url}',
       client = '${project_data.client}',
@@ -213,6 +214,7 @@ module.exports = {
   create_project,
   select_all_projects,
   select_project,
+  select_project_by_folder,
   update_project,
   delete_project,
 };

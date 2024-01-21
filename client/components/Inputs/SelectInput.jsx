@@ -8,6 +8,7 @@ export default function Select({
   options,
   changeHandler,
 }) {
+  console.log(Number(value).toString());
   return (
     <div className={className}>
       <label htmlFor={inputName}>

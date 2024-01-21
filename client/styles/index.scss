@@ -77,4 +77,7 @@ textarea:focus {
 }
 
 @media screen and (orientation: portrait) {
+  .app-content {
+    flex-direction: column;
+  }
 }

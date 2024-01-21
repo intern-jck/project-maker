@@ -3,9 +3,9 @@
 .Dashboard {
   border: $border-stock;
   background-color: $color-panel-background;
-  width: 28%;
-  height: $max-app-height;
   padding: $padding-stock;
+  max-width: 20rem;
+  height: $max-app-height;
   display: flex;
   flex-direction: column;
   gap: $gap-thin;

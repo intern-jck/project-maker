@@ -13,6 +13,8 @@ const ProjectMaker = ({
   onSaveProject,
   onDeleteProject,
 }) => {
+  console.log(projectData);
+
   const [currentFormData, setCurrentFormData] = useState(projectData);
 
   function saveProjectHandler(event) {
@@ -34,6 +36,7 @@ const ProjectMaker = ({
     event.preventDefault();
 
     const { name, value } = event.currentTarget;
+    console.log(name, value);
 
     let updatedInput = {};
 
@@ -46,6 +49,8 @@ const ProjectMaker = ({
     } else {
       updatedInput = { [name]: value };
     }
+
+    console.log(updatedInput);
 
     // Update the current form data
     setCurrentFormData((currentFormData) => ({
@@ -64,47 +69,57 @@ const ProjectMaker = ({
   }
 
   function onChangeTest(event) {
+    event.preventDefault();
     const { value } = event.target;
     console.log(value);
+
+    const udpatedFolder = { folder_id: value };
+    console.log(udpatedFolder);
+
+    setCurrentFormData((currentFormData) => ({
+      ...currentFormData,
+      ...udpatedFolder,
+    }));
   }
 
   return (
     <div className='ProjectMaker'>
-      <div className='form-header'>
-        <p>
-          <span>ID:</span> {projectData.project_id}
-        </p>
-        <div className='form-controls'>
-          <SelectInput
-            inputId='form-folder-select'
-            className='form-folder-select'
-            inputName='Project Folder'
-            options={folderData.map((item) => {
-              return [item.folder_id, item.name];
-            })}
-            changeHandler={onChangeTest}
-          />
-          <button type='submit' form='project-form'>
-            <i className='fa-regular fa-floppy-disk'></i>
-          </button>
-          <button
-            value={currentFormData.project_id}
-            onClick={deleteProjectHandler}
-          >
-            <i className='fa-regular fa-trash-can'></i>
-          </button>
-          <button onClick={closeProjectHandler}>
-            <i className='fa-solid fa-square-xmark'></i>
-          </button>
-        </div>
-      </div>
-
       <form
         id='project-form'
         className='project-form'
         onSubmit={saveProjectHandler}
       >
-        <div className='form-first-row'>
+        <div className='form-header'>
+          <p>
+            <span>ID:</span> {projectData.project_id}
+          </p>
+          <div className='form-controls'>
+            <SelectInput
+              inputId='form-folder-select'
+              className='form-folder-select'
+              inputName='folder_id'
+              options={folderData.map((item) => {
+                return [item.folder_id, item.name];
+              })}
+              value={currentFormData.folder_id}
+              changeHandler={onChangeTest}
+            />
+            <button type='submit' form='project-form'>
+              <i className='fa-regular fa-floppy-disk'></i>
+            </button>
+            <button
+              value={currentFormData.project_id}
+              onClick={deleteProjectHandler}
+            >
+              <i className='fa-regular fa-trash-can'></i>
+            </button>
+            <button onClick={closeProjectHandler}>
+              <i className='fa-solid fa-square-xmark'></i>
+            </button>
+          </div>
+        </div>
+
+        <div className='form-row'>
           <TextInput
             inputId='name-input'
             className='name-input'
@@ -148,7 +163,8 @@ const ProjectMaker = ({
             changeHandler={updateDate}
           />
         </div>
-        <div className='form-second-row'>
+
+        <div className='form-row'>
           <TextInput
             inputId='short-input'
             className='short-input'
