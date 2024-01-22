@@ -6,18 +6,25 @@ var bodyParser = require('body-parser');
 const PORT = 3000;
 
 const db = require('./db/db.js');
-const sql = require('./db/sql.js');
+// const sql = require('./db/sql.js');
 
 app.use(cors());
-// parse application/json
 app.use(bodyParser.json());
 
-// Index route
+/**
+ * INDEX ROUTE
+ */
+
+// GET /
 app.get('/', (req, res) => {
   res.json({
     msg: 'hello',
   });
 });
+
+/**
+ * FOLDER ROUTES
+ */
 
 // GET /folders
 // Gets all folders
@@ -45,7 +52,7 @@ app.get('/create_folder', (req, res) => {
   });
 });
 
-// DELETE /folder
+// DELETE /folder/<FOLDER_ID>
 // Deletes folder from database
 app.delete('/folder/:id', (req, res) => {
   db.delete_folder(req.params.id, (error) => {
@@ -61,16 +68,9 @@ app.delete('/folder/:id', (req, res) => {
   });
 });
 
-app.get('/folder_projects', (req, res) => {
-  db.select_project_by_folder(req.query, (error, results) => {
-    if (error) {
-      console.error(error);
-    }
-    res.json({
-      data: results,
-    });
-  });
-});
+/**
+ * PROJECT ROUTES
+ */
 
 // GET /projects
 // Gets all projects
@@ -93,6 +93,20 @@ app.get('/project', (req, res) => {
       console.error(error);
       res.json({ msg: 'error!' });
     }
+    res.json({
+      data: results,
+    });
+  });
+});
+
+// GET /folder_prjects?folder_id=<FOLDER_ID>
+// Gets all projects by folder id
+app.get('/folder_projects', (req, res) => {
+  db.select_projects_by_folder(req.query.folder_id, (error, results) => {
+    if (error) {
+      console.error(error);
+    }
+    console.log(results);
     res.json({
       data: results,
     });
@@ -132,7 +146,7 @@ app.put('/project', (req, res) => {
   });
 });
 
-// DELETE /project
+// DELETE /project/<PROJECT_ID>
 // Deletes project from database
 app.delete('/project/:id', (req, res) => {
   db.delete_project(req.params.id, (error) => {
@@ -149,5 +163,5 @@ app.delete('/project/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`P Maker App Listening @ IP: 127.0.0.1 PORT: ${PORT}`);
+  console.log(`P Maker App Listening @ http://127.0.0.1:${PORT}`);
 });

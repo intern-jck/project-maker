@@ -8,7 +8,6 @@ export default function Select({
   options,
   changeHandler,
 }) {
-  console.log(Number(value).toString());
   return (
     <div className={className}>
       <label htmlFor={inputName}>
@@ -20,7 +19,7 @@ export default function Select({
         onChange={changeHandler}
         value={value}
       >
-        <option key={0} value=''>
+        <option key={0} value='ALL'>
           {inputName}
         </option>
         {options.map((option, i) => {

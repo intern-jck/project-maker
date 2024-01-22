@@ -7,16 +7,11 @@ const {
   PhotosModel,
 } = require('./models.js');
 
-const sqlSelectAllFolders = `SELECT * FROM folders`;
-const sqlSelectAllProjects = `SELECT * FROM projects`;
-
 // Initialize database
 const db = new sqlite3.Database(
   './server/db/projects.db',
   sqlite3.OPEN_READWRITE,
   (err) => {
-    console.log('INITIALIZING DATABASE');
-
     if (err && err.code == 'SQLITE_CANTOPEN') {
       console.log('DATABASE NOT FOUND');
       createDatabase();
@@ -157,9 +152,13 @@ function select_project(project_id, callback) {
   );
 }
 
-function select_project_by_folder(folder_id, callback) {
+function select_projects_by_folder(folder_id, callback) {
+  if (!folder_id) {
+    select_all_projects(callback);
+  }
+
   return db.all(
-    `SELECT * FROM projects WHERE folder_id='${folder_id}'`,
+    `SELECT * FROM projects WHERE folder_id=${folder_id}`,
     (error, rows) => {
       if (error) {
         console.log(`select_project_by_folder error: ${error}`);
@@ -214,7 +213,7 @@ module.exports = {
   create_project,
   select_all_projects,
   select_project,
-  select_project_by_folder,
+  select_projects_by_folder,
   update_project,
   delete_project,
 };

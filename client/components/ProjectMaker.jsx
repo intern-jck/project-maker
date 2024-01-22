@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/ProjectMaker.scss';
 
 import TextInput from './Inputs/TextInput.jsx';
@@ -104,16 +104,17 @@ const ProjectMaker = ({
               value={currentFormData.folder_id}
               changeHandler={onChangeTest}
             />
-            <button type='submit' form='project-form'>
+            <button type='submit'>
               <i className='fa-regular fa-floppy-disk'></i>
             </button>
             <button
+              type='button'
               value={currentFormData.project_id}
               onClick={deleteProjectHandler}
             >
               <i className='fa-regular fa-trash-can'></i>
             </button>
-            <button onClick={closeProjectHandler}>
+            <button type='button' onClick={closeProjectHandler}>
               <i className='fa-solid fa-square-xmark'></i>
             </button>
           </div>

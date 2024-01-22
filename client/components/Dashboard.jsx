@@ -4,11 +4,6 @@ import SelectInput from './Inputs/SelectInput.jsx';
 import TextInput from './Inputs/TextInput.jsx';
 import '../styles/Dashboard.scss';
 
-const test_folder_data = [
-  { folder_id: 123, name: 'TEST' },
-  { folder_id: 456, name: 'TEST_2' },
-];
-
 const Dashboard = ({
   folderData,
   dashboardData,
@@ -23,14 +18,8 @@ const Dashboard = ({
     return { project_id, name };
   });
 
-  function onChangeTest(event) {
-    const { value } = event.target;
-    console.log(value);
-  }
-
   function onCreateFolderHandler(event) {
     const value = document.getElementById('folder-input').value;
-    console.log(value);
 
     if (value) {
       onCreateFolder(value);
@@ -42,22 +31,21 @@ const Dashboard = ({
 
   function onDeleteFolderHandler(event) {
     const value = document.getElementById('folder-select').value;
-    console.log(value);
 
     if (value) {
       onDeleteFolder(value);
     }
   }
 
-  function onCreateProjectHandler(event) {
-    event.preventDefault();
-    onCreateProject();
-  }
-
   function onSelectFolderHandler(event) {
     event.preventDefault();
     const { value } = event.target;
     onSelectFolder(value);
+  }
+
+  function onCreateProjectHandler(event) {
+    event.preventDefault();
+    onCreateProject();
   }
 
   return (
@@ -68,7 +56,6 @@ const Dashboard = ({
             inputId='folder-input'
             className='folder-input'
             inputName={'folder_name'}
-            changeHandler={onChangeTest}
           />
           <button onClick={onCreateFolderHandler}>
             <i className='fa-solid fa-folder-plus'></i>
@@ -77,6 +64,7 @@ const Dashboard = ({
             <i className='fa-solid fa-file'></i>
           </button>
         </div>
+
         <div className='control-row'>
           <SelectInput
             inputId='folder-select'

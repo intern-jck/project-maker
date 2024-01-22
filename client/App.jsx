@@ -2,24 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard.jsx';
 import ProjectMaker from './components/ProjectMaker.jsx';
 
-// import useFetch from './hooks/useFetch.js';
-
-// import {
-//   getFolders,
-//   getCreateFolder,
-//   deleteFolder,
-//   getCreateProject,
-//   getProjects,
-//   getProject,
-//   putProject,
-//   deleteProject,
-// } from './services/http.js';
-
 const SERVER_URL = 'http://127.0.0.1:3000';
+const DEFAULT_FOLDER = { folder_id: 0, folder_name: 'ALL' };
 
 const App = () => {
   const [folders, setFolders] = useState([]);
-  const [currentFolder, setCurrentFolder] = useState({});
+  const [currentFolder, setCurrentFolder] = useState(DEFAULT_FOLDER);
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
 
@@ -89,7 +77,6 @@ const App = () => {
 
   // Project Functions
   function getCreateProject() {
-    console.log(currentFolder);
     fetch(`${SERVER_URL}/create_project`)
       .then((response) => {
         return response.json();
@@ -111,7 +98,7 @@ const App = () => {
       .then((data) => {
         setProjects(data.data);
         // Use for testing
-        setCurrentProject(data.data.length ? data.data[0] : {});
+        // setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -133,13 +120,16 @@ const App = () => {
 
   function getFolderProjects(value) {
     console.log('getting projects in', value);
+    if (value === 'ALL') {
+      setCurrentFolder(DEFAULT_FOLDER);
+    }
+
     fetch(`${SERVER_URL}/folder_projects?folder_id=${value}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.data);
-        // setProjects(data.data);
+        setProjects(data.data);
         // Use for testing
         // setCurrentProject(data.data.length ? data.data[0] : {});
       })
@@ -149,6 +139,9 @@ const App = () => {
   }
 
   function putProject(data) {
+    if (currentFolder === 'ALL') {
+    }
+
     const options = {
       method: 'PUT',
       headers: {
@@ -157,14 +150,11 @@ const App = () => {
       body: JSON.stringify(data),
     };
 
-    console.log('saving', data);
-
     fetch(`${SERVER_URL}/project`, options)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         getProjects();
       })
       .catch((error) => {
@@ -182,7 +172,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         getFolders();
         getProjects();
         setCurrentProject({});
@@ -194,14 +183,8 @@ const App = () => {
 
   // App Functions
   function closeProject() {
-    console.log('Close Project');
     setCurrentProject({});
   }
-
-  // function selectFolder(event) {
-  //   const { name, value } = event.target;
-  //   console.log(value);
-  // }
 
   return (
     <div className='App'>
