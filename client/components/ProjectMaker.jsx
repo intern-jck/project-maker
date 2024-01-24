@@ -5,6 +5,38 @@ import TextInput from './Inputs/TextInput.jsx';
 import SelectInput from './Inputs/SelectInput.jsx';
 import TextArea from './Inputs/TextArea.jsx';
 import DateInput from './Inputs/DateInput.jsx';
+import PhotoInput from './Inputs/PhotoInput.jsx';
+
+const DEFAULT_FORM_DATA = {
+  client: 'default_client',
+  client_url: 'default_client_url',
+  description: 'default_description',
+  end_date: '2024-01-22',
+  folder_id: 0,
+  name: 'default_name',
+  project_id: 1705963137624,
+  short: 'default_short',
+  slug: 'default_slug',
+  start_date: '2024-01-22',
+  url: 'default_url',
+  youtube_url: 'default_youtube',
+  github_url: 'default_github',
+  photos: [],
+  // tech_tags: [],
+};
+
+const DEFAULT_PHOTO = {
+  photo_project_id: 0,
+  name: 'default',
+  url: 'default',
+};
+
+const DEFAULT_TECH = {
+  tech_id: 0,
+  name: 'default_tech',
+  url: 'default_url',
+  short: 'default_short',
+};
 
 const ProjectMaker = ({
   folderData,
@@ -16,6 +48,21 @@ const ProjectMaker = ({
   console.log(projectData);
 
   const [currentFormData, setCurrentFormData] = useState(projectData);
+  const [newPhoto, setNewPhoto] = useState(DEFAULT_PHOTO);
+
+  function updateFolder(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    console.log(value);
+
+    const udpatedFolder = { folder_id: value };
+    console.log(udpatedFolder);
+
+    setCurrentFormData((currentFormData) => ({
+      ...currentFormData,
+      ...udpatedFolder,
+    }));
+  }
 
   function saveProjectHandler(event) {
     event.preventDefault();
@@ -68,19 +115,90 @@ const ProjectMaker = ({
     }));
   }
 
-  function onChangeTest(event) {
+  function updatePhoto(event) {
     event.preventDefault();
-    const { value } = event.target;
-    console.log(value);
+    const { name, value } = event.target;
+    console.log(name, value);
 
-    const udpatedFolder = { folder_id: value };
-    console.log(udpatedFolder);
+    const updatedPhoto = newPhoto;
 
-    setCurrentFormData((currentFormData) => ({
-      ...currentFormData,
-      ...udpatedFolder,
+    switch (name) {
+      case 'photo-input-name':
+        updatedPhoto.name = value;
+        break;
+
+      case 'photo-input-url':
+        updatedPhoto.url = value;
+        break;
+
+      default:
+        break;
+    }
+
+    setNewPhoto(() => ({
+      ...updatedPhoto,
     }));
   }
+
+  function addPhoto(event) {
+    event.preventDefault();
+    console.log('adding photo');
+
+    const photos = currentFormData.photos;
+    console.log(photos, currentFormData.photos);
+    // photos.push(newPhoto);
+
+    const updatedPhotos = {
+      photos: photos,
+    };
+
+    setNewPhoto(DEFAULT_PHOTO);
+    setCurrentFormData((currentFormData) => ({
+      ...updatedPhotos,
+      ...currentFormData,
+    }));
+  }
+
+  // function addPhoto(event: React.MouseEvent<HTMLButtonElement>) {
+  //   event.preventDefault();
+
+  //   const _photos = formData ? formData.photos : undefined;
+
+  //   if (newPhoto && _photos) {
+
+  //     _photos.push(newPhoto);
+
+  //     setNewPhoto({
+  //       slug: '',
+  //       url: '',
+  //     });
+
+  //     setFormData((formData) => ({
+  //       ...formData,
+  //       photos: _photos,
+  //     }) as ProjectType);
+
+  //   }
+
+  // };
+
+  // function deletePhoto(event: React.MouseEvent<HTMLButtonElement>) {
+  //   event.preventDefault();
+  //   const index = event.currentTarget.getAttribute('data-photo-index');
+  //   const photos = formData ? formData.photos : undefined;
+
+  //   if (index) {
+
+  //     if (photos) {
+  //       photos.splice(parseInt(index), 1);
+  //     }
+
+  //     setFormData((formData) => ({
+  //       ...formData,
+  //       photos: photos,
+  //     }) as ProjectType)
+  //   }
+  // };
 
   return (
     <div className='ProjectMaker'>
@@ -102,7 +220,7 @@ const ProjectMaker = ({
                 return [item.folder_id, item.name];
               })}
               value={currentFormData.folder_id}
-              changeHandler={onChangeTest}
+              changeHandler={updateFolder}
             />
             <button type='submit'>
               <i className='fa-regular fa-floppy-disk'></i>
@@ -178,6 +296,20 @@ const ProjectMaker = ({
             inputName={'info'}
             value={projectData.info}
             changeHandler={updateTextInput}
+          />
+        </div>
+
+        <div className='form-row'>
+          <PhotoInput
+            inputId='photos-input'
+            className='photos-input'
+            inputName='photos'
+            valueUrl={newPhoto.url}
+            valueName={newPhoto.name}
+            changeHandler={updatePhoto}
+            addHandler={addPhoto}
+            // photos={formData.photos}
+            // deleteHandler={deletePhoto}
           />
         </div>
       </form>

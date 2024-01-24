@@ -2,9 +2,9 @@ const sqlite3 = require('sqlite3');
 const {
   ProjectsModel,
   FoldersModel,
-  ProjectTechTagsModel,
-  TechTagsModel,
   PhotosModel,
+  TechTagsModel,
+  ProjectTechTagsModel,
 } = require('./models.js');
 
 // Initialize database
@@ -32,6 +32,9 @@ function createDatabase() {
     }
     createTable(pMakerDB, ProjectsModel);
     createTable(pMakerDB, FoldersModel);
+    createTable(pMakerDB, PhotosModel);
+    createTable(pMakerDB, TechTagsModel);
+    createTable(pMakerDB, ProjectTechTagsModel);
   });
 }
 

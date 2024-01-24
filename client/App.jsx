@@ -98,7 +98,7 @@ const App = () => {
       .then((data) => {
         setProjects(data.data);
         // Use for testing
-        // setCurrentProject(data.data.length ? data.data[0] : {});
+        setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -131,7 +131,7 @@ const App = () => {
       .then((data) => {
         setProjects(data.data);
         // Use for testing
-        // setCurrentProject(data.data.length ? data.data[0] : {});
+        setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);

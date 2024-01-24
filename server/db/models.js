@@ -22,12 +22,12 @@ const FoldersModel = `
   );
 `;
 
-const ProjectTechTagsModel = `
-  CREATE TABLE project_tech_tags (
-    tech_tag_id INTEGER,
-    tech_project_id INTEGER,
-    FOREIGN KEY(tech_tag_id) REFERENCES tech_tags(tech_id)
-    FOREIGN KEY(tech_project_id) REFERENCES projects(project_id)
+const PhotosModel = `
+  CREATE TABLE photos (
+    photo_project_id INTEGER,
+    url TEXT,
+    name TEXT,
+    FOREIGN KEY(photo_project_id) REFERENCES projects(project_id)
   );
 `;
 
@@ -40,19 +40,19 @@ const TechTagsModel = `
   );
 `;
 
-const PhotosModel = `
-  CREATE TABLE photos (
-    photo_project_id INTEGER,
-    url TEXT,
-    name TEXT,
-    FOREIGN KEY(photo_project_id) REFERENCES projects(project_id)
+const ProjectTechTagsModel = `
+  CREATE TABLE project_tech_tags (
+    tech_tag_id INTEGER,
+    tech_project_id INTEGER,
+    FOREIGN KEY(tech_tag_id) REFERENCES tech_tags(tech_id)
+    FOREIGN KEY(tech_project_id) REFERENCES projects(project_id)
   );
 `;
 
 module.exports = {
   ProjectsModel,
   FoldersModel,
-  ProjectTechTagsModel,
-  TechTagsModel,
   PhotosModel,
+  TechTagsModel,
+  ProjectTechTagsModel,
 };
