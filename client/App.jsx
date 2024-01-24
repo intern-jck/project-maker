@@ -139,6 +139,8 @@ const App = () => {
   }
 
   function putProject(data) {
+    console.log(data);
+    return;
     if (currentFolder === 'ALL') {
     }
 

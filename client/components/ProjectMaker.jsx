@@ -45,9 +45,9 @@ const ProjectMaker = ({
   onSaveProject,
   onDeleteProject,
 }) => {
-  console.log(projectData);
+  // console.log(projectData);
 
-  const [currentFormData, setCurrentFormData] = useState(projectData);
+  const [currentFormData, setCurrentFormData] = useState(DEFAULT_FORM_DATA);
   const [newPhoto, setNewPhoto] = useState(DEFAULT_PHOTO);
 
   function updateFolder(event) {
@@ -143,19 +143,15 @@ const ProjectMaker = ({
   function addPhoto(event) {
     event.preventDefault();
     console.log('adding photo');
-
-    const photos = currentFormData.photos;
-    console.log(photos, currentFormData.photos);
-    // photos.push(newPhoto);
-
-    const updatedPhotos = {
-      photos: photos,
-    };
+    console.log(newPhoto);
+    const updatedFormData = currentFormData;
+    updatedFormData.photos.push(newPhoto);
+    console.log(updatedFormData);
 
     setNewPhoto(DEFAULT_PHOTO);
-    setCurrentFormData((currentFormData) => ({
-      ...updatedPhotos,
-      ...currentFormData,
+
+    setCurrentFormData(() => ({
+      ...updatedFormData,
     }));
   }
 
