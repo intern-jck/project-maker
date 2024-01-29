@@ -3,50 +3,54 @@ import React from 'react';
 import TextInput from './TextInput.jsx';
 
 export default function PhotoInput({
-  // inputId,
+  inputId,
   className,
-  // inputName,
-  valueName,
-  valueUrl,
+  inputName,
+  name,
+  url,
+  photos,
   changeHandler,
   addHandler,
-
-  // photos,
-  // deleteHandler,
+  deleteHandler,
 }) {
   return (
     <div className={className}>
       <div className='photo-info'>
         <TextInput
-          inputId='photo-input-name'
-          className='photo-input-name'
-          inputName='photo-input-name'
-          value={valueName}
+          id='photo-input-name'
+          className='text-input'
+          name='NAME'
+          value={name}
           changeHandler={changeHandler}
         />
         <TextInput
-          inputId='photo-input-url'
-          className='photo-input-url'
-          inputName='photo-input-url'
-          value={valueUrl}
+          id='photo-input-url'
+          className='text-input'
+          name='URL'
+          value={url}
           changeHandler={changeHandler}
         />
-        <button onClick={addHandler}>
+        <button id='add-photo-button' onClick={addHandler}>
           <i className='fa-solid fa-square-plus'></i>
         </button>
       </div>
 
-      <div className='photoList'>
-        {/* {photos.map((photo, i) => {
-          return (
-            <div key={i} className='photoThumb'>
-              <Image src={photo.url} alt='not found' fill />
-              <button onClick={deleteHandler} data-photo-index={i}>
-                <i class='fa-regular fa-circle-xmark'></i>
-              </button>
-            </div>
-          );
-        })} */}
+      <div className='photo-list'>
+        {photos ? (
+          photos.map((photo, i) => {
+            return (
+              <div key={i} className='photo-thumb'>
+                THUMB
+                {/* <img src={photo.url} alt='not found' /> */}
+                {/* <button onClick={deleteHandler} data-photo-index={i}> */}
+                {/* <i class='fa-regular fa-circle-xmark'></i> */}
+                {/* </button> */}
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+// Need to change name to schemas cause thats what they are.
+
 const ProjectsModel = `
   CREATE TABLE projects (
     project_id INTEGER PRIMARY KEY,

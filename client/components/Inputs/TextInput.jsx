@@ -1,23 +1,21 @@
 import React from 'react';
 
 export default function TextInput({
-  inputId,
+  id,
   className,
-  inputName,
+  name,
   value,
   changeHandler,
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputName}>
-        {inputName ? inputName.toUpperCase() : ''}
-      </label>
+      <label htmlFor={name}>{name}</label>
       <input
-        id={inputId}
+        id={id}
         type='text'
-        name={inputName}
+        name={name}
         value={value}
-        placeholder={inputName}
+        placeholder={name}
         onChange={changeHandler}
       />
     </div>

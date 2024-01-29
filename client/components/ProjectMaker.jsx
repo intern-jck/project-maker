@@ -235,75 +235,14 @@ const ProjectMaker = ({
         </div>
 
         <div className='form-row'>
-          <TextInput
-            inputId='name-input'
-            className='name-input'
-            inputName={'name'}
-            value={currentFormData.name}
-            changeHandler={updateTextInput}
-          />
-          <TextInput
-            inputId='url-input'
-            className='url-input'
-            inputName={'url'}
-            value={projectData.url}
-            changeHandler={updateTextInput}
-          />
-          <TextInput
-            inputId='client-input'
-            className='client-input'
-            inputName={'client'}
-            value={projectData.client}
-            changeHandler={updateTextInput}
-          />
-          <TextInput
-            inputId='client-url-input'
-            className='client-url-input'
-            inputName={'client_url'}
-            value={projectData.client_url}
-            changeHandler={updateTextInput}
-          />
-          <DateInput
-            inputId='date-input'
-            className='date-input'
-            inputName={'start_date'}
-            dateValue={projectData.start_date}
-            changeHandler={updateDate}
-          />
-          <DateInput
-            inputId='date-input'
-            className='date-input'
-            inputName={'end_date'}
-            dateValue={projectData.end_date}
-            changeHandler={updateDate}
-          />
-        </div>
-
-        <div className='form-row'>
-          <TextInput
-            inputId='short-input'
-            className='short-input'
-            inputName={'short'}
-            value={projectData.short}
-            changeHandler={updateTextInput}
-          />
-          <TextArea
-            className='info-input'
-            inputName={'info'}
-            value={projectData.info}
-            changeHandler={updateTextInput}
-          />
-        </div>
-
-        <div className='form-row'>
           <PhotoInput
             inputId='photos-input'
             className='photos-input'
             inputName='photos'
-            valueUrl={newPhoto.url}
-            valueName={newPhoto.name}
+            url={newPhoto.url}
+            name={newPhoto.name}
             changeHandler={updatePhoto}
-            addHandler={addPhoto}
+            // addHandler={addPhoto}
             // photos={formData.photos}
             // deleteHandler={deletePhoto}
           />
@@ -314,3 +253,67 @@ const ProjectMaker = ({
 };
 
 export default ProjectMaker;
+
+// scratch
+{
+  /* <div className='form-row'>
+<TextInput
+  inputId='name-input'
+  className='name-input'
+  inputName={'name'}
+  value={currentFormData.name}
+  changeHandler={updateTextInput}
+/>
+<TextInput
+  inputId='url-input'
+  className='url-input'
+  inputName={'url'}
+  value={projectData.url}
+  changeHandler={updateTextInput}
+/>
+<TextInput
+  inputId='client-input'
+  className='client-input'
+  inputName={'client'}
+  value={projectData.client}
+  changeHandler={updateTextInput}
+/>
+<TextInput
+  inputId='client-url-input'
+  className='client-url-input'
+  inputName={'client_url'}
+  value={projectData.client_url}
+  changeHandler={updateTextInput}
+/>
+<DateInput
+  inputId='date-input'
+  className='date-input'
+  inputName={'start_date'}
+  dateValue={projectData.start_date}
+  changeHandler={updateDate}
+/>
+<DateInput
+  inputId='date-input'
+  className='date-input'
+  inputName={'end_date'}
+  dateValue={projectData.end_date}
+  changeHandler={updateDate}
+/>
+</div>
+
+<div className='form-row'>
+<TextInput
+  inputId='short-input'
+  className='short-input'
+  inputName={'short'}
+  value={projectData.short}
+  changeHandler={updateTextInput}
+/>
+<TextArea
+  className='info-input'
+  inputName={'info'}
+  value={projectData.info}
+  changeHandler={updateTextInput}
+/>
+</div> */
+}

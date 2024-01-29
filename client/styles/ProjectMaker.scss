@@ -4,7 +4,6 @@
   border: $border-stock;
   background-color: $color-panel-background;
   padding: $padding-stock;
-  // width: 70%;
   height: $max-app-height;
   display: flex;
   flex-direction: column;
@@ -68,19 +67,29 @@
       gap: $gap-stock;
     }
 
-    .name-input,
-    .folder-input,
-    .client-input,
-    .client-url-input,
-    .url-input {
+    .text-input {
       border: $border-thin;
       padding: $padding-thin;
       font-size: $font-size-large;
       font-weight: bold;
-      width: 16rem;
+      width: 100%;
       display: flex;
       flex-direction: column;
     }
+
+    // .name-input,
+    // .folder-input,
+    // .client-input,
+    // .client-url-input,
+    // .url-input {
+    //   border: $border-thin;
+    //   padding: $padding-thin;
+    //   font-size: $font-size-large;
+    //   font-weight: bold;
+    //   width: 16rem;
+    //   display: flex;
+    //   flex-direction: column;
+    // }
 
     .date-input {
       border: $border-thin;
@@ -108,7 +117,7 @@
     .short-input {
       border: $border-thin;
       padding: $padding-thin;
-      margin: $margin-thin;
+      // margin: $margin-thin;
       font-size: $font-size-large;
       font-weight: bold;
       display: flex;
@@ -122,7 +131,7 @@
     .info-input {
       border: $border-thin;
       padding: $padding-thin;
-      margin: $margin-thin;
+      // margin: $margin-thin;
       font-size: $font-size-large;
       font-weight: bold;
       display: flex;
@@ -135,37 +144,31 @@
       }
     }
 
-    .photo-input {
-      // border: $border-thin;
+    .photos-input {
+      border: $border-thin;
       padding: $padding-thin;
       display: flex;
       flex-direction: column;
       min-width: 50%;
+      height: 20rem;
 
-      [class~='photoURL'] {
-        padding: $padding-stock;
-        display: flex;
-        align-items: center;
-        gap: $gap-stock;
-
-        [class~='photoURLInput'] {
-          font-size: $font-size-large;
-          font-weight: bold;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
+      .photo-info {
+        border: $border-thin;
+        padding: $padding-thin;
 
         button {
           border: none;
+          background: none;
+          margin: 0;
+          padding: 0;
           font-size: $font-size-xxlarge;
         }
       }
 
-      [class~='photoList'] {
+      .photo-list {
         border: $border-thin;
         padding: $padding-stock;
-        max-height: 16rem;
+        height: 100%;
         overflow-y: scroll;
         display: flex;
         flex-direction: row;
@@ -173,7 +176,7 @@
         align-content: flex-start;
         gap: $gap-stock;
 
-        [class~='photoThumb'] {
+        .photo-thumb {
           border: $border-thin;
           border-radius: $border-radius-stock;
           position: relative;
@@ -187,9 +190,9 @@
 
           button {
             border: none;
+            background: none;
             color: red;
             padding: 0;
-            background: none;
             position: absolute;
             right: 2px;
             top: 2px;

@@ -33,15 +33,20 @@ function createDatabase() {
     createTable(pMakerDB, ProjectsModel);
     createTable(pMakerDB, FoldersModel);
     createTable(pMakerDB, PhotosModel);
-    createTable(pMakerDB, TechTagsModel);
-    createTable(pMakerDB, ProjectTechTagsModel);
+    // createTable(pMakerDB, TechTagsModel);
+    // createTable(pMakerDB, ProjectTechTagsModel);
   });
 }
 
 // Create a table with a give model.
 // See models.js for SQL to create tables
 function createTable(database, table_model) {
-  database.exec(table_model);
+  database.exec(table_model, (error) => {
+    if (error) {
+      console.log(error);
+    }
+    console.log(table_model.split('(')[0]);
+  });
 }
 
 function create_folder(folder_name, callback) {
@@ -53,13 +58,6 @@ function create_folder(folder_name, callback) {
   const sqlCreateFolder = `
     INSERT INTO folders(folder_id,name)
     VALUES(${timestamp}, '${folder_name}');`;
-
-  // return db.exec(sql, (error) => {
-  //   if (error) {
-  //     console.log(`create_folder error: ${error}`);
-  //   }
-  //   callback(error);
-  // });
 
   return db.serialize(() => {
     db.run(sqlCreateFolder).all(sqlSelectAllFolders, (error, rows) => {
@@ -256,5 +254,6 @@ module.exports = {
   select_projects_by_folder,
   update_project,
   delete_project,
+  select_photos,
   insert_photo,
 };

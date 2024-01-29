@@ -162,6 +162,14 @@ app.delete('/project/:id', (req, res) => {
   });
 });
 
+/**
+ * PHOTOS ROUTES
+ */
+
+app.get('/photos/:id', (req, res) => {
+  res.json({ msg: `ok: ${req.params.id}` });
+});
+
 app.listen(PORT, () => {
   console.log(`P Maker App Listening @ http://127.0.0.1:${PORT}`);
 });

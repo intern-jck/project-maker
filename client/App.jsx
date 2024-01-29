@@ -35,7 +35,9 @@ const App = () => {
   // I.E. getCreateProject ==> GET /create_project
   // I.E. deleteProject(value) ==> DELETE /project?project_id=[value]
 
-  // Folder Functions
+  /**
+   *   FOLDER REQUESTS
+   */
   function getFolders() {
     fetch(`${SERVER_URL}/folders`)
       .then((response) => {
@@ -75,7 +77,9 @@ const App = () => {
       .catch();
   }
 
-  // Project Functions
+  /**
+   *   PROJECT REQUESTS
+   */
   function getCreateProject() {
     fetch(`${SERVER_URL}/create_project`)
       .then((response) => {
@@ -140,9 +144,6 @@ const App = () => {
 
   function putProject(data) {
     console.log(data);
-    return;
-    if (currentFolder === 'ALL') {
-    }
 
     const options = {
       method: 'PUT',
@@ -180,6 +181,22 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  }
+
+  /**
+   * PHOTO REQUESTS
+   */
+  function getPhotos(projectId) {
+    fetch(`/photos/${projectId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('getPhotos', error);
       });
   }
 
