@@ -45,7 +45,7 @@ const ProjectMaker = ({
   onSaveProject,
   onDeleteProject,
 }) => {
-  // console.log(projectData);
+  console.log(projectData);
 
   const [currentFormData, setCurrentFormData] = useState(DEFAULT_FORM_DATA);
   const [newPhoto, setNewPhoto] = useState(DEFAULT_PHOTO);

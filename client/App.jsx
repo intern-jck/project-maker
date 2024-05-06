@@ -101,6 +101,7 @@ const App = () => {
       })
       .then((data) => {
         setProjects(data.data);
+        console.log(data.data);
         // Use for testing
         setCurrentProject(data.data.length ? data.data[0] : {});
       })
