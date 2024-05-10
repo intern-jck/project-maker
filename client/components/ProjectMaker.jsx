@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import '../styles/ProjectMaker.scss';
+import React, { useState } from "react";
+import "../styles/ProjectMaker.scss";
 
-import TextInput from './Inputs/TextInput.jsx';
-import SelectInput from './Inputs/SelectInput.jsx';
-import TextArea from './Inputs/TextArea.jsx';
-import DateInput from './Inputs/DateInput.jsx';
-import PhotoInput from './Inputs/PhotoInput.jsx';
+import TextInput from "./Inputs/TextInput.jsx";
+import SelectInput from "./Inputs/SelectInput.jsx";
+import TextArea from "./Inputs/TextArea.jsx";
+import DateInput from "./Inputs/DateInput.jsx";
+import PhotoInput from "./Inputs/PhotoInput.jsx";
 
 const DEFAULT_FORM_DATA = {
-  client: 'default_client',
-  client_url: 'default_client_url',
-  description: 'default_description',
-  end_date: '2024-01-22',
+  client: "default_client",
+  client_url: "default_client_url",
+  description: "default_description",
+  end_date: "2024-01-22",
   folder_id: 0,
-  name: 'default_name',
+  name: "default_name",
   project_id: 1705963137624,
-  short: 'default_short',
-  slug: 'default_slug',
-  start_date: '2024-01-22',
-  url: 'default_url',
-  youtube_url: 'default_youtube',
-  github_url: 'default_github',
+  short: "default_short",
+  slug: "default_slug",
+  start_date: "2024-01-22",
+  url: "default_url",
+  youtube_url: "default_youtube",
+  github_url: "default_github",
   photos: [],
   // tech_tags: [],
 };
 
 const DEFAULT_PHOTO = {
   photo_project_id: 0,
-  name: 'default',
-  url: 'default',
+  name: "default",
+  url: "default",
 };
 
 const DEFAULT_TECH = {
   tech_id: 0,
-  name: 'default_tech',
-  url: 'default_url',
-  short: 'default_short',
+  name: "default_tech",
+  url: "default_url",
+  short: "default_short",
 };
 
 const ProjectMaker = ({
@@ -47,7 +47,7 @@ const ProjectMaker = ({
 }) => {
   console.log(projectData);
 
-  const [currentFormData, setCurrentFormData] = useState(DEFAULT_FORM_DATA);
+  const [currentFormData, setCurrentFormData] = useState(projectData);
   const [newPhoto, setNewPhoto] = useState(DEFAULT_PHOTO);
 
   function updateFolder(event) {
@@ -88,10 +88,10 @@ const ProjectMaker = ({
     let updatedInput = {};
 
     // If changing the name, maker sure to update the slug for correct routing
-    if (name === 'name') {
+    if (name === "name") {
       updatedInput = {
         [name]: value,
-        slug: value.toLowerCase().split(' ').join('-'),
+        slug: value.toLowerCase().split(" ").join("-"),
       };
     } else {
       updatedInput = { [name]: value };
@@ -123,11 +123,11 @@ const ProjectMaker = ({
     const updatedPhoto = newPhoto;
 
     switch (name) {
-      case 'photo-input-name':
+      case "photo-input-name":
         updatedPhoto.name = value;
         break;
 
-      case 'photo-input-url':
+      case "photo-input-url":
         updatedPhoto.url = value;
         break;
 
@@ -142,7 +142,7 @@ const ProjectMaker = ({
 
   function addPhoto(event) {
     event.preventDefault();
-    console.log('adding photo');
+    console.log("adding photo");
     console.log(newPhoto);
     const updatedFormData = currentFormData;
     updatedFormData.photos.push(newPhoto);
@@ -197,48 +197,48 @@ const ProjectMaker = ({
   // };
 
   return (
-    <div className='ProjectMaker'>
+    <div className="ProjectMaker">
       <form
-        id='project-form'
-        className='project-form'
+        id="project-form"
+        className="project-form"
         onSubmit={saveProjectHandler}
       >
-        <div className='form-header'>
+        <div className="form-header">
           <p>
             <span>ID:</span> {projectData.project_id}
           </p>
-          <div className='form-controls'>
+          <div className="form-controls">
             <SelectInput
-              inputId='form-folder-select'
-              className='form-folder-select'
-              inputName='folder_id'
+              inputId="form-folder-select"
+              className="form-folder-select"
+              inputName="folder_id"
               options={folderData.map((item) => {
                 return [item.folder_id, item.name];
               })}
               value={currentFormData.folder_id}
               changeHandler={updateFolder}
             />
-            <button type='submit'>
-              <i className='fa-regular fa-floppy-disk'></i>
+            <button type="submit">
+              <i className="fa-regular fa-floppy-disk"></i>
             </button>
             <button
-              type='button'
+              type="button"
               value={currentFormData.project_id}
               onClick={deleteProjectHandler}
             >
-              <i className='fa-regular fa-trash-can'></i>
+              <i className="fa-regular fa-trash-can"></i>
             </button>
-            <button type='button' onClick={closeProjectHandler}>
-              <i className='fa-solid fa-square-xmark'></i>
+            <button type="button" onClick={closeProjectHandler}>
+              <i className="fa-solid fa-square-xmark"></i>
             </button>
           </div>
         </div>
 
-        <div className='form-row'>
+        <div className="form-row">
           <PhotoInput
-            inputId='photos-input'
-            className='photos-input'
-            inputName='photos'
+            inputId="photos-input"
+            className="photos-input"
+            inputName="photos"
             url={newPhoto.url}
             name={newPhoto.name}
             changeHandler={updatePhoto}

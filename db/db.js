@@ -1,23 +1,24 @@
-const sqlite3 = require('sqlite3');
+const sqlite3 = require("sqlite3");
+
 const {
   ProjectsModel,
   FoldersModel,
   PhotosModel,
   TechTagsModel,
   ProjectTechTagsModel,
-} = require('./models.js');
+} = require("./models.js");
 
 // Initialize database
 const db = new sqlite3.Database(
-  './server/db/projects.db',
+  "./db/projects.db",
   sqlite3.OPEN_READWRITE,
   (err) => {
-    if (err && err.code == 'SQLITE_CANTOPEN') {
-      console.log('DATABASE NOT FOUND');
+    if (err && err.code == "SQLITE_CANTOPEN") {
+      console.log("DATABASE NOT FOUND");
       createDatabase();
       return;
     } else if (err) {
-      console.log('Getting error ' + err);
+      console.log("Error" + err);
       exit(1);
     }
   }
@@ -25,9 +26,9 @@ const db = new sqlite3.Database(
 
 // Creates projects and folders databases
 function createDatabase() {
-  const pMakerDB = new sqlite3.Database('./server/db/projects.db', (err) => {
+  const pMakerDB = new sqlite3.Database("./db/projects.db", (err) => {
     if (err) {
-      console.log('Getting error ' + err);
+      console.log("Create Database Error " + err);
       exit(1);
     }
     createTable(pMakerDB, ProjectsModel);
@@ -45,13 +46,13 @@ function createTable(database, table_model) {
     if (error) {
       console.log(error);
     }
-    console.log(table_model.split('(')[0]);
+    console.log(table_model.split("(")[0]);
   });
 }
 
 function create_folder(folder_name, callback) {
   if (!folder_name) {
-    folder_name = '';
+    folder_name = "";
   }
   const timestamp = Date.now();
 
@@ -94,7 +95,7 @@ function delete_folder(folder_id, callback) {
 // PROJECTS
 function create_project(callback) {
   const timestamp = Date.now();
-  const defaultDate = new Date().toISOString().split('T')[0];
+  const defaultDate = new Date().toISOString().split("T")[0];
 
   const sql = `
     INSERT INTO projects (
@@ -195,6 +196,10 @@ function update_project(project_data, callback) {
 }
 
 function delete_project(project_id, callback) {
+  console.log(
+    `DELETE FROM projects 
+    WHERE project_id=${project_id}`
+  );
   return db.exec(
     `DELETE FROM projects 
     WHERE project_id=${project_id}`,

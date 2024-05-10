@@ -1,12 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-var cors = require('cors');
-var bodyParser = require('body-parser');
+var cors = require("cors");
+var bodyParser = require("body-parser");
 
 const PORT = 3000;
 
-const db = require('./db/db.js');
-// const sql = require('./db/sql.js');
+const db = require("../db/db.js");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,9 +15,9 @@ app.use(bodyParser.json());
  */
 
 // GET /
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.json({
-    msg: 'hello',
+    msg: "hello",
   });
 });
 
@@ -28,7 +27,7 @@ app.get('/', (req, res) => {
 
 // GET /folders
 // Gets all folders
-app.get('/folders', (req, res) => {
+app.get("/folders", (req, res) => {
   db.select_all_folders((error, results) => {
     if (error) {
       console.error(error);
@@ -41,7 +40,7 @@ app.get('/folders', (req, res) => {
 
 // GET /create_folder
 // Creates a folder in table
-app.get('/create_folder', (req, res) => {
+app.get("/create_folder", (req, res) => {
   db.create_folder(req.query.folder_name, (error, results) => {
     if (error) {
       console.error(error);
@@ -54,7 +53,8 @@ app.get('/create_folder', (req, res) => {
 
 // DELETE /folder/<FOLDER_ID>
 // Deletes folder from database
-app.delete('/folder/:id', (req, res) => {
+app.delete("/folder/:id", (req, res) => {
+  console.log(`deleting: ${req.params}`);
   db.delete_folder(req.params.id, (error) => {
     if (error) {
       console.error(error);
@@ -63,7 +63,7 @@ app.delete('/folder/:id', (req, res) => {
       });
     }
     res.json({
-      data: 'success',
+      data: "success",
     });
   });
 });
@@ -74,7 +74,7 @@ app.delete('/folder/:id', (req, res) => {
 
 // GET /projects
 // Gets all projects
-app.get('/projects', (req, res) => {
+app.get("/projects", (req, res) => {
   db.select_all_projects((error, results) => {
     if (error) {
       console.error(error);
@@ -87,11 +87,11 @@ app.get('/projects', (req, res) => {
 
 // GET /project?project_id=<PROJECT_ID>
 // Get a project based on it's project id
-app.get('/project', (req, res) => {
+app.get("/project", (req, res) => {
   db.select_project(req.query.project_id, (error, results) => {
     if (error) {
       console.error(error);
-      res.json({ msg: 'error!' });
+      res.json({ msg: "error!" });
     }
     res.json({
       data: results,
@@ -101,7 +101,7 @@ app.get('/project', (req, res) => {
 
 // GET /folder_prjects?folder_id=<FOLDER_ID>
 // Gets all projects by folder id
-app.get('/folder_projects', (req, res) => {
+app.get("/folder_projects", (req, res) => {
   db.select_projects_by_folder(req.query.folder_id, (error, results) => {
     if (error) {
       console.error(error);
@@ -115,7 +115,7 @@ app.get('/folder_projects', (req, res) => {
 
 // GET /create_project
 // Create a new project with default info
-app.get('/create_project', (req, res) => {
+app.get("/create_project", (req, res) => {
   db.create_project((error, results) => {
     if (error) {
       console.error(error);
@@ -124,7 +124,7 @@ app.get('/create_project', (req, res) => {
       });
     }
     res.json({
-      data: 'success',
+      data: "success",
     });
   });
 });
@@ -132,7 +132,7 @@ app.get('/create_project', (req, res) => {
 // PUT /save_project
 // body: { CURRENT_PROJECT_FORM_DATA }
 // Updates the current project's entry in the database
-app.put('/project', (req, res) => {
+app.put("/project", (req, res) => {
   db.update_project(req.body, (error) => {
     if (error) {
       console.error(error);
@@ -141,14 +141,15 @@ app.put('/project', (req, res) => {
       });
     }
     res.json({
-      data: 'success',
+      data: "success",
     });
   });
 });
 
 // DELETE /project/<PROJECT_ID>
 // Deletes project from database
-app.delete('/project/:id', (req, res) => {
+app.delete("/project/:id", (req, res) => {
+  console.log(`deleting: ${req.params.id}`);
   db.delete_project(req.params.id, (error) => {
     if (error) {
       console.error(error);
@@ -157,7 +158,7 @@ app.delete('/project/:id', (req, res) => {
       });
     }
     res.json({
-      data: 'success',
+      data: "success",
     });
   });
 });
@@ -166,7 +167,7 @@ app.delete('/project/:id', (req, res) => {
  * PHOTOS ROUTES
  */
 
-app.get('/photos/:id', (req, res) => {
+app.get("/photos/:id", (req, res) => {
   res.json({ msg: `ok: ${req.params.id}` });
 });
 

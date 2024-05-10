@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Dashboard from './components/Dashboard.jsx';
-import ProjectMaker from './components/ProjectMaker.jsx';
+import React, { useEffect, useState } from "react";
+import Dashboard from "./components/Dashboard.jsx";
+import ProjectMaker from "./components/ProjectMaker.jsx";
 
-const SERVER_URL = 'http://127.0.0.1:3000';
-const DEFAULT_FOLDER = { folder_id: 0, folder_name: 'ALL' };
+const SERVER_URL = "http://127.0.0.1:3000";
+const DEFAULT_FOLDER = { folder_id: 0, folder_name: "ALL" };
 
 const App = () => {
   const [folders, setFolders] = useState([]);
@@ -62,8 +62,9 @@ const App = () => {
   }
 
   function deleteFolder(value) {
+    console.log(`deleting: ${value}`);
     const options = {
-      method: 'DELETE',
+      method: "DELETE",
     };
 
     fetch(`${SERVER_URL}/folder/${value}`, options)
@@ -124,8 +125,8 @@ const App = () => {
   }
 
   function getFolderProjects(value) {
-    console.log('getting projects in', value);
-    if (value === 'ALL') {
+    console.log("getting projects in", value);
+    if (value === "ALL") {
       setCurrentFolder(DEFAULT_FOLDER);
     }
 
@@ -147,9 +148,9 @@ const App = () => {
     console.log(data);
 
     const options = {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     };
@@ -167,8 +168,9 @@ const App = () => {
   }
 
   function deleteProject(projectId) {
+    console.log(`client deleting: ${projectId}`);
     const options = {
-      method: 'DELETE',
+      method: "DELETE",
     };
 
     fetch(`${SERVER_URL}/project/${projectId}`, options)
@@ -176,6 +178,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         getFolders();
         getProjects();
         setCurrentProject({});
@@ -197,7 +200,7 @@ const App = () => {
         console.log(data);
       })
       .catch((error) => {
-        console.log('getPhotos', error);
+        console.log("getPhotos", error);
       });
   }
 
@@ -207,8 +210,8 @@ const App = () => {
   }
 
   return (
-    <div className='App'>
-      <div className='app-content'>
+    <div className="App">
+      <div className="app-content">
         <Dashboard
           folderData={folders}
           dashboardData={projects}
