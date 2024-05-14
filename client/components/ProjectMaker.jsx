@@ -48,7 +48,7 @@ const ProjectMaker = ({
   console.log(projectData);
 
   const [currentFormData, setCurrentFormData] = useState(projectData);
-  const [newPhoto, setNewPhoto] = useState(DEFAULT_PHOTO);
+  const [newPhoto, setNewPhoto] = useState({});
 
   function updateFolder(event) {
     event.preventDefault();
@@ -122,18 +122,29 @@ const ProjectMaker = ({
 
     const updatedPhoto = newPhoto;
 
-    switch (name) {
-      case "photo-input-name":
-        updatedPhoto.name = value;
-        break;
-
-      case "photo-input-url":
-        updatedPhoto.url = value;
-        break;
-
-      default:
-        break;
+    if (name === "photo-input_name") {
+      console.log("photo name: ", value);
+      updatePhoto.name = value;
+    } else if (name === "photo-input-url") {
+      console.log("photo url: ", value);
+      updatePhoto.url = value;
     }
+
+    console.log(updatedPhoto);
+    // switch (name) {
+    //   case "photo-input-name":
+    //     updatedPhoto.name = value;
+    //     break;
+
+    //   case "photo-input-url":
+    //     updatedPhoto.url = value;
+    //     break;
+
+    //   default:
+    //     break;
+    // }
+
+    // console.log(updatePhoto);
 
     setNewPhoto(() => ({
       ...updatedPhoto,
@@ -148,7 +159,7 @@ const ProjectMaker = ({
     updatedFormData.photos.push(newPhoto);
     console.log(updatedFormData);
 
-    setNewPhoto(DEFAULT_PHOTO);
+    // setNewPhoto(DEFAULT_PHOTO);
 
     setCurrentFormData(() => ({
       ...updatedFormData,
@@ -239,10 +250,10 @@ const ProjectMaker = ({
             inputId="photos-input"
             className="photos-input"
             inputName="photos"
-            url={newPhoto.url}
             name={newPhoto.name}
+            url={newPhoto.url}
             changeHandler={updatePhoto}
-            // addHandler={addPhoto}
+            addHandler={addPhoto}
             // photos={formData.photos}
             // deleteHandler={deletePhoto}
           />
@@ -256,7 +267,9 @@ export default ProjectMaker;
 
 // scratch
 {
-  /* <div className='form-row'>
+  /* 
+
+<div className='form-row'>
 <TextInput
   inputId='name-input'
   className='name-input'
@@ -315,5 +328,7 @@ export default ProjectMaker;
   value={projectData.info}
   changeHandler={updateTextInput}
 />
-</div> */
+</div> 
+
+*/
 }

@@ -1,56 +1,57 @@
-import React from 'react';
-import ProjectList from './ProjectList.jsx';
-import SelectInput from './Inputs/SelectInput.jsx';
-import TextInput from './Inputs/TextInput.jsx';
-import '../styles/Dashboard.scss';
+import React from "react";
+import ProjectList from "./ProjectList.jsx";
+// import SelectInput from "./Inputs/SelectInput.jsx";
+// import TextInput from "./Inputs/TextInput.jsx";
+import "../styles/Dashboard.scss";
 
 const Dashboard = ({
-  folderData,
+  // folderData,
   dashboardData,
-  onCreateFolder,
-  onDeleteFolder,
-  onCreateProject,
+  // onCreateFolder,
+  // onDeleteFolder,
+  // onCreateProject,
   onGetProject,
-  onSelectFolder,
+  // onSelectFolder,
 }) => {
+  // Should change to use state?
   const dashboardDataMapped = dashboardData.map((item) => {
     const { project_id, name } = item;
     return { project_id, name };
   });
 
-  function onCreateFolderHandler(event) {
-    const value = document.getElementById('folder-input').value;
+  // function onCreateFolderHandler(event) {
+  //   const value = document.getElementById("folder-input").value;
 
-    if (value) {
-      onCreateFolder(value);
-      document.getElementById('folder-input').value = '';
-    } else {
-      window.alert('Folder name cant be empty!');
-    }
-  }
+  //   if (value) {
+  //     onCreateFolder(value);
+  //     document.getElementById("folder-input").value = "";
+  //   } else {
+  //     window.alert("Folder name cant be empty!");
+  //   }
+  // }
 
-  function onDeleteFolderHandler(event) {
-    const value = document.getElementById('folder-select').value;
+  // function onDeleteFolderHandler(event) {
+  //   const value = document.getElementById("folder-select").value;
 
-    if (value) {
-      onDeleteFolder(value);
-    }
-  }
+  //   if (value) {
+  //     onDeleteFolder(value);
+  //   }
+  // }
 
-  function onSelectFolderHandler(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    onSelectFolder(value);
-  }
+  // function onSelectFolderHandler(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   onSelectFolder(value);
+  // }
 
-  function onCreateProjectHandler(event) {
-    event.preventDefault();
-    onCreateProject();
-  }
+  // function onCreateProjectHandler(event) {
+  //   event.preventDefault();
+  //   onCreateProject();
+  // }
 
   return (
-    <div className='Dashboard'>
-      <div className='dash-controls'>
+    <div className="Dashboard">
+      {/* <div className='dash-controls'>
         <div className='control-row'>
           <TextInput
             inputId='folder-input'
@@ -82,7 +83,7 @@ const Dashboard = ({
             <i className='fa-solid fa-file-export'></i>
           </button>
         </div>
-      </div>
+      </div> */}
 
       <ProjectList
         listData={dashboardDataMapped}

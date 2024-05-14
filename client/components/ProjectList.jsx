@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ProjectList = ({ listData, getProjectHandler }) => {
   function selectProject(event) {
@@ -8,17 +8,17 @@ const ProjectList = ({ listData, getProjectHandler }) => {
   }
 
   return (
-    <div className='ProjectList'>
+    <div className="ProjectList">
       {listData.length ? (
         listData.map((project, i) => {
           return (
             <button
-              className='project-button'
+              className="project-button"
               key={project.project_id}
               value={project.project_id}
               onClick={selectProject}
             >
-              <i className='fa-solid fa-file'></i>
+              <i className="fa-solid fa-file"></i>
               <p>{project.name}</p>
             </button>
           );

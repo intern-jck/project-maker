@@ -1,23 +1,24 @@
-@import './variables';
+@import "./variables";
 
 .ProjectMaker {
   border: $border-stock;
   background-color: $color-panel-background;
-  padding: $padding-stock;
-  height: $max-app-height;
+  // padding: $padding-stock;
+  // height: $max-app-height;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: $gap-thick;
   overflow-y: scroll;
 
   form {
-    border: $border-stock;
-    padding: $padding-stock;
+    // border: $border-stock;
+    // padding: $padding-stock;
   }
 
   .form-header {
     border: $border-thin;
-    padding: $padding-thin;
+    // padding: $padding-thin;
     display: flex;
     align-items: center;
     justify-content: space-between;

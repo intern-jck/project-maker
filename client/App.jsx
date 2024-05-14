@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import ProjectMaker from "./components/ProjectMaker.jsx";
+import { Menu } from "./components/Menu.jsx";
+
+import "./styles/App.scss";
 
 const SERVER_URL = "http://127.0.0.1:3000";
 const DEFAULT_FOLDER = { folder_id: 0, folder_name: "ALL" };
@@ -12,8 +15,8 @@ const App = () => {
   const [currentProject, setCurrentProject] = useState({});
 
   // const [projects] = useFetch(`${SERVER_URL}/projects`);
-
   // console.log(projects);
+
   useEffect(() => {
     // getFolders()
     //   .then((data) => setFolders(data))
@@ -211,6 +214,17 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="app-header">
+        <Menu
+          folderData={folders}
+          onCreateFolder={getCreateFolder}
+          onDeleteFolder={deleteFolder}
+          onCreateProject={getCreateProject}
+          onGetProject={getProject}
+          onSelectFolder={getFolderProjects}
+        />
+      </div>
+
       <div className="app-content">
         <Dashboard
           folderData={folders}

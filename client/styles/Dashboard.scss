@@ -1,54 +1,54 @@
-@import './variables';
+@import "./variables";
 
 .Dashboard {
   border: $border-stock;
   background-color: $color-panel-background;
   padding: $padding-stock;
   max-width: 20rem;
-  height: $max-app-height;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   gap: $gap-thin;
 
-  .dash-controls {
-    border: $border-thin;
-    padding: $padding-stock;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: start;
-    gap: 0.4rem;
+  // .dash-controls {
+  //   border: $border-thin;
+  //   padding: $padding-stock;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   align-items: center;
+  //   align-content: start;
+  //   gap: 0.4rem;
 
-    .control-row {
-      display: flex;
-      gap: 1rem;
-    }
+  //   .control-row {
+  //     display: flex;
+  //     gap: 1rem;
+  //   }
 
-    button {
-      border: none;
-      background: none;
-      padding: 0;
-      display: flex;
+  //   button {
+  //     border: none;
+  //     background: none;
+  //     padding: 0;
+  //     display: flex;
 
-      i {
-        font-size: 1.4rem;
-      }
-    }
+  //     i {
+  //       font-size: 1.4rem;
+  //     }
+  //   }
 
-    label {
-      display: none;
-    }
+  //   label {
+  //     display: none;
+  //   }
 
-    input {
-      width: 8rem;
-      height: 1.4rem;
-    }
+  //   input {
+  //     width: 8rem;
+  //     height: 1.4rem;
+  //   }
 
-    select {
-      width: 8rem;
-      height: 1.4rem;
-    }
-  }
+  //   select {
+  //     width: 8rem;
+  //     height: 1.4rem;
+  //   }
+  // }
 
   .ProjectList {
     border: $border-thin;
@@ -96,6 +96,7 @@
   }
 
   form {
+    border: 4px solid green;
     display: flex;
     align-items: center;
 
