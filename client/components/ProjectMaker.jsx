@@ -41,14 +41,20 @@ const DEFAULT_TECH = {
 const ProjectMaker = ({
   folderData,
   projectData,
+  photoData,
   onCloseProject,
   onSaveProject,
   onDeleteProject,
 }) => {
-  console.log(projectData);
+  console.log(projectData[0]);
 
-  const [currentFormData, setCurrentFormData] = useState(projectData);
+  const [project, setProject] = useState(projectData[0][0]);
+  const [photos, setPhotos] = useState(projectData[1][0]);
   const [newPhoto, setNewPhoto] = useState({});
+  const [repos, setRepos] = useState();
+  const [newRepo, setNewRepo] = useState();
+  const [tags, setTags] = useState();
+  const [newTag, setNewTag] = useState();
 
   function updateFolder(event) {
     event.preventDefault();
@@ -58,15 +64,15 @@ const ProjectMaker = ({
     const udpatedFolder = { folder_id: value };
     console.log(udpatedFolder);
 
-    setCurrentFormData((currentFormData) => ({
-      ...currentFormData,
+    setProject((project) => ({
+      ...project,
       ...udpatedFolder,
     }));
   }
 
   function saveProjectHandler(event) {
     event.preventDefault();
-    onSaveProject(currentFormData);
+    onSaveProject(project);
   }
 
   function deleteProjectHandler(event) {
@@ -100,8 +106,8 @@ const ProjectMaker = ({
     console.log(updatedInput);
 
     // Update the current form data
-    setCurrentFormData((currentFormData) => ({
-      ...currentFormData,
+    setProject((project) => ({
+      ...project,
       ...updatedInput,
     }));
   }
@@ -109,8 +115,8 @@ const ProjectMaker = ({
   function updateDate(event) {
     const { name, value } = event.target;
 
-    setCurrentFormData((currentFormData) => ({
-      ...currentFormData,
+    setProject((project) => ({
+      ...project,
       [name]: value,
     }));
   }
@@ -131,19 +137,17 @@ const ProjectMaker = ({
     }
 
     console.log(updatedPhoto);
+
     // switch (name) {
     //   case "photo-input-name":
     //     updatedPhoto.name = value;
     //     break;
-
     //   case "photo-input-url":
     //     updatedPhoto.url = value;
     //     break;
-
     //   default:
     //     break;
     // }
-
     // console.log(updatePhoto);
 
     setNewPhoto(() => ({
@@ -155,13 +159,13 @@ const ProjectMaker = ({
     event.preventDefault();
     console.log("adding photo");
     console.log(newPhoto);
-    const updatedFormData = currentFormData;
+    const updatedFormData = project;
     updatedFormData.photos.push(newPhoto);
     console.log(updatedFormData);
 
     // setNewPhoto(DEFAULT_PHOTO);
 
-    setCurrentFormData(() => ({
+    setProject(() => ({
       ...updatedFormData,
     }));
   }
@@ -216,7 +220,7 @@ const ProjectMaker = ({
       >
         <div className="form-header">
           <p>
-            <span>ID:</span> {projectData.project_id}
+            <span>ID:</span> {project.project_id}
           </p>
           <div className="form-controls">
             <SelectInput
@@ -226,7 +230,7 @@ const ProjectMaker = ({
               options={folderData.map((item) => {
                 return [item.folder_id, item.name];
               })}
-              value={currentFormData.folder_id}
+              value={project.folder_id}
               changeHandler={updateFolder}
             />
             <button type="submit">
@@ -254,7 +258,7 @@ const ProjectMaker = ({
             url={newPhoto.url}
             changeHandler={updatePhoto}
             addHandler={addPhoto}
-            // photos={formData.photos}
+            photos={photos}
             // deleteHandler={deletePhoto}
           />
         </div>

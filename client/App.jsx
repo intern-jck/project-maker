@@ -107,7 +107,7 @@ const App = () => {
         setProjects(data.data);
         console.log(data.data);
         // Use for testing
-        setCurrentProject(data.data.length ? data.data[0] : {});
+        // setCurrentProject(data.data.length ? data.data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -120,7 +120,8 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        setCurrentProject(data.data[0]);
+        // console.log("get project:", data);
+        setCurrentProject(data.data);
       })
       .catch((error) => {
         console.log(error);

@@ -88,18 +88,26 @@ app.get("/projects", (req, res) => {
 // GET /project?project_id=<PROJECT_ID>
 // Get a project based on it's project id
 app.get("/project", (req, res) => {
+  console.log("getting project: ", req.query.project_id);
+  // let temp = {};
+
   db.select_project(req.query.project_id, (error, results) => {
     if (error) {
       console.error(error);
       res.json({ msg: "error!" });
     }
+
+    console.log(results);
+    // temp = results.slice();
+    // temp = results[0];
+
     res.json({
       data: results,
     });
   });
 });
 
-// GET /folder_prjects?folder_id=<FOLDER_ID>
+// GET /folder_projects?folder_id=<FOLDER_ID>
 // Gets all projects by folder id
 app.get("/folder_projects", (req, res) => {
   db.select_projects_by_folder(req.query.folder_id, (error, results) => {
@@ -166,8 +174,8 @@ app.delete("/project/:id", (req, res) => {
 /**
  * PHOTOS ROUTES
  */
-
 app.get("/photos/:id", (req, res) => {
+  console.log("getting photos for:", req.param.id);
   res.json({ msg: `ok: ${req.params.id}` });
 });
 
