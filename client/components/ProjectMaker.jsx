@@ -143,11 +143,11 @@ const ProjectMaker = ({
         onSubmit={saveProjectHandler}
       >
         <div className="form-header">
-          <p>
+          {/* <p>
             <span>ID:</span> {project.project_id}
-          </p>
+          </p> */}
           <div className="form-controls">
-            <SelectInput
+            {/* <SelectInput
               inputId="form-folder-select"
               className="form-folder-select"
               inputName="folder_id"
@@ -156,7 +156,7 @@ const ProjectMaker = ({
               })}
               value={project.folder_id}
               changeHandler={updateFolder}
-            />
+            /> */}
             <button type="submit">
               <i className="fa-regular fa-floppy-disk"></i>
             </button>

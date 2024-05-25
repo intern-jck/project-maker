@@ -15,8 +15,14 @@ export default function PhotoInput({
 }) {
   return (
     <div className={className}>
-      <div className="photo-info">
+      <div className="photo-input-header">
         <span>{inputName}</span>
+        <button id="add-photo-button" onClick={addHandler}>
+          <i className="fa-solid fa-square-plus"></i>
+        </button>
+      </div>
+
+      <div className="photo-info">
         <TextInput
           id="photo-input-name"
           className="text-input"
@@ -31,9 +37,6 @@ export default function PhotoInput({
           value={url}
           changeHandler={changeHandler}
         />
-        <button id="add-photo-button" onClick={addHandler}>
-          <i className="fa-solid fa-square-plus"></i>
-        </button>
       </div>
 
       <div className="photo-list">
@@ -41,8 +44,9 @@ export default function PhotoInput({
           photos.map((photo, i) => {
             return (
               <div key={i} className="photo-thumb">
-                THUMB
-                <img src={photo.url} alt="not found" />
+                <div>
+                  <img src={photo.url} alt="not found" />
+                </div>
                 <button onClick={deleteHandler} data-photo-index={i}>
                   <i className="fa-regular fa-circle-xmark"></i>
                 </button>

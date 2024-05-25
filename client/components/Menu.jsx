@@ -11,11 +11,6 @@ export const Menu = ({
   onGetProject,
   onSelectFolder,
 }) => {
-  //   const dashboardDataMapped = dashboardData.map((item) => {
-  //     const { project_id, name } = item;
-  //     return { project_id, name };
-  //   });
-
   function onCreateFolderHandler(event) {
     const value = document.getElementById("folder-input").value;
 
@@ -50,7 +45,7 @@ export const Menu = ({
     <div className="Menu">
       <div className="dash-controls">
         {/* <div className="control-row"> */}
-        <SelectInput
+        {/* <SelectInput
           inputId="folder-select"
           className="folder-select"
           inputName="Folders"
@@ -58,7 +53,7 @@ export const Menu = ({
             return [item.folder_id, item.name];
           })}
           changeHandler={onSelectFolderHandler}
-        />
+        /> 
         <button onClick={onDeleteFolderHandler}>
           <i className="fa-solid fa-folder-minus"></i>
         </button>
@@ -70,6 +65,8 @@ export const Menu = ({
         <button onClick={onCreateFolderHandler}>
           <i className="fa-solid fa-folder-plus"></i>
         </button>
+        */}
+
         <button onClick={onCreateProjectHandler}>
           <i className="fa-solid fa-file"></i>
         </button>

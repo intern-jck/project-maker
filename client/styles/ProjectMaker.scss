@@ -17,8 +17,8 @@
   }
 
   .form-header {
-    border: $border-thin;
-    // padding: $padding-thin;
+    // border: $border-thin;
+    padding: $padding-thin;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,23 +31,27 @@
     }
 
     .form-controls {
+      // border: 2px solid black;
       font-size: $font-size-large;
-      margin-right: $margin-thick;
+      // margin-right: $margin-thick;
+      width: 100%;
+      padding-right: $padding-thick;
       display: flex;
       align-items: center;
+      justify-content: end;
       gap: $gap-xthick;
 
-      .form-folder-select {
-        label {
-          display: none;
-        }
+      // .form-folder-select {
+      //   label {
+      //     display: none;
+      //   }
 
-        select {
-          border: $border-thin;
-          font-size: $font-size-large;
-          width: 12rem;
-        }
-      }
+      //   select {
+      //     border: $border-thin;
+      //     font-size: $font-size-large;
+      //     width: 12rem;
+      //   }
+      // }
 
       button {
         margin: 0;
@@ -71,7 +75,7 @@
     .text-input {
       border: $border-thin;
       padding: $padding-thin;
-      font-size: $font-size-large;
+      font-size: $font-size-stock;
       font-weight: bold;
       width: 100%;
       display: flex;
@@ -95,7 +99,7 @@
     .date-input {
       border: $border-thin;
       padding: $padding-thin;
-      font-size: $font-size-large;
+      font-size: $font-size-stock;
       font-weight: bold;
       // max-width: 35%;
       display: flex;
@@ -119,7 +123,7 @@
       border: $border-thin;
       padding: $padding-thin;
       // margin: $margin-thin;
-      font-size: $font-size-large;
+      font-size: $font-size-stock;
       font-weight: bold;
       display: flex;
       flex-direction: column;
@@ -133,7 +137,7 @@
       border: $border-thin;
       padding: $padding-thin;
       // margin: $margin-thin;
-      font-size: $font-size-large;
+      font-size: $font-size-stock;
       font-weight: bold;
       display: flex;
       flex-direction: column;
@@ -153,17 +157,34 @@
       min-width: 50%;
       height: 20rem;
 
-      .photo-info {
-        border: $border-thin;
-        padding: $padding-thin;
+      .photo-input-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-        button {
+        button {          
           border: none;
           background: none;
           margin: 0;
           padding: 0;
-          font-size: $font-size-xxlarge;
+          font-size: $font-size-xlarge;
         }
+      }
+
+      .photo-info {
+        // border: $border-thin;
+        // padding: $padding-thin;
+        font-size: $font-size-large;
+        display: flex;
+        flex-direction: column;
+        
+        // button {
+        //   border: none;
+        //   background: none;
+        //   margin: 0;
+        //   padding: 0;
+        //   font-size: $font-size-xlarge;
+        // }
       }
 
       .photo-list {
@@ -186,6 +207,8 @@
           height: 8rem;
 
           img {
+            width: 98%;
+            height: 98%;
             object-fit: contain;
           }
 
