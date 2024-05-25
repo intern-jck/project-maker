@@ -209,14 +209,14 @@ const App = () => {
   return (
     <div className="App">
       <div className="app-header">
-        <Menu
+        {/* <Menu
           folderData={folders}
           onCreateFolder={getCreateFolder}
           onDeleteFolder={deleteFolder}
           onCreateProject={getCreateProject}
           onGetProject={getProject}
           onSelectFolder={getFolderProjects}
-        />
+        /> */}
       </div>
 
       <div className="app-content">
@@ -224,10 +224,10 @@ const App = () => {
           folderData={folders}
           dashboardData={projects}
           onCreateFolder={getCreateFolder}
+          onSelectFolder={getFolderProjects}
           onDeleteFolder={deleteFolder}
           onCreateProject={getCreateProject}
           onGetProject={getProject}
-          onSelectFolder={getFolderProjects}
         />
 
         {Object.keys(currentProject).length ? (
@@ -238,6 +238,7 @@ const App = () => {
             onCloseProject={closeProject}
             onSaveProject={putProject}
             onDeleteProject={deleteProject}
+            onCreateProject={getCreateProject}
           />
         ) : (
           <>no project selected</>

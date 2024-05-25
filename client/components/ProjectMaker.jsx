@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "../styles/ProjectMaker.scss";
 
+import Menu from "./Menu.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import SelectInput from "./Inputs/SelectInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
 import DateInput from "./Inputs/DateInput.jsx";
 import PhotoInput from "./Inputs/PhotoInput.jsx";
+import "../styles/ProjectMaker.scss";
 
 const ProjectMaker = ({
   folderData,
@@ -14,10 +15,8 @@ const ProjectMaker = ({
   onCloseProject,
   onSaveProject,
   onDeleteProject,
+  onCreateProject,
 }) => {
-  // console.log(projectData, photosData);
-  // return;
-
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
@@ -137,26 +136,24 @@ const ProjectMaker = ({
 
   return (
     <div className="ProjectMaker">
+      <div className="Menu">
+        {/* <div className="dash-controls">
+          <button onClick={onCreateProjectHandler}>
+            <i className="fa-solid fa-file"></i>
+          </button>
+          <button>
+            <i className="fa-solid fa-file-export"></i>
+          </button>
+        </div> */}
+      </div>
+
       <form
         id="project-form"
         className="project-form"
         onSubmit={saveProjectHandler}
       >
         <div className="form-header">
-          {/* <p>
-            <span>ID:</span> {project.project_id}
-          </p> */}
           <div className="form-controls">
-            {/* <SelectInput
-              inputId="form-folder-select"
-              className="form-folder-select"
-              inputName="folder_id"
-              options={folderData.map((item) => {
-                return [item.folder_id, item.name];
-              })}
-              value={project.folder_id}
-              changeHandler={updateFolder}
-            /> */}
             <button type="submit">
               <i className="fa-regular fa-floppy-disk"></i>
             </button>

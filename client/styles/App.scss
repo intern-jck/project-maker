@@ -5,10 +5,10 @@
   display: flex;
   flex-direction: column;
   padding: $padding-thin;
-    // margin: $margin-stock;
   height: 100vh;
 
   .app-header {
+    display: none;
     width: 100%;
     border: $border-stock;
     padding: $padding-stock;

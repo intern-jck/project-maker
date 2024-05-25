@@ -11,7 +11,7 @@ const Dashboard = ({
   onDeleteFolder,
   onSelectFolder,
   onGetProject,
-  // onCreateProject,
+  onCreateProject,
 }) => {
   // Should change to use state?
   const dashboardDataMapped = dashboardData.map((item) => {
@@ -44,6 +44,10 @@ const Dashboard = ({
     onSelectFolder(value);
   }
 
+  function onCreateProjectHandler(event) {
+    event.preventDefault();
+    onCreateProject();
+  }
   return (
     <div className="Dashboard">
       <div className="dash-controls">
@@ -55,6 +59,9 @@ const Dashboard = ({
           />
           <button onClick={onCreateFolderHandler}>
             <i className="fa-solid fa-folder-plus"></i>
+          </button>
+          <button onClick={onCreateProjectHandler}>
+            <i className="fa-solid fa-file"></i>
           </button>
         </div>
 
@@ -70,6 +77,9 @@ const Dashboard = ({
           />
           <button onClick={onDeleteFolderHandler}>
             <i className="fa-solid fa-folder-minus"></i>
+          </button>
+          <button>
+            <i className="fa-solid fa-file-export"></i>
           </button>
         </div>
       </div>

@@ -3,7 +3,7 @@ import SelectInput from "./Inputs/SelectInput.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import "../styles/Menu.scss";
 
-export const Menu = ({
+const Menu = ({
   folderData,
   onCreateFolder,
   onDeleteFolder,
@@ -97,4 +97,4 @@ export const Menu = ({
   );
 };
 
-// export default Menu;
+export default Menu;
