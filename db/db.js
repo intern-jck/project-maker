@@ -138,18 +138,37 @@ function select_all_projects(callback) {
     if (error) {
       console.log(`select_all_projects error: ${error}`);
     }
+    console.log(rows);
     callback(error, rows);
   });
 }
 
 function select_project(project_id, callback) {
   return db.all(
-    `SELECT * FROM projects WHERE project_id=${project_id}`,
-    (error, rows) => {
+    `SELECT * FROM projects WHERE project_id=${project_id};`,
+    // `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
+    // `SELECT * FROM projects LEFT JOIN photos ON projects.project_id = photos.photo_project_id where projects.project_id = ${project_id}`,
+    // "SELECT * FROM photos INNER JOIN projects ON projects.project_id = photos.photo_project_id",
+    // `SELECT * FROM projects LEFT JOIN photos ON photos.photo_project_id = projects.project_id WHERE project_id=${project_id}`,
+    (error, rows_1) => {
       if (error) {
         console.log(`select_project error: ${error}`);
       }
-      callback(error, rows);
+
+      // console.log(rows_1);
+      // callback(error, rows);
+
+      db.all(
+        `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
+        (error, rows_2) => {
+          if (error) {
+            console.log(`select_project error: ${error}`);
+          }
+          // console.log(rows_2);
+
+          callback(error, [rows_1, rows_2]);
+        }
+      );
     }
   );
 }
@@ -215,7 +234,6 @@ function delete_project(project_id, callback) {
 /**
  * PHOTOS TABLE
  */
-
 function select_photos(project_id, callback) {
   return db.all(
     `SELECT * FROM photos WHERE project_photo_id=${project_id}`,
