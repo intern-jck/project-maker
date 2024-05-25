@@ -146,27 +146,18 @@ function select_all_projects(callback) {
 function select_project(project_id, callback) {
   return db.all(
     `SELECT * FROM projects WHERE project_id=${project_id};`,
-    // `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
-    // `SELECT * FROM projects LEFT JOIN photos ON projects.project_id = photos.photo_project_id where projects.project_id = ${project_id}`,
-    // "SELECT * FROM photos INNER JOIN projects ON projects.project_id = photos.photo_project_id",
-    // `SELECT * FROM projects LEFT JOIN photos ON photos.photo_project_id = projects.project_id WHERE project_id=${project_id}`,
-    (error, rows_1) => {
+    (error, project) => {
       if (error) {
         console.log(`select_project error: ${error}`);
       }
 
-      // console.log(rows_1);
-      // callback(error, rows);
-
       db.all(
         `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
-        (error, rows_2) => {
+        (error, photos) => {
           if (error) {
             console.log(`select_project error: ${error}`);
           }
-          // console.log(rows_2);
-
-          callback(error, [rows_1, rows_2]);
+          callback(error, { project, photos });
         }
       );
     }

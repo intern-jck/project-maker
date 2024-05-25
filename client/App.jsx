@@ -13,6 +13,7 @@ const App = () => {
   const [currentFolder, setCurrentFolder] = useState(DEFAULT_FOLDER);
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
+  const [projectPhotos, setProjectPhotos] = useState([]);
 
   // const [projects] = useFetch(`${SERVER_URL}/projects`);
   // console.log(projects);
@@ -104,8 +105,8 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
+        // console.log(data.data);
         setProjects(data.data);
-        console.log(data.data);
         // Use for testing
         // setCurrentProject(data.data.length ? data.data[0] : {});
       })
@@ -121,7 +122,8 @@ const App = () => {
       })
       .then((data) => {
         // console.log("get project:", data);
-        setCurrentProject(data.data);
+        setCurrentProject(data.project[0]);
+        setProjectPhotos(data.photos);
       })
       .catch((error) => {
         console.log(error);
@@ -241,6 +243,7 @@ const App = () => {
           <ProjectMaker
             folderData={folders}
             projectData={currentProject}
+            photosData={projectPhotos}
             onCloseProject={closeProject}
             onSaveProject={putProject}
             onDeleteProject={deleteProject}

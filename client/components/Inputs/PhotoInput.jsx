@@ -42,10 +42,10 @@ export default function PhotoInput({
             return (
               <div key={i} className="photo-thumb">
                 THUMB
-                {/* <img src={photo.url} alt='not found' /> */}
-                {/* <button onClick={deleteHandler} data-photo-index={i}> */}
-                {/* <i class='fa-regular fa-circle-xmark'></i> */}
-                {/* </button> */}
+                <img src={photo.url} alt="not found" />
+                <button onClick={deleteHandler} data-photo-index={i}>
+                  <i className="fa-regular fa-circle-xmark"></i>
+                </button>
               </div>
             );
           })

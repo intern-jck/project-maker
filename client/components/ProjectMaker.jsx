@@ -7,54 +7,24 @@ import TextArea from "./Inputs/TextArea.jsx";
 import DateInput from "./Inputs/DateInput.jsx";
 import PhotoInput from "./Inputs/PhotoInput.jsx";
 
-const DEFAULT_FORM_DATA = {
-  client: "default_client",
-  client_url: "default_client_url",
-  description: "default_description",
-  end_date: "2024-01-22",
-  folder_id: 0,
-  name: "default_name",
-  project_id: 1705963137624,
-  short: "default_short",
-  slug: "default_slug",
-  start_date: "2024-01-22",
-  url: "default_url",
-  youtube_url: "default_youtube",
-  github_url: "default_github",
-  photos: [],
-  // tech_tags: [],
-};
-
-const DEFAULT_PHOTO = {
-  photo_project_id: 0,
-  name: "default",
-  url: "default",
-};
-
-const DEFAULT_TECH = {
-  tech_id: 0,
-  name: "default_tech",
-  url: "default_url",
-  short: "default_short",
-};
-
 const ProjectMaker = ({
   folderData,
   projectData,
-  photoData,
+  photosData,
   onCloseProject,
   onSaveProject,
   onDeleteProject,
 }) => {
-  console.log(projectData[0]);
+  // console.log(projectData, photosData);
+  // return;
 
-  const [project, setProject] = useState(projectData[0][0]);
-  const [photos, setPhotos] = useState(projectData[1][0]);
+  const [project, setProject] = useState(projectData);
+  const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
   const [repos, setRepos] = useState();
-  const [newRepo, setNewRepo] = useState();
+  const [newRepo, setNewRepo] = useState({});
   const [tags, setTags] = useState();
-  const [newTag, setNewTag] = useState();
+  const [newTag, setNewTag] = useState({});
 
   function updateFolder(event) {
     event.preventDefault();
@@ -124,31 +94,15 @@ const ProjectMaker = ({
   function updatePhoto(event) {
     event.preventDefault();
     const { name, value } = event.target;
-    console.log(name, value);
-
     const updatedPhoto = newPhoto;
 
     if (name === "photo-input_name") {
-      console.log("photo name: ", value);
-      updatePhoto.name = value;
+      updatedPhoto.name = value;
     } else if (name === "photo-input-url") {
-      console.log("photo url: ", value);
-      updatePhoto.url = value;
+      updatedPhoto.url = value;
     }
 
-    console.log(updatedPhoto);
-
-    // switch (name) {
-    //   case "photo-input-name":
-    //     updatedPhoto.name = value;
-    //     break;
-    //   case "photo-input-url":
-    //     updatedPhoto.url = value;
-    //     break;
-    //   default:
-    //     break;
-    // }
-    // console.log(updatePhoto);
+    updatedPhoto.photo_project_id = project.project_id;
 
     setNewPhoto(() => ({
       ...updatedPhoto,
@@ -157,59 +111,29 @@ const ProjectMaker = ({
 
   function addPhoto(event) {
     event.preventDefault();
-    console.log("adding photo");
-    console.log(newPhoto);
-    const updatedFormData = project;
-    updatedFormData.photos.push(newPhoto);
-    console.log(updatedFormData);
-
-    // setNewPhoto(DEFAULT_PHOTO);
-
-    setProject(() => ({
-      ...updatedFormData,
-    }));
+    let updatedPhotos = photos.slice();
+    updatedPhotos.push(newPhoto);
+    console.log(updatedPhotos);
+    setPhotos(() => updatedPhotos);
   }
 
-  // function addPhoto(event: React.MouseEvent<HTMLButtonElement>) {
-  //   event.preventDefault();
+  function deletePhoto(event) {
+    event.preventDefault();
+    const index = event.target.getAttribute("data-photo-index");
+    // const photos = formData ? formData.photos : undefined;
 
-  //   const _photos = formData ? formData.photos : undefined;
+    // if (index) {
 
-  //   if (newPhoto && _photos) {
+    //   if (photos) {
+    //     photos.splice(parseInt(index), 1);
+    //   }
 
-  //     _photos.push(newPhoto);
-
-  //     setNewPhoto({
-  //       slug: '',
-  //       url: '',
-  //     });
-
-  //     setFormData((formData) => ({
-  //       ...formData,
-  //       photos: _photos,
-  //     }) as ProjectType);
-
-  //   }
-
-  // };
-
-  // function deletePhoto(event: React.MouseEvent<HTMLButtonElement>) {
-  //   event.preventDefault();
-  //   const index = event.currentTarget.getAttribute('data-photo-index');
-  //   const photos = formData ? formData.photos : undefined;
-
-  //   if (index) {
-
-  //     if (photos) {
-  //       photos.splice(parseInt(index), 1);
-  //     }
-
-  //     setFormData((formData) => ({
-  //       ...formData,
-  //       photos: photos,
-  //     }) as ProjectType)
-  //   }
-  // };
+    //   setFormData((formData) => ({
+    //     ...formData,
+    //     photos: photos,
+    //   }) as ProjectType)
+    // }
+  }
 
   return (
     <div className="ProjectMaker">
@@ -238,7 +162,7 @@ const ProjectMaker = ({
             </button>
             <button
               type="button"
-              value={currentFormData.project_id}
+              value={project.project_id}
               onClick={deleteProjectHandler}
             >
               <i className="fa-regular fa-trash-can"></i>
@@ -259,7 +183,7 @@ const ProjectMaker = ({
             changeHandler={updatePhoto}
             addHandler={addPhoto}
             photos={photos}
-            // deleteHandler={deletePhoto}
+            deleteHandler={deletePhoto}
           />
         </div>
       </form>
@@ -278,7 +202,7 @@ export default ProjectMaker;
   inputId='name-input'
   className='name-input'
   inputName={'name'}
-  value={currentFormData.name}
+  value={project.name}
   changeHandler={updateTextInput}
 />
 <TextInput

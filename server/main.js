@@ -88,22 +88,15 @@ app.get("/projects", (req, res) => {
 // GET /project?project_id=<PROJECT_ID>
 // Get a project based on it's project id
 app.get("/project", (req, res) => {
-  console.log("getting project: ", req.query.project_id);
-  // let temp = {};
-
   db.select_project(req.query.project_id, (error, results) => {
     if (error) {
       console.error(error);
       res.json({ msg: "error!" });
     }
-
-    console.log(results);
-    // temp = results.slice();
-    // temp = results[0];
-
-    res.json({
-      data: results,
-    });
+    // res.json({
+    //   data: results,
+    // });
+    res.json(results);
   });
 });
 
