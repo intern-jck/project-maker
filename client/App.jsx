@@ -15,21 +15,14 @@ const App = () => {
   const [currentProject, setCurrentProject] = useState({});
   const [projectPhotos, setProjectPhotos] = useState([]);
 
-  // const [projects] = useFetch(`${SERVER_URL}/projects`);
-  // console.log(projects);
-
   useEffect(() => {
-    // getFolders()
-    //   .then((data) => setFolders(data))
-    //   .catch((error) => console.log(error));
-
     fetch(SERVER_URL)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         getFolders();
-        getProjects(setProjects);
+        getProjects();
       })
       .catch();
   }, []);
@@ -105,7 +98,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        // console.log(data.data);
         setProjects(data.data);
         // Use for testing
         // setCurrentProject(data.data.length ? data.data[0] : {});
@@ -121,7 +113,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        // console.log("get project:", data);
         setCurrentProject(data.project[0]);
         setProjectPhotos(data.photos);
       })
