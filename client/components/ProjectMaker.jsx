@@ -14,7 +14,6 @@ const ProjectMaker = ({
   onCloseProject,
   onSaveProject,
   onDeleteProject,
-  // onCreateProject,
 }) => {
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
@@ -118,19 +117,11 @@ const ProjectMaker = ({
   function deletePhoto(event) {
     event.preventDefault();
     const index = event.target.getAttribute("data-photo-index");
-    // const photos = formData ? formData.photos : undefined;
-
-    // if (index) {
-
-    //   if (photos) {
-    //     photos.splice(parseInt(index), 1);
-    //   }
-
-    //   setFormData((formData) => ({
-    //     ...formData,
-    //     photos: photos,
-    //   }) as ProjectType)
-    // }
+    console.log("deleting photo: ", index);
+    let updatedPhotos = photos.slice();
+    updatedPhotos.splice(index, 1);
+    console.log(updatedPhotos);
+    setPhotos(() => updatedPhotos);
   }
 
   return (
@@ -141,6 +132,17 @@ const ProjectMaker = ({
         onSubmit={saveProjectHandler}
       >
         <div className="form-header">
+          <div>
+            <SelectInput
+              inputId="folder-select"
+              className="folder-select"
+              inputName="Folders"
+              options={folderData.map((item) => {
+                return [item.folder_id, item.name];
+              })}
+              changeHandler={updateFolder}
+            />
+          </div>
           <div className="form-controls">
             <button type="submit">
               <i className="fa-regular fa-floppy-disk"></i>
@@ -239,11 +241,3 @@ const ProjectMaker = ({
 };
 
 export default ProjectMaker;
-
-// scratch
-{
-  /* 
-
-
-*/
-}
