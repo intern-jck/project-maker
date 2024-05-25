@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Menu from "./Menu.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import SelectInput from "./Inputs/SelectInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
@@ -15,7 +14,7 @@ const ProjectMaker = ({
   onCloseProject,
   onSaveProject,
   onDeleteProject,
-  onCreateProject,
+  // onCreateProject,
 }) => {
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
@@ -136,17 +135,6 @@ const ProjectMaker = ({
 
   return (
     <div className="ProjectMaker">
-      <div className="Menu">
-        {/* <div className="dash-controls">
-          <button onClick={onCreateProjectHandler}>
-            <i className="fa-solid fa-file"></i>
-          </button>
-          <button>
-            <i className="fa-solid fa-file-export"></i>
-          </button>
-        </div> */}
-      </div>
-
       <form
         id="project-form"
         className="project-form"
@@ -170,18 +158,80 @@ const ProjectMaker = ({
           </div>
         </div>
 
-        <div className="form-row">
-          <PhotoInput
-            inputId="photos-input"
-            className="photos-input"
-            inputName="photos"
-            name={newPhoto.name}
-            url={newPhoto.url}
-            changeHandler={updatePhoto}
-            addHandler={addPhoto}
-            photos={photos}
-            deleteHandler={deletePhoto}
-          />
+        <div className="form-content">
+          <div className="form-row">
+            <TextInput
+              id="name-input"
+              className="name-input"
+              name="name"
+              value={project.name}
+              changeHandler={updateTextInput}
+            />
+            <TextInput
+              id="url-input"
+              className="url-input"
+              name="url"
+              value={projectData.url}
+              changeHandler={updateTextInput}
+            />
+            <TextInput
+              id="client-input"
+              className="client-input"
+              name="client"
+              value={projectData.client}
+              changeHandler={updateTextInput}
+            />
+            <TextInput
+              id="client-url-input"
+              className="client-url-input"
+              name="client_url"
+              value={projectData.client_url}
+              changeHandler={updateTextInput}
+            />
+            <DateInput
+              id="date-input"
+              className="date-input"
+              name="start_date"
+              value={projectData.start_date}
+              changeHandler={updateDate}
+            />
+            <DateInput
+              id="date-input"
+              className="date-input"
+              name="end_date"
+              value={projectData.end_date}
+              changeHandler={updateDate}
+            />
+          </div>
+
+          <div className="form-row">
+            <TextInput
+              id="short-input"
+              className="short-input"
+              name={"short"}
+              value={projectData.short}
+              changeHandler={updateTextInput}
+            />
+            <TextArea
+              className="info-input"
+              inputName={"info"}
+              value={projectData.info}
+              changeHandler={updateTextInput}
+            />
+          </div>
+          <div className="form-row">
+            <PhotoInput
+              inputId="photos-input"
+              className="photos-input"
+              inputName="photos"
+              name={newPhoto.name}
+              url={newPhoto.url}
+              changeHandler={updatePhoto}
+              addHandler={addPhoto}
+              photos={photos}
+              deleteHandler={deletePhoto}
+            />
+          </div>
         </div>
       </form>
     </div>
@@ -194,66 +244,6 @@ export default ProjectMaker;
 {
   /* 
 
-<div className='form-row'>
-<TextInput
-  inputId='name-input'
-  className='name-input'
-  inputName={'name'}
-  value={project.name}
-  changeHandler={updateTextInput}
-/>
-<TextInput
-  inputId='url-input'
-  className='url-input'
-  inputName={'url'}
-  value={projectData.url}
-  changeHandler={updateTextInput}
-/>
-<TextInput
-  inputId='client-input'
-  className='client-input'
-  inputName={'client'}
-  value={projectData.client}
-  changeHandler={updateTextInput}
-/>
-<TextInput
-  inputId='client-url-input'
-  className='client-url-input'
-  inputName={'client_url'}
-  value={projectData.client_url}
-  changeHandler={updateTextInput}
-/>
-<DateInput
-  inputId='date-input'
-  className='date-input'
-  inputName={'start_date'}
-  dateValue={projectData.start_date}
-  changeHandler={updateDate}
-/>
-<DateInput
-  inputId='date-input'
-  className='date-input'
-  inputName={'end_date'}
-  dateValue={projectData.end_date}
-  changeHandler={updateDate}
-/>
-</div>
-
-<div className='form-row'>
-<TextInput
-  inputId='short-input'
-  className='short-input'
-  inputName={'short'}
-  value={projectData.short}
-  changeHandler={updateTextInput}
-/>
-<TextArea
-  className='info-input'
-  inputName={'info'}
-  value={projectData.info}
-  changeHandler={updateTextInput}
-/>
-</div> 
 
 */
 }

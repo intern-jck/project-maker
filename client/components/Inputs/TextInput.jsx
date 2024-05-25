@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function TextInput({
   id,
@@ -8,11 +8,11 @@ export default function TextInput({
   changeHandler,
 }) {
   return (
-    <div className={className}>
+    <div className={`text-input ${className}`}>
       <label htmlFor={name}>{name}</label>
       <input
         id={id}
-        type='text'
+        type="text"
         name={name}
         value={value}
         placeholder={name}

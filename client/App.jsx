@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import ProjectMaker from "./components/ProjectMaker.jsx";
-import { Menu } from "./components/Menu.jsx";
 
 import "./styles/App.scss";
 
@@ -208,16 +207,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="app-header">
-        {/* <Menu
-          folderData={folders}
-          onCreateFolder={getCreateFolder}
-          onDeleteFolder={deleteFolder}
-          onCreateProject={getCreateProject}
-          onGetProject={getProject}
-          onSelectFolder={getFolderProjects}
-        /> */}
-      </div>
+      <div className="app-header"></div>
 
       <div className="app-content">
         <Dashboard

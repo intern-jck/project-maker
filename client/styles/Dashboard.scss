@@ -1,11 +1,9 @@
 @import "./variables";
 
 .Dashboard {
-  border: $border-stock;
   background-color: $color-panel-background;
-  padding: $padding-stock;
-  max-width: 20rem;
-  height: 60vh;
+  width: 14rem;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   gap: $gap-thin;
@@ -79,10 +77,6 @@
         pointer-events: none;
         width: 100%;
         font-size: 1rem;
-        // max-height: 2rem;
-        // white-space: nowrap;
-        // overflow: hidden;
-        // text-overflow: ellipsis;
       }
     }
 
