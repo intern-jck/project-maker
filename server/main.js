@@ -75,7 +75,7 @@ app.delete("/folder/:id", (req, res) => {
 // GET /projects
 // Gets all projects
 app.get("/projects", (req, res) => {
-  db.select_all_projects((error, results) => {
+  db.select_projects((error, results) => {
     if (error) {
       console.error(error);
     }

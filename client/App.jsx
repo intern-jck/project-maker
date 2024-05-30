@@ -32,7 +32,6 @@ const App = () => {
   useEffect(() => {
     getProjects()
       .then((data) => {
-        console.log(data);
         setProjects(data);
       })
       .catch((error) => {

@@ -78,7 +78,7 @@ const Dashboard = ({
         </div>
       </div>
 
-      {/* <div className="ProjectList">
+      <div className="ProjectList">
         {dashboardData.length ? (
           dashboardData.map((project, i) => {
             return (
@@ -96,7 +96,7 @@ const Dashboard = ({
         ) : (
           <>no projects</>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -133,12 +133,11 @@ function create_project(callback) {
   });
 }
 
-function select_all_projects(callback) {
-  return db.all(`SELECT * FROM projects`, (error, rows) => {
+function select_projects(callback) {
+  return db.all(`SELECT project_id, name FROM projects`, (error, rows) => {
     if (error) {
-      console.log(`select_all_projects error: ${error}`);
+      console.log(`select_projects error: ${error}`);
     }
-    console.log(rows);
     callback(error, rows);
   });
 }
@@ -166,7 +165,7 @@ function select_project(project_id, callback) {
 
 function select_projects_by_folder(folder_id, callback) {
   if (!folder_id) {
-    select_all_projects(callback);
+    select_projects(callback);
   }
 
   return db.all(
@@ -263,7 +262,7 @@ module.exports = {
   select_all_folders,
   delete_folder,
   create_project,
-  select_all_projects,
+  select_projects,
   select_project,
   select_projects_by_folder,
   update_project,
