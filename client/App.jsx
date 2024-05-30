@@ -2,7 +2,20 @@ import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import ProjectMaker from "./components/ProjectMaker.jsx";
 
-import { get_projects } from "./projects_api.js";
+import {
+  getProject,
+  getProjects,
+  createProject,
+  updateProject,
+  deleteProject,
+} from "./projects_api.js";
+
+import {
+  getFolders,
+  createFolder,
+  deleteFolder,
+  getFolderProjects,
+} from "./folders_api.js";
 
 import "./styles/App.scss";
 
@@ -17,206 +30,15 @@ const App = () => {
   const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
-    // fetch(SERVER_URL)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log("first", data);
-    //     // getFolders();
-    //     // getProjects();
-    //     // const projects = get_projects();
-    //     console.log("first load getting projects:", projects);
-    //     // setProjects(projects);
-    //   })
-    //   .catch();
-    get_projects()
+    getProjects()
       .then((data) => {
-        console.log(data.data);
-        setProjects(data.data);
+        console.log(data);
+        setProjects(data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-  // Function names reflect the type of request they send and the endpoint.
-  // I.E. getFolders ==> GET /folders
-  // I.E. getCreateProject ==> GET /create_project
-  // I.E. deleteProject(value) ==> DELETE /project?project_id=[value]
-
-  /**
-   *   FOLDER REQUESTS
-   */
-  function getFolders() {
-    fetch(`${SERVER_URL}/folders`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setFolders(data.data);
-      })
-      .catch();
-  }
-
-  function getCreateFolder(value) {
-    fetch(`${SERVER_URL}/create_folder?folder_name=${value}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        getFolders();
-        getProjects();
-      })
-      .catch();
-  }
-
-  function deleteFolder(value) {
-    console.log(`deleting: ${value}`);
-    const options = {
-      method: "DELETE",
-    };
-
-    fetch(`${SERVER_URL}/folder/${value}`, options)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        getFolders();
-        getProjects();
-      })
-      .catch();
-  }
-
-  /**
-   *   PROJECT REQUESTS
-   */
-  function getCreateProject() {
-    fetch(`${SERVER_URL}/create_project`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        getFolders();
-        getProjects();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function getProjects() {
-    fetch(`${SERVER_URL}/projects`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setProjects(data.data);
-        // Use for testing
-        // setCurrentProject(data.data.length ? data.data[0] : {});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function getProject(projectId) {
-    fetch(`${SERVER_URL}/project?project_id=${projectId}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setCurrentProject(data.project[0]);
-        setProjectPhotos(data.photos);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function getFolderProjects(value) {
-    console.log("getting projects in", value);
-    if (value === "ALL") {
-      setCurrentFolder(DEFAULT_FOLDER);
-    }
-
-    fetch(`${SERVER_URL}/folder_projects?folder_id=${value}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setProjects(data.data);
-        // Use for testing
-        setCurrentProject(data.data.length ? data.data[0] : {});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function putProject(project, photos) {
-    const data = {
-      project: project,
-      photos: photos,
-    };
-    console.log("saving project", data);
-
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-
-    fetch(`${SERVER_URL}/project`, options)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        getProjects();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function deleteProject(projectId) {
-    console.log(`client deleting: ${projectId}`);
-    const options = {
-      method: "DELETE",
-    };
-
-    fetch(`${SERVER_URL}/project/${projectId}`, options)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        getFolders();
-        getProjects();
-        setCurrentProject({});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  /**
-   * PHOTO REQUESTS
-   */
-  function getPhotos(projectId) {
-    fetch(`/photos/${projectId}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log("getPhotos", error);
-      });
-  }
 
   // App Functions
   function closeProject() {
@@ -231,11 +53,11 @@ const App = () => {
         <Dashboard
           folderData={folders}
           dashboardData={projects}
-          onCreateFolder={getCreateFolder}
+          onCreateFolder={createFolder}
           onSelectFolder={getFolderProjects}
           onDeleteFolder={deleteFolder}
-          onCreateProject={getCreateProject}
-          onGetProject={getProject}
+          onCreateProject={createProject}
+          onSelectProject={getProject}
         />
 
         {Object.keys(currentProject).length ? (

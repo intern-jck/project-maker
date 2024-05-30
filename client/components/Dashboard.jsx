@@ -8,9 +8,9 @@ const Dashboard = ({
   folderData,
   dashboardData,
   onCreateFolder,
-  onDeleteFolder,
   onSelectFolder,
-  onGetProject,
+  onDeleteFolder,
+  onSelectProject,
   onCreateProject,
 }) => {
   // Should change to use state?
@@ -86,7 +86,7 @@ const Dashboard = ({
 
       <ProjectList
         listData={dashboardDataMapped}
-        getProjectHandler={onGetProject}
+        getProjectHandler={onSelectProject}
       />
     </div>
   );

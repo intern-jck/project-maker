@@ -1,7 +1,6 @@
 const SERVER_URL = "http://127.0.0.1:3000";
-const DEFAULT_FOLDER = { folder_id: 0, folder_name: "ALL" };
 
-export async function get_project(projectId) {
+export async function getProject(projectId) {
   return fetch(`${SERVER_URL}/project?project_id=${projectId}`)
     .then((res) => {
       return res.json();
@@ -17,13 +16,13 @@ export async function get_project(projectId) {
     });
 }
 
-export async function get_projects() {
+export async function getProjects() {
   return fetch(`${SERVER_URL}/projects`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
-      return data;
+      return data.data;
     })
     .catch((error) => {
       console.log("get_projects error:", error);
@@ -31,7 +30,7 @@ export async function get_projects() {
     });
 }
 
-export async function create_project() {
+export async function createProject() {
   return fetch(`${SERVER_URL}/create_project`)
     .then((res) => {
       return res.json();
@@ -47,7 +46,7 @@ export async function create_project() {
     });
 }
 
-export async function update_project(project, photos) {
+export async function updateProject(project, photos) {
   const data = {
     project: project,
     photos: photos,
@@ -75,7 +74,7 @@ export async function update_project(project, photos) {
     });
 }
 
-export async function delete_project(projectId) {
+export async function deleteProject(projectId) {
   const options = {
     method: "DELETE",
   };
