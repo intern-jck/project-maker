@@ -39,7 +39,7 @@ const ProjectMaker = ({
 
   function saveProjectHandler(event) {
     event.preventDefault();
-    onSaveProject(project);
+    onSaveProject(project, photos);
   }
 
   function deleteProjectHandler(event) {

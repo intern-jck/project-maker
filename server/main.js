@@ -134,6 +134,9 @@ app.get("/create_project", (req, res) => {
 // body: { CURRENT_PROJECT_FORM_DATA }
 // Updates the current project's entry in the database
 app.put("/project", (req, res) => {
+  console.log(req.body);
+  res.json({ mgs: "ok" });
+  return;
   db.update_project(req.body, (error) => {
     if (error) {
       console.error(error);

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import ProjectMaker from "./components/ProjectMaker.jsx";
 
+import { get_projects } from "./projects_api.js";
+
 import "./styles/App.scss";
 
 const SERVER_URL = "http://127.0.0.1:3000";
@@ -15,15 +17,27 @@ const App = () => {
   const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
-    fetch(SERVER_URL)
-      .then((response) => {
-        return response.json();
-      })
+    // fetch(SERVER_URL)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log("first", data);
+    //     // getFolders();
+    //     // getProjects();
+    //     // const projects = get_projects();
+    //     console.log("first load getting projects:", projects);
+    //     // setProjects(projects);
+    //   })
+    //   .catch();
+    get_projects()
       .then((data) => {
-        getFolders();
-        getProjects();
+        console.log(data.data);
+        setProjects(data.data);
       })
-      .catch();
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   // Function names reflect the type of request they send and the endpoint.
@@ -140,8 +154,12 @@ const App = () => {
       });
   }
 
-  function putProject(data) {
-    console.log(data);
+  function putProject(project, photos) {
+    const data = {
+      project: project,
+      photos: photos,
+    };
+    console.log("saving project", data);
 
     const options = {
       method: "PUT",
