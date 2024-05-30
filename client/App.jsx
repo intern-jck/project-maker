@@ -45,7 +45,12 @@ const App = () => {
     setCurrentProject({});
   }
 
-  function getProjetHandler() {}
+  function onSelectProjectHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    // onSelectProject(value);
+    console.log(value);
+  }
 
   return (
     <div className="App">
@@ -59,7 +64,7 @@ const App = () => {
           onSelectFolder={getFolderProjects}
           onDeleteFolder={deleteFolder}
           onCreateProject={createProject}
-          onSelectProject={getProject}
+          onSelectProject={onSelectProjectHandler}
         />
 
         {Object.keys(currentProject).length ? (

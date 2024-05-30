@@ -13,11 +13,12 @@ const Dashboard = ({
   onSelectProject,
   onCreateProject,
 }) => {
+  console.log(dashboardData);
   // Should change to use state?
-  const dashboardDataMapped = dashboardData.map((item) => {
-    const { project_id, name } = item;
-    return { project_id, name };
-  });
+  // const dashboardDataMapped = dashboardData.map((item) => {
+  //   const { project_id, name } = item;
+  //   return { project_id, name };
+  // });
 
   function onCreateFolderHandler(event) {
     const value = document.getElementById("folder-input").value;
@@ -47,12 +48,6 @@ const Dashboard = ({
   function onCreateProjectHandler(event) {
     event.preventDefault();
     onCreateProject();
-  }
-
-  function onSelectProjectHandler(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    onSelectProject(value);
   }
 
   return (
@@ -92,19 +87,19 @@ const Dashboard = ({
       </div>
 
       {/* <ProjectList
-        listData={dashboardDataMapped}
+        listData={dashboardashboardDataMappeddDataMapped}
         getProjectHandler={onSelectProject}
       /> */}
 
-      <div className="ProjectList">
-        {dashboardDataMapped.length ? (
-          dashboardDataMapped.map((project, i) => {
+      {/* <div className="ProjectList">
+        {dashboardData.length ? (
+          dashboardData.map((project, i) => {
             return (
               <button
                 className="project-button"
                 key={project.project_id}
                 value={project.project_id}
-                onClick={onSelectProjectHandler}
+                onClick={onSelectProject}
               >
                 <i className="fa-solid fa-file"></i>
                 <p>{project.name}</p>
@@ -114,7 +109,7 @@ const Dashboard = ({
         ) : (
           <>no projects</>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
