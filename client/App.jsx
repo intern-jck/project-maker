@@ -45,6 +45,8 @@ const App = () => {
     setCurrentProject({});
   }
 
+  function getProjetHandler() {}
+
   return (
     <div className="App">
       <div className="app-header"></div>

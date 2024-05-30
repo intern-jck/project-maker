@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectList from "./ProjectList.jsx";
+// import ProjectList from "./ProjectList.jsx";
 import SelectInput from "./Inputs/SelectInput.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import "../styles/Dashboard.scss";
@@ -48,6 +48,13 @@ const Dashboard = ({
     event.preventDefault();
     onCreateProject();
   }
+
+  function onSelectProjectHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    onSelectProject(value);
+  }
+
   return (
     <div className="Dashboard">
       <div className="dash-controls">
@@ -84,10 +91,30 @@ const Dashboard = ({
         </div>
       </div>
 
-      <ProjectList
+      {/* <ProjectList
         listData={dashboardDataMapped}
         getProjectHandler={onSelectProject}
-      />
+      /> */}
+
+      <div className="ProjectList">
+        {dashboardDataMapped.length ? (
+          dashboardDataMapped.map((project, i) => {
+            return (
+              <button
+                className="project-button"
+                key={project.project_id}
+                value={project.project_id}
+                onClick={onSelectProjectHandler}
+              >
+                <i className="fa-solid fa-file"></i>
+                <p>{project.name}</p>
+              </button>
+            );
+          })
+        ) : (
+          <>no projects</>
+        )}
+      </div>
     </div>
   );
 };
