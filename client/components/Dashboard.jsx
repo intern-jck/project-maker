@@ -1,5 +1,4 @@
 import React from "react";
-// import ProjectList from "./ProjectList.jsx";
 import SelectInput from "./Inputs/SelectInput.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import "../styles/Dashboard.scss";
@@ -13,13 +12,6 @@ const Dashboard = ({
   onSelectProject,
   onCreateProject,
 }) => {
-  console.log(dashboardData);
-  // Should change to use state?
-  // const dashboardDataMapped = dashboardData.map((item) => {
-  //   const { project_id, name } = item;
-  //   return { project_id, name };
-  // });
-
   function onCreateFolderHandler(event) {
     const value = document.getElementById("folder-input").value;
 
@@ -85,11 +77,6 @@ const Dashboard = ({
           </button>
         </div>
       </div>
-
-      {/* <ProjectList
-        listData={dashboardashboardDataMappeddDataMapped}
-        getProjectHandler={onSelectProject}
-      /> */}
 
       {/* <div className="ProjectList">
         {dashboardData.length ? (
