@@ -1,6 +1,22 @@
 const SERVER_URL = "http://127.0.0.1:3000";
 
-export async function getProject(projectId) {
+export async function createProject() {
+  return fetch(`${SERVER_URL}/create_project`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      //   getFolders();
+      //   getProjects();
+      return data;
+    })
+    .catch((error) => {
+      console.log("create_project error:", error);
+      return error;
+    });
+}
+
+export async function getProject(projectId, callback) {
   return fetch(`${SERVER_URL}/project?project_id=${projectId}`)
     .then((res) => {
       return res.json();
@@ -26,22 +42,6 @@ export async function getProjects() {
     })
     .catch((error) => {
       console.log("get_projects error:", error);
-      return error;
-    });
-}
-
-export async function createProject() {
-  return fetch(`${SERVER_URL}/create_project`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      //   getFolders();
-      //   getProjects();
-      return data;
-    })
-    .catch((error) => {
-      console.log("create_project error:", error);
       return error;
     });
 }

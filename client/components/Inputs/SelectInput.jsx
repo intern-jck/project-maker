@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Select({
   inputId,
@@ -11,7 +11,7 @@ export default function Select({
   return (
     <div className={className}>
       <label htmlFor={inputName}>
-        {inputName ? inputName.toUpperCase() : ''}
+        {inputName ? inputName.toUpperCase() : ""}
       </label>
       <select
         id={inputId}
@@ -19,7 +19,7 @@ export default function Select({
         onChange={changeHandler}
         value={value}
       >
-        <option key={0} value='ALL'>
+        <option key={0} value="ALL">
           {inputName}
         </option>
         {options.map((option, i) => {

@@ -5,15 +5,16 @@ import SelectInput from "./Inputs/SelectInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
 import DateInput from "./Inputs/DateInput.jsx";
 import PhotoInput from "./Inputs/PhotoInput.jsx";
-import "../styles/ProjectMaker.scss";
+import "../styles/ProjectForm.scss";
 
-const ProjectMaker = ({
+export const ProjectForm = ({
+  onAction,
   folderData,
   projectData,
   photosData,
-  onCloseProject,
-  onSaveProject,
-  onDeleteProject,
+  // onCloseProject,
+  // onSaveProject,
+  // onDeleteProject,
 }) => {
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
@@ -23,34 +24,32 @@ const ProjectMaker = ({
   const [tags, setTags] = useState();
   const [newTag, setNewTag] = useState({});
 
-  function updateFolder(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    console.log(value);
+  // function updateFolder(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   console.log(value);
+  //   const udpatedFolder = { folder_id: value };
+  //   console.log(udpatedFolder);
+  //   setProject((project) => ({
+  //     ...project,
+  //     ...udpatedFolder,
+  //   }));
+  // }
 
-    const udpatedFolder = { folder_id: value };
-    console.log(udpatedFolder);
+  // function saveProjectHandler(event) {
+  //   event.preventDefault();
+  //   onSaveProject(project, photos);
+  // }
 
-    setProject((project) => ({
-      ...project,
-      ...udpatedFolder,
-    }));
-  }
+  // function deleteProjectHandler(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   onDeleteProject(value);
+  // }
 
-  function saveProjectHandler(event) {
-    event.preventDefault();
-    onSaveProject(project, photos);
-  }
-
-  function deleteProjectHandler(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    onDeleteProject(value);
-  }
-
-  function closeProjectHandler() {
-    onCloseProject();
-  }
+  // function closeProjectHandler() {
+  //   onCloseProject();
+  // }
 
   function updateTextInput(event) {
     event.preventDefault();
@@ -125,7 +124,7 @@ const ProjectMaker = ({
   }
 
   return (
-    <div className="ProjectMaker">
+    <div className="ProjectForm">
       <form
         id="project-form"
         className="project-form"
@@ -240,4 +239,4 @@ const ProjectMaker = ({
   );
 };
 
-export default ProjectMaker;
+// export default ProjectMaker;
