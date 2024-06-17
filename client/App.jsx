@@ -66,19 +66,25 @@ const App = () => {
   async function actionHandler(event) {
     event.preventDefault();
     const { value, name } = event.target;
-    console.log(value, name);
+    // console.log(value, name);
     let data;
 
     switch (name) {
       // Projects API
+      case "close_project":
+        console.log("closing project")
+        closeProject();  
+        break;
       case "create_project":
         data = await createProject();
         console.log(data);
         break;
       case "get_project":
-        console.log("getting projects");
+        console.log("getting project: ", value);
         data = await getProject(value);
-        console.log(data);
+        // console.log(data);
+        setCurrentProject(data.project);
+        setProjectPhotos(data.photos);
         break;
       case "get_projects":
         data = await getProjects();
@@ -95,6 +101,7 @@ const App = () => {
       // Folders API
       case "get_folders":
         data = await getFolders();
+        
         console.log(data);
         break;
       case "create_folder":
@@ -132,7 +139,7 @@ const App = () => {
             folderData={folders}
             projectData={currentProject}
             photosData={projectPhotos}
-            // onCloseProject={closeProject}
+            onCloseProject={closeProject}
             // onSaveProject={putProject}
             // onDeleteProject={deleteProject}
             // onCreateProject={getCreateProject}

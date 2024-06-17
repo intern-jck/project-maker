@@ -24,32 +24,32 @@ export const ProjectForm = ({
   const [tags, setTags] = useState();
   const [newTag, setNewTag] = useState({});
 
-  // function updateFolder(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   console.log(value);
-  //   const udpatedFolder = { folder_id: value };
-  //   console.log(udpatedFolder);
-  //   setProject((project) => ({
-  //     ...project,
-  //     ...udpatedFolder,
-  //   }));
-  // }
+  function updateFolder(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    console.log(value);
+    const udpatedFolder = { folder_id: value };
+    console.log(udpatedFolder);
+    setProject((project) => ({
+      ...project,
+      ...udpatedFolder,
+    }));
+  }
 
-  // function saveProjectHandler(event) {
-  //   event.preventDefault();
-  //   onSaveProject(project, photos);
-  // }
+  function saveProjectHandler(event) {
+    event.preventDefault();
+    onSaveProject(project, photos);
+  }
 
-  // function deleteProjectHandler(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   onDeleteProject(value);
-  // }
+  function deleteProjectHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    onDeleteProject(value);
+  }
 
-  // function closeProjectHandler() {
-  //   onCloseProject();
-  // }
+  function closeProjectHandler() {
+    onCloseProject();
+  }
 
   function updateTextInput(event) {
     event.preventDefault();
@@ -153,7 +153,7 @@ export const ProjectForm = ({
             >
               <i className="fa-regular fa-trash-can"></i>
             </button>
-            <button type="button" onClick={closeProjectHandler}>
+            <button type="button" name="close_project" onClick={onAction}>
               <i className="fa-solid fa-square-xmark"></i>
             </button>
           </div>
