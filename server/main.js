@@ -136,7 +136,7 @@ app.get("/create_project", (req, res) => {
 app.put("/project", (req, res) => {
   console.log(req.body);
   res.json({ mgs: "ok" });
-  return;
+  // return;
   db.update_project(req.body, (error) => {
     if (error) {
       console.error(error);
@@ -173,6 +173,11 @@ app.delete("/project/:id", (req, res) => {
 app.get("/photos/:id", (req, res) => {
   console.log("getting photos for:", req.param.id);
   res.json({ msg: `ok: ${req.params.id}` });
+});
+
+app.put("/photos/:id", (req, res) => {
+  console.log('saving photos for:', req.param.id);
+
 });
 
 app.listen(PORT, () => {

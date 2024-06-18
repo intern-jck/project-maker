@@ -16,3 +16,28 @@ export async function getPhotos(projectId) {
       return error;
     });
 }
+
+export async function savePhotos(projectId, photo) {
+  const data ={
+    projectId: projectId,
+    photo: photo,
+  }
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }
+
+  return fetch(`/photos/${projectId}`, options)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch();
+
+}

@@ -26,6 +26,7 @@ const FoldersModel = `
 
 const PhotosModel = `
   CREATE TABLE photos (
+    id INTEGER PRIMARY KEY
     photo_project_id INTEGER,
     url TEXT,
     name TEXT,

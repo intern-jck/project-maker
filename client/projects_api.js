@@ -51,7 +51,8 @@ export async function updateProject(project, photos) {
     project: project,
     photos: photos,
   };
-  console.log("saving project", data);
+
+  console.log("saving project: ", data);
 
   const options = {
     method: "PUT",
@@ -67,6 +68,7 @@ export async function updateProject(project, photos) {
     })
     .then((data) => {
       //   getProjects();
+      console.log('updated project:', data)
       return data;
     })
     .catch((error) => {

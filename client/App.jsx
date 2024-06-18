@@ -47,20 +47,25 @@ const App = () => {
     setCurrentProject({});
   }
 
-  function onSelectProjectHandler(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    // onSelectProject(value);
-    console.log(value);
-    getProject(value)
-      .then((data) => {
-        console.log(data);
-        setCurrentProject(data.project);
-        setCurrentPhotos(data.photos);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  // function onSelectProjectHandler(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   // onSelectProject(value);
+  //   console.log(value);
+  //   getProject(value)
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCurrentProject(data.project);
+  //       setCurrentPhotos(data.photos);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+
+  function saveProject(project, photos) {
+    console.log("saving: ", project, photos)
+    updateProject(project, photos);
   }
 
   async function actionHandler(event) {
@@ -139,8 +144,8 @@ const App = () => {
             folderData={folders}
             projectData={currentProject}
             photosData={projectPhotos}
-            onCloseProject={closeProject}
-            // onSaveProject={putProject}
+            onSaveProject={saveProject}
+            // onCloseProject={closeProject}
             // onDeleteProject={deleteProject}
             // onCreateProject={getCreateProject}
           />

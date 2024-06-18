@@ -12,8 +12,8 @@ export const ProjectForm = ({
   folderData,
   projectData,
   photosData,
+  onSaveProject,
   // onCloseProject,
-  // onSaveProject,
   // onDeleteProject,
 }) => {
   const [project, setProject] = useState(projectData);
@@ -38,18 +38,19 @@ export const ProjectForm = ({
 
   function saveProjectHandler(event) {
     event.preventDefault();
+    // console.log("saving: ", project, photos)
     onSaveProject(project, photos);
   }
 
-  function deleteProjectHandler(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    onDeleteProject(value);
-  }
+  // function deleteProjectHandler(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   onDeleteProject(value);
+  // }
 
-  function closeProjectHandler() {
-    onCloseProject();
-  }
+  // function closeProjectHandler() {
+  //   onCloseProject();
+  // }
 
   function updateTextInput(event) {
     event.preventDefault();
@@ -148,8 +149,9 @@ export const ProjectForm = ({
             </button>
             <button
               type="button"
+              name="delete_project"
               value={project.project_id}
-              onClick={deleteProjectHandler}
+              onClick={onAction}
             >
               <i className="fa-regular fa-trash-can"></i>
             </button>
