@@ -9,6 +9,7 @@
 npm install
 npm install -g nodemon
 sudo apt install sqlite3
+npm install -g nodemon
 ```
 
 ### To run:
