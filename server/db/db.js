@@ -6,11 +6,11 @@ const {
   PhotosModel,
   TechTagsModel,
   ProjectTechTagsModel,
-} = require("./models.js");
+} = require("./schemas.js");
 
 // Initialize database
 const db = new sqlite3.Database(
-  "./db/projects.db",
+  "./projects.db",
   sqlite3.OPEN_READWRITE,
   (err) => {
     if (err && err.code == "SQLITE_CANTOPEN") {
@@ -26,7 +26,7 @@ const db = new sqlite3.Database(
 
 // Creates projects and folders databases
 function createDatabase() {
-  const pMakerDB = new sqlite3.Database("./db/projects.db", (err) => {
+  const pMakerDB = new sqlite3.Database("./projects.db", (err) => {
     if (err) {
       console.log("Create Database Error " + err);
       exit(1);

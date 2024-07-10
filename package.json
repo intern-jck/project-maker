@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
-    "client": "webpack serve --open",
-    "server": "nodemon server/main.js"
+    "dev-client": "webpack serve --open",
+    "dev-server": "nodemon server/main.js"
   },
   "keywords": [],
   "author": "",

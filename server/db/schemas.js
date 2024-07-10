@@ -2,7 +2,7 @@
 
 const ProjectsModel = `
   CREATE TABLE projects (
-    project_id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     folder_id INTEGER,
     slug TEXT,
     name TEXT,
@@ -19,7 +19,7 @@ const ProjectsModel = `
 
 const FoldersModel = `
   CREATE TABLE folders (
-    folder_id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     name TEXT
   );
 `;
@@ -36,7 +36,7 @@ const PhotosModel = `
 
 const TechTagsModel = `
   CREATE TABLE tech_tags (
-    tech_id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     name TEXT,
     url TEXT,
     short TEXT,
