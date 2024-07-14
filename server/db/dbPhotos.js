@@ -1,21 +1,20 @@
-
 /**
  * PHOTOS TABLE
  */
 function select_photos(project_id, callback) {
-    return db.all(
-      `SELECT * FROM photos WHERE project_photo_id=${project_id}`,
-      (error, rows) => {
-        if (error) {
-          console.log(`select_photo error: ${error}`);
-        }
-        callback(rows);
+  return db.all(
+    `SELECT * FROM photos WHERE project_photo_id=${project_id}`,
+    (error, rows) => {
+      if (error) {
+        console.log(`select_photo error: ${error}`);
       }
-    );
-  }
-  
-  function insert_photo(photo_data, callback) {
-    const sql = `
+      callback(rows);
+    }
+  );
+}
+
+function insert_photo(photo_data, callback) {
+  const sql = `
       INSERT INTO photos (
         project_photo_id,
         name,
@@ -26,15 +25,14 @@ function select_photos(project_id, callback) {
         ${photo_data.name},
         ${photo_data.url},
         );`;
-  
-    return db.exec(sql, (error) => {
-      if (error) {
-        console.log(`insert_photo error: ${error}`);
-      }
-      callback(error);
-    });
-  }
 
+  return db.exec(sql, (error) => {
+    if (error) {
+      console.log(`insert_photo error: ${error}`);
+    }
+    callback(error);
+  });
+}
 
 // module.exports = {
 //   db,
@@ -50,4 +48,3 @@ function select_photos(project_id, callback) {
 //   select_photos,
 //   insert_photo,
 // };
-  

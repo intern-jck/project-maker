@@ -24,7 +24,7 @@ function selectProjects() {
   });
 }
 
-function selectProject(project_id) {
+function selectProject(id) {
   //   return db.all(
   //     `SELECT * FROM projects WHERE project_id=${project_id};`,
   //     (error, project) => {
@@ -44,7 +44,8 @@ function selectProject(project_id) {
   //     }
   //   );
 
-  const sql = `SELECT * FROM projects WHERE project_id=${project_id};`;
+  const sql = `SELECT * FROM projects WHERE id=${id};`;
+
   // Use Promise
   return new Promise((resolve, reject) => {
     db.all(sql, (error, project) => {
@@ -56,13 +57,14 @@ function selectProject(project_id) {
   });
 }
 
-function create_project(callback) {
-  const timestamp = Date.now();
-  const defaultDate = new Date().toISOString().split("T")[0];
+function createProject(data) {
+  //   const timestamp = Date.now();
+  const defaultDate = new Date(data.timestamp).toISOString().split("T")[0];
+  console.log(data, defaultDate);
 
   const sql = `
       INSERT INTO projects (
-        id,
+        created_on,
         folder_id,
         slug,
         name,
@@ -75,7 +77,7 @@ function create_project(callback) {
         description
         )
       VALUES (
-        ${timestamp},
+        ${data.timestamp},
         0,
         'default_slug',
         'default_name',
@@ -166,6 +168,6 @@ function delete_project(project_id, callback) {
 module.exports = {
   selectProjects,
   selectProject,
-  create_project,
+  createProject,
   select_projects_by_folder,
 };

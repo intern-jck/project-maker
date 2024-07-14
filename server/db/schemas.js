@@ -3,6 +3,7 @@
 const ProjectsModel = `
   CREATE TABLE projects (
     id INTEGER PRIMARY KEY,
+    created_on INTEGER,
     folder_id INTEGER,
     slug TEXT,
     name TEXT,
@@ -15,6 +16,7 @@ const ProjectsModel = `
     description TEXT
   );
 `;
+
 // FOREIGN KEY (folder_id) REFERENCES folders(id)
 
 // const FoldersModel = `
