@@ -6,6 +6,7 @@ const {
   selectProject,
   createProject,
   updateProject,
+  deleteProject,
 } = require("../db/dbProject.js");
 
 // const { getProjects, createProject } = require("../controllers/projects.js");
@@ -58,12 +59,27 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// Update a project
+// Update a project by id
 router.put("/:id", async (req, res, next) => {
   const data = req.body;
 
   try {
     const result = await updateProject(data);
+
+    res.json({
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Delete a project by id
+router.delete("/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const result = await deleteProject(id);
 
     res.json({
       data: result,

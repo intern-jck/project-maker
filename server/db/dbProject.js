@@ -124,12 +124,12 @@ function updateProject(data) {
     WHERE id = ${data.id};
     `;
 
-//   return db.exec(sql, (error) => {
-//     if (error) {
-//       console.log(`update_project error: ${error}`);
-//     }
-//     callback(error);
-//   });
+  //   return db.exec(sql, (error) => {
+  //     if (error) {
+  //       console.log(`update_project error: ${error}`);
+  //     }
+  //     callback(error);
+  //   });
 
   return new Promise((resolve, reject) => {
     db.exec(sql, (error) => {
@@ -141,21 +141,24 @@ function updateProject(data) {
   });
 }
 
-function delete_project(project_id, callback) {
-  console.log(
-    `DELETE FROM projects
-        WHERE project_id=${project_id}`
-  );
-  return db.exec(
-    `DELETE FROM projects
-        WHERE project_id=${project_id}`,
-    (error) => {
+function deleteProject(id) {
+  const sql = `DELETE FROM projects WHERE id=${id}`;
+
+  //   return db.exec(sql, (error) => {
+  //     if (error) {
+  //       console.log(`delete_project error: ${error}`);
+  //     }
+  //     callback(error);
+  //   });
+
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (error) => {
       if (error) {
-        console.log(`delete_project error: ${error}`);
+        reject(error);
       }
-      callback(error);
-    }
-  );
+      resolve(true);
+    });
+  });
 }
 
 module.exports = {
@@ -163,4 +166,5 @@ module.exports = {
   selectProject,
   createProject,
   updateProject,
+  deleteProject,
 };
