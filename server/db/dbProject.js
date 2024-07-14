@@ -2,20 +2,24 @@ const db = require("../db/db.js");
 
 // PROJECTS
 
-function select_projects(callback) {
-  return db.all(`SELECT project_id, name FROM projects`, (error, rows) => {
-    if (error) {
-      console.log(`select_projects error: ${error}`);
-    }
-    callback(error, rows);
-  });
+function selectProjects(callback) {
+  const sql = `SELECT id, name FROM projects`;
 
+  // Use callback
+  // return db.all(sql, (error, rows) => {
+  //     if (error) {
+  //       console.log(`select_projects error: ${error}`);
+  //     }
+  //     callback(error, rows);
+  //   });
+
+  // Use promise
   return new Promise((resolve, reject) => {
-    db.exec(sql, (error, rows) => {
+    db.all(sql, (error, rows) => {
       if (error) {
         reject(error);
       }
-      resolve;
+      resolve(rows);
     });
   });
 }
@@ -149,8 +153,8 @@ function delete_project(project_id, callback) {
 }
 
 module.exports = {
+  selectProjects,
   create_project,
-  select_projects,
   select_project,
   select_projects_by_folder,
 };
