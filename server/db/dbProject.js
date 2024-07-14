@@ -1,7 +1,6 @@
 const db = require("../db/db.js");
 
 // PROJECTS
-
 function selectProjects() {
   const sql = `SELECT id, name FROM projects`;
 
