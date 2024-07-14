@@ -5,6 +5,7 @@ const {
   selectProjects,
   selectProject,
   createProject,
+  updateProject,
 } = require("../db/dbProject.js");
 
 // const { getProjects, createProject } = require("../controllers/projects.js");
@@ -15,10 +16,10 @@ const {
 // Get all projects
 router.get("/", async (req, res, next) => {
   try {
-    const projects = await selectProjects();
+    const result = await selectProjects();
 
     res.json({
-      data: projects,
+      data: result,
     });
   } catch (error) {
     next(error);
@@ -28,25 +29,41 @@ router.get("/", async (req, res, next) => {
 // Get a project by id
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log(id)
+  console.log(id);
 
   try {
-    const project = await selectProject(id);
+    const result = await selectProject(id);
 
     res.json({
-      data: project,
+      data: result,
     });
   } catch (error) {
     next(error);
   }
 });
 
+// Create a new project
 router.post("/", async (req, res, next) => {
   const data = req.body;
   console.log(data);
 
   try {
     const result = await createProject(data);
+
+    res.json({
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Update a project
+router.put("/:id", async (req, res, next) => {
+  const data = req.body;
+
+  try {
+    const result = await updateProject(data);
 
     res.json({
       data: result,

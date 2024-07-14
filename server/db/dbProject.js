@@ -107,55 +107,48 @@ function createProject(data) {
   });
 }
 
-function select_projects_by_folder(folder_id, callback) {
-  if (!folder_id) {
-    select_projects(callback);
-  }
+function updateProject(data) {
+  const sql = `
+  UPDATE projects
+    SET
+      name = '${data.name}',
+      folder_id = '${parseInt(data.folder_id)}',
+      slug = '${data.slug}',
+      url = '${data.url}',
+      client = '${data.client}',
+      client_url = '${data.client_url}',
+      start_date = '${data.start_date}',
+      end_date = '${data.end_date}',
+      short = '${data.short}',
+      description = '${data.description}'
+    WHERE id = ${data.id};
+    `;
 
-  return db.all(
-    `SELECT * FROM projects WHERE folder_id=${folder_id}`,
-    (error, rows) => {
-      if (error) {
-        console.log(`select_project_by_folder error: ${error}`);
-      }
-      callback(error, rows);
-    }
-  );
-}
+//   return db.exec(sql, (error) => {
+//     if (error) {
+//       console.log(`update_project error: ${error}`);
+//     }
+//     callback(error);
+//   });
 
-function update_project(project_data, callback) {
-  return db.exec(
-    `UPDATE projects
-      SET
-        name = '${project_data.name}',
-        folder_id = '${parseInt(project_data.folder_id)}',
-        slug = '${project_data.slug}',
-        url = '${project_data.url}',
-        client = '${project_data.client}',
-        client_url = '${project_data.client_url}',
-        start_date = '${project_data.start_date}',
-        end_date = '${project_data.end_date}',
-        short = '${project_data.short}',
-        description = '${project_data.description}'
-      WHERE project_id = ${project_data.project_id};
-      `,
-    (error) => {
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (error) => {
       if (error) {
-        console.log(`update_project error: ${error}`);
+        reject(error);
       }
-      callback(error);
-    }
-  );
+      resolve(true);
+    });
+  });
 }
 
 function delete_project(project_id, callback) {
   console.log(
     `DELETE FROM projects
-      WHERE project_id=${project_id}`
+        WHERE project_id=${project_id}`
   );
   return db.exec(
     `DELETE FROM projects
-      WHERE project_id=${project_id}`,
+        WHERE project_id=${project_id}`,
     (error) => {
       if (error) {
         console.log(`delete_project error: ${error}`);
@@ -169,5 +162,5 @@ module.exports = {
   selectProjects,
   selectProject,
   createProject,
-  select_projects_by_folder,
+  updateProject,
 };

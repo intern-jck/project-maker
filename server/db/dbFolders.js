@@ -41,6 +41,21 @@ function delete_folder(folder_id, callback) {
   );
 }
 
+function select_projects_by_folder(folder_id, callback) {
+  if (!folder_id) {
+    select_projects(callback);
+  }
+
+  return db.all(
+    `SELECT * FROM projects WHERE folder_id=${folder_id}`,
+    (error, rows) => {
+      if (error) {
+        console.log(`select_project_by_folder error: ${error}`);
+      }
+      callback(error, rows);
+    }
+  );
+}
 // module.exports = {
 //   db,
 //   create_folder,
