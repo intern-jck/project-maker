@@ -2,7 +2,7 @@ const db = require("../db/db.js");
 
 // PROJECTS
 
-function selectProjects(callback) {
+function selectProjects() {
   const sql = `SELECT id, name FROM projects`;
 
   // Use callback
@@ -24,25 +24,36 @@ function selectProjects(callback) {
   });
 }
 
-function select_project(project_id, callback) {
-  return db.all(
-    `SELECT * FROM projects WHERE project_id=${project_id};`,
-    (error, project) => {
-      if (error) {
-        console.log(`select_project error: ${error}`);
-      }
+function selectProject(project_id) {
+  //   return db.all(
+  //     `SELECT * FROM projects WHERE project_id=${project_id};`,
+  //     (error, project) => {
+  //       if (error) {
+  //         console.log(`select_project error: ${error}`);
+  //       }
 
-      db.all(
-        `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
-        (error, photos) => {
-          if (error) {
-            console.log(`select_project error: ${error}`);
-          }
-          callback(error, { project, photos });
-        }
-      );
-    }
-  );
+  //       db.all(
+  //         `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
+  //         (error, photos) => {
+  //           if (error) {
+  //             console.log(`select_project error: ${error}`);
+  //           }
+  //           callback(error, { project, photos });
+  //         }
+  //       );
+  //     }
+  //   );
+
+  const sql = `SELECT * FROM projects WHERE project_id=${project_id};`;
+  // Use Promise
+  return new Promise((resolve, reject) => {
+    db.all(sql, (error, project) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(project);
+    });
+  });
 }
 
 function create_project(callback) {
@@ -154,7 +165,7 @@ function delete_project(project_id, callback) {
 
 module.exports = {
   selectProjects,
+  selectProject,
   create_project,
-  select_project,
   select_projects_by_folder,
 };
