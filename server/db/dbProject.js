@@ -4,14 +4,6 @@ const db = require("../db/db.js");
 function selectProjects() {
   const sql = `SELECT id, name FROM projects`;
 
-  // Use callback
-  // return db.all(sql, (error, rows) => {
-  //     if (error) {
-  //       console.log(`select_projects error: ${error}`);
-  //     }
-  //     callback(error, rows);
-  //   });
-
   // Use promise
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
@@ -24,25 +16,6 @@ function selectProjects() {
 }
 
 function selectProject(id) {
-  //   return db.all(
-  //     `SELECT * FROM projects WHERE project_id=${project_id};`,
-  //     (error, project) => {
-  //       if (error) {
-  //         console.log(`select_project error: ${error}`);
-  //       }
-
-  //       db.all(
-  //         `SELECT * FROM photos WHERE photo_project_id=${project_id};`,
-  //         (error, photos) => {
-  //           if (error) {
-  //             console.log(`select_project error: ${error}`);
-  //           }
-  //           callback(error, { project, photos });
-  //         }
-  //       );
-  //     }
-  //   );
-
   const sql = `SELECT * FROM projects WHERE id=${id};`;
 
   // Use Promise
@@ -57,9 +30,7 @@ function selectProject(id) {
 }
 
 function createProject(data) {
-  //   const timestamp = Date.now();
   const defaultDate = new Date(data.timestamp).toISOString().split("T")[0];
-  console.log(data, defaultDate);
 
   const sql = `
       INSERT INTO projects (
@@ -86,15 +57,8 @@ function createProject(data) {
         '${defaultDate}',
         '${defaultDate}',
         'default_short',
-        'default_description'
-        );`;
-
-  //   return db.exec(sql, (error) => {
-  //     if (error) {
-  //       console.log(`create_project error: ${error}`);
-  //     }
-  //     callback(error);
-  //   });
+        'default_description');
+        `;
 
   return new Promise((resolve, reject) => {
     db.exec(sql, (error) => {
@@ -108,27 +72,20 @@ function createProject(data) {
 
 function updateProject(data) {
   const sql = `
-  UPDATE projects
-    SET
-      name = '${data.name}',
-      folder_id = '${parseInt(data.folder_id)}',
-      slug = '${data.slug}',
-      url = '${data.url}',
-      client = '${data.client}',
-      client_url = '${data.client_url}',
-      start_date = '${data.start_date}',
-      end_date = '${data.end_date}',
-      short = '${data.short}',
-      description = '${data.description}'
-    WHERE id = ${data.id};
-    `;
-
-  //   return db.exec(sql, (error) => {
-  //     if (error) {
-  //       console.log(`update_project error: ${error}`);
-  //     }
-  //     callback(error);
-  //   });
+    UPDATE projects
+        SET
+        name = '${data.name}',
+        folder_id = '${parseInt(data.folder_id)}',
+        slug = '${data.slug}',
+        url = '${data.url}',
+        client = '${data.client}',
+        client_url = '${data.client_url}',
+        start_date = '${data.start_date}',
+        end_date = '${data.end_date}',
+        short = '${data.short}',
+        description = '${data.description}'
+        WHERE id = ${data.id};
+        `;
 
   return new Promise((resolve, reject) => {
     db.exec(sql, (error) => {
@@ -142,13 +99,6 @@ function updateProject(data) {
 
 function deleteProject(id) {
   const sql = `DELETE FROM projects WHERE id=${id}`;
-
-  //   return db.exec(sql, (error) => {
-  //     if (error) {
-  //       console.log(`delete_project error: ${error}`);
-  //     }
-  //     callback(error);
-  //   });
 
   return new Promise((resolve, reject) => {
     db.exec(sql, (error) => {

@@ -9,11 +9,6 @@ const {
   deleteProject,
 } = require("../db/dbProject.js");
 
-// const { getProjects, createProject } = require("../controllers/projects.js");
-
-// router.get("/", getProjects);
-// router.post("/", createProject);
-
 // Get all projects
 router.get("/", async (req, res, next) => {
   try {

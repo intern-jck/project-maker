@@ -14,25 +14,24 @@ const ProjectsModel = `
     end_date TEXT,
     short TEXT,
     description TEXT
+    FOREIGN KEY (folder_id) REFERENCES folders(id)
   );
 `;
 
-// FOREIGN KEY (folder_id) REFERENCES folders(id)
+const PhotosModel = `
+  CREATE TABLE photos (
+    id INTEGER PRIMARY KEY
+    photo_project_id INTEGER,
+    url TEXT,
+    name TEXT,
+    FOREIGN KEY(photo_project_id) REFERENCES projects(id)
+  );
+`;
 
 // const FoldersModel = `
 //   CREATE TABLE folders (
 //     id INTEGER PRIMARY KEY,
 //     name TEXT
-//   );
-// `;
-
-// const PhotosModel = `
-//   CREATE TABLE photos (
-//     id INTEGER PRIMARY KEY
-//     photo_project_id INTEGER,
-//     url TEXT,
-//     name TEXT,
-//     FOREIGN KEY(photo_project_id) REFERENCES projects(id)
 //   );
 // `;
 
@@ -56,7 +55,7 @@ const ProjectsModel = `
 
 module.exports = {
   ProjectsModel,
-  // PhotosModel,
+  PhotosModel,
   // FoldersModel,
   // TechTagsModel,
   // ProjectTechTagsModel,
