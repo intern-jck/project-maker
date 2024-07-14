@@ -12,50 +12,50 @@ const ProjectsModel = `
     start_date TEXT,
     end_date TEXT,
     short TEXT,
-    description TEXT,
-    FOREIGN KEY (folder_id) REFERENCES folders(folder_id)
+    description TEXT
   );
 `;
+// FOREIGN KEY (folder_id) REFERENCES folders(id)
 
-const FoldersModel = `
-  CREATE TABLE folders (
-    id INTEGER PRIMARY KEY,
-    name TEXT
-  );
-`;
+// const FoldersModel = `
+//   CREATE TABLE folders (
+//     id INTEGER PRIMARY KEY,
+//     name TEXT
+//   );
+// `;
 
-const PhotosModel = `
-  CREATE TABLE photos (
-    id INTEGER PRIMARY KEY
-    photo_project_id INTEGER,
-    url TEXT,
-    name TEXT,
-    FOREIGN KEY(photo_project_id) REFERENCES projects(project_id)
-  );
-`;
+// const PhotosModel = `
+//   CREATE TABLE photos (
+//     id INTEGER PRIMARY KEY
+//     photo_project_id INTEGER,
+//     url TEXT,
+//     name TEXT,
+//     FOREIGN KEY(photo_project_id) REFERENCES projects(id)
+//   );
+// `;
 
-const TechTagsModel = `
-  CREATE TABLE tech_tags (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    url TEXT,
-    short TEXT,
-  );
-`;
+// const TechTagsModel = `
+//   CREATE TABLE tech_tags (
+//     id INTEGER PRIMARY KEY,
+//     name TEXT,
+//     url TEXT,
+//     short TEXT,
+//   );
+// `;
 
-const ProjectTechTagsModel = `
-  CREATE TABLE project_tech_tags (
-    tech_tag_id INTEGER,
-    tech_project_id INTEGER,
-    FOREIGN KEY(tech_tag_id) REFERENCES tech_tags(tech_id)
-    FOREIGN KEY(tech_project_id) REFERENCES projects(project_id)
-  );
-`;
+// const ProjectTechTagsModel = `
+//   CREATE TABLE project_tech_tags (
+//     tech_tag_id INTEGER,
+//     tech_project_id INTEGER,
+//     FOREIGN KEY(tech_tag_id) REFERENCES tech_tags(tech_id)
+//     FOREIGN KEY(tech_project_id) REFERENCES projects(project_id)
+//   );
+// `;
 
 module.exports = {
   ProjectsModel,
-  FoldersModel,
-  PhotosModel,
-  TechTagsModel,
-  ProjectTechTagsModel,
+  // PhotosModel,
+  // FoldersModel,
+  // TechTagsModel,
+  // ProjectTechTagsModel,
 };

@@ -7,7 +7,7 @@ app.use(express.json());
 
 const indexRoute = require("./routes/index.js");
 const projectsRoutes = require("./routes/projects.js");
-// const db = require("./db/db.js");
+const db = require("./db/db.js");
 
 app.use("/", indexRoute);
 app.use("/projects", projectsRoutes);
