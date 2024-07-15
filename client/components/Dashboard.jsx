@@ -3,30 +3,15 @@ import SelectInput from "./Inputs/SelectInput.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import "../styles/Dashboard.scss";
 
-// import {
-//   getProject,
-//   getProjects,
-//   createProject,
-//   // updateProject,
-//   // deleteProject,
-// } from "../projects_api.js";
-
-// import {
-//   getFolders,
-//   createFolder,
-//   deleteFolder,
-//   // getFolderProjects,
-// } from "../folders_api.js";
-
 export const Dashboard = ({
-  onAction,
-  folderData,
+  // onAction,
+  // folderData,
   dashboardData,
+  onCreateProject,
+  onSelectProject,
   // onCreateFolder,
   // onSelectFolder,
   // onDeleteFolder,
-  // onSelectProject,
-  // onCreateProject,
 }) => {
   // function onCreateFolderHandler(event) {
   //   const value = document.getElementById("folder-input").value;
@@ -58,6 +43,12 @@ export const Dashboard = ({
   //   onCreateProject();
   // }
 
+  function onSelectProjectHandler(event) {
+    event.preventDefault();
+    const {value} = event.target;
+    onSelectProject(value);
+  }
+
   return (
     <div className="Dashboard">
       <div className="dash-controls">
@@ -67,16 +58,16 @@ export const Dashboard = ({
             className="folder-input"
             inputName={"folder_name"}
           />
-          <button name="create_folder" onClick={onAction}>
+          {/* <button name="create_folder" onClick={onAction}>
             <i className="fa-solid fa-folder-plus"></i>
-          </button>
-          <button name="create_project" onClick={onAction}>
+          </button> */}
+          <button name="create_project" onClick={onCreateProject}>
             <i className="fa-solid fa-file"></i>
           </button>
         </div>
 
         <div className="control-row">
-          <SelectInput
+          {/* <SelectInput
             inputId="folder-select"
             className="folder-select"
             inputName="Folders"
@@ -84,10 +75,10 @@ export const Dashboard = ({
               return [item.folder_id, item.name];
             })}
             changeHandler={onAction}
-          />
-          <button name="delete_folder" onClick={onAction}>
+          /> */}
+          {/* <button name="delete_folder" onClick={onAction}>
             <i className="fa-solid fa-folder-minus"></i>
-          </button>
+          </button> */}
           <button>
             <i className="fa-solid fa-file-export"></i>
           </button>
@@ -100,10 +91,10 @@ export const Dashboard = ({
             return (
               <button
                 className="project-button"
-                key={project.project_id}
-                value={project.project_id}
-                name="get_project"
-                onClick={onAction}
+                key={project.id}
+                value={project.id}
+                // name="get_project"
+                onClick={onSelectProjectHandler}
               >
                 <i className="fa-solid fa-file"></i>
                 <p>{project.name}</p>

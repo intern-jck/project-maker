@@ -3,38 +3,36 @@ import { Dashboard } from "./components/Dashboard.jsx";
 import { ProjectForm } from "./components/ProjectForm.jsx";
 
 import {
-  getProject,
   getProjects,
+  getProject,
   createProject,
   updateProject,
   deleteProject,
-} from "./projects_api.js";
+} from "./api/projects.js";
 
-import {
-  getFolders,
-  createFolder,
-  deleteFolder,
-  getFolderProjects,
-} from "./folders_api.js";
+// import {
+//   getFolders,
+//   createFolder,
+//   deleteFolder,
+//   getFolderProjects,
+// } from "./api/folders_api.js";
 
-import { getPhotos } from "./photos_api.js";
+// import { getPhotos } from "./api/photos_api.js";
 
 import "./styles/App.scss";
 
-// const SERVER_URL = "http://127.0.0.1:3000";
-// const DEFAULT_FOLDER = { folder_id: 0, folder_name: "ALL" };
-
 const App = () => {
-  const [folders, setFolders] = useState([]);
-  const [currentFolder, setCurrentFolder] = useState({});
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
-  const [projectPhotos, setProjectPhotos] = useState([]);
+  // const [folders, setFolders] = useState([]);
+  // const [currentFolder, setCurrentFolder] = useState({});
+  // const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
     getProjects()
       .then((data) => {
-        setProjects(data);
+        console.log(data.data)
+        setProjects(data.data);
         // setFolders([DEFAULT_FOLDER]);
       })
       .catch((error) => {
@@ -42,84 +40,27 @@ const App = () => {
       });
   }, []);
 
-  // App Functions
-  function closeProject() {
-    setCurrentProject({});
-  }
-
-  // function onSelectProjectHandler(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   // onSelectProject(value);
-  //   console.log(value);
-  //   getProject(value)
-  //     .then((data) => {
-  //       console.log(data);
-  //       setCurrentProject(data.project);
-  //       setCurrentPhotos(data.photos);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
-  function saveProject(project, photos) {
-    console.log("saving: ", project, photos)
-    updateProject(project, photos);
-  }
-
-  async function actionHandler(event) {
-    event.preventDefault();
-    const { value, name } = event.target;
-    // console.log(value, name);
-    let data;
-
-    switch (name) {
-      // Projects API
-      case "close_project":
-        console.log("closing project")
-        closeProject();  
-        break;
-      case "create_project":
-        data = await createProject();
-        console.log(data);
-        break;
-      case "get_project":
-        console.log("getting project: ", value);
-        data = await getProject(value);
-        // console.log(data);
-        setCurrentProject(data.project);
-        setProjectPhotos(data.photos);
-        break;
-      case "get_projects":
-        data = await getProjects();
-        console.log(data);
-        break;
-      case "update_project":
-        data = await updateProject();
-        console.log(data);
-        break;
-      case "delete_project":
-        data = await deleteProject();
-        console.log(data);
-        break;
-      // Folders API
-      case "get_folders":
-        data = await getFolders();
-        
-        console.log(data);
-        break;
-      case "create_folder":
-        data = await createFolder();
-        console.log(data);
-        break;
-      case "delete_folder":
-        data = await deleteFolder();
-        console.log(data);
-        break;
-      default:
-        break;
+  async function createProjectHandler() {
+    try {
+      const result = await createProject();
+      const projects = await getProjects();
+      setProjects(projects.data);
+    } catch(error) {
+      console.log(error)
     }
+  }
+
+  async function getProjectHandler(id) {
+    try {
+      const result = await getProject(id);
+      setCurrentProject(result.data);
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+  function closeProjectHandler() {
+    setCurrentProject({});
   }
 
   return (
@@ -128,24 +69,24 @@ const App = () => {
 
       <div className="app-content">
         <Dashboard
-          onAction={actionHandler}
-          folderData={folders}
+          // onAction={actionHandler}
+          // folderData={folders}
           dashboardData={projects}
+          onCreateProject={createProjectHandler}
+          onSelectProject={getProjectHandler}
           // onCreateFolder={createFolder}
           // onSelectFolder={getFolderProjects}
           // onDeleteFolder={deleteFolder}
-          // onCreateProject={createProject}
-          // onSelectProject={onSelectProjectHandler}
         />
 
         {Object.keys(currentProject).length ? (
           <ProjectForm
-            onAction={actionHandler}
-            folderData={folders}
-            projectData={currentProject}
-            photosData={projectPhotos}
-            onSaveProject={saveProject}
-            // onCloseProject={closeProject}
+          projectData={currentProject}
+          onCloseProject={closeProjectHandler}
+            // onAction={actionHandler}
+            // folderData={folders}
+            // photosData={projectPhotos}
+            // onSaveProject={saveProject}
             // onDeleteProject={deleteProject}
             // onCreateProject={getCreateProject}
           />
@@ -158,3 +99,9 @@ const App = () => {
 };
 
 export default App;
+
+
+/**
+ * 
+ 
+ */

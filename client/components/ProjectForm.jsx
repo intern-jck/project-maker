@@ -8,39 +8,43 @@ import PhotoInput from "./Inputs/PhotoInput.jsx";
 import "../styles/ProjectForm.scss";
 
 export const ProjectForm = ({
-  onAction,
-  folderData,
+  // onAction,
+  // folderData,
   projectData,
-  photosData,
-  onSaveProject,
-  // onCloseProject,
+  // photosData,
+  // onSaveProject,
+  onCloseProject,
   // onDeleteProject,
 }) => {
+  console.log(projectData);
+
+
   const [project, setProject] = useState(projectData);
-  const [photos, setPhotos] = useState(photosData);
-  const [newPhoto, setNewPhoto] = useState({});
-  const [repos, setRepos] = useState();
-  const [newRepo, setNewRepo] = useState({});
-  const [tags, setTags] = useState();
-  const [newTag, setNewTag] = useState({});
 
-  function updateFolder(event) {
-    event.preventDefault();
-    const { value } = event.target;
-    console.log(value);
-    const udpatedFolder = { folder_id: value };
-    console.log(udpatedFolder);
-    setProject((project) => ({
-      ...project,
-      ...udpatedFolder,
-    }));
-  }
+  // const [photos, setPhotos] = useState(photosData);
+  // const [newPhoto, setNewPhoto] = useState({});
+  // const [repos, setRepos] = useState();
+  // const [newRepo, setNewRepo] = useState({});
+  // const [tags, setTags] = useState();
+  // const [newTag, setNewTag] = useState({});
 
-  function saveProjectHandler(event) {
-    event.preventDefault();
-    // console.log("saving: ", project, photos)
-    onSaveProject(project, photos);
-  }
+  // function updateFolder(event) {
+  //   event.preventDefault();
+  //   const { value } = event.target;
+  //   console.log(value);
+  //   const udpatedFolder = { folder_id: value };
+  //   console.log(udpatedFolder);
+  //   setProject((project) => ({
+  //     ...project,
+  //     ...udpatedFolder,
+  //   }));
+  // }
+
+  // function saveProjectHandler(event) {
+  //   event.preventDefault();
+  //   // console.log("saving: ", project, photos)
+  //   onSaveProject(project, photos);
+  // }
 
   // function deleteProjectHandler(event) {
   //   event.preventDefault();
@@ -129,11 +133,11 @@ export const ProjectForm = ({
       <form
         id="project-form"
         className="project-form"
-        onSubmit={saveProjectHandler}
+        // onSubmit={saveProjectHandler}
       >
         <div className="form-header">
           <div>
-            <SelectInput
+            {/* <SelectInput
               inputId="folder-select"
               className="folder-select"
               inputName="Folders"
@@ -141,7 +145,7 @@ export const ProjectForm = ({
                 return [item.folder_id, item.name];
               })}
               changeHandler={updateFolder}
-            />
+            /> */}
           </div>
           <div className="form-controls">
             <button type="submit">
@@ -151,11 +155,11 @@ export const ProjectForm = ({
               type="button"
               name="delete_project"
               value={project.project_id}
-              onClick={onAction}
+              // onClick={onAction}
             >
               <i className="fa-regular fa-trash-can"></i>
             </button>
-            <button type="button" name="close_project" onClick={onAction}>
+            <button type="button" name="close_project" onClick={onCloseProject}>
               <i className="fa-solid fa-square-xmark"></i>
             </button>
           </div>
@@ -223,7 +227,7 @@ export const ProjectForm = ({
             />
           </div>
           <div className="form-row">
-            <PhotoInput
+            {/* <PhotoInput
               inputId="photos-input"
               className="photos-input"
               inputName="photos"
@@ -233,12 +237,10 @@ export const ProjectForm = ({
               addHandler={addPhoto}
               photos={photos}
               deleteHandler={deletePhoto}
-            />
+            /> */}
           </div>
         </div>
       </form>
     </div>
   );
 };
-
-// export default ProjectMaker;
