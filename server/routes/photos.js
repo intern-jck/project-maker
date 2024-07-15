@@ -2,33 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  selectProjects,
-  selectProject,
-  createProject,
-  updateProject,
-  deleteProject,
-} = require("../db/dbProject.js");
+  selectPhotos,
+  insertPhoto,
+  updatePhoto,
+  deletePhoto,
+} = require("../db/dbPhotos.js");
 
-// Get all projects
-router.get("/", async (req, res, next) => {
-  try {
-    const result = await selectProjects();
-    
-    res.json({
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// Get a project by id
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
 
   try {
-    const result = await selectProject(id);
+    const result = await selectPhotos(id);
 
     res.json({
       data: result,
@@ -38,13 +22,10 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// Create a new project
 router.post("/", async (req, res, next) => {
   const data = req.body;
-  console.log(data);
-
   try {
-    const result = await createProject(data);
+    const result = await insertPhoto(data);
 
     res.json({
       data: result,
@@ -54,12 +35,11 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// Update a project by id
 router.put("/:id", async (req, res, next) => {
-  const data = req.body;
+  const id = req.params.id;
 
   try {
-    const result = await updateProject(data);
+    const result = await updatePhoto(id);
 
     res.json({
       data: result,
@@ -69,12 +49,11 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-// Delete a project by id
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const result = await deleteProject(id);
+    const result = await deletePhoto();
 
     res.json({
       data: result,

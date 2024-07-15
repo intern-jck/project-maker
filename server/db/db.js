@@ -2,7 +2,7 @@ const sqlite3 = require("sqlite3");
 
 const {
   ProjectsModel,
-  // PhotosModel,
+  PhotosModel,
   // FoldersModel,
   // TechTagsModel,
   // ProjectTechTagsModel,
@@ -32,8 +32,8 @@ function createDatabase() {
       exit(1);
     }
     createTable(pMakerDB, ProjectsModel);
+    createTable(pMakerDB, PhotosModel);
     // createTable(pMakerDB, FoldersModel);
-    // createTable(pMakerDB, PhotosModel);
     // createTable(pMakerDB, TechTagsModel);
     // createTable(pMakerDB, ProjectTechTagsModel);
   });

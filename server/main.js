@@ -7,9 +7,11 @@ app.use(express.json());
 
 const indexRoute = require("./routes/index.js");
 const projectsRoutes = require("./routes/projects.js");
+const photosRoutes = require("./routes/photos.js");
 
 app.use("/", indexRoute);
 app.use("/projects", projectsRoutes);
+app.use("/photos", photosRoutes);
 
 app.listen(3000, () => {
   console.log(`P Maker App Listening @ http://127.0.0.1:${3000}`);
