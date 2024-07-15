@@ -7,7 +7,7 @@ const {
   createProject,
   updateProject,
   deleteProject,
-} = require("../db/dbProject.js");
+} = require("../db/dbProjects.js");
 
 // Get all projects
 router.get("/", async (req, res, next) => {

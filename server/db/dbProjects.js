@@ -1,8 +1,8 @@
-const db = require("../db/db.js");
+const db = require("./db.js");
 
 // PROJECTS
 function selectProjects() {
-  const sql = `SELECT id, name FROM projects`;
+  const sql = `SELECT id, name FROM projects;`;
 
   // Use promise
   return new Promise((resolve, reject) => {
@@ -98,7 +98,7 @@ function updateProject(data) {
 }
 
 function deleteProject(id) {
-  const sql = `DELETE FROM projects WHERE id=${id}`;
+  const sql = `DELETE FROM projects WHERE id=${id};`;
 
   return new Promise((resolve, reject) => {
     db.exec(sql, (error) => {
