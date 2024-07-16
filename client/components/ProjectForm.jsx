@@ -8,21 +8,17 @@ import PhotoInput from "./Inputs/PhotoInput.jsx";
 import "../styles/ProjectForm.scss";
 
 export const ProjectForm = ({
-  // onAction,
-  // folderData,
   projectData,
-  // photosData,
-  // onSaveProject,
+  photosData,
+  onSaveProject,
   onCloseProject,
-  // onDeleteProject,
+  onDeleteProject,
 }) => {
-  console.log(projectData);
-
 
   const [project, setProject] = useState(projectData);
+  const [photos, setPhotos] = useState(photosData);
+  const [newPhoto, setNewPhoto] = useState({});
 
-  // const [photos, setPhotos] = useState(photosData);
-  // const [newPhoto, setNewPhoto] = useState({});
   // const [repos, setRepos] = useState();
   // const [newRepo, setNewRepo] = useState({});
   // const [tags, setTags] = useState();
@@ -40,27 +36,22 @@ export const ProjectForm = ({
   //   }));
   // }
 
-  // function saveProjectHandler(event) {
-  //   event.preventDefault();
-  //   // console.log("saving: ", project, photos)
-  //   onSaveProject(project, photos);
-  // }
+  function saveProjectHandler(event) {
+    event.preventDefault();
+    onSaveProject(project, photos);
+  }
 
-  // function deleteProjectHandler(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   onDeleteProject(value);
-  // }
+  function deleteProjectHandler(event) {
+    event.preventDefault();
+    const { value } = event.target;
+    onDeleteProject(value);
+  }
 
-  // function closeProjectHandler() {
-  //   onCloseProject();
-  // }
-
+  // Functions to update form
   function updateTextInput(event) {
     event.preventDefault();
 
     const { name, value } = event.currentTarget;
-    console.log(name, value);
 
     let updatedInput = {};
 
@@ -73,8 +64,6 @@ export const ProjectForm = ({
     } else {
       updatedInput = { [name]: value };
     }
-
-    console.log(updatedInput);
 
     // Update the current form data
     setProject((project) => ({
@@ -114,17 +103,14 @@ export const ProjectForm = ({
     event.preventDefault();
     let updatedPhotos = photos.slice();
     updatedPhotos.push(newPhoto);
-    console.log(updatedPhotos);
-    setPhotos(() => updatedPhotos);
+   setPhotos(() => updatedPhotos);
   }
 
   function deletePhoto(event) {
     event.preventDefault();
     const index = event.target.getAttribute("data-photo-index");
-    console.log("deleting photo: ", index);
     let updatedPhotos = photos.slice();
     updatedPhotos.splice(index, 1);
-    console.log(updatedPhotos);
     setPhotos(() => updatedPhotos);
   }
 
@@ -133,7 +119,7 @@ export const ProjectForm = ({
       <form
         id="project-form"
         className="project-form"
-        // onSubmit={saveProjectHandler}
+        onSubmit={saveProjectHandler}
       >
         <div className="form-header">
           <div>
@@ -154,8 +140,8 @@ export const ProjectForm = ({
             <button
               type="button"
               name="delete_project"
-              value={project.project_id}
-              // onClick={onAction}
+              value={project.id}
+              onClick={deleteProjectHandler}
             >
               <i className="fa-regular fa-trash-can"></i>
             </button>

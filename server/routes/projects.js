@@ -57,9 +57,8 @@ router.post("/", async (req, res, next) => {
 // Update a project by id
 router.put("/:id", async (req, res, next) => {
   const data = req.body;
-
   try {
-    const result = await updateProject(data);
+    const result = await updateProject(data.project);
 
     res.json({
       data: result,
@@ -72,6 +71,7 @@ router.put("/:id", async (req, res, next) => {
 // Delete a project by id
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
+  console.log('delete route: ', id)
 
   try {
     const result = await deleteProject(id);

@@ -24,15 +24,14 @@ import "./styles/App.scss";
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
+  // const [projectPhotos, setProjectPhotos] = useState([]);
   // const [folders, setFolders] = useState([]);
   // const [currentFolder, setCurrentFolder] = useState({});
-  // const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
     getProjects()
       .then((data) => {
-        console.log(data.data)
-        setProjects(data.data);
+        setProjects(data);
         // setFolders([DEFAULT_FOLDER]);
       })
       .catch((error) => {
@@ -44,18 +43,41 @@ const App = () => {
     try {
       const result = await createProject();
       const projects = await getProjects();
-      setProjects(projects.data);
-    } catch(error) {
-      console.log(error)
+      setProjects(projects);
+    } catch (error) {
+      console.log(error);
     }
   }
 
   async function getProjectHandler(id) {
     try {
+      setCurrentProject({});
       const result = await getProject(id);
-      setCurrentProject(result.data);
-    } catch(error) {
-      console.log(error)
+      setCurrentProject(result.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateProjectHandler(project, photos) {
+    console.log(project);
+    try {
+      const result = await updateProject(project, photos);
+      const projects = await getProjects();
+      setProjects(projects);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteProjectHandler(id) {
+    try {
+      const result = await deleteProject(id);
+      const projects = await getProjects();
+      setProjects(projects);
+      setCurrentProject({});
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -69,8 +91,6 @@ const App = () => {
 
       <div className="app-content">
         <Dashboard
-          // onAction={actionHandler}
-          // folderData={folders}
           dashboardData={projects}
           onCreateProject={createProjectHandler}
           onSelectProject={getProjectHandler}
@@ -81,14 +101,12 @@ const App = () => {
 
         {Object.keys(currentProject).length ? (
           <ProjectForm
-          projectData={currentProject}
-          onCloseProject={closeProjectHandler}
-            // onAction={actionHandler}
-            // folderData={folders}
+            projectData={currentProject}
             // photosData={projectPhotos}
-            // onSaveProject={saveProject}
-            // onDeleteProject={deleteProject}
-            // onCreateProject={getCreateProject}
+            // folderData={folders}
+            onCloseProject={closeProjectHandler}
+            onDeleteProject={deleteProjectHandler}
+            onSaveProject={updateProjectHandler}
           />
         ) : (
           <>no project selected</>
@@ -99,9 +117,3 @@ const App = () => {
 };
 
 export default App;
-
-
-/**
- * 
- 
- */

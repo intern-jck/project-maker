@@ -1,10 +1,8 @@
 const db = require("./db.js");
 
-// PROJECTS
 function selectProjects() {
   const sql = `SELECT id, name FROM projects;`;
 
-  // Use promise
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
       if (error) {
@@ -18,7 +16,6 @@ function selectProjects() {
 function selectProject(id) {
   const sql = `SELECT * FROM projects WHERE id=${id};`;
 
-  // Use Promise
   return new Promise((resolve, reject) => {
     db.all(sql, (error, project) => {
       if (error) {
@@ -98,6 +95,7 @@ function updateProject(data) {
 }
 
 function deleteProject(id) {
+  console.log("deleting: ", id);
   const sql = `DELETE FROM projects WHERE id=${id};`;
 
   return new Promise((resolve, reject) => {
