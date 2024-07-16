@@ -13,7 +13,7 @@ const {
 router.get("/", async (req, res, next) => {
   try {
     const result = await selectProjects();
-    
+
     res.json({
       data: result,
     });
@@ -71,7 +71,7 @@ router.put("/:id", async (req, res, next) => {
 // Delete a project by id
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log('delete route: ', id)
+  console.log("delete route: ", id);
 
   try {
     const result = await deleteProject(id);

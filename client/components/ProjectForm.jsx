@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import TextInput from "./Inputs/TextInput.jsx";
-import SelectInput from "./Inputs/SelectInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
 import DateInput from "./Inputs/DateInput.jsx";
 import PhotoInput from "./Inputs/PhotoInput.jsx";
@@ -18,23 +17,6 @@ export const ProjectForm = ({
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
-
-  // const [repos, setRepos] = useState();
-  // const [newRepo, setNewRepo] = useState({});
-  // const [tags, setTags] = useState();
-  // const [newTag, setNewTag] = useState({});
-
-  // function updateFolder(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   console.log(value);
-  //   const udpatedFolder = { folder_id: value };
-  //   console.log(udpatedFolder);
-  //   setProject((project) => ({
-  //     ...project,
-  //     ...udpatedFolder,
-  //   }));
-  // }
 
   function saveProjectHandler(event) {
     event.preventDefault();
@@ -123,15 +105,6 @@ export const ProjectForm = ({
       >
         <div className="form-header">
           <div>
-            {/* <SelectInput
-              inputId="folder-select"
-              className="folder-select"
-              inputName="Folders"
-              options={folderData.map((item) => {
-                return [item.folder_id, item.name];
-              })}
-              changeHandler={updateFolder}
-            /> */}
           </div>
           <div className="form-controls">
             <button type="submit">
@@ -213,7 +186,7 @@ export const ProjectForm = ({
             />
           </div>
           <div className="form-row">
-            {/* <PhotoInput
+            <PhotoInput
               inputId="photos-input"
               className="photos-input"
               inputName="photos"
@@ -223,7 +196,7 @@ export const ProjectForm = ({
               addHandler={addPhoto}
               photos={photos}
               deleteHandler={deletePhoto}
-            /> */}
+            />
           </div>
         </div>
       </form>

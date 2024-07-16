@@ -10,29 +10,17 @@ import {
   deleteProject,
 } from "./api/projects.js";
 
-// import {
-//   getFolders,
-//   createFolder,
-//   deleteFolder,
-//   getFolderProjects,
-// } from "./api/folders_api.js";
-
-// import { getPhotos } from "./api/photos_api.js";
-
 import "./styles/App.scss";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
-  // const [projectPhotos, setProjectPhotos] = useState([]);
-  // const [folders, setFolders] = useState([]);
-  // const [currentFolder, setCurrentFolder] = useState({});
+  const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
     getProjects()
       .then((data) => {
         setProjects(data);
-        // setFolders([DEFAULT_FOLDER]);
       })
       .catch((error) => {
         console.log(error);
@@ -94,16 +82,12 @@ const App = () => {
           dashboardData={projects}
           onCreateProject={createProjectHandler}
           onSelectProject={getProjectHandler}
-          // onCreateFolder={createFolder}
-          // onSelectFolder={getFolderProjects}
-          // onDeleteFolder={deleteFolder}
         />
 
         {Object.keys(currentProject).length ? (
           <ProjectForm
             projectData={currentProject}
-            // photosData={projectPhotos}
-            // folderData={folders}
+            photosData={projectPhotos}
             onCloseProject={closeProjectHandler}
             onDeleteProject={deleteProjectHandler}
             onSaveProject={updateProjectHandler}

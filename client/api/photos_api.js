@@ -1,3 +1,4 @@
+import axios from "axios";
 const SERVER_URL = "http://127.0.0.1:3000";
 
 /**
@@ -18,10 +19,10 @@ export async function getPhotos(projectId) {
 }
 
 export async function savePhotos(projectId, photo) {
-  const data ={
+  const data = {
     projectId: projectId,
     photo: photo,
-  }
+  };
 
   const options = {
     method: "PUT",
@@ -29,7 +30,7 @@ export async function savePhotos(projectId, photo) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }
+  };
 
   return fetch(`/photos/${projectId}`, options)
     .then((res) => {
@@ -39,5 +40,4 @@ export async function savePhotos(projectId, photo) {
       return data;
     })
     .catch();
-
 }
