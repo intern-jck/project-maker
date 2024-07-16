@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Dashboard } from "./components/Dashboard.jsx";
-import { ProjectForm } from "./components/ProjectForm.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import ProjectForm from "./components/ProjectForm.jsx";
 
 import {
   getProjects,
@@ -75,26 +75,30 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="app-header"></div>
+      <div className="app-header">MENU GOES HERE</div>
 
       <div className="app-content">
-        <Dashboard
-          dashboardData={projects}
-          onCreateProject={createProjectHandler}
-          onSelectProject={getProjectHandler}
-        />
-
-        {Object.keys(currentProject).length ? (
-          <ProjectForm
-            projectData={currentProject}
-            photosData={projectPhotos}
-            onCloseProject={closeProjectHandler}
-            onDeleteProject={deleteProjectHandler}
-            onSaveProject={updateProjectHandler}
+        <div class="app-dashboard">
+          <Dashboard
+            dashboardData={projects}
+            onCreateProject={createProjectHandler}
+            onSelectProject={getProjectHandler}
           />
-        ) : (
-          <>no project selected</>
-        )}
+        </div>
+
+        <div class="app-form">
+          {Object.keys(currentProject).length ? (
+            <ProjectForm
+              projectData={currentProject}
+              photosData={projectPhotos}
+              onCloseProject={closeProjectHandler}
+              onDeleteProject={deleteProjectHandler}
+              onSaveProject={updateProjectHandler}
+            />
+          ) : (
+            <>no project selected</>
+          )}
+        </div>
       </div>
     </div>
   );

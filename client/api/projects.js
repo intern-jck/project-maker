@@ -18,6 +18,7 @@ export async function createProject() {
   const body = {
     timestamp: Date.now(),
   };
+
   try {
     const result = await axios.post(url, body);
     return result.data;
@@ -40,7 +41,6 @@ export async function getProject(id) {
 
 export async function updateProject(project, photos) {
   const id = project.id;
-
   const url = `${SERVER_URL}/projects/${id}`;
 
   const body = {
@@ -57,7 +57,7 @@ export async function updateProject(project, photos) {
 }
 
 export async function deleteProject(id) {
-  console.log('delete project: ', id)
+  console.log("delete project: ", id);
   const url = `${SERVER_URL}/projects/${id}`;
 
   try {

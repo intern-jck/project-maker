@@ -3,11 +3,11 @@ import SelectInput from "./Inputs/SelectInput.jsx";
 import TextInput from "./Inputs/TextInput.jsx";
 import "../styles/Dashboard.scss";
 
-export const Dashboard = ({
+export default function Dashboard({
   dashboardData,
   onCreateProject,
   onSelectProject,
-}) => {
+}) {
 
   function onSelectProjectHandler(event) {
     event.preventDefault();

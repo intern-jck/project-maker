@@ -1,12 +1,14 @@
 @import "./variables";
 
 .Dashboard {
+  border: $border-stock;
   background-color: $color-panel-background;
-  width: 14rem;
-  height: 90vh;
+  padding: $padding-stock;
+  // width: 20rem;
   display: flex;
   flex-direction: column;
   gap: $gap-thin;
+  margin: $margin-stock;
 
   .dash-controls {
     border: $border-thin;

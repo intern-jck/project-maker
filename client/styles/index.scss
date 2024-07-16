@@ -1,3 +1,5 @@
+// Add all global styles here
+
 @import "./variables";
 
 html {
@@ -15,8 +17,39 @@ body {
   font-family: $page-font;
   font-size: 100%;
   background-color: $color-background;
+  height: 100vh;
 }
 
 #root {
   margin: 0;
+}
+
+button {
+
+  svg {
+    pointer-events: none;
+  }
+
+  i {
+    pointer-events: none;
+  }
+}
+
+button:hover,
+select:hover {
+  cursor: pointer;
+  color: $color-active;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: $color-active;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: $color-active;
+  outline: none;
 }

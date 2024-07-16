@@ -4,56 +4,40 @@
   border: $border-stock;
   display: flex;
   flex-direction: column;
-  padding: $padding-thin;
   height: 100vh;
 
   .app-header {
-    display: none;
-    width: 100%;
     border: $border-stock;
-    padding: $padding-stock;
-    
-    h1 {
-      margin: 0;
-    }
+    height: 4rem;
+    background-color: $color-background;
+    margin: $margin-stock;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .app-content {
-    padding: $padding-stock;
+    border: $border-stock;
+    height: 100%;
+    background-color: $color-background;
     display: flex;
-    justify-content: space-between;
-    gap: $gap-thick;
+    margin: $margin-stock;
+
   }
-}
 
-button {
-  svg {
-    pointer-events: none;
+  .app-dashboard {
+    border: $border-stock;
+    height: 100%;
+    width: 20%;
   }
-  i {
-    pointer-events: none;
+  .app-form {
+    border: $border-stock;
+    height: 100%;
+    width: 80%;
   }
-}
 
-button:hover,
-select:hover {
-  cursor: pointer;
-  color: $color-active;
-}
 
-input:hover,
-select:hover,
-textarea:hover {
-  border-color: $color-active;
 }
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: $color-active;
-  outline: none;
-}
-
 @media screen and (max-width: $screen-break-l) {
 }
 

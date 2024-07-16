@@ -1,4 +1,4 @@
-$page-font: 'Courier New', Courier, monospace;
+$page-font: "Courier New", Courier, monospace;
 
 $primary: blue;
 $secondary: grey;
@@ -25,15 +25,15 @@ $font-size-xxlarge: 1.8rem;
 $border-color: black;
 $border-color-active: $color-active;
 
-$border-xthin: 3px solid black;
-$border-thin: 3px solid black;
-$border-stock: 4px solid black;
-$border-thick: 5px solid black;
-$border-xthick: 6px solid black;
+$border-xthin: 0.1rem solid black;
+$border-thin: 0.2rem solid black;
+$border-stock: 0.4rem solid black;
+$border-thick: 0.6rem solid black;
+$border-xthick: 1rem solid black;
 
-$border-input: 2px solid black;
-$border-input-hover: 2px solid $color-active;
-$border-input-focus: 2px solid $color-active;
+$border-input: 0.2rem solid black;
+$border-input-hover: 0.2rem solid $color-active;
+$border-input-focus: 0.2rem solid $color-active;
 
 $border-test-orange: 2px solid orange;
 $border-test-blue: 2px solid blue;
