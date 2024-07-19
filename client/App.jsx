@@ -48,10 +48,8 @@ const App = () => {
   }
 
   async function saveProjectHandler(project, photos) {
-    console.log("saving:\n", project);
     try {
       const result = await saveProject(project, photos);
-      console.log(result)
       const projects = await getProjects();
       setProjects(projects);
     } catch (error) {

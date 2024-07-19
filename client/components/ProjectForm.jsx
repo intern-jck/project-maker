@@ -14,31 +14,26 @@ export default function ProjectForm({
   onCloseProject,
   onDeleteProject,
 }) {
-
-  const [project, setProject] = useState(projectData);
+  const [project, setProject] = useState(projectData ? projectData : {});
   const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
 
   useEffect(() => {
-    setProject(projectData)
+    setProject(projectData);
   }, [projectData]);
 
   function saveProjectHandler(event) {
-    console.log("save: \n", project);
     event.preventDefault();
     onSaveProject(project, photos);
   }
 
   function deleteProjectHandler(event) {
-    event.preventDefault();
     const { value } = event.target;
     onDeleteProject(value);
   }
 
   // Functions to update form
   function updateTextInput(event) {
-    event.preventDefault();
-
     const { name, value } = event.currentTarget;
 
     let updatedInput = {};
@@ -48,6 +43,11 @@ export default function ProjectForm({
       updatedInput = {
         [name]: value,
         slug: value.toLowerCase().split(" ").join("-"),
+      };
+    }
+    if (name.includes("-")) {
+      updatedInput = {
+        [name.replace("-", "_")]: value,
       };
     } else {
       updatedInput = { [name]: value };
@@ -65,12 +65,11 @@ export default function ProjectForm({
 
     setProject((project) => ({
       ...project,
-      [name]: value,
+      [name.replace("-", "_")]: value,
     }));
   }
 
   function updatePhoto(event) {
-    event.preventDefault();
     const { name, value } = event.target;
     const updatedPhoto = newPhoto;
 
@@ -88,14 +87,12 @@ export default function ProjectForm({
   }
 
   function addPhoto(event) {
-    event.preventDefault();
     let updatedPhotos = photos.slice();
     updatedPhotos.push(newPhoto);
     setPhotos(() => updatedPhotos);
   }
 
   function deletePhoto(event) {
-    event.preventDefault();
     const index = event.target.getAttribute("data-photo-index");
     let updatedPhotos = photos.slice();
     updatedPhotos.splice(index, 1);
@@ -120,7 +117,9 @@ export default function ProjectForm({
             >
               <i className="fa-solid fa-trash-can"></i>
             </button>
-            <span>PROJECT: {project.name} ID: {project.id}</span>
+            <span>
+              PROJECT: {projectData.name} ID: {projectData.id}
+            </span>
             <button name="close-project" onClick={onCloseProject}>
               <i className="fa-solid fa-xmark"></i>
             </button>
@@ -130,7 +129,7 @@ export default function ProjectForm({
         )}
       </div>
 
-      {Object.keys(projectData).length ? (
+      {Object.keys(project).length ? (
         <form
           id="project-form"
           className="project-form"
@@ -140,42 +139,42 @@ export default function ProjectForm({
             <span>project info</span>
             <TextInput
               name="name"
-              value={projectData.name}
+              value={project.name}
               changeHandler={updateTextInput}
             />
             <TextInput
               name="url"
-              value={projectData.url}
+              value={project.url}
               changeHandler={updateTextInput}
             />
             <TextInput
               name="client"
-              value={projectData.client}
+              value={project.client}
               changeHandler={updateTextInput}
             />
             <TextInput
               name="client-url"
-              value={projectData.client_url}
+              value={project.client_url}
               changeHandler={updateTextInput}
             />
             <DateInput
               name="start-date"
-              value={projectData.start_date}
+              value={project.start_date}
               changeHandler={updateDate}
             />
             <DateInput
               name="end-date"
-              value={projectData.end_date}
+              value={project.end_date}
               changeHandler={updateDate}
             />
             <TextInput
               name={"short"}
-              value={projectData.short}
+              value={project.short}
               changeHandler={updateTextInput}
             />
             <TextArea
-              name={"info"}
-              value={projectData.info}
+              name={"description"}
+              value={project.description}
               changeHandler={updateTextInput}
             />
           </div>
