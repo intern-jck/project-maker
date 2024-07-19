@@ -37,7 +37,7 @@ export default function Dashboard({
             );
           })
         ) : (
-          <>no projects</>
+          <h1>no projects</h1>
         )}
       </div>
     </div>
