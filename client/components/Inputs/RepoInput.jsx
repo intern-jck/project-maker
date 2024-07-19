@@ -25,12 +25,12 @@ export default function RepoInput({
       <div className="repo-info">
         <TextInput
           name={"repo-name"}
-          value={repo.name}
+          value={repoName}
           changeHandler={changeHandler}
         />
         <TextInput
           name={"repo-url"}
-          value={repo.url}
+          value={repoUrl}
           changeHandler={changeHandler}
         />
       </div>

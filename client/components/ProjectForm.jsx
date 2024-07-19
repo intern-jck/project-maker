@@ -14,7 +14,6 @@ export default function ProjectForm({
   onCloseProject,
   onDeleteProject,
 }) {
-  console.log(projectData);
 
   const [project, setProject] = useState(projectData);
   const [photos, setPhotos] = useState(photosData);
@@ -105,19 +104,25 @@ export default function ProjectForm({
         <button name="create-project" onClick={onCreateProject}>
           <i className="fa-solid fa-file"></i>
         </button>
-        <button name="save-project" type="submit">
-          <i className="fa-solid fa-floppy-disk"></i>
-        </button>
-        <button
-          name="delete-project"
-          value={project.id}
-          onClick={deleteProjectHandler}
-        >
-          <i className="fa-solid fa-trash-can"></i>
-        </button>
-        <button name="close-project" onClick={onCloseProject}>
-          <i className="fa-solid fa-xmark"></i>
-        </button>
+        {Object.keys(projectData).length ? (
+          <>
+            <button name="save-project" type="submit" form="project-form">
+              <i className="fa-solid fa-floppy-disk"></i>
+            </button>
+            <button
+              name="delete-project"
+              value={projectData.id}
+              onClick={deleteProjectHandler}
+            >
+              <i className="fa-solid fa-trash-can"></i>
+            </button>
+            <button name="close-project" onClick={onCloseProject}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
 
       {Object.keys(projectData).length ? (

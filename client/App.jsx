@@ -21,7 +21,6 @@ const App = () => {
     getProjects()
       .then((data) => {
         setProjects(data);
-        setCurrentProject(data[0] ? data[0] : {});
       })
       .catch((error) => {
         console.log(error);

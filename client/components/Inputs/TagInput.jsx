@@ -26,7 +26,7 @@ export default function TagInput({
         <TextInput
           id="tag-input-name"
           name={"tag-name"}
-          value={tech.name}
+          value={tagName}
           changeHandler={changeHandler}
         />
       </div>
