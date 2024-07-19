@@ -8,16 +8,19 @@ export default function TextInput({
   changeHandler,
 }) {
   return (
-    <div className={`text-input ${className}`}>
+    // <div className={`text-input ${className}`}>
+    <>
       <label htmlFor={name}>{name}</label>
       <input
-        id={id}
         type="text"
+        id={id}
+        className={className}
         name={name}
         value={value}
-        placeholder={name}
+        // placeholder={name}
         onChange={changeHandler}
       />
-    </div>
+    </>
+    // </div>
   );
 }

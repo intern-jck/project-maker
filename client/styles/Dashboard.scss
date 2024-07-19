@@ -2,9 +2,9 @@
 
 .Dashboard {
   border: $border-stock;
-  background-color: $color-app-background;
-  height: 100%;
+  background-color: $color-two;
   width: 20%;
+  max-height: 90vh;
 
   height: 100%;
   padding: $padding-stock;
@@ -13,39 +13,19 @@
   gap: 1rem;
 
   .dash-controls {
-    // border: $border-thin;
-    // background-color: $color-primary;
-    // height: 4rem;
+    border: $border-thin;
+    background-color: $color-primary;
     padding: $padding-stock;
     display: flex;
-    flex-direction: column;
-    // flex-wrap: wrap;
-    // align-items: center;
-    // align-content: start;
-    // gap: 0.4rem;
+    // flex-direction: column;
 
-    .control-row {
+    .dash-row {
       // border: $border-thin;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
-    }
-
-    button {
-      border: none;
-      background: none;
-      padding: 0;
-      display: flex;
-
-      i {
-        font-size: $icon-xlarge;
-      }
-    }
-
-    label {
-      display: none;
     }
 
     input {
@@ -57,25 +37,41 @@
       width: 8rem;
       height: 1.4rem;
     }
+
+    // button {
+    //   border: none;
+    //   background: none;
+    //   padding: 0;
+    //   display: flex;
+
+    //   i {
+    //     font-size: $icon-xlarge;
+    //   }
+    // }
+
+    // label {
+    //   display: none;
+    // }
   }
 
   .project-list {
     border: $border-thin;
+    background-color: white;
     height: 100%;
     padding: $padding-stock;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    align-content: start;
+    // align-content: start;
     gap: 1rem;
 
     .project-button {
       border: $border-thin;
-      // background-color: $color-primary;
-      width: 100%;
+      background-color: $color-two;
+      // width: 100%;
       // height: 4rem;
       font-size: 1.4rem;
-      // padding: $padding-thin;
+      padding: $padding-thin;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -92,9 +88,5 @@
       }
     }
 
-    .folder-button:hover {
-      border-color: $color-active;
-    }
   }
-
 }

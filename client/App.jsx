@@ -21,7 +21,7 @@ const App = () => {
     getProjects()
       .then((data) => {
         setProjects(data);
-        setCurrentProject(data[0]);
+        setCurrentProject(data[0] ? data[0] : {});
       })
       .catch((error) => {
         console.log(error);
@@ -81,21 +81,18 @@ const App = () => {
       <div className="app-content">
         <Dashboard
           dashboardData={projects}
-          onCreateProject={createProjectHandler}
           onSelectProject={getProjectHandler}
         />
 
-        {Object.keys(currentProject).length ? (
           <ProjectForm
             projectData={currentProject}
             photosData={projectPhotos}
-            onCloseProject={closeProjectHandler}
-            onDeleteProject={deleteProjectHandler}
+            onCreateProject={createProjectHandler}
             onSaveProject={updateProjectHandler}
+            onDeleteProject={deleteProjectHandler}
+            onCloseProject={closeProjectHandler}
           />
-        ) : (
-          <>no project selected</>
-        )}
+
       </div>
     </div>
   );

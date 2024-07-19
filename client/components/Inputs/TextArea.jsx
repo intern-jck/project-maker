@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 
-export default function TextArea({ className, inputName, value, changeHandler }) {
+export default function TextArea({ className, name, value, changeHandler }) {
   return (
-    <div className={className}>
-      <label htmlFor={inputName}>{inputName ? inputName.toUpperCase() : ''}</label>
-      <textarea name={inputName} value={value} onChange={changeHandler} />
-    </div>
+    // <div className={className}>
+
+    <>
+      <label htmlFor={name}>{name ? name : ""}</label>
+      <textarea
+        name={name}
+        value={value}
+        onChange={changeHandler}
+        // placeholder={inputName}
+      />
+    </>
+    // </div>
   );
 }

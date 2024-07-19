@@ -1,23 +1,5 @@
 $page-font: "Courier New", Courier, monospace;
 
-$color-primary: #307f9e;
-$color-secondary: #e7401f;
-$color-ternary: #4f764e;
-$color-active: #31ad4c;
-
-$border-color: #010101;
-$border-color-active: $color-active;
-$color-one: #556281;
-$color-two: #D7D8DA;
-
-/* SCSS HEX */
-$yale-blue: #0d3b66ff;
-$lemon-chiffon: #faf0caff;
-$naples-yellow: #f4d35eff;
-$sandy-brown: #ee964bff;
-$tomato: #f95738ff;
-
-
 $border-xthin: 0.1rem solid black;
 $border-thin: 0.2rem solid black;
 $border-stock: 0.4rem solid black;
@@ -25,20 +7,35 @@ $border-thick: 0.6rem solid black;
 $border-xthick: 1rem solid black;
 
 $border-input: 0.2rem solid black;
-$border-input-hover: 0.2rem solid $color-active;
-$border-input-focus: 0.2rem solid $color-active;
+$border-input-hover: 0.2rem solid green;
+$border-input-focus: 0.2rem solid green;
 
-$border-test-orange: 2px solid orange;
-$border-test-blue: 2px solid blue;
-$border-test-green: 2px solid green;
-$border-test-red: 2px solid red;
+$border-test-orange: 4px solid orange;
+$border-test-blue: 4px solid blue;
+$border-test-green: 4px solid green;
+$border-test-red: 4px solid red;
 
 $border-radius-small: 0.2rem;
 $border-radius-stock: 0.4rem;
 $border-radius-large: 0.6rem;
 
-$color-background: white;
-$color-app-background: white;
+$color-one: #556281;
+$color-two: #d7d8da;
+
+$yale-blue: #0d3b66ff;
+$lemon-chiffon: #faf0caff;
+$naples-yellow: #f4d35eff;
+$sandy-brown: #ee964bff;
+$tomato: #f95738ff;
+
+$color-primary: #307f9e;
+$color-secondary: #e7401f;
+$color-ternary: #4f764e;
+
+$color-active: $sandy-brown;
+
+$color-background: rgb(224, 213, 213);
+$color-app-background: $color-two;
 $color-panel-background: red;
 
 $color-input-background: #ffffff;

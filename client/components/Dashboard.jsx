@@ -17,11 +17,11 @@ export default function Dashboard({
   return (
     <div className="Dashboard">
       <div className="dash-controls">
-        <div className="control-row">
-          <button name="create_project" onClick={onCreateProject}>
+        <div className="dash-row">
+          {/* <button name="create-project" onClick={onCreateProject}>
             <i className="fa-solid fa-file"></i>
-          </button>
-          <button>
+          </button> */}
+          <button name="download-projects">
             <i className="fa-solid fa-file-export"></i>
           </button>
         </div>

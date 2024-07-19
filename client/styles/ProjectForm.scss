@@ -2,214 +2,234 @@
 
 .ProjectForm {
   border: $border-stock;
-  margin: $margin-stock;
-  padding: 1rem;
+  padding: $padding-stock;
+  background-color: $color-two;
   width: 80%;
-  overflow-y: scroll;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: $gap-thick;
+  // margin: $margin-stock;
 
   .form-header {
     border: $border-thin;
-    padding: $padding-thin;
+    background-color: $color-primary;
+    padding: $padding-stock;
     display: flex;
-    align-items: center;
-    justify-content: end;
+    // align-items: center;
+    // align-content: center;
+    // justify-content: end;
 
-    p {
-      font-size: $font-size-xlarge;
-      margin: 0;
-      margin-left: $margin-thick;
-      font-weight: bold;
+    button[name="create_project"],
+    button[name="save_project"],
+    button[name="delete_project"] {
+      margin-left: 1rem;
+      margin-right: 1rem;
     }
 
-    .form-controls {
-      font-size: $font-size-large;
-      // width: 100%;
-      padding-right: $padding-thick;
-      display: flex;
-      align-items: center;
-      justify-content: end;
-      gap: $gap-xthick;
-
-      button {
-        border: 4px solid black;
-        width: 4rem;
-        height: 4rem;
-        margin: 0;
-        padding: 0;
-        // background: none;
-        border: none;
-        font-size: $font-size-xxlarge;
-      }
+    button[name="close_project"] {
+      margin-left: auto;
+      margin-right: $margin-stock;
     }
+
+    // button {
+    //   font-size: 8rem;
+    // }
+
+    // p {
+    //   font-size: $font-size-xlarge;
+    //   margin: 0;
+    //   margin-left: $margin-thick;
+    //   font-weight: bold;
+    // }
+
+    // .form-controls {
+    //   border: $border-thin;
+    //   font-size: $font-size-large;
+    //   // width: 100%;
+    //   padding-right: $padding-thick;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: end;
+    //   gap: $gap-xthick;
+
+    //   // button {
+    //   //   border: 4px solid black;
+    //   //   width: 4rem;
+    //   //   height: 4rem;
+    //   //   margin: 0;
+    //   //   padding: 0;
+    //   //   // background: none;
+    //   //   border: none;
+    //   //   font-size: $font-size-xxlarge;
+    //   // }
+    // }
   }
 
   form {
-    border: $border-stock;
-    padding: $padding-stock;
+    // background-color: white;
     width: 100%;
-    overflow-y: scroll;
+    height: 80vh;
+    // overflow-y: scroll;
     display: flex;
+    gap: 1rem;
 
-      .form-info {
-        border: $border-stock;
+    .form-info {
+      border: $border-stock;
+      background-color: white;
+      width: 50%;
+      // height: 40rem;
+      padding: $padding-stock;
+      display: flex;
+      flex-direction: column;
+      gap: $gap-stock;
+      // overflow-y: scroll;
+    }
 
-        .form-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: $gap-stock;
+    .form-media {
+      border: $border-stock;
+      background-color: white;
+      padding: $padding-thin;
+      width: 50%;
+      // height: 40rem;
+      gap: $gap-stock;
+    }
+
+    // label {
+    //   display: none;
+    // }
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: $color-active;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: $color-active;
+  outline: none;
+}
+
+    input,
+    textArea {
+      border: $border-thin;
+      font-size: $font-size-xlarge;
+    }
+
+    input[name="name"],
+    input[name="client"] {
+      width: 30%;
+    }
+
+    input[name="url"],
+    input[name="client-url"] {
+      width: 60%;
+    }
+
+    input[name="start-date"],
+    input[name="end-date"] {
+      width: 16rem;
+    }
+
+    input[name="start-date"] label,
+    input[name="end-date"] label {
+      width: 16rem;
+    }
+
+    input[name="short"] {
+      width: 100%;
+    }
+
+    textarea[name="info"] {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+
+    .photos-input {
+      border: $border-thin;
+      padding: $padding-thin;
+      display: flex;
+      flex-direction: column;
+      height: 20rem;
+      gap: $gap-stock;
+
+      .photo-input-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+          border: none;
+          background: none;
+          margin: 0;
+          padding: 0;
+          font-size: $font-size-xlarge;
         }
       }
 
-      .form-media {
-        border: $border-stock;
-      }
-
-      .url-input {
-        width: 20rem;
-      }
-
-      .text-input {
-        border: $border-thin;
-        padding: $padding-thin;
-        font-size: $font-size-stock;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .date-input {
-        border: $border-thin;
-        padding: $padding-thin;
-        font-size: $font-size-stock;
-        font-weight: bold;
-        // max-width: 35%;
+      .photo-info {
+        // border: $border-thin;
+        // padding: $padding-thin;
+        font-size: $font-size-large;
         display: flex;
         flex-direction: column;
 
-        div {
-          display: flex;
-          gap: $gap-stock;
+        // button {
+        //   border: none;
+        //   background: none;
+        //   margin: 0;
+        //   padding: 0;
+        //   font-size: $font-size-xlarge;
+        // }
+      }
 
-          label {
-            display: none;
+      .photo-list {
+        border: $border-thin;
+        padding: $padding-stock;
+        height: 100%;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: $gap-stock;
+
+        .photo-thumb {
+          border: $border-thin;
+          border-radius: $border-radius-stock;
+          position: relative;
+
+          width: 8rem;
+          height: 8rem;
+
+          img {
+            width: 98%;
+            height: 98%;
+            object-fit: contain;
           }
-
-          select {
-            width: 8rem;
-          }
-        }
-      }
-
-      .short-input {
-        border: $border-thin;
-        padding: $padding-thin;
-        width: 30rem;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .info-input {
-        border: $border-thin;
-        padding: $padding-thin;
-        width: 30rem;
-        font-size: $font-size-stock;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-
-        textarea {
-          // width: 100%;
-          height: 15rem;
-        }
-      }
-
-      .photos-input {
-        border: $border-thin;
-        padding: $padding-thin;
-        display: flex;
-        flex-direction: column;
-        width: 30rem;
-        height: 20rem;
-
-        .photo-input-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
 
           button {
             border: none;
             background: none;
-            margin: 0;
+            color: red;
             padding: 0;
-            font-size: $font-size-xlarge;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+
+            svg {
+              stroke-width: 0.02rem;
+            }
           }
-        }
 
-        .photo-info {
-          // border: $border-thin;
-          // padding: $padding-thin;
-          font-size: $font-size-large;
-          display: flex;
-          flex-direction: column;
-
-          // button {
-          //   border: none;
-          //   background: none;
-          //   margin: 0;
-          //   padding: 0;
-          //   font-size: $font-size-xlarge;
-          // }
-        }
-
-        .photo-list {
-          border: $border-thin;
-          padding: $padding-stock;
-          height: 100%;
-          overflow-y: scroll;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-content: flex-start;
-          gap: $gap-stock;
-
-          .photo-thumb {
-            border: $border-thin;
-            border-radius: $border-radius-stock;
-            position: relative;
-
-            width: 8rem;
-            height: 8rem;
-
-            img {
-              width: 98%;
-              height: 98%;
-              object-fit: contain;
-            }
-
-            button {
-              border: none;
-              background: none;
-              color: red;
-              padding: 0;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-
-              svg {
-                stroke-width: 0.02rem;
-              }
-            }
-
-            button:hover {
-              scale: 150%;
-            }
+          button:hover {
+            scale: 150%;
           }
         }
       }
-    // }
+    }
   }
 }
 
@@ -218,6 +238,58 @@
 
 @media screen and (orientation: portrait) {
 }
+
+// }
+
+// .url-input {
+//   width: 20rem;
+// }
+// .text-input {
+//   border: $border-thin;
+//   padding: $padding-thin;
+//   font-size: $font-size-stock;
+//   font-weight: bold;
+//   display: flex;
+//   flex-direction: column;
+// }
+// .date-input {
+//   border: $border-thin;
+//   padding: $padding-thin;
+//   font-size: $font-size-stock;
+//   font-weight: bold;
+//   display: flex;
+//   flex-direction: column;
+//   div {
+//     display: flex;
+//     gap: $gap-stock;
+//     label {
+//       display: none;
+//     }
+//     select {
+//       width: 8rem;
+//     }
+//   }
+// }
+// .short-input {
+//   border: $border-thin;
+//   padding: $padding-thin;
+//   width: 30rem;
+//   display: flex;
+//   flex-direction: column;
+// }
+// .info-input {
+//   border: $border-thin;
+//   padding: $padding-thin;
+//   width: 30rem;
+//   font-size: $font-size-stock;
+//   font-weight: bold;
+//   display: flex;
+//   flex-direction: column;
+//   textarea {
+//     // width: 100%;
+//     height: 15rem;
+//   }
+// }
 
 // .tech-input {
 //   border: $border-thin;

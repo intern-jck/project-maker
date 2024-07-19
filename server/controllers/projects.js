@@ -54,7 +54,7 @@ const createProject = (req, res) => {
 
       return db.exec(sql, (error) => {
         if (error) {
-          console.log(`create_project error: ${error}`);
+          console.log(`createProject error: ${error}`);
           res.json({
             error: error
           });

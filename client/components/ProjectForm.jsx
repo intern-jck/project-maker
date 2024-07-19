@@ -9,6 +9,7 @@ import "../styles/ProjectForm.scss";
 export default function ProjectForm({
   projectData,
   photosData,
+  onCreateProject,
   onSaveProject,
   onCloseProject,
   onDeleteProject,
@@ -101,31 +102,33 @@ export default function ProjectForm({
   return (
     <div className="ProjectForm">
       <div className="form-header">
-        <div className="form-controls">
-          <button type="submit">
-            <i className="fa-regular fa-floppy-disk"></i>
-          </button>
-          <button
-            type="button"
-            name="delete_project"
-            value={project.id}
-            onClick={deleteProjectHandler}
-          >
-            <i className="fa-regular fa-trash-can"></i>
-          </button>
-          <button type="button" name="close_project" onClick={onCloseProject}>
-            <i className="fa-solid fa-square-xmark"></i>
-          </button>
-        </div>
+        {/* <div className="form-controls"> */}
+        <button name="create_project" onClick={onCreateProject}>
+          <i className="fa-solid fa-file"></i>
+        </button>
+        <button name="save_project" type="submit">
+          <i className="fa-regular fa-floppy-disk"></i>
+        </button>
+        <button
+          name="delete_project"
+          value={project.id}
+          onClick={deleteProjectHandler}
+        >
+          <i className="fa-regular fa-trash-can"></i>
+        </button>
+        <button name="close_project" onClick={onCloseProject}>
+          <i className="fa-solid fa-square-xmark"></i>
+        </button>
+        {/* </div> */}
       </div>
 
-      <form
-        id="project-form"
-        className="project-form"
-        onSubmit={saveProjectHandler}
-      >
-        <div className="form-info">
-          <div className="form-row">
+      {Object.keys(projectData).length ? (
+        <form
+          id="project-form"
+          className="project-form"
+          onSubmit={saveProjectHandler}
+        >
+          <div className="form-info">
             <TextInput
               id="name-input"
               className="name-input"
@@ -140,9 +143,6 @@ export default function ProjectForm({
               value={projectData.url}
               changeHandler={updateTextInput}
             />
-          </div>
-
-          <div className="form-row">
             <TextInput
               id="client-input"
               className="name-input"
@@ -153,30 +153,24 @@ export default function ProjectForm({
             <TextInput
               id="client-url-input"
               className="url-input"
-              name="client_url"
+              name="client-url"
               value={projectData.client_url}
               changeHandler={updateTextInput}
             />
-          </div>
-
-          <div className="form-row">
             <DateInput
               id="date-input"
               className="date-input"
-              name="start_date"
+              name="start-date"
               value={projectData.start_date}
               changeHandler={updateDate}
             />
             <DateInput
               id="date-input"
               className="date-input"
-              name="end_date"
+              name="end-date"
               value={projectData.end_date}
               changeHandler={updateDate}
             />
-          </div>
-
-          <div className="form-row">
             <TextInput
               id="short-input"
               className="short-input"
@@ -184,20 +178,15 @@ export default function ProjectForm({
               value={projectData.short}
               changeHandler={updateTextInput}
             />
-          </div>
-
-          <div className="form-row">
             <TextArea
               className="info-input"
-              inputName={"info"}
+              name={"info"}
               value={projectData.info}
               changeHandler={updateTextInput}
             />
           </div>
-        </div>
 
-        <div className="form-media">
-          <div className="form-row">
+          <div className="form-media">
             <PhotoInput
               inputId="photos-input"
               className="photos-input"
@@ -210,8 +199,10 @@ export default function ProjectForm({
               deleteHandler={deletePhoto}
             />
           </div>
-        </div>
-      </form>
+        </form>
+      ) : (
+        <>no project selected</>
+      )}
     </div>
   );
 }
