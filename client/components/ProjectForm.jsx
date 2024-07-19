@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TextInput from "./Inputs/TextInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
@@ -19,7 +19,12 @@ export default function ProjectForm({
   const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
 
+  useEffect(() => {
+    setProject(projectData)
+  }, [projectData]);
+
   function saveProjectHandler(event) {
+    console.log("save: \n", project);
     event.preventDefault();
     onSaveProject(project, photos);
   }
@@ -27,7 +32,6 @@ export default function ProjectForm({
   function deleteProjectHandler(event) {
     event.preventDefault();
     const { value } = event.target;
-    console.log("delete", value);
     onDeleteProject(value);
   }
 
@@ -116,6 +120,7 @@ export default function ProjectForm({
             >
               <i className="fa-solid fa-trash-can"></i>
             </button>
+            <span>PROJECT: {project.name} ID: {project.id}</span>
             <button name="close-project" onClick={onCloseProject}>
               <i className="fa-solid fa-xmark"></i>
             </button>

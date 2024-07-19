@@ -6,7 +6,7 @@ import {
   getProjects,
   getProject,
   createProject,
-  updateProject,
+  saveProject,
   deleteProject,
 } from "./api/projects.js";
 
@@ -47,10 +47,11 @@ const App = () => {
     }
   }
 
-  async function updateProjectHandler(project, photos) {
-    console.log(project);
+  async function saveProjectHandler(project, photos) {
+    console.log("saving:\n", project);
     try {
-      const result = await updateProject(project, photos);
+      const result = await saveProject(project, photos);
+      console.log(result)
       const projects = await getProjects();
       setProjects(projects);
     } catch (error) {
@@ -75,7 +76,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="app-header">MENU GOES HERE</div>
+      <div className="app-header">
+        <h1>NAVBAR</h1>
+      </div>
 
       <div className="app-content">
         <Dashboard
@@ -87,7 +90,7 @@ const App = () => {
             projectData={currentProject}
             photosData={projectPhotos}
             onCreateProject={createProjectHandler}
-            onSaveProject={updateProjectHandler}
+            onSaveProject={saveProjectHandler}
             onDeleteProject={deleteProjectHandler}
             onCloseProject={closeProjectHandler}
           />

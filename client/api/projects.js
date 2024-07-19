@@ -39,7 +39,8 @@ export async function getProject(id) {
   }
 }
 
-export async function updateProject(project, photos) {
+export async function saveProject(project, photos) {
+  console.log("saveProject: ", project)
   const id = project.id;
   const url = `${SERVER_URL}/projects/${id}`;
 
