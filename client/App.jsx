@@ -52,6 +52,9 @@ const App = () => {
       const result = await saveProject(project, photos);
       const projects = await getProjects();
       setProjects(projects);
+      const r = await getProject(project.id);
+      const p = r.data[0];
+      setCurrentProject(p);
     } catch (error) {
       console.log(error);
     }
@@ -84,15 +87,14 @@ const App = () => {
           onSelectProject={getProjectHandler}
         />
 
-          <ProjectForm
-            projectData={currentProject}
-            photosData={projectPhotos}
-            onCreateProject={createProjectHandler}
-            onSaveProject={saveProjectHandler}
-            onDeleteProject={deleteProjectHandler}
-            onCloseProject={closeProjectHandler}
-          />
-
+        <ProjectForm
+          projectData={currentProject}
+          photosData={projectPhotos}
+          onCreateProject={createProjectHandler}
+          onSaveProject={saveProjectHandler}
+          onDeleteProject={deleteProjectHandler}
+          onCloseProject={closeProjectHandler}
+        />
       </div>
     </div>
   );

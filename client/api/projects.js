@@ -28,6 +28,7 @@ export async function createProject() {
 }
 
 export async function getProject(id) {
+  console.log("getting:", id)
   const url = `${SERVER_URL}/projects/${id}`;
 
   try {
@@ -40,7 +41,6 @@ export async function getProject(id) {
 }
 
 export async function saveProject(project, photos) {
-  console.log("saveProject: ", project)
   const id = project.id;
   const url = `${SERVER_URL}/projects/${id}`;
 
