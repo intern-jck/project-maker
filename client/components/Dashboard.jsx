@@ -5,7 +5,6 @@ import "../styles/Dashboard.scss";
 
 export default function Dashboard({
   dashboardData,
-  onCreateProject,
   onSelectProject,
 }) {
   function onSelectProjectHandler(event) {
@@ -16,15 +15,10 @@ export default function Dashboard({
 
   return (
     <div className="Dashboard">
-      <div className="dash-controls">
-        <div className="dash-row">
-          {/* <button name="create-project" onClick={onCreateProject}>
-            <i className="fa-solid fa-file"></i>
-          </button> */}
-          <button name="download-projects">
-            <i className="fa-solid fa-file-export"></i>
-          </button>
-        </div>
+      <div className="dash-header">
+        <button name="download-projects">
+          <i className="fa-solid fa-file-export"></i>
+        </button>
       </div>
 
       <div className="project-list">
@@ -32,7 +26,7 @@ export default function Dashboard({
           dashboardData.map((project, i) => {
             return (
               <button
-                className="project-button"
+                name={"project-button"}
                 key={project.id}
                 value={project.id}
                 onClick={onSelectProjectHandler}
@@ -46,6 +40,6 @@ export default function Dashboard({
           <>no projects</>
         )}
       </div>
-     </div>
+    </div>
   );
 }

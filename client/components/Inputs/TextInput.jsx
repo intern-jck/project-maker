@@ -1,26 +1,23 @@
 import React from "react";
 
 export default function TextInput({
+  name,
   id,
   className,
-  name,
   value,
   changeHandler,
 }) {
   return (
-    // <div className={`text-input ${className}`}>
     <>
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={name}>{name.replace("-", " ")}</label>
       <input
         type="text"
-        id={id}
-        className={className}
         name={name}
+        id={id}
+        className={className ? className : "text-input"}
         value={value}
-        // placeholder={name}
         onChange={changeHandler}
       />
     </>
-    // </div>
   );
 }

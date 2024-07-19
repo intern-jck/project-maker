@@ -1,36 +1,48 @@
-import React from 'react';
+import React from "react";
 
-import TextInput from './TextInput.jsx';
+import TextInput from "./TextInput.jsx";
 
 export default function RepoInput({
-  // inputName,
-  // repoName,
-  // url,
+  name,
+  id,
   className,
-  repo,
+  repoName,
+  repoUrl,
   repos,
   changeHandler,
   addHandler,
   deleteHandler,
 }) {
   return (
-    <div className={className}>
-      <span className={'repoHeader'}>REPOS</span>
-
-      <div className="repoName">
-        <TextInput className={'repoNameInput'} inputName={'name'} value={repo.name} changeHandler={changeHandler} />
-        <TextInput className={'repoURLInput'} inputName={'url'} value={repo.url} changeHandler={changeHandler} />
-        <button onClick={addHandler}>{/* <CgAddR /> */}</button>
+    <div id={id} className={className ? className : "repo-input"}>
+      <div className="repo-header">
+        <span>{name.replace("-", " ")}</span>
+        <button name="add-repo-button" onClick={addHandler}>
+          <i className="fa-solid fa-square-plus"></i>
+        </button>
       </div>
 
-      <div className="repoList">
+      <div className="repo-info">
+        <TextInput
+          name={"repo-name"}
+          value={repo.name}
+          changeHandler={changeHandler}
+        />
+        <TextInput
+          name={"repo-url"}
+          value={repo.url}
+          changeHandler={changeHandler}
+        />
+      </div>
+
+      <div className="repo-list">
         {repos ? (
           repos.map((repo, i) => {
             return (
               <div key={i} className="repo">
                 {repo.name}
                 <button onClick={deleteHandler} data-repo-index={i}>
-                  {/* <CgCloseR /> */}
+                  <i className="fa-regular fa-circle-xmark"></i>
                 </button>
               </div>
             );

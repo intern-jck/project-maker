@@ -25,11 +25,9 @@ body {
 }
 
 button {
-
   svg {
     pointer-events: none;
   }
-
   i {
     pointer-events: none;
   }
@@ -41,15 +39,3 @@ select:hover {
   color: $color-active;
 }
 
-input:hover,
-select:hover,
-textarea:hover {
-  border-color: $color-active;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: $color-active;
-  outline: none;
-}

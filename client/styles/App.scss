@@ -1,9 +1,6 @@
 @import "./variables";
 
 .App {
-  // border: $border-stock;
-  // background-color: $color-background;
-  // height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -18,40 +15,10 @@
   }
 
   .app-content {
-    // border: $border-stock;
-    // background-color: $color-app-background;
-    // height: 100%;
     height: 90vh;
     display: flex;
     gap: 1rem;
-
-    button {
-      // border: none;
-      background: none;
-      padding: 0;
-      display: flex;
-      font-size: $icon-xlarge;
-      // font-size: 6rem;
-
-      // i {
-      // }
-    }
   }
-
-  // .app-dashboard {
-  //   border: $border-stock;
-  //   background-color: red;
-  //   height: 100%;
-  //   width: 20%;
-  // }
-
-  // .app-form {
-  //   border: $border-stock;
-  //   background-color: $color-ternary;
-  //   height: 100%;
-  //   width: 80%;
-  //   padding: $padding-stock;
-  // }
 }
 
 @media screen and (max-width: $screen-break-l) {

@@ -1,23 +1,22 @@
 import React from "react";
-
 import TextInput from "./TextInput.jsx";
 
 export default function PhotoInput({
-  inputId,
-  className,
-  inputName,
   name,
-  url,
-  changeHandler,
-  addHandler,
+  id,
+  className,
+  photoName,
+  photoUrl,
   photos,
+  addHandler,
+  changeHandler,
   deleteHandler,
 }) {
   return (
-    <div className={className}>
-      <div className="photo-input-header">
-        <span>{inputName}</span>
-        <button id="add-photo-button" onClick={addHandler}>
+    <div id={id} className={className ? className : "photo-input"}>
+      <div className="photo-header">
+        <span>{name.replace("-", " ")}</span>
+        <button name="add-photo-button" onClick={addHandler}>
           <i className="fa-solid fa-square-plus"></i>
         </button>
       </div>
@@ -25,16 +24,14 @@ export default function PhotoInput({
       <div className="photo-info">
         <TextInput
           id="photo-input-name"
-          className="text-input"
-          name="NAME"
-          value={name}
+          name="photo-name"
+          value={photoName}
           changeHandler={changeHandler}
         />
         <TextInput
           id="photo-input-url"
-          className="text-input"
-          name="URL"
-          value={url}
+          name="photo-url"
+          value={photoUrl}
           changeHandler={changeHandler}
         />
       </div>
@@ -44,7 +41,7 @@ export default function PhotoInput({
           photos.map((photo, i) => {
             return (
               <div key={i} className="photo-thumb">
-                <div>
+                <div className="photo-thumb-div">
                   <img src={photo.url} alt="not found" />
                 </div>
                 <button onClick={deleteHandler} data-photo-index={i}>

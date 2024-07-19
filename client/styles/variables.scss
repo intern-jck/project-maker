@@ -6,10 +6,6 @@ $border-stock: 0.4rem solid black;
 $border-thick: 0.6rem solid black;
 $border-xthick: 1rem solid black;
 
-$border-input: 0.2rem solid black;
-$border-input-hover: 0.2rem solid green;
-$border-input-focus: 0.2rem solid green;
-
 $border-test-orange: 4px solid orange;
 $border-test-blue: 4px solid blue;
 $border-test-green: 4px solid green;
@@ -19,36 +15,21 @@ $border-radius-small: 0.2rem;
 $border-radius-stock: 0.4rem;
 $border-radius-large: 0.6rem;
 
-$color-one: #556281;
-$color-two: #d7d8da;
-
-$yale-blue: #0d3b66ff;
-$lemon-chiffon: #faf0caff;
-$naples-yellow: #f4d35eff;
-$sandy-brown: #ee964bff;
-$tomato: #f95738ff;
-
-$color-primary: #307f9e;
+$color-primary: #0081a7;
 $color-secondary: #e7401f;
 $color-ternary: #4f764e;
 
-$color-active: $sandy-brown;
-
-$color-background: rgb(224, 213, 213);
-$color-app-background: $color-two;
-$color-panel-background: red;
-
-$color-input-background: #ffffff;
-$color-button-background: #444422;
+$color-background: #d7d8da;
+$color-active: #ff7b00;
 
 $font-color: #010101;
-
 $font-size-xsmall: 0.6rem;
 $font-size-small: 0.8rem;
 $font-size-stock: 1rem;
 $font-size-large: 1.2rem;
 $font-size-xlarge: 1.4rem;
 $font-size-xxlarge: 1.8rem;
+$font-size-xxxlarge: 2.4rem;
 
 $gap-thin: 0.25rem;
 $gap-stock: 0.5rem;

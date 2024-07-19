@@ -102,24 +102,22 @@ export default function ProjectForm({
   return (
     <div className="ProjectForm">
       <div className="form-header">
-        {/* <div className="form-controls"> */}
-        <button name="create_project" onClick={onCreateProject}>
+        <button name="create-project" onClick={onCreateProject}>
           <i className="fa-solid fa-file"></i>
         </button>
-        <button name="save_project" type="submit">
-          <i className="fa-regular fa-floppy-disk"></i>
+        <button name="save-project" type="submit">
+          <i className="fa-solid fa-floppy-disk"></i>
         </button>
         <button
-          name="delete_project"
+          name="delete-project"
           value={project.id}
           onClick={deleteProjectHandler}
         >
-          <i className="fa-regular fa-trash-can"></i>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
-        <button name="close_project" onClick={onCloseProject}>
-          <i className="fa-solid fa-square-xmark"></i>
+        <button name="close-project" onClick={onCloseProject}>
+          <i className="fa-solid fa-xmark"></i>
         </button>
-        {/* </div> */}
       </div>
 
       {Object.keys(projectData).length ? (
@@ -129,79 +127,63 @@ export default function ProjectForm({
           onSubmit={saveProjectHandler}
         >
           <div className="form-info">
+            <span>project info</span>
             <TextInput
-              id="name-input"
-              className="name-input"
               name="name"
-              value={project.name}
+              value={projectData.name}
               changeHandler={updateTextInput}
             />
             <TextInput
-              id="url-input"
-              className="url-input"
               name="url"
               value={projectData.url}
               changeHandler={updateTextInput}
             />
             <TextInput
-              id="client-input"
-              className="name-input"
               name="client"
               value={projectData.client}
               changeHandler={updateTextInput}
             />
             <TextInput
-              id="client-url-input"
-              className="url-input"
               name="client-url"
               value={projectData.client_url}
               changeHandler={updateTextInput}
             />
             <DateInput
-              id="date-input"
-              className="date-input"
               name="start-date"
               value={projectData.start_date}
               changeHandler={updateDate}
             />
             <DateInput
-              id="date-input"
-              className="date-input"
               name="end-date"
               value={projectData.end_date}
               changeHandler={updateDate}
             />
             <TextInput
-              id="short-input"
-              className="short-input"
               name={"short"}
               value={projectData.short}
               changeHandler={updateTextInput}
             />
             <TextArea
-              className="info-input"
               name={"info"}
               value={projectData.info}
               changeHandler={updateTextInput}
             />
           </div>
 
-          <div className="form-media">
-            <PhotoInput
-              inputId="photos-input"
-              className="photos-input"
-              inputName="photos"
-              name={newPhoto.name}
-              url={newPhoto.url}
-              changeHandler={updatePhoto}
-              addHandler={addPhoto}
-              photos={photos}
-              deleteHandler={deletePhoto}
-            />
-          </div>
+          <PhotoInput
+            name="project-photos"
+            id="photos-input"
+            className="photos-input"
+            photoName={newPhoto.name}
+            photoUrl={newPhoto.url}
+            changeHandler={updatePhoto}
+            addHandler={addPhoto}
+            photos={photos}
+            deleteHandler={deletePhoto}
+          />
         </form>
       ) : (
-        <>no project selected</>
+        <h1>no project selected</h1>
       )}
     </div>
   );

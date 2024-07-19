@@ -1,18 +1,23 @@
 import React from "react";
 
-const DateInput = ({ id, className, name, value, changeHandler }) => {
+export default function DateInput({
+  id,
+  className,
+  name,
+  value,
+  changeHandler,
+}) {
   return (
-    <div className={`date-input ${className}`}>
-      <label htmlFor={name}>{name}</label>
+    <>
+      <label htmlFor={name}>{name.replace("-", " ")}</label>
       <input
-        id={id}
         type="date"
         name={name}
-        defaultValue={value}
+        id={id ? id : ""}
+        className={className ? className : "date-input"}
+        value={value}
         onChange={changeHandler}
       />
-    </div>
+    </>
   );
-};
-
-export default DateInput;
+}
