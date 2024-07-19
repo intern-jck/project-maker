@@ -21,6 +21,7 @@ const App = () => {
     getProjects()
       .then((data) => {
         setProjects(data);
+        setCurrentProject(data[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -78,27 +79,23 @@ const App = () => {
       <div className="app-header">MENU GOES HERE</div>
 
       <div className="app-content">
-        <div class="app-dashboard">
-          <Dashboard
-            dashboardData={projects}
-            onCreateProject={createProjectHandler}
-            onSelectProject={getProjectHandler}
-          />
-        </div>
+        <Dashboard
+          dashboardData={projects}
+          onCreateProject={createProjectHandler}
+          onSelectProject={getProjectHandler}
+        />
 
-        <div class="app-form">
-          {Object.keys(currentProject).length ? (
-            <ProjectForm
-              projectData={currentProject}
-              photosData={projectPhotos}
-              onCloseProject={closeProjectHandler}
-              onDeleteProject={deleteProjectHandler}
-              onSaveProject={updateProjectHandler}
-            />
-          ) : (
-            <>no project selected</>
-          )}
-        </div>
+        {Object.keys(currentProject).length ? (
+          <ProjectForm
+            projectData={currentProject}
+            photosData={projectPhotos}
+            onCloseProject={closeProjectHandler}
+            onDeleteProject={deleteProjectHandler}
+            onSaveProject={updateProjectHandler}
+          />
+        ) : (
+          <>no project selected</>
+        )}
       </div>
     </div>
   );

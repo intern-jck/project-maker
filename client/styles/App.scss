@@ -1,43 +1,47 @@
 @import "./variables";
 
 .App {
-  border: $border-stock;
+  // border: $border-stock;
+  background-color: $color-background;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  gap: 1rem;
 
   .app-header {
     border: $border-stock;
-    height: 4rem;
-    background-color: $color-background;
-    margin: $margin-stock;
+    background-color: $color-app-background;
+    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .app-content {
-    border: $border-stock;
+    // border: $border-stock;
+    background-color: $color-app-background;
     height: 100%;
-    background-color: $color-background;
-    display: flex;
-    margin: $margin-stock;
+    display: flex;  
+    gap: 1rem;
 
   }
 
   .app-dashboard {
     border: $border-stock;
+    background-color: $color-app-background;
     height: 100%;
     width: 20%;
   }
+
   .app-form {
     border: $border-stock;
+    background-color: $color-app-background;
     height: 100%;
     width: 80%;
+    padding: $padding-stock;
   }
-
-
 }
+
 @media screen and (max-width: $screen-break-l) {
 }
 

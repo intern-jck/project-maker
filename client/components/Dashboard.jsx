@@ -8,10 +8,9 @@ export default function Dashboard({
   onCreateProject,
   onSelectProject,
 }) {
-
   function onSelectProjectHandler(event) {
     event.preventDefault();
-    const {value} = event.target;
+    const { value } = event.target;
     onSelectProject(value);
   }
 
@@ -19,24 +18,16 @@ export default function Dashboard({
     <div className="Dashboard">
       <div className="dash-controls">
         <div className="control-row">
-          <TextInput
-            inputId="folder-input"
-            className="folder-input"
-            inputName={"folder_name"}
-          />
           <button name="create_project" onClick={onCreateProject}>
             <i className="fa-solid fa-file"></i>
           </button>
-        </div>
-
-        <div className="control-row">
           <button>
             <i className="fa-solid fa-file-export"></i>
           </button>
         </div>
       </div>
 
-      <div className="ProjectList">
+      <div className="project-list">
         {dashboardData.length ? (
           dashboardData.map((project, i) => {
             return (
@@ -55,6 +46,6 @@ export default function Dashboard({
           <>no projects</>
         )}
       </div>
-    </div>
+     </div>
   );
-};
+}

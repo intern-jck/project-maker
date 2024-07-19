@@ -1,29 +1,22 @@
 $page-font: "Courier New", Courier, monospace;
 
-$primary: blue;
-$secondary: grey;
+$color-primary: #307f9e;
+$color-secondary: #e7401f;
+$color-ternary: #4f764e;
+$color-active: #31ad4c;
 
-$color-background: #ffffff;
-$color-panel-background: #dddddd;
-
-$color-input-background: #ffffff;
-$color-button-background: #444422;
-
-$color-active: #00bb00;
-$color-primary: blue;
-$color-secondary: grey;
-
-$font-color: black;
-
-$font-size-xsmall: 0.6rem;
-$font-size-small: 0.8rem;
-$font-size-stock: 1rem;
-$font-size-large: 1.2rem;
-$font-size-xlarge: 1.4rem;
-$font-size-xxlarge: 1.8rem;
-
-$border-color: black;
+$border-color: #010101;
 $border-color-active: $color-active;
+$color-one: #556281;
+$color-two: #D7D8DA;
+
+/* SCSS HEX */
+$yale-blue: #0d3b66ff;
+$lemon-chiffon: #faf0caff;
+$naples-yellow: #f4d35eff;
+$sandy-brown: #ee964bff;
+$tomato: #f95738ff;
+
 
 $border-xthin: 0.1rem solid black;
 $border-thin: 0.2rem solid black;
@@ -44,18 +37,42 @@ $border-radius-small: 0.2rem;
 $border-radius-stock: 0.4rem;
 $border-radius-large: 0.6rem;
 
-$padding-thin: 0.25rem;
-$padding-stock: 0.5rem;
-$padding-thick: 1rem;
+$color-background: white;
+$color-app-background: white;
+$color-panel-background: red;
 
-$margin-thin: 0.25rem;
-$margin-stock: 0.5rem;
-$margin-thick: 1rem;
+$color-input-background: #ffffff;
+$color-button-background: #444422;
+
+$font-color: #010101;
+
+$font-size-xsmall: 0.6rem;
+$font-size-small: 0.8rem;
+$font-size-stock: 1rem;
+$font-size-large: 1.2rem;
+$font-size-xlarge: 1.4rem;
+$font-size-xxlarge: 1.8rem;
 
 $gap-thin: 0.25rem;
 $gap-stock: 0.5rem;
 $gap-thick: 1rem;
 $gap-xthick: 2rem;
+
+$icon-xsmall: 0.6rem;
+$icon-small: 1rem;
+$icon-medium: 1.4rem;
+$icon-large: 1.8rem;
+$icon-xlarge: 2.4rem;
+
+$max-app-height: 90vh;
+
+$margin-thin: 0.25rem;
+$margin-stock: 0.5rem;
+$margin-thick: 1rem;
+
+$padding-thin: 0.25rem;
+$padding-stock: 0.5rem;
+$padding-thick: 1rem;
 
 $screen-break-xxs: 400px;
 $screen-break-xs: 600px;
@@ -64,7 +81,3 @@ $screen-break-m: 1200px;
 $screen-break-l: 1400px;
 $screen-break-xl: 1600px;
 $screen-break-xxl: 1900px;
-
-// App Globals
-
-$max-app-height: 90vh;
