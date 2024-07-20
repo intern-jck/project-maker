@@ -4,8 +4,9 @@ const {
   ProjectsModel,
   PhotosModel,
   FoldersModel,
-  // TechTagsModel,
-  // ProjectTechTagsModel,
+  ReposModel,
+  TagsModel,
+  ProjectTagsModel,
 } = require("./schemas.js");
 
 // Initialize database
@@ -34,8 +35,9 @@ function createDatabase() {
     createTable(pMakerDB, FoldersModel);
     createTable(pMakerDB, ProjectsModel);
     createTable(pMakerDB, PhotosModel);
-    // createTable(pMakerDB, TechTagsModel);
-    // createTable(pMakerDB, ProjectTechTagsModel);
+    createTable(pMakerDB, ReposModel);
+    createTable(pMakerDB, TagsModel);
+    createTable(pMakerDB, ProjectTagsModel);
   });
 }
 
