@@ -9,6 +9,8 @@ const indexRoute = require("./routes/index.js");
 const projectsRoutes = require("./routes/projects.js");
 const photosRoutes = require("./routes/photos.js");
 const reposRoutes = require("./routes/repos.js");
+const projectTagsRoutes = require("./routes/projectTags.js");
+const tagsRoutes = require("./routes/tags.js");
 
 const db = require("./db/db.js");
 
@@ -16,6 +18,8 @@ app.use("/", indexRoute);
 app.use("/projects", projectsRoutes);
 app.use("/photos", photosRoutes);
 app.use("/repos", reposRoutes);
+app.use("/project-tags", projectTagsRoutes);
+app.use("/tags", tagsRoutes);
 
 app.listen(3000, () => {
   console.log(`P Maker App Listening @ http://127.0.0.1:${3000}`);

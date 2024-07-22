@@ -1,5 +1,3 @@
-// Need to change name to schemas cause thats what they are.
-
 const ProjectsModel = `
   CREATE TABLE projects (
     id INTEGER PRIMARY KEY,
@@ -57,10 +55,10 @@ const TagsModel = `
 const ProjectTagsModel = `
   CREATE TABLE project_tags (
     id INTEGER PRIMARY KEY,
-    tag_id INTEGER,
     project_id INTEGER,
-    FOREIGN KEY (tag_id) REFERENCES tags(id),
-    FOREIGN KEY (project_id) REFERENCES projects(id)
+    tag_id INTEGER,
+    FOREIGN KEY (project_id) REFERENCES projects(id),
+    FOREIGN KEY (tag_id) REFERENCES tags(id)
   );
 `;
 

@@ -1,9 +1,16 @@
 const db = require("./db.js");
 
-function selectTags(id) {
+function selectProjectTags(id) {
   let sql = `
-    SELECT * FROM tags;
-`;
+    SELECT tags.name FROM tags
+    JOIN project_tags ON tags.id = tag_id
+    JOIN projects ON project_id = projects.id
+    WHERE projects.id = ${id};
+  `;
+
+//   let sql = `
+//   SELECT * FROM project_tags;
+// `;
 
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
@@ -16,15 +23,15 @@ function selectTags(id) {
   });
 }
 
-function insertTag(data) {
+function insertProjectTag(data) {
   const sql = `
-    INSERT INTO tags (
-    name,
-    url
+    INSERT INTO project_tags (
+    project_id,
+    tag_id
     )
     VALUES (
-    '${data.name}',
-    '${data.url}'
+    '${data.project_id}',
+    '${data.tag_id}'
     );
   `;
 
@@ -39,12 +46,12 @@ function insertTag(data) {
   });
 }
 
-function updateTag(data) {
+function updateProjectTag(data) {
   const sql = `
       UPDATE tags
         SET
-        name = '${data.name}',
-        url = '${data.url}'
+        project_id = '${data.project_id}',
+        tag_id = '${data.tag_id}'
       WHERE id = ${data.id};
     `;
 
@@ -59,7 +66,7 @@ function updateTag(data) {
   });
 }
 
-function deleteTag(id) {
+function deleteProjectTag(id) {
   const sql = `DELETE FROM tags WHERE id = ${id};`;
 
   return new Promise((resolve, reject) => {
@@ -74,8 +81,8 @@ function deleteTag(id) {
 }
 
 module.exports = {
-  selectTags,
-  insertTag,
-  updateTag,
-  deleteTag,
+  selectProjectTags,
+  insertProjectTag,
+  updateProjectTag,
+  deleteProjectTag,
 };
