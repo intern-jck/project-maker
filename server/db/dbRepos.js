@@ -22,7 +22,7 @@ function insertRepo(data) {
     url
     )
     VALUES (
-    ${data.projectId},
+    ${data.project_id},
     '${data.name}',
     '${data.url}'
     );
@@ -43,7 +43,7 @@ function updateRepo(data) {
   const sql = `
       UPDATE repos
         SET
-        project_id = ${data.projectId},
+        project_id = ${data.project_id},
         name = '${data.name}',
         url = '${data.url}'
       WHERE id = ${data.id};

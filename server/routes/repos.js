@@ -10,7 +10,7 @@ const {
 
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log(`GET /repos/${id}`)
+  console.log(`GET /repos/${id}`);
 
   try {
     const result = await selectProjectRepos(id);
@@ -25,6 +25,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   const data = req.body;
+  console.log("POST /repo: \n", data);
 
   try {
     const result = await insertRepo(data);
@@ -37,8 +38,8 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
-  const id = req.params.id;
+router.patch("/:id", async (req, res, next) => {
+  // const id = req.params.id;
   const data = req.body;
 
   try {
