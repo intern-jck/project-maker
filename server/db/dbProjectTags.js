@@ -8,10 +8,6 @@ function selectProjectTags(id) {
     WHERE projects.id = ${id};
   `;
 
-//   let sql = `
-//   SELECT * FROM project_tags;
-// `;
-
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
       if (error) {
