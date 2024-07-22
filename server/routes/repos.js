@@ -8,6 +8,20 @@ const {
   deleteRepo,
 } = require("../db/dbRepos.js");
 
+
+router.get("/", async (req, res, next) => {
+
+  try {
+    const result = await selectProjectRepos();
+
+    res.json({
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   console.log(`GET /repos/${id}`);

@@ -1,7 +1,14 @@
 const db = require("./db.js");
 
 function selectProjectRepos(id) {
-  const sql = `SELECT * FROM repos WHERE project_id = ${id}`;
+  
+  let sql = '';
+  
+  if (!id) {
+    sql = `SELECT * FROM repos;`;
+  } else {
+    sql = `SELECT * FROM repos WHERE project_id = ${id};`;
+  }
 
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
