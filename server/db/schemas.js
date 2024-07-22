@@ -1,5 +1,3 @@
-// Need to change name to schemas cause thats what they are.
-
 const ProjectsModel = `
   CREATE TABLE projects (
     id INTEGER PRIMARY KEY,
@@ -36,28 +34,39 @@ const FoldersModel = `
   );
 `;
 
-// const TechTagsModel = `
-//   CREATE TABLE tech_tags (
-//     id INTEGER PRIMARY KEY,
-//     name TEXT,
-//     url TEXT,
-//     short TEXT,
-//   );
-// `;
+const ReposModel = `
+  CREATE TABLE repos (
+    id INTEGER PRIMARY KEY,
+    project_id INTEGER,
+    name TEXT,
+    url TEXT,
+    FOREIGN KEY (project_id) REFERENCES projects(id)
+  );
+`;
 
-// const ProjectTechTagsModel = `
-//   CREATE TABLE project_tech_tags (
-//     tech_tag_id INTEGER,
-//     tech_project_id INTEGER,
-//     FOREIGN KEY(tech_tag_id) REFERENCES tech_tags(tech_id)
-//     FOREIGN KEY(tech_project_id) REFERENCES projects(project_id)
-//   );
-// `;
+const TagsModel = `
+  CREATE TABLE tags (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    url TEXT
+  );
+`;
+
+const ProjectTagsModel = `
+  CREATE TABLE project_tags (
+    id INTEGER PRIMARY KEY,
+    project_id INTEGER,
+    tag_id INTEGER,
+    FOREIGN KEY (project_id) REFERENCES projects(id),
+    FOREIGN KEY (tag_id) REFERENCES tags(id)
+  );
+`;
 
 module.exports = {
   ProjectsModel,
   PhotosModel,
   FoldersModel,
-  // TechTagsModel,
-  // ProjectTechTagsModel,
+  ReposModel,
+  TagsModel,
+  ProjectTagsModel,
 };

@@ -58,7 +58,7 @@ function updatePhoto(data) {
   const sql = `
       UPDATE photos
         SET
-        photo_project_id = '${data.photo_project_id}',
+        photo_project_id = ${data.photo_project_id},
         url = '${data.url}',
         name = '${data.name}'
       WHERE id = ${data.id};
