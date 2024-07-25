@@ -40,13 +40,13 @@ export async function getProject(id) {
   }
 }
 
-export async function saveProject(project, photos) {
+export async function saveProject(project) {
   const id = project.id;
   const url = `${SERVER_URL}/projects/${id}`;
 
   const body = {
     project: project,
-    photos: photos,
+    // photos: photos,
   };
 
   try {

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import ProjectForm from "./components/ProjectForm.jsx";
 
+import "./styles/App.scss";
+
 import {
   getProjects,
   getProject,
@@ -10,7 +12,12 @@ import {
   deleteProject,
 } from "./api/projects.js";
 
-import "./styles/App.scss";
+import {
+  getPhotos,
+  savePhotos,
+  deletePhoto,
+} from "./api/photos.js";
+
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -21,6 +28,7 @@ const App = () => {
     getProjects()
       .then((data) => {
         setProjects(data);
+
       })
       .catch((error) => {
         console.log(error);
@@ -40,8 +48,10 @@ const App = () => {
   async function getProjectHandler(id) {
     try {
       setCurrentProject({});
-      const result = await getProject(id);
+      let result= await getProject(id);
       setCurrentProject(result.data[0]);
+      result = await getPhotos(id);
+      console.log("photos: ", result);
       // getPhotos
       // getRepos
       // getTags
@@ -52,7 +62,10 @@ const App = () => {
 
   async function saveProjectHandler(project, photos) {
     try {
-      const result = await saveProject(project, photos);
+      const result = await saveProject(project);
+
+      const result_2 = await savePhotos(photos);
+
       const projects = await getProjects();
       setProjects(projects);
       const r = await getProject(project.id);
