@@ -8,7 +8,7 @@ export default function TextArea({
   changeHandler,
 }) {
   return (
-    <>
+    <div className="TextArea">
       <label htmlFor={name}>{name.replace("-", " ")}</label>
       <textarea
         name={name}
@@ -17,6 +17,6 @@ export default function TextArea({
         value={value}
         onChange={changeHandler}
       />
-    </>
+    </div>
   );
 }

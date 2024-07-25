@@ -47,33 +47,26 @@
 
   form {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 
     span {
+      width: 100%;
       font-weight: bold;
       font-size: $font-size-xxlarge;
     }
 
-    .form-info {
-      border: $border-stock;
-      background-color: white;
-      width: 40rem;
-      height: 50rem;
-      padding: $padding-stock;
-      display: flex;
-      flex-direction: column;
-      overflow-y: scroll;
-    }
     label {
+      display: block;
       font-size: $font-size-xlarge;
     }
 
     input,
     select,
     textarea {
+      display: block;
       border: $border-thin;
       font-size: $font-size-xlarge;
-      margin-bottom: $margin-stock;
     }
 
     input:hover,
@@ -88,10 +81,23 @@
       border: 4px solid $color-active;
       outline: none;
     }
+  }
+
+  .form-info {
+    border: $border-stock;
+    background-color: white;
+    // width: 40rem;
+    // height: 40rem;
+    padding: $padding-stock;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    // overflow-y: scroll;
+    gap: $gap-stock;
 
     input[name="name"],
     input[name="client"] {
-      width: 16rem;
+      width: 20rem;
     }
 
     input[name="url"],
@@ -101,8 +107,8 @@
 
     input[name="start-date"],
     input[name="end-date"] {
-      width: 16rem;
-      height: 5rem;
+      border: 4px solid black;
+      width: 14rem;
     }
 
     input[name="start-date"]:hover,
@@ -111,66 +117,180 @@
     }
 
     input[name="short"] {
+      width: 30rem;
+    }
+
+    .TextArea {
       width: 100%;
     }
 
     textarea[name="description"] {
+      height: 20rem;
       width: 100%;
-      height: 100%;
       overflow-y: scroll;
     }
+  }
 
-    .photos-input {
-      border: $border-stock;
-      background-color: white;
-      width: 40rem;
-      height: 30rem;
-      padding: $padding-stock;
+  .photos-input {
+    border: $border-stock;
+    background-color: white;
+    width: 40rem;
+    height: 30rem;
+    padding: $padding-stock;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-stock;
+
+    .photo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .photo-info {
       display: flex;
       flex-direction: column;
+    }
+
+    .photo-list {
+      border: $border-thin;
+      padding: $padding-stock;
+      height: 100%;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-start;
       gap: $gap-stock;
 
-      .photo-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .photo-info {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .photo-list {
+      .photo-thumb {
         border: $border-thin;
-        padding: $padding-stock;
-        height: 100%;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        gap: $gap-stock;
+        border-radius: $border-radius-stock;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
 
-        .photo-thumb {
-          border: $border-thin;
-          border-radius: $border-radius-stock;
-          position: relative;
-          width: 8rem;
-          height: 8rem;
+        img {
+          width: 98%;
+          height: 98%;
+          object-fit: contain;
+        }
 
-          img {
-            width: 98%;
-            height: 98%;
-            object-fit: contain;
-          }
+        button {
+          padding: 0;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+        }
+      }
+    }
+  }
 
-          button {
-            padding: 0;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-          }
+  .repos-input {
+    border: $border-stock;
+    background-color: white;
+    width: 40rem;
+    height: 30rem;
+    padding: $padding-stock;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-stock;
+
+    .repo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .repo-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .repo-list {
+      border: $border-thin;
+      padding: $padding-stock;
+      height: 100%;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: $gap-stock;
+
+      .repo-thumb {
+        border: $border-thin;
+        border-radius: $border-radius-stock;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+
+        img {
+          width: 98%;
+          height: 98%;
+          object-fit: contain;
+        }
+
+        button {
+          padding: 0;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+        }
+      }
+    }
+  }
+
+  .tags-input {
+    border: $border-stock;
+    background-color: white;
+    width: 40rem;
+    height: 30rem;
+    padding: $padding-stock;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-stock;
+
+    .tag-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tag-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tag-list {
+      border: $border-thin;
+      padding: $padding-stock;
+      height: 100%;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: $gap-stock;
+
+      .tag-thumb {
+        border: $border-thin;
+        border-radius: $border-radius-stock;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+
+        img {
+          width: 98%;
+          height: 98%;
+          object-fit: contain;
+        }
+
+        button {
+          padding: 0;
+          position: absolute;
+          right: 2px;
+          top: 2px;
         }
       }
     }

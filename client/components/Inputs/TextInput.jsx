@@ -8,7 +8,7 @@ export default function TextInput({
   changeHandler,
 }) {
   return (
-    <>
+    <div className="TextInput">
       <label htmlFor={name}>{name.replace("-", " ")}</label>
       <input
         type="text"
@@ -18,6 +18,6 @@ export default function TextInput({
         value={value}
         onChange={changeHandler}
       />
-    </>
+    </div>
   );
 }

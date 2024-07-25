@@ -8,7 +8,7 @@ export default function DateInput({
   changeHandler,
 }) {
   return (
-    <>
+    <div className="DateInput">
       <label htmlFor={name}>{name.replace("-", " ")}</label>
       <input
         type="date"
@@ -18,6 +18,6 @@ export default function DateInput({
         value={value}
         onChange={changeHandler}
       />
-    </>
+    </div>
   );
 }
