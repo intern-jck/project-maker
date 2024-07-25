@@ -85,7 +85,7 @@
 
   .form-info {
     border: $border-stock;
-    background-color: white;
+    background-color: $color-panel-background;
     // width: 40rem;
     // height: 40rem;
     padding: $padding-stock;
@@ -107,8 +107,7 @@
 
     input[name="start-date"],
     input[name="end-date"] {
-      border: 4px solid black;
-      width: 14rem;
+      width: 16rem;
     }
 
     input[name="start-date"]:hover,
@@ -133,7 +132,7 @@
 
   .photos-input {
     border: $border-stock;
-    background-color: white;
+    background-color: $color-panel-background;
     width: 40rem;
     height: 30rem;
     padding: $padding-stock;
@@ -188,7 +187,7 @@
 
   .repos-input {
     border: $border-stock;
-    background-color: white;
+    background-color: $color-panel-background;
     width: 40rem;
     height: 30rem;
     padding: $padding-stock;
@@ -243,7 +242,7 @@
 
   .tags-input {
     border: $border-stock;
-    background-color: white;
+    background-color: $color-panel-background;
     width: 40rem;
     height: 30rem;
     padding: $padding-stock;
