@@ -4,19 +4,31 @@ import TextInput from "./Inputs/TextInput.jsx";
 import TextArea from "./Inputs/TextArea.jsx";
 import DateInput from "./Inputs/DateInput.jsx";
 import PhotoInput from "./Inputs/PhotoInput.jsx";
+import RepoInput from "./Inputs/RepoInput.jsx";
+import TagInput from "./Inputs/TagInput.jsx";
+
 import "../styles/ProjectForm.scss";
 
 export default function ProjectForm({
   projectData,
   photosData,
+  reposData,
+  tagsData,
   onCreateProject,
   onSaveProject,
   onCloseProject,
   onDeleteProject,
 }) {
   const [project, setProject] = useState(projectData ? projectData : {});
+
   const [photos, setPhotos] = useState(photosData);
   const [newPhoto, setNewPhoto] = useState({});
+
+  const [repos, setRepos] = useState(reposData);
+  const [newRepo, setNewRepo] = useState({});
+
+  const [tags, setTags] = useState(tagsData);
+  const [newTag, setNewTag] = useState({});
 
   useEffect(() => {
     setProject(projectData);
@@ -69,6 +81,7 @@ export default function ProjectForm({
     }));
   }
 
+  // Photos
   function updatePhoto(event) {
     const { name, value } = event.target;
     const updatedPhoto = newPhoto;
@@ -97,6 +110,69 @@ export default function ProjectForm({
     let updatedPhotos = photos.slice();
     updatedPhotos.splice(index, 1);
     setPhotos(() => updatedPhotos);
+  }
+
+  // Repos
+
+  function updateRepo(event) {
+    const { name, value } = event.target;
+    const updatedRepo = newRepo;
+
+    if (name === "repo-input_name") {
+      updatedRepo.name = value;
+    } else if (name === "repo-input-url") {
+      updatedRepo.url = value;
+    }
+
+    updatedRepo.repo_project_id = project.project_id;
+
+    setNewRepo(() => ({
+      ...updatedRepo,
+    }));
+  }
+
+  function addRepo(event) {
+    let updatedRepos = repos.slice();
+    updatedRepos.push(newRepo);
+    setRepos(() => updatedRepos);
+  }
+
+  function deleteRepo(event) {
+    const index = event.target.getAttribute("data-repo-index");
+    let updatedRepos = repos.slice();
+    updatedRepos.splice(index, 1);
+    setRepos(() => updatedRepos);
+  }
+
+  //Tags
+  function updateTag(event) {
+    const { name, value } = event.target;
+    const updatedTag = newTag;
+
+    if (name === "tag-input_name") {
+      updatedTag.name = value;
+    } else if (name === "tag-input-url") {
+      updatedTag.url = value;
+    }
+
+    updatedTag.tag_project_id = project.project_id;
+
+    setNewRepo(() => ({
+      ...updatedTag,
+    }));
+  }
+
+  function addTag(event) {
+    let updatedTags = tags.slice();
+    updatedTags.push(newTag);
+    setTags(() => updatedTags);
+  }
+
+  function deleteTag(event) {
+    const index = event.target.getAttribute("data-tag-index");
+    let updatedTags = tags.slice();
+    updatedTags.splice(index, 1);
+    setTags(() => updatedTags);
   }
 
   return (
@@ -185,10 +261,34 @@ export default function ProjectForm({
             className="photos-input"
             photoName={newPhoto.name}
             photoUrl={newPhoto.url}
+            photos={photos}
             changeHandler={updatePhoto}
             addHandler={addPhoto}
-            photos={photos}
             deleteHandler={deletePhoto}
+          />
+
+          <RepoInput
+            name="project-repos"
+            id="repos-input"
+            className="repos-input"
+            repoName={newRepo.name}
+            repoUrl={newRepo.url}
+            repos={repos}
+            changeHandler={updateRepo}
+            addHandler={addRepo}
+            deleteHandler={deleteRepo}
+          />
+
+          <TagInput
+            name="project-tags"
+            id="tags-input"
+            className="tags-input"
+            // tagName={newRepo.name}
+            // repoUrl={newRepo.url}
+            // repos={repos}
+            changeHandler={updateTag}
+            addHandler={addTag}
+            deleteHandler={deleteTag}
           />
         </form>
       ) : (

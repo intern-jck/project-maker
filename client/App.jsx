@@ -42,6 +42,9 @@ const App = () => {
       setCurrentProject({});
       const result = await getProject(id);
       setCurrentProject(result.data[0]);
+      // getPhotos
+      // getRepos
+      // getTags
     } catch (error) {
       console.log(error);
     }
