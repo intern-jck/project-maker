@@ -20,29 +20,17 @@ const App = () => {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
   const [projectPhotos, setProjectPhotos] = useState([]);
+  const [projectRepos, setProjectRepos] = useState([]);
+  const [projectTags, setProjectTags] = useState([]);
 
   useEffect(() => {
-    // getProjects()
-    //   .then((data) => {
-    //     setProjects(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
     async function get_data() {
       try {
-        const projects_data = await getProjects();
-        const photos_data = await getPhotos();
-        const repos_data = await getRepos();
-        const tags_data = await getTags();
-
-        console.log(projects_data);
-        console.log(photos_data);
-        console.log(repos_data);
-        console.log(tags_data);
+        const results = await getProjects();
+        
+        setProjects(results);
       } catch (error) {
-        console.log("first load: ", error);
+        console.log("get_data: ", error);
       }
     }
 
@@ -53,6 +41,7 @@ const App = () => {
     try {
       const result = await createProject();
       const projects = await getProjects();
+
       setProjects(projects);
     } catch (error) {
       console.log(error);
@@ -62,26 +51,53 @@ const App = () => {
   async function getProjectHandler(id) {
     try {
       setCurrentProject({});
-      let result = await getProject(id);
-      setCurrentProject(result.data[0]);
-      result = await getPhotos(id);
-      console.log("photos: ", result);
-      // getPhotos
-      // getRepos
-      // getTags
+
+      const project_data = await getProject(id);
+      const photos_data = await getPhotos(id);
+      const repos_data = await getRepos(id);
+      const tags_data = await getTags(id);
+
+      // console.log("projects:", project_data);
+      // console.log("photos:", photos_data);
+      // console.log("repos:", repos_data);
+      // console.log("tags:", tags_data);
+
+      const current_project = {
+        info: project_data.data[0],
+        photos: photos_data,
+        repos: repos_data,
+        tags: tags_data,
+      };
+
+      console.log(current_project);
+
+      setCurrentProject(project_data.data[0]);
+      setProjectPhotos(photos_data);
+      setProjectRepos(repos_data);
+      setProjectTags(tags_data);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function saveProjectHandler(project, photos) {
+  async function saveProjectHandler(project, photos, repos, tags) {
     try {
-      const result = await saveProject(project);
+      const projectResult = await saveProject(project);
+      const photosResult = await savePhotos(photos);
+      const reposResult = await saveRepos(repos);
+      const tagsResult = await saveTags(tags);
 
-      const result_2 = await savePhotos(photos);
+      console.log(
+        "saveProject: \n",
+        projectResult,
+        photosResult,
+        reposResult,
+        tagsResult
+      );
 
       const projects = await getProjects();
       setProjects(projects);
+
       const r = await getProject(project.id);
       const p = r.data[0];
       setCurrentProject(p);
@@ -120,6 +136,8 @@ const App = () => {
         <ProjectForm
           projectData={currentProject}
           photosData={projectPhotos}
+          reposData={projectRepos}
+          tagsData={projectTags}
           onCreateProject={createProjectHandler}
           onSaveProject={saveProjectHandler}
           onDeleteProject={deleteProjectHandler}

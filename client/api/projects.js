@@ -15,6 +15,7 @@ export async function getProjects() {
 
 export async function createProject() {
   const url = `${SERVER_URL}/projects`;
+
   const body = {
     timestamp: Date.now(),
   };
@@ -28,7 +29,6 @@ export async function createProject() {
 }
 
 export async function getProject(id) {
-  console.log("getting:", id)
   const url = `${SERVER_URL}/projects/${id}`;
 
   try {
@@ -42,11 +42,11 @@ export async function getProject(id) {
 
 export async function saveProject(project) {
   const id = project.id;
+
   const url = `${SERVER_URL}/projects/${id}`;
 
   const body = {
     project: project,
-    // photos: photos,
   };
 
   try {

@@ -285,7 +285,7 @@ export default function ProjectForm({
             className="tags-input"
             // tagName={newRepo.name}
             // repoUrl={newRepo.url}
-            // repos={repos}
+            tags={tags}
             changeHandler={updateTag}
             addHandler={addTag}
             deleteHandler={deleteTag}
