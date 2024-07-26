@@ -12,12 +12,9 @@ import {
   deleteProject,
 } from "./api/projects.js";
 
-import {
-  getPhotos,
-  savePhotos,
-  deletePhoto,
-} from "./api/photos.js";
-
+import { getPhotos, savePhotos, deletePhoto } from "./api/photos.js";
+import { getRepos, saveRepos, deleteRepo } from "./api/repos.js";
+import { getTags, saveTags, deleteTag } from "./api/tags.js";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -25,14 +22,31 @@ const App = () => {
   const [projectPhotos, setProjectPhotos] = useState([]);
 
   useEffect(() => {
-    getProjects()
-      .then((data) => {
-        setProjects(data);
+    // getProjects()
+    //   .then((data) => {
+    //     setProjects(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    async function get_data() {
+      try {
+        const projects_data = await getProjects();
+        const photos_data = await getPhotos();
+        const repos_data = await getRepos();
+        const tags_data = await getTags();
+
+        console.log(projects_data);
+        console.log(photos_data);
+        console.log(repos_data);
+        console.log(tags_data);
+      } catch (error) {
+        console.log("first load: ", error);
+      }
+    }
+
+    get_data();
   }, []);
 
   async function createProjectHandler() {
@@ -48,7 +62,7 @@ const App = () => {
   async function getProjectHandler(id) {
     try {
       setCurrentProject({});
-      let result= await getProject(id);
+      let result = await getProject(id);
       setCurrentProject(result.data[0]);
       result = await getPhotos(id);
       console.log("photos: ", result);
