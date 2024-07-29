@@ -95,7 +95,6 @@ function updateProject(data) {
 }
 
 function deleteProject(id) {
-  console.log("deleting: ", id);
   const sql = `DELETE FROM projects WHERE id=${id};`;
 
   return new Promise((resolve, reject) => {

@@ -8,9 +8,7 @@ const {
   deleteRepo,
 } = require("../db/dbRepos.js");
 
-
 router.get("/", async (req, res, next) => {
-
   try {
     const result = await selectProjectRepos();
 
@@ -24,10 +22,10 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log(`GET /repos/${id}`);
 
   try {
     const result = await selectProjectRepos(id);
+    console.log("repos: \n", result);
 
     res.json({
       data: result,
@@ -39,7 +37,6 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   const data = req.body;
-  console.log("POST /repo: \n", data);
 
   try {
     const result = await insertRepo(data);

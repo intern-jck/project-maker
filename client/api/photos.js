@@ -13,8 +13,8 @@ export async function getPhotos(id) {
   }
 }
 
-export async function savePhotos(photos) {
-  const url = `${SERVER_URL}/photos`;
+export async function savePhotos(id, photos) {
+  const url = `${SERVER_URL}/photos/${id}`;
 
   const body = {
     photos: photos,

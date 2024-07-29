@@ -19,11 +19,11 @@ const ProjectsModel = `
 const PhotosModel = `
   CREATE TABLE photos (
     id INTEGER PRIMARY KEY,
-    photo_project_id INTEGER,
+    project_id INTEGER,
     created_on INTEGER,
     url TEXT,
     name TEXT,
-    FOREIGN KEY (photo_project_id) REFERENCES projects(id)
+    FOREIGN KEY (project_id) REFERENCES projects(id)
   );
 `;
 

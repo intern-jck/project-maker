@@ -25,10 +25,10 @@ router.get("/", async (req, res, next) => {
 // Get a project by id
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
 
   try {
     const result = await selectProject(id);
+    console.log("project: \n", result)
 
     res.json({
       data: result,
@@ -41,8 +41,6 @@ router.get("/:id", async (req, res, next) => {
 // Create a new project
 router.post("/", async (req, res, next) => {
   const data = req.body;
-  console.log(data);
-
   try {
     const result = await createProject(data);
 
@@ -71,7 +69,6 @@ router.put("/:id", async (req, res, next) => {
 // Delete a project by id
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
-  console.log("delete route: ", id);
 
   try {
     const result = await deleteProject(id);

@@ -15,7 +15,6 @@ function selectProjectRepos(id) {
       if (error) {
         reject(error);
       }
-      console.log(rows);
       resolve(rows);
     });
   });

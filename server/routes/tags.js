@@ -25,6 +25,7 @@ router.get("/:id", async (req, res, next) => {
 
   try {
     const result = await selectTags(id);
+    console.log("tags: \n", result);
 
     res.json({
       data: result,

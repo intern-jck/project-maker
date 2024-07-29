@@ -1,8 +1,8 @@
 const db = require("../db/db.js");
 
-function selectPhotos() {
+function selectPhotos(id) {
 
-  const sql = `SELECT * FROM photos;`;
+  const sql = `SELECT * FROM photos WHERE project_id=${id};`;
 
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {

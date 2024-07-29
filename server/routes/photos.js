@@ -13,8 +13,7 @@ router.get("/", async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const result = await selectPhotos();
-    console.log(result);
+    const result = await selectPhotos(id);
 
     res.json({
       data: result,
@@ -29,7 +28,7 @@ router.get("/:id", async (req, res, next) => {
 
   try {
     const result = await selectProjectPhotos(id);
-    console.log(result);
+    console.log("photos: \n", result)
 
     res.json({
       data: result,
@@ -41,7 +40,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   const data = req.body;
-  console.log(data);
+  console.log("photos: ", data)
+
   try {
     const result = await insertPhoto(data);
 
@@ -56,6 +56,8 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
+
+  console.log("save photos:", id ,data)
 
   try {
     const result = await updatePhoto(data);

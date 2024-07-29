@@ -13,7 +13,6 @@ function selectProjectTags(id) {
       if (error) {
         reject(error);
       }
-      console.log(rows);
       resolve(rows);
     });
   });
