@@ -89,7 +89,7 @@ const App = () => {
 
     try {
       const projectResult = await saveProject(project);
-      const photosResult = await savePhotos(project.id, photos);
+      // const photosResult = await savePhotos(project.id, photos);
       // const reposResult = await saveRepos(repos);
       // const tagsResult = await saveTags(tags);
 

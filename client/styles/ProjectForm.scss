@@ -84,17 +84,35 @@
     }
   }
 
-  .form-info {
+  .project-info {
     border: $border-stock;
     background-color: $color-panel-background;
-    // width: 40rem;
-    // height: 40rem;
+    width: 80rem;
+    height: 40rem;
     padding: $padding-stock;
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    // overflow-y: scroll;
+    flex-direction: column;
     gap: $gap-stock;
+    overflow-y: scroll;
+
+    .project-info-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-stock;
+    }
+
+    .project-info-name,
+    .project-info-client,
+    .project-info-date {
+      display: flex;
+      gap: $gap-stock;
+    }
+
+    .project-info-description {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-stock;
+    }
 
     input[name="name"],
     input[name="client"] {
