@@ -1,6 +1,6 @@
 import React from "react";
-import SelectInput from "./Inputs/SelectInput.jsx";
-import TextInput from "./Inputs/TextInput.jsx";
+import SelectInput from "./Inputs/src/SelectInput.jsx";
+import TextInput from "./Inputs/src/TextInput.jsx";
 import "../styles/Dashboard.scss";
 
 export default function Dashboard({

@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "./TextInput.jsx";
+import TextInput from "./src/TextInput.jsx";
 
 export default function PhotoInput({
   name,

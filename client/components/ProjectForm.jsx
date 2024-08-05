@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import TextInput from "./Inputs/TextInput.jsx";
-import TextArea from "./Inputs/TextArea.jsx";
-import DateInput from "./Inputs/DateInput.jsx";
+import TextInput from "./Inputs/src/TextInput.jsx";
+import TextArea from "./Inputs/src/TextArea.jsx";
+import DateInput from "./Inputs/src/DateInput.jsx";
+
 import PhotoInput from "./Inputs/PhotoInput.jsx";
 import RepoInput from "./Inputs/RepoInput.jsx";
 import TagInput from "./Inputs/TagInput.jsx";
@@ -13,6 +14,8 @@ import {
   saveProject,
   deleteProject,
 } from "../api/projects.js";
+
+import { getPhotos, savePhotos, deletePhoto } from "../api/photos.js";
 
 import "../styles/ProjectForm.scss";
 
@@ -98,7 +101,6 @@ export default function ProjectForm({
     // console.log(name, value)
     const updatedPhoto = newPhoto;
 
-
     if (name === "photo-input-name") {
       updatedPhoto.name = value;
     } else if (name === "photo-input-url") {
@@ -121,12 +123,12 @@ export default function ProjectForm({
     updatedPhoto.created_on = Date.now();
     updatedPhotos.push(updatedPhoto);
 
-    console.log("adding:\n", updatedPhoto)
+    console.log("adding:\n", updatedPhoto);
     setPhotos(() => updatedPhotos);
 
     setNewPhoto({});
 
-    console.log(photos)
+    console.log(photos);
   }
 
   function deletePhoto(event) {
@@ -138,7 +140,6 @@ export default function ProjectForm({
   }
 
   // Repos
-
   function updateRepo(event) {
     event.preventDefault();
     const { name, value } = event.target;
