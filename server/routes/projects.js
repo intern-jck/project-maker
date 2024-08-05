@@ -28,7 +28,6 @@ router.get("/:id", async (req, res, next) => {
 
   try {
     const result = await selectProject(id);
-    console.log("project: \n", result)
 
     res.json({
       data: result,

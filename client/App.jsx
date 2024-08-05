@@ -27,7 +27,11 @@ const App = () => {
     async function get_data() {
       try {
         const results = await getProjects();
-        
+        // console.log(results[0].id)
+        const proj = await getProject(results[0].id);
+        setCurrentProject(proj.data[0]);
+        // console.log(proj);
+
         setProjects(results);
       } catch (error) {
         console.log("get_data: ", error);
@@ -81,6 +85,8 @@ const App = () => {
   }
 
   async function saveProjectHandler(project, photos, repos, tags) {
+    console.log(project, photos);
+
     try {
       const projectResult = await saveProject(project);
       const photosResult = await savePhotos(project.id, photos);
@@ -88,11 +94,10 @@ const App = () => {
       // const tagsResult = await saveTags(tags);
 
       console.log(
-        "saveProject: \n",
-        projectResult,
-        photosResult,
-        // reposResult,
-        // tagsResult
+        `saveProject Results:
+        result: ${projectResult.data}
+        result: ${photosResult.data}
+        `
       );
 
       const projects = await getProjects();

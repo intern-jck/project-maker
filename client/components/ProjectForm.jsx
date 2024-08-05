@@ -7,6 +7,13 @@ import PhotoInput from "./Inputs/PhotoInput.jsx";
 import RepoInput from "./Inputs/RepoInput.jsx";
 import TagInput from "./Inputs/TagInput.jsx";
 
+import {
+  getProject,
+  createProject,
+  saveProject,
+  deleteProject,
+} from "../api/projects.js";
+
 import "../styles/ProjectForm.scss";
 
 export default function ProjectForm({
@@ -40,12 +47,14 @@ export default function ProjectForm({
   }
 
   function deleteProjectHandler(event) {
+    event.preventDefault();
     const { value } = event.target;
     onDeleteProject(value);
   }
 
   // Functions to update form
   function updateTextInput(event) {
+    event.preventDefault();
     const { name, value } = event.currentTarget;
 
     let updatedInput = {};
@@ -73,6 +82,7 @@ export default function ProjectForm({
   }
 
   function updateDate(event) {
+    event.preventDefault();
     const { name, value } = event.target;
 
     setProject((project) => ({
@@ -83,10 +93,13 @@ export default function ProjectForm({
 
   // Photos
   function updatePhoto(event) {
+    event.preventDefault();
     const { name, value } = event.target;
+    // console.log(name, value)
     const updatedPhoto = newPhoto;
 
-    if (name === "photo-input_name") {
+
+    if (name === "photo-input-name") {
       updatedPhoto.name = value;
     } else if (name === "photo-input-url") {
       updatedPhoto.url = value;
@@ -100,12 +113,24 @@ export default function ProjectForm({
   }
 
   function addPhoto(event) {
+    event.preventDefault();
+    console.log("add photo");
+
     let updatedPhotos = photos.slice();
-    updatedPhotos.push(newPhoto);
+    const updatedPhoto = newPhoto;
+    updatedPhoto.created_on = Date.now();
+    updatedPhotos.push(updatedPhoto);
+
+    console.log("adding:\n", updatedPhoto)
     setPhotos(() => updatedPhotos);
+
+    setNewPhoto({});
+
+    console.log(photos)
   }
 
   function deletePhoto(event) {
+    event.preventDefault();
     const index = event.target.getAttribute("data-photo-index");
     let updatedPhotos = photos.slice();
     updatedPhotos.splice(index, 1);
@@ -115,6 +140,7 @@ export default function ProjectForm({
   // Repos
 
   function updateRepo(event) {
+    event.preventDefault();
     const { name, value } = event.target;
     const updatedRepo = newRepo;
 
@@ -132,12 +158,14 @@ export default function ProjectForm({
   }
 
   function addRepo(event) {
+    event.preventDefault();
     let updatedRepos = repos.slice();
     updatedRepos.push(newRepo);
     setRepos(() => updatedRepos);
   }
 
   function deleteRepo(event) {
+    event.preventDefault();
     const index = event.target.getAttribute("data-repo-index");
     let updatedRepos = repos.slice();
     updatedRepos.splice(index, 1);
@@ -146,6 +174,7 @@ export default function ProjectForm({
 
   //Tags
   function updateTag(event) {
+    event.preventDefault();
     const { name, value } = event.target;
     const updatedTag = newTag;
 
@@ -163,12 +192,14 @@ export default function ProjectForm({
   }
 
   function addTag(event) {
+    event.preventDefault();
     let updatedTags = tags.slice();
     updatedTags.push(newTag);
     setTags(() => updatedTags);
   }
 
   function deleteTag(event) {
+    event.preventDefault();
     const index = event.target.getAttribute("data-tag-index");
     let updatedTags = tags.slice();
     updatedTags.splice(index, 1);

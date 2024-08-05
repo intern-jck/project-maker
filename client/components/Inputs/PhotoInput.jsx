@@ -24,14 +24,14 @@ export default function PhotoInput({
       <div className="photo-info">
         <TextInput
           id="photo-input-name"
-          name="photo-name"
-          value={photoName}
+          name="photo-input-name"
+          value={photoName ? photoName : ""}
           changeHandler={changeHandler}
         />
         <TextInput
           id="photo-input-url"
-          name="photo-url"
-          value={photoUrl}
+          name="photo-input-url"
+          value={photoUrl ? photoUrl : ""}
           changeHandler={changeHandler}
         />
       </div>

@@ -14,6 +14,8 @@ export async function getPhotos(id) {
 }
 
 export async function savePhotos(id, photos) {
+  console.log("savePhotos", id, photos)
+
   const url = `${SERVER_URL}/photos/${id}`;
 
   const body = {
@@ -21,7 +23,8 @@ export async function savePhotos(id, photos) {
   };
 
   try {
-    const result = await axios.put(url, body);
+    const result = await axios.post(url, body);
+    console.log(result)
     return result.data;
   } catch (error) {
     return error;
@@ -29,5 +32,5 @@ export async function savePhotos(id, photos) {
 }
 
 export async function deletePhoto(id) {
-  return { deletePhot: id };
+  return { deletePhoto: id };
 }

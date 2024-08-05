@@ -27,7 +27,9 @@ function selectProjectPhotos(id) {
   });
 }
 
-function insertPhoto(data) {
+function insertPhoto(id, data) {
+  console.log("insert photo", id, data);
+  
   const sql = `
       INSERT INTO photos (
         photo_project_id,
@@ -36,7 +38,7 @@ function insertPhoto(data) {
         name
         )
       VALUES (
-        ${data.photo_project_id},
+        ${id},
         ${data.created_on},
         '${data.url}',
         '${data.name}'
@@ -54,11 +56,18 @@ function insertPhoto(data) {
   });
 }
 
-function updatePhoto(data) {
+function updatePhoto(id, data) {
+  console.log("db photos", id, data)
+  // return false;
+
+  if (!data.length) {
+    return false;
+  }
+
   const sql = `
       UPDATE photos
         SET
-        photo_project_id = ${data.photo_project_id},
+        photo_project_id = ${id},
         url = '${data.url}',
         name = '${data.name}'
       WHERE id = ${data.id};
