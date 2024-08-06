@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import ProjectList from "./components/ProjectList/ProjectList.jsx";
 
 import InfoForm from "./components/Forms/InfoForm.jsx";
+import PhotoForm from "./components/Forms/PhotoForm.jsx";
 
 import "./styles/App.scss";
+
 import "./assets/fontawesome-free-6.6.0-web/css/all.css";
 
 import { getProjects, getProject, createProject } from "./api/projects.js";
@@ -124,7 +126,6 @@ export default function App() {
           </div>
 
           <div id="app-form-content">
-
             {Object.keys(currentProject).length ? (
               <>
                 <InfoForm
@@ -132,6 +133,14 @@ export default function App() {
                   id="project-info"
                   className="project-info"
                   infoData={currentProject}
+                  submitForm={getProjectsHandler}
+                />
+
+                <PhotoForm
+                  name="project-photos"
+                  id="project-photos"
+                  className="project-photos"
+                  photosData={[]}
                   submitForm={getProjectsHandler}
                 />
               </>

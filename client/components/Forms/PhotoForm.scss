@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+
+.PhotoForm {
+    border: $border-stock;
+    background-color: $color-panel-background;
+    margin: $margin-stock;
+    width: 30rem;
+    height: fit-content;
+    padding: $padding-stock;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-stock;
+}
+
+#project-photos-form {
+//   border: $border-stock;
+//   background-color: $color-panel-background;
+//   margin: $margin-stock;
+// //   width: 30rem;
+// //   height: fit-content;
+//   padding: $padding-stock;
+//   display: flex;
+//   flex-direction: column;
+//   gap: $gap-stock;
+}
+
+.photo-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $margin-stock;
+
+  span {
+    font-size: $font-size-xlarge;
+    font-weight: bold;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: $font-size-xxlarge;
+  }
+}
+
+.new-photo-info {
+//   border: $border-stock;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    background: none;
+    border: none;
+    font-size: $font-size-xxlarge;
+  }
+}
+
+.photo-list {
+  border: $border-thin;
+  height: 20rem;
+}
