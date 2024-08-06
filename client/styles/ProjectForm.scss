@@ -2,8 +2,8 @@
 
 .ProjectForm {
   background-color: $color-background;
-  width: 80%;
-  height: 100%;
+  // width: 75%;
+  // height: 100%;
   display: flex;
   flex-direction: column;
   gap: $gap-thick;
@@ -19,6 +19,7 @@
     background-color: $color-primary;
     padding: $padding-stock;
     display: flex;
+    height: 4rem;
 
     span {
       margin: auto;
@@ -88,7 +89,7 @@
     border: $border-stock;
     background-color: $color-panel-background;
     width: 80rem;
-    height: 40rem;
+    height: 50rem;
     padding: $padding-stock;
     display: flex;
     flex-direction: column;

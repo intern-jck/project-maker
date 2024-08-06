@@ -197,8 +197,6 @@
 // addHandler={addPhoto}
 // deleteHandler={deletePhoto}
 
-
-
 // {/* <PhotoInput
 // name="project-photos"
 // id="photos-input"
@@ -291,3 +289,106 @@
           </div>
 
  */
+
+/**
+           * 
+           * 
+           * 
+        
+
+
+
+  // async function saveProjectHandler(project, photos, repos, tags) {
+  //   console.log(project, photos);
+
+  //   try {
+  //     const projectResult = await saveProject(project);
+  //     // const photosResult = await savePhotos(project.id, photos);
+  //     // const reposResult = await saveRepos(repos);
+  //     // const tagsResult = await saveTags(tags);
+
+  //     console.log(
+  //       `saveProject Results:
+  //       result: ${projectResult.data}
+  //       result: ${photosResult.data}
+  //       `
+  //     );
+
+  //     const projects = await getProjects();
+  //     setProjects(projects);
+
+  //     const r = await getProject(project.id);
+  //     const p = r.data[0];
+  //     setCurrentProject(p);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // async function deleteProjectHandler(id) {
+  //   try {
+  //     const result = await deleteProject(id);
+  //     const projects = await getProjects();
+  //     setProjects(projects);
+  //     setCurrentProject({});
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { getPhotos, savePhotos, deletePhoto } from "./api/photos.js";
+// import { getRepos, saveRepos, deleteRepo } from "./api/repos.js";
+// import { getTags, saveTags, deleteTag } from "./api/tags.js";
+
+
+  // const [projectPhotos, setProjectPhotos] = useState([]);
+  // const [projectRepos, setProjectRepos] = useState([]);
+  // const [projectTags, setProjectTags] = useState([]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+           */

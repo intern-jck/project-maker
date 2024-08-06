@@ -1,50 +1,39 @@
 import React, { useEffect, useState } from "react";
-import Dashboard from "./components/Dashboard.jsx";
+import ProjectList from "./components/ProjectList.jsx";
 import ProjectForm from "./components/ProjectForm.jsx";
 
 import "./styles/App.scss";
+import "./assets/fontawesome-free-6.6.0-web/css/all.css";
 
-import {
-  getProjects,
-  getProject,
-  createProject,
-  saveProject,
-  deleteProject,
-} from "./api/projects.js";
+import { getProjects, getProject, createProject } from "./api/projects.js";
 
-import { getPhotos, savePhotos, deletePhoto } from "./api/photos.js";
-import { getRepos, saveRepos, deleteRepo } from "./api/repos.js";
-import { getTags, saveTags, deleteTag } from "./api/tags.js";
-
-const App = () => {
+export default function App() {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
-  const [projectPhotos, setProjectPhotos] = useState([]);
-  const [projectRepos, setProjectRepos] = useState([]);
-  const [projectTags, setProjectTags] = useState([]);
 
   useEffect(() => {
-    async function get_data() {
-      try {
-        const results = await getProjects();
-        // console.log(results[0].id)
-        const proj = await getProject(results[0].id);
-        setCurrentProject(proj.data[0]);
-        // console.log(proj);
+    // async function get_data() {
+    //   try {
+    //     const results = await getProjects();
+    //     console.log(results[0]);
+    //     const proj = await getProject(results[0].id);
+    //     setCurrentProject(proj.data[0]);
+    //     console.log(proj);
+    //     setProjects(results);
+    //   } catch (error) {
+    //     console.log("get_data: ", error);
+    //   }
+    // }
 
-        setProjects(results);
-      } catch (error) {
-        console.log("get_data: ", error);
-      }
-    }
-
-    get_data();
+    // get_data();
+    getProjectsHandler();
   }, []);
 
   async function createProjectHandler() {
     try {
       const result = await createProject();
       const projects = await getProjects();
+      // console.log(result, projects);
 
       setProjects(projects);
     } catch (error) {
@@ -52,71 +41,49 @@ const App = () => {
     }
   }
 
-  async function getProjectHandler(id) {
+  async function getProjectsHandler() {
+    try {
+      const results = await getProjects();
+      // console.log(results[0]);
+      const proj = await getProject(results[0].id);
+      setCurrentProject(proj.data[0]);
+      // console.log(proj);
+      setProjects(results);
+    } catch (error) {
+      console.log("get_data: ", error);
+    }
+  }
+
+  async function getProjectHandler(event) {
+    console.log("selected: ", event.target.value);
+    const {name, value} = event.target;
     try {
       setCurrentProject({});
 
-      const project_data = await getProject(id);
-      const photos_data = await getPhotos(id);
-      const repos_data = await getRepos(id);
-      const tags_data = await getTags(id);
+      const project_data = await getProject(value);
 
-      // console.log("projects:", project_data);
+      // const photos_data = await getPhotos(id);
+      // const repos_data = await getRepos(id);
+      // const tags_data = await getTags(id);
+
+      console.log("project:", project_data.data[0]);
       // console.log("photos:", photos_data);
       // console.log("repos:", repos_data);
       // console.log("tags:", tags_data);
 
-      const current_project = {
-        info: project_data.data[0],
-        photos: photos_data,
-        repos: repos_data,
-        tags: tags_data,
-      };
+      // const current_project = {
+      //   info: project_data.data[0],
+      //   // photos: photos_data,
+      //   // repos: repos_data,
+      //   // tags: tags_data,
+      // };
 
-      console.log(current_project);
+      // console.log(current_project);
 
       setCurrentProject(project_data.data[0]);
-      setProjectPhotos(photos_data);
-      setProjectRepos(repos_data);
-      setProjectTags(tags_data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function saveProjectHandler(project, photos, repos, tags) {
-    console.log(project, photos);
-
-    try {
-      const projectResult = await saveProject(project);
-      // const photosResult = await savePhotos(project.id, photos);
-      // const reposResult = await saveRepos(repos);
-      // const tagsResult = await saveTags(tags);
-
-      console.log(
-        `saveProject Results:
-        result: ${projectResult.data}
-        result: ${photosResult.data}
-        `
-      );
-
-      const projects = await getProjects();
-      setProjects(projects);
-
-      const r = await getProject(project.id);
-      const p = r.data[0];
-      setCurrentProject(p);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function deleteProjectHandler(id) {
-    try {
-      const result = await deleteProject(id);
-      const projects = await getProjects();
-      setProjects(projects);
-      setCurrentProject({});
+      // setProjectPhotos(photos_data);
+      // setProjectRepos(repos_data);
+      // setProjectTags(tags_data);
     } catch (error) {
       console.log(error);
     }
@@ -126,31 +93,47 @@ const App = () => {
     setCurrentProject({});
   }
 
+  function onUpdate() {
+    console.log("updating project");
+    // getProjectsHandler();
+  }
+
   return (
     <div className="App">
-      <div className="app-header">
+      <div id="app-header">
         <h1>NAVBAR</h1>
       </div>
 
-      <div className="app-content">
-        <Dashboard
-          dashboardData={projects}
-          onSelectProject={getProjectHandler}
-        />
+      <div id="app-content">
+        <div id="app-dash">
+          <div id="app-dash-header">
+            <button name="download-projects">
+              <i className="fa-solid fa-file-export"></i>
+            </button>
+          </div>
 
-        <ProjectForm
-          projectData={currentProject}
-          photosData={projectPhotos}
-          reposData={projectRepos}
-          tagsData={projectTags}
-          onCreateProject={createProjectHandler}
-          onSaveProject={saveProjectHandler}
-          onDeleteProject={deleteProjectHandler}
-          onCloseProject={closeProjectHandler}
-        />
+          <div id="app-dash-content">
+            <ProjectList
+              listData={projects}
+              onSelectProject={getProjectHandler}
+              updateHandler={onUpdate}
+            />
+          </div>
+        </div>
+
+        <div id="app-form">
+          <div id="app-form-header"></div>
+          <ProjectForm
+            projectData={currentProject}
+            // photosData={projectPhotos}
+            // reposData={projectRepos}
+            // tagsData={projectTags}
+            onFormSubmission={getProjectsHandler}
+            onCreateProject={createProjectHandler}
+            onCloseProject={closeProjectHandler}
+          />
+        </div>
       </div>
     </div>
   );
-};
-
-export default App;
+}

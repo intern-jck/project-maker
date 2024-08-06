@@ -15,8 +15,9 @@ export default function InfoForm({
   className,
   infoData,
   // addHandler,
-  changeHandler,
-  deleteHandler,
+  submitHandler,
+  // changeHandler,
+  // deleteHandler,
 }) {
   const [info, setInfo] = useState(infoData ? infoData : {});
 
@@ -28,6 +29,7 @@ export default function InfoForm({
     try {
       const result = await saveProject(project);
       console.log(`result: ${result.data}`);
+      submitHandler();
     } catch (error) {
       console.log(error);
     }
