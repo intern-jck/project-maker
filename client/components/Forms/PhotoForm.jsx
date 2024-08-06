@@ -7,16 +7,12 @@ import TextInput from "../Inputs/TextInput.jsx";
 import "./PhotoForm.scss";
 
 export default function PhotoForm({
+  projectId,
+  projectName,
   name,
   id,
-  className,
   photosData,
   submitForm,
-  // photoName,
-  // photoUrl,
-  // addHandler,
-  // changeHandler,
-  // deleteHandler,
 }) {
   const [newPhoto, setNewPhoto] = useState({});
   const [photos, setPhotos] = useState(photosData ? photosData : {});
@@ -27,48 +23,44 @@ export default function PhotoForm({
 
   async function submitHandler(event) {
     event.preventDefault();
-    console.log("saving photos");
-    // try {
-    //   const result = await savePhotos(photos);
-    //   console.log(`result: ${result.data}`);
-    //   submitForm();
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const result = await savePhotos(projectId, photos);
+      console.log(`result: ${result.data}`);
+      submitForm();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function addPhoto() {
-    console.log("add photo");
-  }
-
-  function updateTextInput(event) {
+  function updateNewPhoto(event) {
     event.preventDefault();
     const { name, value } = event.currentTarget;
-
-    let updatedInfo = {};
-
-    // If changing the name, maker sure to update the slug for correct routing
-    // if (name === "photo-name") {
-    //   updatedInfo = {
-    //     [name]: value,
-    //     slug: value.toLowerCase().split(" ").join("-"),
-    //   };
-    // }
-
-    // if (name.includes("-")) {
-    //   updatedInfo = {
-    //     [name.replace("-", "_")]: value,
-    //   };
-    // } else {
-    // }
-
-    updatedInfo = { [name]: value };
-
-    // Update the current form data
-    setInfo((info) => ({
-      // ...info,
-      ...updatedInfo,
+    const updatedPhoto = {};
+    updatedPhoto[name] = value;
+    setNewPhoto((newPhoto) => ({
+      ...newPhoto,
+      ...updatedPhoto,
     }));
+  }
+
+  function addPhoto(event) {
+    event.preventDefault();
+    let updatedPhotos = photos.slice();
+    const updatedPhoto = newPhoto;
+    updatedPhoto.created_on = Date.now();
+    updatedPhoto.photo_project_id = projectId;
+    updatedPhoto.name = `${projectName.replace(" ", "-")}-photo-${photos.length+1}`;
+    updatedPhotos.push(updatedPhoto);
+    setPhotos(() => updatedPhotos);
+    setNewPhoto({});
+  }
+
+  function deletePhoto(event) {
+    event.preventDefault();
+    const index = event.target.getAttribute("data-photo-index");
+    let updatedPhotos = photos.slice();
+    updatedPhotos[index].photo_project_id = -1;
+    setPhotos(() => updatedPhotos);
   }
 
   return (
@@ -87,17 +79,11 @@ export default function PhotoForm({
         </div>
 
         <div className="new-photo-info">
-          {/* <TextInput
-            id="photo-name"
-            name="photo_name"
-            value={photoName ? photoName : ""}
-            changeHandler={updateTextInput}
-          /> */}
           <TextInput
             id="photo-url"
             name="photo_url"
-            // value={photoUrl ? photoUrl : ""}
-            // changeHandler={updateTextInput}
+            value={newPhoto.photo_url ? newPhoto.photo_url : ""}
+            changeHandler={updateNewPhoto}
           />
           <button name="add-photo" onClick={addPhoto}>
             <i className="fa-solid fa-square-plus"></i>
@@ -108,16 +94,21 @@ export default function PhotoForm({
       <div className="photo-list">
         {photos ? (
           photos.map((photo, i) => {
+            if (photo.photo_project_id === -1) {
+              return;
+            }
+
             return (
               <div key={i} className="photo-thumb">
                 <div className="photo-thumb-div">
                   <img src={photo.url} alt="not found" />
                 </div>
-                {/* <button onClick={deleteHandler} data-photo-index={i}>
+                <button onClick={deletePhoto} data-photo-index={i}>
                   <i className="fa-regular fa-circle-xmark"></i>
-                </button> */}
+                </button>
               </div>
             );
+
           })
         ) : (
           <></>

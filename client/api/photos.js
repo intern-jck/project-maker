@@ -14,17 +14,14 @@ export async function getPhotos(id) {
 }
 
 export async function savePhotos(id, photos) {
-  console.log("savePhotos", id, photos)
-
   const url = `${SERVER_URL}/photos/${id}`;
 
   const body = {
-    photos: photos,
+    data: photos,
   };
 
   try {
-    const result = await axios.post(url, body);
-    console.log(result)
+    const result = await axios.put(url, body);
     return result.data;
   } catch (error) {
     return error;

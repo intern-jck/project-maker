@@ -137,6 +137,8 @@ export default function App() {
                 />
 
                 <PhotoForm
+                  projectId={currentProject.id}
+                  projectName={currentProject.name}
                   name="project-photos"
                   id="project-photos"
                   className="project-photos"

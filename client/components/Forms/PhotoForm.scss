@@ -1,27 +1,15 @@
 @import "../../styles/variables";
 
 .PhotoForm {
-    border: $border-stock;
-    background-color: $color-panel-background;
-    margin: $margin-stock;
-    width: 30rem;
-    height: fit-content;
-    padding: $padding-stock;
-    display: flex;
-    flex-direction: column;
-    gap: $gap-stock;
-}
-
-#project-photos-form {
-//   border: $border-stock;
-//   background-color: $color-panel-background;
-//   margin: $margin-stock;
-// //   width: 30rem;
-// //   height: fit-content;
-//   padding: $padding-stock;
-//   display: flex;
-//   flex-direction: column;
-//   gap: $gap-stock;
+  border: $border-stock;
+  background-color: $color-panel-background;
+  margin: $margin-stock;
+  width: 30rem;
+  height: fit-content;
+  padding: $padding-stock;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-stock;
 }
 
 .photo-form-header {
@@ -43,7 +31,6 @@
 }
 
 .new-photo-info {
-//   border: $border-stock;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,5 +44,41 @@
 
 .photo-list {
   border: $border-thin;
+  padding: $padding-stock;
   height: 20rem;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: $gap-stock;
+
+  .photo-thumb {
+    border: $border-thin;
+    border-radius: $border-radius-stock;
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+
+    img {
+      width: 98%;
+      height: 98%;
+      object-fit: contain;
+    }
+
+    button {
+      padding: 0;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      background: none;
+      border: none;
+      padding: 0;
+
+      i {
+        font-size: $font-size-xlarge;
+      }
+    }
+
+  }
 }
