@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 
 import {
-  saveProject,
-  // deleteProject,
-} from "../api/projects.js";
+  saveProject
+} from "../../api/projects.js";
 
-import TextInput from "./Inputs/src/TextInput.jsx";
-import TextArea from "./Inputs/src/TextArea.jsx";
-import DateInput from "./Inputs/src/DateInput.jsx";
+import TextInput from "../Inputs/TextInput.jsx";
+import TextArea from "../Inputs/TextArea.jsx";
+import DateInput from "../Inputs/DateInput.jsx";
+
+import "./InfoForm.scss";
 
 export default function InfoForm({
   name,
   id,
   className,
   infoData,
+  submitForm,
+  // saveInfo,
   // addHandler,
-  submitHandler,
   // changeHandler,
   // deleteHandler,
 }) {
@@ -25,11 +27,12 @@ export default function InfoForm({
     setInfo(infoData);
   }, [infoData]);
 
-  async function saveProjectHandler(project) {
+  async function submitHandler(event) {
+    event.preventDefault();
     try {
-      const result = await saveProject(project);
+      const result = await saveProject(info);
       console.log(`result: ${result.data}`);
-      submitHandler();
+      submitForm();
     } catch (error) {
       console.log(error);
     }
@@ -76,13 +79,13 @@ export default function InfoForm({
   return (
     <form
       id={id ? `${id}-form` : "info-form"}
-      onSubmit={saveProjectHandler}
+      onSubmit={submitHandler}
     >
-      <div id={id} className={className ? className : "form-input"}>
-        <div className="form-info-header">
+      {/* <div id={id} className={className ? className : "form-input"}> */}
+        <div className="info-form-header">
           <span>{name.replace("-", " ")}</span>
 
-          <button name="save-project" type="submit" form="project-form">
+          <button name="save-project" type="submit" form={id ? `${id}-form` : "info-form"}>
             <i className="fa-solid fa-floppy-disk"></i>
           </button>
         </div>
@@ -91,12 +94,12 @@ export default function InfoForm({
           <div className={`${className}-name`}>
             <TextInput
               name="name"
-              value={infoData.name}
+              value={info.name}
               changeHandler={updateTextInput}
             />
             <TextInput
               name="url"
-              value={infoData.url}
+              value={info.url}
               changeHandler={updateTextInput}
             />
           </div>
@@ -104,12 +107,12 @@ export default function InfoForm({
           <div className={`${className}-client`}>
             <TextInput
               name="client"
-              value={infoData.client}
+              value={info.client}
               changeHandler={updateTextInput}
             />
             <TextInput
               name="client-url"
-              value={infoData.client_url}
+              value={info.client_url}
               changeHandler={updateTextInput}
             />
           </div>
@@ -117,12 +120,12 @@ export default function InfoForm({
           <div className={`${className}-date`}>
             <DateInput
               name="start-date"
-              value={infoData.start_date}
+              value={info.start_date}
               changeHandler={updateDate}
             />
             <DateInput
               name="end-date"
-              value={infoData.end_date}
+              value={info.end_date}
               changeHandler={updateDate}
             />
           </div>
@@ -130,17 +133,17 @@ export default function InfoForm({
           <div className={`${className}-description`}>
             <TextInput
               name={"short"}
-              value={infoData.short}
+              value={info.short}
               changeHandler={updateTextInput}
             />
             <TextArea
               name={"description"}
-              value={infoData.description}
+              value={info.description}
               changeHandler={updateTextInput}
             />
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </form>
   );
 }

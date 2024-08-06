@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ProjectList from "./components/ProjectList.jsx";
-import ProjectForm from "./components/ProjectForm.jsx";
+// import Project from "./components/Project/Project.jsx";
+
+import InfoForm from "./components/Forms/InfoForm.jsx";
 
 import "./styles/App.scss";
 import "./assets/fontawesome-free-6.6.0-web/css/all.css";
@@ -56,7 +58,7 @@ export default function App() {
 
   async function getProjectHandler(event) {
     console.log("selected: ", event.target.value);
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     try {
       setCurrentProject({});
 
@@ -116,22 +118,64 @@ export default function App() {
             <ProjectList
               listData={projects}
               onSelectProject={getProjectHandler}
-              updateHandler={onUpdate}
+              // updateHandler={onUpdate}
             />
           </div>
         </div>
 
         <div id="app-form">
-          <div id="app-form-header"></div>
-          <ProjectForm
-            projectData={currentProject}
-            // photosData={projectPhotos}
-            // reposData={projectRepos}
-            // tagsData={projectTags}
-            onFormSubmission={getProjectsHandler}
-            onCreateProject={createProjectHandler}
-            onCloseProject={closeProjectHandler}
-          />
+          <div id="app-form-header">
+            {Object.keys(currentProject).length ? (
+              <>
+                {/* <button name="save-project" type="submit" form="project-form">
+                  <i className="fa-solid fa-floppy-disk"></i>
+                </button> */}
+                <span>
+                  ID: {currentProject.id} PROJECT: {currentProject.name}
+                </span>
+                <div>
+                  <button
+                    name="delete-project"
+                    value={currentProject.id}
+                    // onClick={deleteProjectHandler}
+                  >
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
+                  <button name="close-project" onClick={closeProjectHandler}>
+                    <i className="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <div id="app-form-content">
+            {/* <Project
+              projectData={currentProject}
+              photosData={projectPhotos}
+              reposData={projectRepos}
+              tagsData={projectTags}
+              onFormSubmission={getProjectsHandler}
+              onCreateProject={createProjectHandler}
+              onCloseProject={closeProjectHandler}
+            /> */}
+
+            {Object.keys(currentProject).length ? (
+              <>
+                <InfoForm
+                  name="project-info"
+                  id="project-info"
+                  className="project-info"
+                  infoData={currentProject}
+                  submitForm={getProjectsHandler}
+                />
+              </>
+            ) : (
+              <h1>no project selected</h1>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,109 @@
+@import "../../styles/variables";
+
+form {
+  border: $border-stock;
+  background-color: $color-panel-background;
+  margin: $margin-stock;
+  width: 40rem;
+  height: fit-content;
+  padding: $padding-stock;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-stock;
+  //   overflow-y: scroll;
+}
+
+.info-form-header {
+  //   border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $margin-stock;
+
+  span {
+    font-size: $font-size-xlarge;
+    font-weight: bold;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: $font-size-xxlarge;
+  }
+}
+
+.project-info-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-stock;
+
+  .TextInput,
+  .DateInput,
+  .TextArea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+label {
+  font-weight: bold;
+  font-size: $font-size-large;
+}
+
+input,
+textarea {
+  width: 100%;
+  font-size: $font-size-large;
+}
+
+textarea {
+  height: 20rem;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+input[name="start-date"]:hover,
+input[name="end-date"]:hover {
+  cursor: pointer;
+}
+
+.project-info-name,
+.project-info-client,
+.project-info-date {
+  display: flex;
+  gap: $gap-stock;
+}
+
+.project-info-description {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-stock;
+}
+
+// input[name="name"],
+// input[name="client"],
+// input[name="url"],
+// input[name="client-url"] {
+//   width: 100%;
+// }
+
+// // input[name="url"],
+// // input[name="client-url"] {
+// //   width: 10rem;
+// // }
+
+// input[name="start-date"],
+// input[name="end-date"] {
+//   width: 100%;
+// }
+
+// input[name="short"] {
+//   width: 30rem;
+// }
+
+// textarea[name="description"] {
+//   height: 20rem;
+//   width: 100%;
+//   overflow-y: scroll;
+// }

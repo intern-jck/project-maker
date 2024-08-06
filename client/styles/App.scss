@@ -31,6 +31,7 @@
   #app-dash-header {
     border: $border-stock;
     background-color: $color-primary;
+    height: 4rem;
     padding: $padding-stock;
     margin-bottom: $margin-stock;
     display: flex;
@@ -51,8 +52,48 @@
   }
 
   #app-form {
-    border: 4px solid black;
+    // border: $border-stock;
     width: 80vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #app-form-header {
+    border: $border-stock;
+    background-color: $color-primary;
+    height: 4rem;
+    padding: $padding-stock;
+    margin-bottom: $margin-stock;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      font-size: $font-size-xlarge;
+      padding-left: $padding-stock;
+      padding-right: auto;
+    }
+
+    div {
+      display: flex;
+      gap: $gap-thick;
+      padding-left: $padding-stock;
+    }
+
+    button {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+  }
+
+  #app-form-content {
+    border: $border-stock;
+    height: 100%;
+    display: flex;
+    
   }
 }
 

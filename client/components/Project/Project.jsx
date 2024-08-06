@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import InfoForm from "./InfoForm.jsx";
+import InfoForm from "../Forms/InfoForm.jsx";
 
-import "../styles/ProjectForm.scss";
+import "./Project.scss";
 
 import {
   saveProject,
   deleteProject,
-} from "../api/projects.js";
+} from "../../api/projects.js";
 
-export default function ProjectForm({
+export default function Project({
   projectData,
   // photosData,
   // reposData,
@@ -61,34 +61,7 @@ export default function ProjectForm({
   }
 
   return (
-    <div className="ProjectForm">
-      <div className="form-header">
-        {/* <button name="create-project" onClick={onCreateProject}>
-          <i className="fa-solid fa-file"></i>
-        </button> */}
-        {Object.keys(projectData).length ? (
-          <>
-            {/* <button name="save-project" type="submit" form="project-form">
-              <i className="fa-solid fa-floppy-disk"></i>
-            </button> */}
-            <button
-              name="delete-project"
-              value={projectData.id}
-              onClick={deleteProjectHandler}
-            >
-              <i className="fa-solid fa-trash-can"></i>
-            </button>
-            <span>
-              PROJECT: {projectData.name} ID: {projectData.id}
-            </span>
-            <button name="close-project" onClick={onCloseProject}>
-              <i className="fa-solid fa-xmark"></i>
-            </button>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
+    <div className="Project">
 
       {Object.keys(project).length ? (
         <>
@@ -103,6 +76,41 @@ export default function ProjectForm({
       ) : (
         <h1>no project selected</h1>
       )}
+
     </div>
   );
 }
+
+
+/**
+ * 
+ * 
+ 
+      <div className="form-header">
+        {/* <button name="create-project" onClick={onCreateProject}>
+          <i className="fa-solid fa-file"></i>
+        </button> 
+        {Object.keys(projectData).length ? (
+          <>
+            {/* <button name="save-project" type="submit" form="project-form">
+              <i className="fa-solid fa-floppy-disk"></i>
+            </button> 
+            {/* <button
+              name="delete-project"
+              value={projectData.id}
+              onClick={deleteProjectHandler}
+            >
+              <i className="fa-solid fa-trash-can"></i>
+            </button> 
+            {/* <span>
+              PROJECT: {projectData.name} ID: {projectData.id}
+            </span> 
+            {/* <button name="close-project" onClick={onCloseProject}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
+ */
