@@ -1,31 +1,6 @@
-@import "./variables";
+@import "../../styles/variables";
 
 .project-list {
-  // background-color: $color-background;
-  // display: flex;
-  // flex-direction: column;
-
-  // .dash-header {
-  //   border: $border-stock;
-  //   background-color: $color-primary;
-  //   padding: $padding-stock;
-  //   display: flex;
-
-  //   input,
-  //   select {
-  //     width: 8rem;
-  //     height: 1.4rem;
-  //   }
-
-  //   button {
-  //     background: none;
-  //     border: none;
-  //     font-size: $font-size-xxxlarge;
-  //   }
-  // }
-
-  // .project-list {
-  // border: $border-thin;
   background-color: $color-panel-background;
   height: 100%;
   padding: $padding-stock;
@@ -45,13 +20,11 @@
 
     i {
       margin: none;
-      // border: $border-stock;
       padding-left: $padding-stock;
       font-size: $font-size-xxxlarge;
     }
 
     p {
-      // border: $border-stock;
       margin: none;
       pointer-events: none;
       padding-right: $padding-stock;
@@ -64,5 +37,4 @@
     border-color: $color-active;
     color: $font-color;
   }
-  // }
 }

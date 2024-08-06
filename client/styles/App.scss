@@ -22,7 +22,6 @@
   }
 
   #app-dash {
-    // border: $border-stock;
     width: 20vw;
     display: flex;
     flex-direction: column;
@@ -47,12 +46,9 @@
   #app-dash-content {
     border: $border-stock;
     height: 100%;
-    // padding: $padding-stock;
-    // margin: $margin-stock;
   }
 
   #app-form {
-    // border: $border-stock;
     width: 80vw;
     display: flex;
     flex-direction: column;
@@ -93,7 +89,7 @@
     border: $border-stock;
     height: 100%;
     display: flex;
-    
+
   }
 }
 

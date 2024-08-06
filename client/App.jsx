@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProjectList from "./components/ProjectList.jsx";
-// import Project from "./components/Project/Project.jsx";
+import ProjectList from "./components/ProjectList/ProjectList.jsx";
 
 import InfoForm from "./components/Forms/InfoForm.jsx";
 
@@ -14,20 +13,6 @@ export default function App() {
   const [currentProject, setCurrentProject] = useState({});
 
   useEffect(() => {
-    // async function get_data() {
-    //   try {
-    //     const results = await getProjects();
-    //     console.log(results[0]);
-    //     const proj = await getProject(results[0].id);
-    //     setCurrentProject(proj.data[0]);
-    //     console.log(proj);
-    //     setProjects(results);
-    //   } catch (error) {
-    //     console.log("get_data: ", error);
-    //   }
-    // }
-
-    // get_data();
     getProjectsHandler();
   }, []);
 
@@ -35,8 +20,6 @@ export default function App() {
     try {
       const result = await createProject();
       const projects = await getProjects();
-      // console.log(result, projects);
-
       setProjects(projects);
     } catch (error) {
       console.log(error);
@@ -46,10 +29,8 @@ export default function App() {
   async function getProjectsHandler() {
     try {
       const results = await getProjects();
-      // console.log(results[0]);
       const proj = await getProject(results[0].id);
       setCurrentProject(proj.data[0]);
-      // console.log(proj);
       setProjects(results);
     } catch (error) {
       console.log("get_data: ", error);
@@ -95,11 +76,6 @@ export default function App() {
     setCurrentProject({});
   }
 
-  function onUpdate() {
-    console.log("updating project");
-    // getProjectsHandler();
-  }
-
   return (
     <div className="App">
       <div id="app-header">
@@ -118,7 +94,6 @@ export default function App() {
             <ProjectList
               listData={projects}
               onSelectProject={getProjectHandler}
-              // updateHandler={onUpdate}
             />
           </div>
         </div>
@@ -127,9 +102,6 @@ export default function App() {
           <div id="app-form-header">
             {Object.keys(currentProject).length ? (
               <>
-                {/* <button name="save-project" type="submit" form="project-form">
-                  <i className="fa-solid fa-floppy-disk"></i>
-                </button> */}
                 <span>
                   ID: {currentProject.id} PROJECT: {currentProject.name}
                 </span>
@@ -152,15 +124,6 @@ export default function App() {
           </div>
 
           <div id="app-form-content">
-            {/* <Project
-              projectData={currentProject}
-              photosData={projectPhotos}
-              reposData={projectRepos}
-              tagsData={projectTags}
-              onFormSubmission={getProjectsHandler}
-              onCreateProject={createProjectHandler}
-              onCloseProject={closeProjectHandler}
-            /> */}
 
             {Object.keys(currentProject).length ? (
               <>

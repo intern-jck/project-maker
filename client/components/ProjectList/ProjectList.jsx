@@ -1,12 +1,7 @@
 import React from "react";
-import "../styles/ProjectList.scss";
+import "./ProjectList.scss";
 
-export default function Dashboard({ listData, onSelectProject }) {
-  // function onSelectProjectHandler(event) {
-  //   event.preventDefault();
-  //   const { value } = event.target;
-  //   onSelectProject(value);
-  // }
+export default function ProjectList({ listData, onSelectProject }) {
 
   return (
     <div className="project-list">
@@ -30,15 +25,3 @@ export default function Dashboard({ listData, onSelectProject }) {
     </div>
   );
 }
-
-/**
- * 
- *     // <div className="Dashboard">
-      <div className="dash-header">
-        <button name="download-projects">
-          <i className="fa-solid fa-file-export"></i>
-        </button>
-      </div> 
-     </div> 
-
- */

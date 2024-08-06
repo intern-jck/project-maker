@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  saveProject
-} from "../../api/projects.js";
+import { saveProject } from "../../api/projects.js";
 
 import TextInput from "../Inputs/TextInput.jsx";
 import TextArea from "../Inputs/TextArea.jsx";
@@ -16,10 +14,6 @@ export default function InfoForm({
   className,
   infoData,
   submitForm,
-  // saveInfo,
-  // addHandler,
-  // changeHandler,
-  // deleteHandler,
 }) {
   const [info, setInfo] = useState(infoData ? infoData : {});
 
@@ -77,73 +71,72 @@ export default function InfoForm({
   }
 
   return (
-    <form
-      id={id ? `${id}-form` : "info-form"}
-      onSubmit={submitHandler}
-    >
-      {/* <div id={id} className={className ? className : "form-input"}> */}
-        <div className="info-form-header">
-          <span>{name.replace("-", " ")}</span>
+    <form id={id ? `${id}-form` : "info-form"} onSubmit={submitHandler}>
+      <div className="info-form-header">
+        <span>{name.replace("-", " ")}</span>
 
-          <button name="save-project" type="submit" form={id ? `${id}-form` : "info-form"}>
-            <i className="fa-solid fa-floppy-disk"></i>
-          </button>
+        <button
+          name="save-project"
+          type="submit"
+          form={id ? `${id}-form` : "info-form"}
+        >
+          <i className="fa-solid fa-floppy-disk"></i>
+        </button>
+      </div>
+
+      <div className="info-form-inputs">
+        <div className="info-form-name">
+          <TextInput
+            name="name"
+            value={info.name}
+            changeHandler={updateTextInput}
+          />
+          <TextInput
+            name="url"
+            value={info.url}
+            changeHandler={updateTextInput}
+          />
         </div>
 
-        <div className={`${className}-inputs`}>
-          <div className={`${className}-name`}>
-            <TextInput
-              name="name"
-              value={info.name}
-              changeHandler={updateTextInput}
-            />
-            <TextInput
-              name="url"
-              value={info.url}
-              changeHandler={updateTextInput}
-            />
-          </div>
-
-          <div className={`${className}-client`}>
-            <TextInput
-              name="client"
-              value={info.client}
-              changeHandler={updateTextInput}
-            />
-            <TextInput
-              name="client-url"
-              value={info.client_url}
-              changeHandler={updateTextInput}
-            />
-          </div>
-
-          <div className={`${className}-date`}>
-            <DateInput
-              name="start-date"
-              value={info.start_date}
-              changeHandler={updateDate}
-            />
-            <DateInput
-              name="end-date"
-              value={info.end_date}
-              changeHandler={updateDate}
-            />
-          </div>
-
-          <div className={`${className}-description`}>
-            <TextInput
-              name={"short"}
-              value={info.short}
-              changeHandler={updateTextInput}
-            />
-            <TextArea
-              name={"description"}
-              value={info.description}
-              changeHandler={updateTextInput}
-            />
-          </div>
+        <div className="info-form-client">
+          <TextInput
+            name="client"
+            value={info.client}
+            changeHandler={updateTextInput}
+          />
+          <TextInput
+            name="client-url"
+            value={info.client_url}
+            changeHandler={updateTextInput}
+          />
         </div>
-      {/* </div> */}
+
+        <div className="info-form-date">
+          <DateInput
+            name="start-date"
+            value={info.start_date}
+            changeHandler={updateDate}
+          />
+          <DateInput
+            name="end-date"
+            value={info.end_date}
+            changeHandler={updateDate}
+          />
+        </div>
+
+        <div className="info-form-description">
+          <TextInput
+            name={"short"}
+            value={info.short}
+            changeHandler={updateTextInput}
+          />
+          <TextArea
+            name={"description"}
+            value={info.description}
+            changeHandler={updateTextInput}
+          />
+        </div>
+      </div>
     </form>
   );
 }

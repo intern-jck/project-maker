@@ -10,11 +10,9 @@ form {
   display: flex;
   flex-direction: column;
   gap: $gap-stock;
-  //   overflow-y: scroll;
 }
 
 .info-form-header {
-  //   border: 2px solid black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,7 +30,7 @@ form {
   }
 }
 
-.project-info-inputs {
+.info-form-inputs {
   display: flex;
   flex-direction: column;
   gap: $gap-stock;
@@ -68,42 +66,15 @@ input[name="end-date"]:hover {
   cursor: pointer;
 }
 
-.project-info-name,
-.project-info-client,
-.project-info-date {
+.info-form-name,
+.info-form-client,
+.info-form-date {
   display: flex;
   gap: $gap-stock;
 }
 
-.project-info-description {
+.info-form-description {
   display: flex;
   flex-direction: column;
   gap: $gap-stock;
 }
-
-// input[name="name"],
-// input[name="client"],
-// input[name="url"],
-// input[name="client-url"] {
-//   width: 100%;
-// }
-
-// // input[name="url"],
-// // input[name="client-url"] {
-// //   width: 10rem;
-// // }
-
-// input[name="start-date"],
-// input[name="end-date"] {
-//   width: 100%;
-// }
-
-// input[name="short"] {
-//   width: 30rem;
-// }
-
-// textarea[name="description"] {
-//   height: 20rem;
-//   width: 100%;
-//   overflow-y: scroll;
-// }
