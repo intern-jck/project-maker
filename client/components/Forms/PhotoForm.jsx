@@ -67,13 +67,12 @@ export default function PhotoForm({
     const currentPhotos = photos.slice();
     const index = event.target.getAttribute("data-photo-index");
     currentPhotos[index].photo_project_id = -1;
-    const removedPhoto = currentPhotos[index];
-    console.log("remove", removedPhoto);
 
-    setPhotos(() => currentPhotos);
+    const removedPhoto = currentPhotos[index];
+    setPhotos(currentPhotos);
+
     try {
-      const result = await updatePhoto(removedPhoto.id, removedPhoto);
-      console.log(result);
+      await updatePhoto(removedPhoto.id, removedPhoto);
     } catch (error) {
       console.log(error);
     }

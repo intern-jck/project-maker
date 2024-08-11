@@ -41,7 +41,6 @@ export default function App() {
   }
 
   async function getProjectHandler(projectId) {
-
     try {
       setCurrentProject({});
 
@@ -118,6 +117,13 @@ export default function App() {
           <div id="app-form-content">
             {Object.keys(currentProject).length ? (
               <>
+                <InfoForm
+                  name="project-info"
+                  id="project-info"
+                  className="project-info"
+                  infoData={currentProject}
+                  submitForm={getProjectsHandler}
+                />
                 <PhotoForm
                   projectId={currentProject.id}
                   projectName={currentProject.name}
@@ -140,11 +146,4 @@ export default function App() {
 
 /**
  
-                <InfoForm
-                  name="project-info"
-                  id="project-info"
-                  className="project-info"
-                  infoData={currentProject}
-                  submitForm={getProjectsHandler}
-                />
  */

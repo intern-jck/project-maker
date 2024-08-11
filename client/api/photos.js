@@ -15,7 +15,6 @@ export async function getPhotos(id) {
 
 export async function savePhoto(photo) {
   const url = `${SERVER_URL}/photos/`;
-  console.log("save", photo);
 
   try {
     const result = await axios.post(url, photo);
@@ -26,7 +25,6 @@ export async function savePhoto(photo) {
 }
 
 export async function updatePhoto(id, photo) {
-  // return { updatePhoto: id };
   const url = `${SERVER_URL}/photos/${id}`;
 
   try {
