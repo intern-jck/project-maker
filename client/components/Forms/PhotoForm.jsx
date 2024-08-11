@@ -14,6 +14,7 @@ export default function PhotoForm({
   photosData,
   submitForm,
 }) {
+
   const [newPhoto, setNewPhoto] = useState({});
   const [photos, setPhotos] = useState(photosData ? photosData : []);
 
@@ -27,13 +28,6 @@ export default function PhotoForm({
     if (!newPhoto.url) {
       return false;
     }
-    
-    // const photoData = {
-    //   photo_project_id: 4,
-    //   created_on: 1616608200000,
-    //   url: newPhoto.photo_url,
-    //   name: "tester",
-    // };
 
     newPhoto["photo_project_id"] = projectId;
     newPhoto["created_on"] = Date.now();
@@ -51,26 +45,16 @@ export default function PhotoForm({
     }
   }
 
-  // function addPhoto(event) {
-  //   event.preventDefault();
-  //   let updatedPhotos = photos.slice();
-  //   const updatedPhoto = newPhoto;
-  //   updatedPhoto.created_on = Date.now();
-  //   updatedPhoto.photo_project_id = projectId;
-  //   updatedPhoto.name = `${projectName.replace(" ", "-")}-photo-${
-  //     photos.length + 1
-  //   }`;
-  //   updatedPhotos.push(updatedPhoto);
-  //   setPhotos(() => updatedPhotos);
-  //   setNewPhoto({});
-  // }
-
   function updateNewPhoto(event) {
     event.preventDefault();
     const { name, value } = event.currentTarget;
 
     const updatedPhoto = {};
-    updatedPhoto[name] = value;
+
+    updatedPhoto["url"] = value;
+    updatedPhoto["name"] = `${projectName
+      .toLowerCase()
+      .replace(" ", "-")}-photo-${photos.length}`;
 
     setNewPhoto((newPhoto) => ({
       ...newPhoto,
@@ -100,9 +84,6 @@ export default function PhotoForm({
             value={newPhoto.url ? newPhoto.url : ""}
             changeHandler={updateNewPhoto}
           />
-          {/* <button name="add-photo" onClick={addPhoto}>
-            <i className="fa-solid fa-square-plus"></i>
-          </button> */}
           <button
             name="save-photos"
             type="submit"

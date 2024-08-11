@@ -9,10 +9,12 @@ import "./styles/App.scss";
 import "./assets/fontawesome-free-6.6.0-web/css/all.css";
 
 import { getProjects, getProject, createProject } from "./api/projects.js";
+import { getPhotos } from "./api/photos.js";
 
 export default function App() {
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState({});
+  const [currentProjectPhotos, setCurrentProjectPhotos] = useState([]);
 
   useEffect(() => {
     getProjectsHandler();
@@ -31,42 +33,36 @@ export default function App() {
   async function getProjectsHandler() {
     try {
       const results = await getProjects();
-      const proj = await getProject(results[0].id);
-      setCurrentProject(proj.data[0]);
+      // console.log(results[0].id)
+      const proj = await getProjectHandler(results[0].id);
+      // console.log(proj)
+      // setCurrentProject(proj);
       setProjects(results);
     } catch (error) {
       console.log("get_data: ", error);
     }
   }
 
-  async function getProjectHandler(event) {
-    console.log("selected: ", event.target.value);
-    const { name, value } = event.target;
+  async function getProjectHandler(projectId) {
+    // console.log("get project: ", projectId);
+    // const { value } = event.target;
+
     try {
       setCurrentProject({});
 
-      const project_data = await getProject(value);
-      // const photos_data = await getPhotos(id);
+      const project_data = await getProject(projectId);
+      const photos_data = await getPhotos(projectId);
 
       // const repos_data = await getRepos(id);
       // const tags_data = await getTags(id);
 
-      console.log("project:", project_data.data[0]);
+      // console.log("project:", project_data.data[0]);
       // console.log("photos:", photos_data);
       // console.log("repos:", repos_data);
       // console.log("tags:", tags_data);
 
-      // const current_project = {
-      //   info: project_data.data[0],
-      //   // photos: photos_data,
-      //   // repos: repos_data,
-      //   // tags: tags_data,
-      // };
-
-      // console.log(current_project);
-
       setCurrentProject(project_data.data[0]);
-      // setProjectPhotos(photos_data);
+      setCurrentProjectPhotos(photos_data);
       // setProjectRepos(repos_data);
       // setProjectTags(tags_data);
     } catch (error) {
@@ -134,9 +130,8 @@ export default function App() {
                   name="project-photos"
                   id="project-photos"
                   className="project-photos"
-                  photosData={[]}
+                  photosData={currentProjectPhotos}
                   submitForm={getProjectsHandler}
-                  
                 />
               </>
             ) : (
@@ -148,7 +143,6 @@ export default function App() {
     </div>
   );
 }
-
 
 /**
  
