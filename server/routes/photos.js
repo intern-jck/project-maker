@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const result = await selectPhotos(id);
+    const result = await selectPhotos();
 
     res.json({
       data: result,
@@ -28,10 +28,9 @@ router.get("/:id", async (req, res, next) => {
 
   try {
     const result = await selectProjectPhotos(id);
-    console.log("photos: \n", result);
 
     res.json({
-      data: result,
+      project: result,
     });
   } catch (error) {
     next(error);
@@ -42,10 +41,8 @@ router.post("/:id", async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
 
-  console.log("saving photo", id, data.photos);
-
   try {
-    const result = await insertPhoto(id, data.photos);
+    const result = await insertPhoto(id, data);
 
     res.json({
       data: result,
@@ -58,16 +55,20 @@ router.post("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   console.log("saving photos");
   const id = req.params.id;
-  const data = req.body;
+  const photos = req.body;
 
-  console.log("save photos:", id, data.photos);
+  // console.log("save photos: ", id, photos);
+
+  // res.json({
+  //   data: "ok"
+  // });
 
   try {
-    const result = await updatePhoto(id, data.photos);
-
+    const result = await updatePhoto(photos);
     res.json({
       data: result,
     });
+    console.log('saved: ', result)
   } catch (error) {
     next(error);
   }
