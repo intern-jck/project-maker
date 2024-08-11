@@ -46,8 +46,8 @@ export default function App() {
       setCurrentProject({});
 
       const project_data = await getProject(value);
-
       // const photos_data = await getPhotos(id);
+
       // const repos_data = await getRepos(id);
       // const tags_data = await getTags(id);
 
@@ -128,14 +128,6 @@ export default function App() {
           <div id="app-form-content">
             {Object.keys(currentProject).length ? (
               <>
-                <InfoForm
-                  name="project-info"
-                  id="project-info"
-                  className="project-info"
-                  infoData={currentProject}
-                  submitForm={getProjectsHandler}
-                />
-
                 <PhotoForm
                   projectId={currentProject.id}
                   projectName={currentProject.name}
@@ -144,6 +136,7 @@ export default function App() {
                   className="project-photos"
                   photosData={[]}
                   submitForm={getProjectsHandler}
+                  
                 />
               </>
             ) : (
@@ -155,3 +148,15 @@ export default function App() {
     </div>
   );
 }
+
+
+/**
+ 
+                <InfoForm
+                  name="project-info"
+                  id="project-info"
+                  className="project-info"
+                  infoData={currentProject}
+                  submitForm={getProjectsHandler}
+                />
+ */

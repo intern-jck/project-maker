@@ -2,26 +2,27 @@ import axios from "axios";
 const SERVER_URL = "http://127.0.0.1:3000";
 
 export async function getPhotos(id) {
-  const url = `${SERVER_URL}/photos/${id}`;
+  const url = `${SERVER_URL}/photos/${id ? id : ""}`;
 
   try {
     const result = await axios.get(url);
     const data = result.data;
-    return data.data;
+    return data.project;
   } catch (error) {
     return error;
   }
 }
 
-export async function savePhotos(id, photos) {
-  const url = `${SERVER_URL}/photos/${id}`;
+export async function savePhoto(photo) {
+  const url = `${SERVER_URL}/photos/`;
+  console.log("save", photo);
 
-  const body = {
-    data: photos,
-  };
+  // const body = {
+  //   data: photos,
+  // };
 
   try {
-    const result = await axios.put(url, body);
+    const result = await axios.post(url, photo);
     return result.data;
   } catch (error) {
     return error;

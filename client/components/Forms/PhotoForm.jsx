@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { savePhotos } from "../../api/photos.js";
+import { savePhoto, getPhotos } from "../../api/photos.js";
 
 import TextInput from "../Inputs/TextInput.jsx";
 
@@ -15,7 +15,7 @@ export default function PhotoForm({
   submitForm,
 }) {
   const [newPhoto, setNewPhoto] = useState({});
-  const [photos, setPhotos] = useState(photosData ? photosData : {});
+  const [photos, setPhotos] = useState(photosData ? photosData : []);
 
   useEffect(() => {
     setPhotos(photos);
@@ -23,36 +23,59 @@ export default function PhotoForm({
 
   async function submitHandler(event) {
     event.preventDefault();
+    console.log(newPhoto);
+    if (!newPhoto.url) {
+      return false;
+    }
+    
+    // const photoData = {
+    //   photo_project_id: 4,
+    //   created_on: 1616608200000,
+    //   url: newPhoto.photo_url,
+    //   name: "tester",
+    // };
+
+    newPhoto["photo_project_id"] = projectId;
+    newPhoto["created_on"] = Date.now();
+    newPhoto["name"] = "";
+
+    console.log(newPhoto);
+
     try {
-      const result = await savePhotos(projectId, photos);
-      console.log(`result: ${result.data}`);
+      const result = await savePhoto(newPhoto);
+      const photos = await getPhotos(projectId);
+      setPhotos(photos);
       submitForm();
     } catch (error) {
       console.log(error);
     }
   }
 
+  // function addPhoto(event) {
+  //   event.preventDefault();
+  //   let updatedPhotos = photos.slice();
+  //   const updatedPhoto = newPhoto;
+  //   updatedPhoto.created_on = Date.now();
+  //   updatedPhoto.photo_project_id = projectId;
+  //   updatedPhoto.name = `${projectName.replace(" ", "-")}-photo-${
+  //     photos.length + 1
+  //   }`;
+  //   updatedPhotos.push(updatedPhoto);
+  //   setPhotos(() => updatedPhotos);
+  //   setNewPhoto({});
+  // }
+
   function updateNewPhoto(event) {
     event.preventDefault();
     const { name, value } = event.currentTarget;
+
     const updatedPhoto = {};
     updatedPhoto[name] = value;
+
     setNewPhoto((newPhoto) => ({
       ...newPhoto,
       ...updatedPhoto,
     }));
-  }
-
-  function addPhoto(event) {
-    event.preventDefault();
-    let updatedPhotos = photos.slice();
-    const updatedPhoto = newPhoto;
-    updatedPhoto.created_on = Date.now();
-    updatedPhoto.photo_project_id = projectId;
-    updatedPhoto.name = `${projectName.replace(" ", "-")}-photo-${photos.length+1}`;
-    updatedPhotos.push(updatedPhoto);
-    setPhotos(() => updatedPhotos);
-    setNewPhoto({});
   }
 
   function deletePhoto(event) {
@@ -68,24 +91,23 @@ export default function PhotoForm({
       <form id={id ? `${id}-form` : "photo-form"} onSubmit={submitHandler}>
         <div className="photo-form-header">
           <span>{name.replace("-", " ")}</span>
-
-          <button
-            name="save-photos"
-            type="submit"
-            form={id ? `${id}-form` : "photo-form"}
-          >
-            <i className="fa-solid fa-floppy-disk"></i>
-          </button>
         </div>
 
         <div className="new-photo-info">
           <TextInput
             id="photo-url"
-            name="photo_url"
-            value={newPhoto.photo_url ? newPhoto.photo_url : ""}
+            name="url"
+            value={newPhoto.url ? newPhoto.url : ""}
             changeHandler={updateNewPhoto}
           />
-          <button name="add-photo" onClick={addPhoto}>
+          {/* <button name="add-photo" onClick={addPhoto}>
+            <i className="fa-solid fa-square-plus"></i>
+          </button> */}
+          <button
+            name="save-photos"
+            type="submit"
+            form={id ? `${id}-form` : "photo-form"}
+          >
             <i className="fa-solid fa-square-plus"></i>
           </button>
         </div>
@@ -108,7 +130,6 @@ export default function PhotoForm({
                 </button>
               </div>
             );
-
           })
         ) : (
           <></>
