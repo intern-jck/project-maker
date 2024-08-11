@@ -22,7 +22,7 @@ export default function App() {
 
   async function createProjectHandler() {
     try {
-      const result = await createProject();
+      await createProject();
       const projects = await getProjects();
       setProjects(projects);
     } catch (error) {
@@ -33,26 +33,20 @@ export default function App() {
   async function getProjectsHandler() {
     try {
       const results = await getProjects();
-      // console.log(results[0].id)
-      const proj = await getProjectHandler(results[0].id);
-      // console.log(proj)
-      // setCurrentProject(proj);
       setProjects(results);
+      await getProjectHandler(results[0].id);
     } catch (error) {
       console.log("get_data: ", error);
     }
   }
 
   async function getProjectHandler(projectId) {
-    // console.log("get project: ", projectId);
-    // const { value } = event.target;
 
     try {
       setCurrentProject({});
 
       const project_data = await getProject(projectId);
       const photos_data = await getPhotos(projectId);
-
       // const repos_data = await getRepos(id);
       // const tags_data = await getTags(id);
 

@@ -17,10 +17,6 @@ export async function savePhoto(photo) {
   const url = `${SERVER_URL}/photos/`;
   console.log("save", photo);
 
-  // const body = {
-  //   data: photos,
-  // };
-
   try {
     const result = await axios.post(url, photo);
     return result.data;
@@ -29,6 +25,19 @@ export async function savePhoto(photo) {
   }
 }
 
-export async function deletePhoto(id) {
-  return { deletePhoto: id };
+export async function updatePhoto(id, photo) {
+  // return { updatePhoto: id };
+  const url = `${SERVER_URL}/photos/${id}`;
+
+  try {
+    const result = await axios.put(url, photo);
+    const data = result.data;
+    return data.project;
+  } catch (error) {
+    return error;
+  }
 }
+
+// export async function deletePhoto(id) {
+//   return { deletePhoto: id };
+// }

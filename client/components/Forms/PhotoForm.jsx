@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { savePhoto, getPhotos } from "../../api/photos.js";
+import { savePhoto, getPhotos, updatePhoto } from "../../api/photos.js";
 
 import TextInput from "../Inputs/TextInput.jsx";
 
@@ -14,7 +14,6 @@ export default function PhotoForm({
   photosData,
   submitForm,
 }) {
-
   const [newPhoto, setNewPhoto] = useState({});
   const [photos, setPhotos] = useState(photosData ? photosData : []);
 
@@ -62,12 +61,22 @@ export default function PhotoForm({
     }));
   }
 
-  function deletePhoto(event) {
+  async function removePhoto(event) {
     event.preventDefault();
+
+    const currentPhotos = photos.slice();
     const index = event.target.getAttribute("data-photo-index");
-    let updatedPhotos = photos.slice();
-    updatedPhotos[index].photo_project_id = -1;
-    setPhotos(() => updatedPhotos);
+    currentPhotos[index].photo_project_id = -1;
+    const removedPhoto = currentPhotos[index];
+    console.log("remove", removedPhoto);
+
+    setPhotos(() => currentPhotos);
+    try {
+      const result = await updatePhoto(removedPhoto.id, removedPhoto);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -106,7 +115,7 @@ export default function PhotoForm({
                 <div className="photo-thumb-div">
                   <img src={photo.url} alt="not found" />
                 </div>
-                <button onClick={deletePhoto} data-photo-index={i}>
+                <button onClick={removePhoto} data-photo-index={i}>
                   <i className="fa-regular fa-circle-xmark"></i>
                 </button>
               </div>
