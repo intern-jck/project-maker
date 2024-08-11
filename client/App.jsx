@@ -39,6 +39,7 @@ export default function App() {
     try {
       const results = await getProjects();
       setProjects(results);
+      // use for testing
       // await getProjectHandler(results[0].id);
     } catch (error) {
       console.log("get_data: ", error);
@@ -73,7 +74,6 @@ export default function App() {
   }
 
   async function deleteProjectHandler() {
-    console.log("delete project: ", currentProject.id);
     closeProjectHandler();
     try {
       await deleteProject(currentProject.id);
