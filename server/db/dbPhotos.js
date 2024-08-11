@@ -13,8 +13,8 @@ function selectPhotos() {
   });
 }
 
-function selectProjectPhotos(id) {
-  const sql = `SELECT * FROM photos WHERE photo_project_id=${id};`;
+function selectProjectPhotos(photo_project_id) {
+  const sql = `SELECT * FROM photos WHERE photo_project_id=${photo_project_id};`;
 
   return new Promise((resolve, reject) => {
     db.all(sql, (error, rows) => {
@@ -26,7 +26,7 @@ function selectProjectPhotos(id) {
   });
 }
 
-function insertPhoto(id, data) {
+function insertPhoto(data) {
 
   const sql = `
       INSERT INTO photos (

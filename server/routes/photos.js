@@ -23,11 +23,11 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  const id = req.params.id;
+router.get("/:photo_project_id", async (req, res, next) => {
+  const photo_project_id = req.params.photo_project_id;
 
   try {
-    const result = await selectProjectPhotos(id);
+    const result = await selectProjectPhotos(photo_project_id);
 
     res.json({
       project: result,
@@ -37,12 +37,11 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/:id", async (req, res, next) => {
-  const id = req.params.id;
+router.post("/", async (req, res, next) => {
   const data = req.body;
 
   try {
-    const result = await insertPhoto(id, data);
+    const result = await insertPhoto(data);
 
     res.json({
       data: result,
@@ -53,15 +52,8 @@ router.post("/:id", async (req, res, next) => {
 });
 
 router.put("/:id", async (req, res, next) => {
-  console.log("saving photos");
   const id = req.params.id;
   const photos = req.body;
-
-  // console.log("save photos: ", id, photos);
-
-  // res.json({
-  //   data: "ok"
-  // });
 
   try {
     const result = await updatePhoto(photos);
