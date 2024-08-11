@@ -8,7 +8,12 @@ import "./styles/App.scss";
 
 import "./assets/fontawesome-free-6.6.0-web/css/all.css";
 
-import { getProjects, getProject, createProject } from "./api/projects.js";
+import {
+  createProject,
+  getProjects,
+  getProject,
+  deleteProject,
+} from "./api/projects.js";
 import { getPhotos } from "./api/photos.js";
 
 export default function App() {
@@ -34,7 +39,7 @@ export default function App() {
     try {
       const results = await getProjects();
       setProjects(results);
-      await getProjectHandler(results[0].id);
+      // await getProjectHandler(results[0].id);
     } catch (error) {
       console.log("get_data: ", error);
     }
@@ -67,6 +72,21 @@ export default function App() {
     setCurrentProject({});
   }
 
+  async function deleteProjectHandler() {
+    console.log("delete project: ", currentProject.id);
+    closeProjectHandler();
+    try {
+      await deleteProject(currentProject.id);
+      // add deletePhotos
+      // add deleteRepos
+      // add deleteTags
+      const projects = await getProjects();
+      setProjects(projects);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
       <div id="app-header">
@@ -78,6 +98,9 @@ export default function App() {
           <div id="app-dash-header">
             <button name="download-projects">
               <i className="fa-solid fa-file-export"></i>
+            </button>
+            <button name="create-project" onClick={createProjectHandler}>
+              <i className="fa-solid fa-file"></i>
             </button>
           </div>
 
@@ -100,7 +123,7 @@ export default function App() {
                   <button
                     name="delete-project"
                     value={currentProject.id}
-                    // onClick={deleteProjectHandler}
+                    onClick={deleteProjectHandler}
                   >
                     <i className="fa-solid fa-trash-can"></i>
                   </button>

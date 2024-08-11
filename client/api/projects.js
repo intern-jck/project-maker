@@ -58,7 +58,6 @@ export async function saveProject(project) {
 }
 
 export async function deleteProject(id) {
-  console.log("delete project: ", id);
   const url = `${SERVER_URL}/projects/${id}`;
 
   try {

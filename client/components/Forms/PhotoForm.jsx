@@ -23,7 +23,6 @@ export default function PhotoForm({
 
   async function submitHandler(event) {
     event.preventDefault();
-    console.log(newPhoto);
     if (!newPhoto.url) {
       return false;
     }
@@ -32,11 +31,10 @@ export default function PhotoForm({
     newPhoto["created_on"] = Date.now();
     newPhoto["name"] = "";
 
-    console.log(newPhoto);
-
     try {
       const result = await savePhoto(newPhoto);
       const photos = await getPhotos(projectId);
+      setNewPhoto("");
       setPhotos(photos);
       submitForm();
     } catch (error) {
