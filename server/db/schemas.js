@@ -30,6 +30,7 @@ const PhotosModel = `
 const FoldersModel = `
   CREATE TABLE folders (
     id INTEGER PRIMARY KEY,
+    created_on INTEGER,
     name TEXT
   );
 `;
