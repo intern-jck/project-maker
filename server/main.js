@@ -5,22 +5,27 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+const db = require("./db/db.js");
+
+const PORT = 3000;
+
 const indexRoute = require("./routes/index.js");
 const projectsRoutes = require("./routes/projects.js");
+const foldersRoutes = require("./routes/folders.js");
 const photosRoutes = require("./routes/photos.js");
 const reposRoutes = require("./routes/repos.js");
 const projectTagsRoutes = require("./routes/projectTags.js");
 const tagsRoutes = require("./routes/tags.js");
 
-const db = require("./db/db.js");
 
 app.use("/", indexRoute);
 app.use("/projects", projectsRoutes);
+app.use("/folders", foldersRoutes);
 app.use("/photos", photosRoutes);
 app.use("/repos", reposRoutes);
 app.use("/project-tags", projectTagsRoutes);
 app.use("/tags", tagsRoutes);
 
-app.listen(3000, () => {
-  console.log(`P Maker App Listening @ http://127.0.0.1:${3000}`);
+app.listen(PORT, () => {
+  console.log(`Project Maker Server @ http://127.0.0.1:${PORT}`);
 });

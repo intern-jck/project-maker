@@ -1,72 +1,69 @@
+const db = require("./db.js");
+
 // Folders
-function create_folder(folder_name, callback) {
-  if (!folder_name) {
-    folder_name = "";
-  }
-  const timestamp = Date.now();
+function insertFolder(data) {
 
-  const sqlCreateFolder = `
-      INSERT INTO folders(folder_id,name)
-      VALUES(${timestamp}, '${folder_name}');`;
+  const sql = `
+      INSERT INTO folders(name, created_on)
+      VALUES('${data.name}', ${data.timestamp});
+      `;
 
-  return db.serialize(() => {
-    db.run(sqlCreateFolder).all(sqlSelectAllFolders, (error, rows) => {
+  console.log('sql: ', sql)
+
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (error) => {
       if (error) {
-        console.log(`create_folder error: ${error}`);
+        console.log('ERROR: inserted folder')
+        reject(error);
       }
-      callback(error, rows);
+      console.log('inserted folder')
+      resolve(true);
     });
   });
 }
 
-function select_all_folders(callback) {
-  return db.all(`SELECT * FROM folders`, (error, rows) => {
-    if (error) {
-      console.log(`select_all_folders error: ${error}`);
-    }
-    callback(error, rows);
+function selectFolders() {
+  const sql = `SELECT * FROM folders`;
+
+  return new Promise((resolve, reject) => {
+    db.all(sql, (error, rows) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(rows);
+    });
   });
 }
 
-function delete_folder(folder_id, callback) {
-  return db.exec(
-    `DELETE FROM folders
-      WHERE folder_id=${folder_id}`,
-    (error) => {
+function selectFolder(id) {
+  const sql = `SELECT * FROM folders WHERE id=${id}`;
+
+  return new Promise((resolve, reject) => {
+    db.all(sql, (error, rows) => {
       if (error) {
-        console.log(`delete_project error: ${error}`);
+        reject(error);
       }
-      callback(error);
-    }
-  );
+      resolve(rows);
+    });
+  });
 }
 
-function select_projects_by_folder(folder_id, callback) {
-  if (!folder_id) {
-    select_projects(callback);
-  }
+function deleteFolder(id) {
+  const sql = `DELETE FROM folders WHERE id=${id};`;
 
-  return db.all(
-    `SELECT * FROM projects WHERE folder_id=${folder_id}`,
-    (error, rows) => {
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (error) => {
       if (error) {
-        console.log(`select_project_by_folder error: ${error}`);
+        reject(error);
       }
-      callback(error, rows);
-    }
-  );
+      resolve(true);
+    });
+  });
 }
-// module.exports = {
-//   db,
-//   create_folder,
-//   select_all_folders,
-//   delete_folder,
-//   create_project,
-//   select_projects,
-//   select_project,
-//   select_projects_by_folder,
-//   update_project,
-//   delete_project,
-//   select_photos,
-//   insert_photo,
-// };
+
+module.exports = {
+  insertFolder,
+  selectFolders,
+  selectFolder,
+  deleteFolder,
+};
