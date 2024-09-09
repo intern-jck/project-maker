@@ -90,7 +90,7 @@ export default function App() {
   return (
     <div className="App">
       <div id="app-header">
-        <h1>NAVBAR</h1>
+        <h1>Project Maker</h1>
       </div>
 
       <div id="app-content">
@@ -105,10 +105,15 @@ export default function App() {
           </div>
 
           <div id="app-dash-content">
-            <ProjectList
-              listData={projects}
-              onSelectProject={getProjectHandler}
-            />
+            {projects.length ? (
+              <ProjectList
+                listData={projects}
+                onSelectProject={getProjectHandler}
+              />
+            ) : (
+              <h2>no projects</h2>
+            )}
+
           </div>
         </div>
 
@@ -158,7 +163,7 @@ export default function App() {
                 />
               </>
             ) : (
-              <h1>no project selected</h1>
+              <h2>no project selected</h2>
             )}
           </div>
         </div>
@@ -166,7 +171,3 @@ export default function App() {
     </div>
   );
 }
-
-/**
- 
- */

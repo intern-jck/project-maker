@@ -4,14 +4,14 @@ import "./ProjectList.scss";
 export default function ProjectList({ listData, onSelectProject }) {
 
   function onSelectProjectHandler(event) {
-    event.preventDefault();    
+    event.preventDefault();
     const { value } = event.target;
     onSelectProject(value);
   }
 
   return (
     <div className="project-list">
-      {listData.length ? (
+      {
         listData.map((project, i) => {
           return (
             <button
@@ -25,9 +25,7 @@ export default function ProjectList({ listData, onSelectProject }) {
             </button>
           );
         })
-      ) : (
-        <h1>no projects</h1>
-      )}
+      }
     </div>
   );
 }
