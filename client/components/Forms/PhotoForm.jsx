@@ -14,6 +14,7 @@ export default function PhotoForm({
   photosData,
   submitForm,
 }) {
+  console.log("photos form: \n", photosData)
   const [newPhoto, setNewPhoto] = useState({});
   const [photos, setPhotos] = useState(photosData ? photosData : []);
 

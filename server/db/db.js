@@ -32,12 +32,12 @@ function createDatabase() {
       console.log("Create Database Error " + err);
       exit(1);
     }
-    createTable(pMakerDB, FoldersModel);
     createTable(pMakerDB, ProjectsModel);
     createTable(pMakerDB, PhotosModel);
     createTable(pMakerDB, ReposModel);
     createTable(pMakerDB, TagsModel);
     createTable(pMakerDB, ProjectTagsModel);
+    createTable(pMakerDB, FoldersModel);
   });
 }
 

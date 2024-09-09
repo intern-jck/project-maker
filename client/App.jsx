@@ -52,6 +52,7 @@ export default function App() {
 
       const project_data = await getProject(projectId);
       const photos_data = await getPhotos(projectId);
+      console.log('get project: ', photos_data)
       // const repos_data = await getRepos(id);
       // const tags_data = await getTags(id);
 
