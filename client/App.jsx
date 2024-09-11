@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import ProjectList from "./components/ProjectList/ProjectList.jsx";
 
 import InfoForm from "./components/Forms/InfoForm.jsx";
@@ -14,6 +15,7 @@ import {
   getProject,
   deleteProject,
 } from "./api/projects.js";
+
 import { getPhotos } from "./api/photos.js";
 
 export default function App() {
@@ -95,7 +97,7 @@ export default function App() {
       </div>
 
       <div id="app-content">
-        <div id="app-dash">
+        {/* <div id="app-dash">
           <div id="app-dash-header">
             <button name="download-projects">
               <i className="fa-solid fa-file-export"></i>
@@ -116,7 +118,12 @@ export default function App() {
             )}
 
           </div>
-        </div>
+        </div> */}
+        <Dashboard
+          onCreateProject={createProjectHandler}
+          getProjectHandler={getProjectHandler}
+          projects={projects}
+        />
 
         <div id="app-form">
           <div id="app-form-header">

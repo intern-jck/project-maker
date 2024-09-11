@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+#app-dash {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+
+    #app-dash-header {
+        border: $border-stock;
+        background-color: $color-primary;
+        height: 4rem;
+        padding: $padding-stock;
+        margin-bottom: $margin-stock;
+        text-align: center;
+
+        button {
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-right: 1rem;
+        }
+    }
+
+    #app-dash-content {
+        border: $border-stock;
+        height: 100%;
+        text-align: center;
+    }
+
+}
