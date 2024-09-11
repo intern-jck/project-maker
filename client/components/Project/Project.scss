@@ -1,7 +1,6 @@
 @import "../../styles/variables";
 
 #app-form {
-  // width: 80vw;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -41,9 +40,10 @@
   #app-form-content {
     border: $border-stock;
     height: 100%;
-    // padding: $padding-stock;
     display: flex;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 
     h2 {
       width: 100%;

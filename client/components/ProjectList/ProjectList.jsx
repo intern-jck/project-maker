@@ -20,7 +20,7 @@ export default function ProjectList({ listData, onSelectProject }) {
               value={project.id}
               onClick={onSelectProjectHandler}
             >
-              <i className="fa-solid fa-file"></i>
+              {/* <i className="fa-solid fa-file"></i> */}
               <p>{project.name}</p>
             </button>
           );
