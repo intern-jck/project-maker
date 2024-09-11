@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
-import ProjectList from "./components/ProjectList/ProjectList.jsx";
+import Project from "./components/Project/Project.jsx";
+// import ProjectList from "./components/ProjectList/ProjectList.jsx";
 
 import InfoForm from "./components/Forms/InfoForm.jsx";
 import PhotoForm from "./components/Forms/PhotoForm.jsx";
@@ -97,34 +98,20 @@ export default function App() {
       </div>
 
       <div id="app-content">
-        {/* <div id="app-dash">
-          <div id="app-dash-header">
-            <button name="download-projects">
-              <i className="fa-solid fa-file-export"></i>
-            </button>
-            <button name="create-project" onClick={createProjectHandler}>
-              <i className="fa-solid fa-file"></i>
-            </button>
-          </div>
-
-          <div id="app-dash-content">
-            {projects.length ? (
-              <ProjectList
-                listData={projects}
-                onSelectProject={getProjectHandler}
-              />
-            ) : (
-              <h2>no projects</h2>
-            )}
-
-          </div>
-        </div> */}
         <Dashboard
           onCreateProject={createProjectHandler}
           getProjectHandler={getProjectHandler}
           projects={projects}
         />
 
+        <Project
+          currentProject={currentProject}
+          currentProjectPhotos={currentProjectPhotos}
+          getProjectsHandler={getProjectsHandler}
+          deleteProjectHandler={deleteProjectHandler}
+          closeProjectHandler={closeProjectHandler}
+        />
+{/* 
         <div id="app-form">
           <div id="app-form-header">
             {Object.keys(currentProject).length ? (
@@ -174,7 +161,8 @@ export default function App() {
               <h2>no project selected</h2>
             )}
           </div>
-        </div>
+        </div> */}
+
       </div>
     </div>
   );
