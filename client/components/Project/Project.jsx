@@ -6,15 +6,14 @@ import PhotoForm from "../Forms/PhotoForm.jsx";
 import "./Project.scss";
 
 export default function Project({
+  onGetProjects,
+  onDeleteProject,
+  onCloseProject,
   currentProject,
   currentProjectPhotos,
-  getProjectsHandler,
-  deleteProjectHandler,
-  closeProjectHandler
 }) {
-
   return (
-    <div id="app-form">
+    <div className="Project">
       <div id="app-form-header">
         {Object.keys(currentProject).length ? (
           <>
@@ -25,11 +24,11 @@ export default function Project({
               <button
                 name="delete-project"
                 value={currentProject.id}
-                onClick={deleteProjectHandler}
+                onClick={onDeleteProject}
               >
                 <i className="fa-solid fa-trash-can"></i>
               </button>
-              <button name="close-project" onClick={closeProjectHandler}>
+              <button name="close-project" onClick={onCloseProject}>
                 <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
@@ -47,7 +46,7 @@ export default function Project({
               id="project-info"
               className="project-info"
               infoData={currentProject}
-              submitForm={getProjectsHandler}
+              submitForm={onGetProjects}
             />
             <PhotoForm
               projectId={currentProject.id}
@@ -56,7 +55,7 @@ export default function Project({
               id="project-photos"
               className="project-photos"
               photosData={currentProjectPhotos}
-              submitForm={getProjectsHandler}
+              submitForm={onGetProjects}
             />
           </>
         ) : (

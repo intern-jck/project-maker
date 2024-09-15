@@ -1,29 +1,47 @@
 @import "../../styles/variables";
 
-#app-dash {
-  width: 20vw;
+.Dashboard {
+  height: 12rem;
   display: flex;
-  flex-direction: column;
+  padding: $padding-stock;
 
-  #app-dash-header {
+  .header {
     border: $border-stock;
     background-color: $color-primary;
-    height: 4rem;
     padding: $padding-stock;
-    margin-bottom: $margin-stock;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 
     button {
-      font-size: 1.6rem;
+      font-size: 2rem;
       background: none;
       border: none;
-      padding-left: 1rem;
+      padding: none;
+      text-align: left;
     }
   }
 
-  #app-dash-content {
+  .content {
     border: $border-stock;
-    height: 100%;
-    text-align: center;
+    border-left: none;
+    background-color: $color-panel-background;
+    width: 100%;
+    padding: $padding-stock;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: $gap-stock;
+
+    button {
+      border: $border-stock;
+      background-color: $color-ternary;
+      height: 4rem;
+      font-size: $font-size-xlarge;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
   }
 }

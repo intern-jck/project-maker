@@ -6,7 +6,7 @@ const SERVER_URL = config.SERVER_URL;
 
 export async function getPhotos(id) {
   const url = `${SERVER_URL}/photos/${id ? id : ""}`;
-  console.log('photos api: ', url)
+  // console.log('photos api: ', url)
   try {
     const result = await axios.get(url);
     const data = result.data;

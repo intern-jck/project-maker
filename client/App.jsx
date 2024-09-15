@@ -57,8 +57,8 @@ export default function App() {
       const project_data = await getProject(projectId);
       const photos_data = await getPhotos(projectId);
 
-      console.log("project:", project_data.data[0]);
-      console.log("photos:", photos_data);
+      // console.log("project:\n", project_data.data[0]);
+      // console.log("photos:\n", photos_data);
 
       setCurrentProject(project_data.data[0]);
       setCurrentProjectPhotos(photos_data);
@@ -91,16 +91,16 @@ export default function App() {
       <div id="app-content">
         <Dashboard
           onCreateProject={createProjectHandler}
-          getProjectHandler={getProjectHandler}
+          onGetProject={getProjectHandler}
           projects={projects}
         />
 
         <Project
+          onGetProjects={getProjectsHandler}
+          onDeleteProject={deleteProjectHandler}
+          onCloseProject={closeProjectHandler}
           currentProject={currentProject}
           currentProjectPhotos={currentProjectPhotos}
-          getProjectsHandler={getProjectsHandler}
-          deleteProjectHandler={deleteProjectHandler}
-          closeProjectHandler={closeProjectHandler}
         />
       </div>
     </div>
