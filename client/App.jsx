@@ -40,11 +40,11 @@ export default function App() {
       setProjects(results);
 
       // use for testing
-      console.log(results);
-      if (!results[0]) {
-        return;
-      }
-      await getProjectHandler(results[0].id);
+      // console.log(results);
+      // if (!results[0]) {
+      //   return;
+      // }
+      // await getProjectHandler(results[0].id);
     } catch (error) {
       console.log("get_data: ", error);
     }
@@ -56,9 +56,6 @@ export default function App() {
 
       const project_data = await getProject(projectId);
       const photos_data = await getPhotos(projectId);
-
-      // console.log("project:\n", project_data.data[0]);
-      // console.log("photos:\n", photos_data);
 
       setCurrentProject(project_data.data[0]);
       setCurrentProjectPhotos(photos_data);
