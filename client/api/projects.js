@@ -1,5 +1,8 @@
 import axios from "axios";
-const SERVER_URL = "http://127.0.0.1:3000";
+// const SERVER_URL = "http://127.0.0.1:3000";
+
+import config from './serverconfig.js'
+const SERVER_URL = config.SERVER_URL;
 
 export async function getProjects() {
   const url = `${SERVER_URL}/projects`;

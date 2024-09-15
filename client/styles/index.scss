@@ -13,15 +13,10 @@ html {
 }
 
 body {
+  background-color: $color-background;
   margin: 0;
   font-family: $page-font;
   font-size: 100%;
-  background-color: $color-background;
-  height: 100vh;
-}
-
-#root {
-  margin: 0;
 }
 
 button {
@@ -38,4 +33,3 @@ select:hover {
   cursor: pointer;
   color: $color-active;
 }
-

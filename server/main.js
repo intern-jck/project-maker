@@ -7,23 +7,22 @@ app.use(express.json());
 
 const db = require("./db/db.js");
 
-const PORT = 3000;
+const PORT = 8000;
 
 const indexRoute = require("./routes/index.js");
-const projectsRoutes = require("./routes/projects.js");
 const foldersRoutes = require("./routes/folders.js");
 const photosRoutes = require("./routes/photos.js");
-const reposRoutes = require("./routes/repos.js");
+const projectsRoutes = require("./routes/projects.js");
 const projectTagsRoutes = require("./routes/projectTags.js");
+const reposRoutes = require("./routes/repos.js");
 const tagsRoutes = require("./routes/tags.js");
 
-
 app.use("/", indexRoute);
-app.use("/projects", projectsRoutes);
 app.use("/folders", foldersRoutes);
 app.use("/photos", photosRoutes);
-app.use("/repos", reposRoutes);
+app.use("/projects", projectsRoutes);
 app.use("/project-tags", projectTagsRoutes);
+app.use("/repos", reposRoutes);
 app.use("/tags", tagsRoutes);
 
 app.listen(PORT, () => {

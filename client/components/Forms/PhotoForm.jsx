@@ -30,6 +30,7 @@ export default function PhotoForm({
     newPhoto["photo_project_id"] = projectId;
     newPhoto["created_on"] = Date.now();
     newPhoto["name"] = "";
+    console.log(newPhoto)
 
     try {
       const result = await savePhoto(newPhoto);
@@ -79,17 +80,8 @@ export default function PhotoForm({
   return (
     <div className="PhotoForm">
       <form id={id ? `${id}-form` : "photo-form"} onSubmit={submitHandler}>
-        <div className="photo-form-header">
-          <span>{name.replace("-", " ")}</span>
-        </div>
-
-        <div className="new-photo-info">
-          <TextInput
-            id="photo-url"
-            name="url"
-            value={newPhoto.url ? newPhoto.url : ""}
-            changeHandler={updateNewPhoto}
-          />
+        <div className="photo-header">
+          <p>{name.replace("-", " ")}</p>
           <button
             name="save-photos"
             type="submit"
@@ -97,6 +89,15 @@ export default function PhotoForm({
           >
             <i className="fa-solid fa-square-plus"></i>
           </button>
+        </div>
+
+        <div className="photo-inputs">
+          <TextInput
+            id="photo-url"
+            name="url"
+            value={newPhoto.url ? newPhoto.url : ""}
+            changeHandler={updateNewPhoto}
+          />
         </div>
       </form>
 

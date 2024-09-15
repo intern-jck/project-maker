@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+
+.Dashboard {
+  height: 22vh;
+  display: flex;
+  padding: $padding-stock;
+  border: $border-stock;
+
+  .header {
+    border: $border-stock;
+    background-color: $color-primary;
+    padding: $padding-stock;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      padding: none;
+      text-align: left;
+    }
+  }
+
+  .content {
+    border: $border-stock;
+    border-left: none;
+    background-color: $color-panel-background;
+    width: 100%;
+    padding: $padding-stock;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: $gap-stock;
+
+    button {
+      border: $border-stock;
+      background-color: $color-ternary;
+      height: 4rem;
+      font-size: $font-size-xlarge;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}
+
+
+@media screen and (orientation: landscape) {
+}
+
+@media screen and (orientation: portrait) {
+}
