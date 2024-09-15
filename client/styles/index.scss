@@ -13,20 +13,10 @@ html {
 }
 
 body {
+  background-color: $color-background;
   margin: 0;
   font-family: $page-font;
   font-size: 100%;
-  background-color: $color-background;
-  height: 100vh;
-}
-
-// Will need to change some of these to format for other screen sizes.
-#root {
-  margin: 0;
-  border: 8px solid purple;
-  width: 1200px;
-  height: 800px;
-  overflow-y: scroll;
 }
 
 button {
@@ -43,4 +33,3 @@ select:hover {
   cursor: pointer;
   color: $color-active;
 }
-

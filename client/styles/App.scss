@@ -1,28 +1,14 @@
 @import "./variables";
 
 .App {
-  // display: flex;
-  // flex-direction: column;
-
-  #app-header {
-    // border: $border-stock;
-    // background-color: $color-primary;
-    // height: 10vh;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-  }
-
-  #app-content {
-    // min-height: 90vh;
-    // display: flex;
-    // gap: 1rem;
-    // padding: $padding-stock;
-  }
-
+  border: 8px solid purple;
+  width: 1200px;
+  height: 800px;
+  overflow-y: scroll;
 }
 
-@media screen and (max-width: $screen-break-l) {}
+@media screen and (max-width: $screen-break-l) {
+}
 
 @media screen and (orientation: portrait) {
   .app-content {
