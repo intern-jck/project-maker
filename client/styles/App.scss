@@ -9,6 +9,9 @@
 @media screen and (max-width: $screen-break-l) {
 }
 
+@media screen and (orientation: landscape) {
+}
+
 @media screen and (orientation: portrait) {
   .app-content {
     flex-direction: column;

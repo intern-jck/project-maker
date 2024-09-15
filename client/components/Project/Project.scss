@@ -20,7 +20,6 @@
       margin-right: auto;
       font-size: $font-size-xlarge;
       font-weight: bold;
-
     }
 
     button {
@@ -34,17 +33,13 @@
 
   .content {
     border-top: none;
-    display: flex;
-    flex-wrap: wrap;
-
-    h2 {
-      width: 100%;
-      text-align: center;
-    }
+    // use grid instead?
+    // display: flex;
+    // flex-wrap: wrap;
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 1024px) {
+@media screen and (orientation: landscape) {
 }
 
 @media screen and (orientation: portrait) {
