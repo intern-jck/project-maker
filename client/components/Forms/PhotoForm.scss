@@ -3,47 +3,65 @@
 .PhotoForm {
   border: $border-stock;
   background-color: $color-panel-background;
-  margin: $margin-stock;
   width: 30rem;
   height: fit-content;
-  padding: $padding-stock;
   display: flex;
   flex-direction: column;
   gap: $gap-stock;
 }
 
-.photo-form-header {
+.photo-header {
+  height: 3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: $margin-stock;
 
-  span {
+  p {
+    margin-left: $padding-stock;
+    margin-right: auto;
     font-size: $font-size-xlarge;
     font-weight: bold;
   }
 
   button {
-    background: none;
     border: none;
+    background: none;
+    margin-left: $padding-stock;
+    margin-right: $padding-stock;
     font-size: $font-size-xxlarge;
   }
 }
 
-.new-photo-info {
+.photo-inputs {
+  padding: $padding-stock;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  button {
-    background: none;
-    border: none;
-    font-size: $font-size-xxlarge;
+  .TextInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: $font-size-large;
+  }
+
+  input {
+    border: $border-xthin;
+    width: 100%;
+    font-size: $font-size-large;
+  }
+  input:hover {
+    color: $color-active;
+    border-color: $color-active;
   }
 }
 
 .photo-list {
   border: $border-thin;
+  margin: $margin-stock;
   padding: $padding-stock;
   height: 20rem;
   overflow-y: scroll;
@@ -79,6 +97,5 @@
         font-size: $font-size-xlarge;
       }
     }
-
   }
 }

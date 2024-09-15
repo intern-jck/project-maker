@@ -4,9 +4,10 @@
   border: $border-stock;
   padding: $padding-stock;
   height: 68vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  gap: $gap-stock;
 
   .header {
     border: $border-stock;
@@ -34,8 +35,9 @@
   .content {
     border-top: none;
     // use grid instead?
-    // display: flex;
-    // flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-stock;
   }
 }
 

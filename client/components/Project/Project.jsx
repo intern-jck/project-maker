@@ -34,7 +34,7 @@ export default function Project({
             <InfoForm
               name="project-info"
               id="project-info"
-              className="project-info"
+              // className="project-info"
               infoData={currentProject}
               submitForm={onGetProjects}
             />

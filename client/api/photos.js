@@ -1,12 +1,11 @@
 import axios from "axios";
-// const SERVER_URL = "http://127.0.0.1:3000";
+import config from "./serverconfig.js";
 
-import config from './serverconfig.js'
 const SERVER_URL = config.SERVER_URL;
 
 export async function getPhotos(id) {
   const url = `${SERVER_URL}/photos/${id ? id : ""}`;
-  // console.log('photos api: ', url)
+
   try {
     const result = await axios.get(url);
     const data = result.data;
