@@ -27,7 +27,7 @@ export default function PhotoForm({
       return false;
     }
 
-    newPhoto["photo_project_id"] = projectId;
+    newPhoto["project_id"] = projectId;
     newPhoto["created_on"] = Date.now();
     newPhoto["name"] = "";
     console.log(newPhoto)

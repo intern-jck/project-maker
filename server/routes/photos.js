@@ -60,7 +60,7 @@ router.put("/:id", async (req, res, next) => {
     res.json({
       data: result,
     });
-    console.log('saved: ', result)
+    console.log("saved: ", result);
   } catch (error) {
     next(error);
   }

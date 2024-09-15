@@ -27,7 +27,6 @@ function selectProjectPhotos(photo_project_id) {
 }
 
 function insertPhoto(data) {
-
   const sql = `
       INSERT INTO photos (
         project_id,
@@ -55,7 +54,6 @@ function insertPhoto(data) {
 }
 
 function updatePhoto(data) {
-
   if (!Object.keys(data).length) {
     return false;
   }
