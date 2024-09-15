@@ -1,23 +1,23 @@
 @import "./variables";
 
 .App {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
   #app-header {
-    border: $border-stock;
-    background-color: $color-primary;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // border: $border-stock;
+    // background-color: $color-primary;
+    // height: 10vh;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
   }
 
   #app-content {
-    min-height: 90vh;
-    display: flex;
-    gap: 1rem;
-    padding: $padding-stock;
+    // min-height: 90vh;
+    // display: flex;
+    // gap: 1rem;
+    // padding: $padding-stock;
   }
 
 }

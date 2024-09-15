@@ -20,8 +20,13 @@ body {
   height: 100vh;
 }
 
+// Will need to change some of these to format for other screen sizes.
 #root {
   margin: 0;
+  border: 8px solid purple;
+  width: 1200px;
+  height: 800px;
+  overflow-y: scroll;
 }
 
 button {

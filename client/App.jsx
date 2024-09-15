@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Project from "./components/Project/Project.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 // import ProjectList from "./components/ProjectList/ProjectList.jsx";
 // import InfoForm from "./components/Forms/InfoForm.jsx";
 // import PhotoForm from "./components/Forms/PhotoForm.jsx";
 
-import "./styles/App.scss";
+// import "./assets/fontawesome-free-6.6.0-web/css/all.css";
 
-import "./assets/fontawesome-free-6.6.0-web/css/all.css";
+import "./styles/App.scss";
 
 import {
   createProject,
@@ -55,7 +57,7 @@ export default function App() {
 
       const project_data = await getProject(projectId);
       const photos_data = await getPhotos(projectId);
-      console.log('get project: ', photos_data)
+      console.log("get project: ", photos_data);
       // const repos_data = await getRepos(id);
       // const tags_data = await getTags(id);
 
@@ -94,7 +96,8 @@ export default function App() {
   return (
     <div className="App">
       <div id="app-header">
-        <h1>Project Maker</h1>
+        {/* <h1>Project Maker</h1> */}
+        <Navbar />
       </div>
 
       <div id="app-content">
@@ -111,7 +114,6 @@ export default function App() {
           deleteProjectHandler={deleteProjectHandler}
           closeProjectHandler={closeProjectHandler}
         />
-
       </div>
     </div>
   );
