@@ -53,6 +53,7 @@
     width: 100%;
     font-size: $font-size-large;
   }
+
   input:hover {
     color: $color-active;
     border-color: $color-active;
@@ -75,8 +76,16 @@
     border: $border-thin;
     border-radius: $border-radius-stock;
     position: relative;
-    width: 8rem;
-    height: 8rem;
+    width: 12rem;
+    height: 12rem;
+
+    .photo-thumb-div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     img {
       width: 98%;
