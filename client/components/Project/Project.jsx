@@ -50,7 +50,7 @@ export default function Project({
           </div>
         </>
       ) : (
-        <></>
+        <h2>select a project</h2>
       )}
     </div>
   );
