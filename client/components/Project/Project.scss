@@ -1,46 +1,39 @@
 @import "../../styles/variables";
 
 .Project {
+  border: $border-stock;
+  padding: $padding-stock;
+  height: 68vh;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  overflow-y: scroll;
 
-  #app-form-header {
+  .header {
     border: $border-stock;
     background-color: $color-primary;
     height: 4rem;
-    width: 100%;
-    padding: $padding-stock;
-    margin-bottom: $margin-stock;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
-    span {
+    p {
+      margin-left: $padding-stock;
+      margin-right: auto;
       font-size: $font-size-xlarge;
-      padding-left: $padding-stock;
-      padding-right: auto;
-    }
+      font-weight: bold;
 
-    div {
-      display: flex;
-      gap: $gap-thick;
-      padding-left: $padding-stock;
     }
 
     button {
-      font-size: 1.6rem;
-      background: none;
       border: none;
-      padding: 0;
+      background: none;
+      margin-left: $padding-stock;
+      margin-right: $padding-stock;
+      font-size: 1.6rem;
     }
   }
 
-  #app-form-content {
-    border: $border-stock;
-    height: 100%;
-    display: flex;
-    text-align: center;
+  .content {
+    border-top: none;
     display: flex;
     flex-wrap: wrap;
 

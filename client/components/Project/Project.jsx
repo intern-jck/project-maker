@@ -14,7 +14,46 @@ export default function Project({
 }) {
   return (
     <div className="Project">
-      <div id="app-form-header">
+      {Object.keys(currentProject).length ? (
+        <>
+          <div className="header">
+            <p>{currentProject.name}</p>
+            <button
+              name="delete-project"
+              value={currentProject.id}
+              onClick={onDeleteProject}
+            >
+              <i className="fa-solid fa-trash-can"></i>
+            </button>
+            <button name="close-project" onClick={onCloseProject}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div className="content">
+            <InfoForm
+              name="project-info"
+              id="project-info"
+              className="project-info"
+              infoData={currentProject}
+              submitForm={onGetProjects}
+            />
+            <PhotoForm
+              projectId={currentProject.id}
+              projectName={currentProject.name}
+              name="project-photos"
+              id="project-photos"
+              className="project-photos"
+              photosData={currentProjectPhotos}
+              submitForm={onGetProjects}
+            />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+
+      {/* <div className="header">
         {Object.keys(currentProject).length ? (
           <>
             <span>
@@ -38,7 +77,7 @@ export default function Project({
         )}
       </div>
 
-      <div id="app-form-content">
+      <div className="content">
         {Object.keys(currentProject).length ? (
           <>
             <InfoForm
@@ -61,7 +100,7 @@ export default function Project({
         ) : (
           <h2>no project selected</h2>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

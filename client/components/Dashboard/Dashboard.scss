@@ -1,9 +1,10 @@
 @import "../../styles/variables";
 
 .Dashboard {
-  height: 12rem;
+  height: 22vh;
   display: flex;
   padding: $padding-stock;
+  border: $border-stock;
 
   .header {
     border: $border-stock;
