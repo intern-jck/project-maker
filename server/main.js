@@ -7,7 +7,7 @@ app.use(express.json());
 
 const db = require("./db/db.js");
 
-const PORT = 3000;
+const PORT = 8000;
 
 const indexRoute = require("./routes/index.js");
 const foldersRoutes = require("./routes/folders.js");
